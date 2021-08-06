@@ -3,6 +3,8 @@
 use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\rewardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,7 +65,11 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('/users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
-
+    //reward routes
+    Route::get('/reward',[rewardController::class,'index'])->name('reward.index');
+    Route::post('/reward/create',[rewardController::class,'store'])->name('reward.store');
+    Route::delete('/reward/delete/{id}',[rewardController::class,'destroy'])->name('reward.destroy');
+    Route::post('/reward/update/{id}',[rewardController::class,'update'])->name('reward.update');
 
 
 });

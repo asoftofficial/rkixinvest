@@ -39,8 +39,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('admin.userprofile.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.customers.index' || Route::currentRouteName()=='admin.customers.show') active lightblue-nav @endif">
-                        <img src="/backend/img/icons/customers-icon.png" alt="">
+                    <a href="{{route('admin.userprofile.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
+                        <img src="/backend/img/icons/user-icon.png" alt="">
                         <p>
                           Users
                         </p>
@@ -55,7 +55,14 @@
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{route('admin.reward.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">
+                        <img src="/backend/img/icons/reward-icon.png" alt="">
+                        <p>
+                           reward
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{route('admin.banners.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.banners.index') active green-nav @endif">
                         <img src="/backend/img/icons/banners-icon.png" alt="">
