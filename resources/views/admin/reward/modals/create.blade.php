@@ -17,8 +17,8 @@
                                             <input type="text" name="title" class="form-control bg-light border-0 round-10" />
                                             @error('title')
                                             <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -34,8 +34,8 @@
                                         </div>
                                         @error('status')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -50,11 +50,12 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Ammount</h4>
                                         <div class="">
-                                            <input type="text" class="form-control bg-light round-10 border-0" name="amount">                                       </div>
+                                            <input type="text" class="form-control bg-light round-10 border-0" name="amount">
+                                        </div>
                                         @error('amount')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -65,8 +66,8 @@
                                             <input type="text" name="refrel" class="form-control bg-light border-0 round-10" />
                                             @error('refrel')
                                             <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -84,7 +85,7 @@
                                         <h4 class="input-label">Choose reward Image</h4>
                                         <div class="input-group mb-3 ">
                                             <div class="custom-file">
-                                                <input type="file" name="image"   class="custom-file-input">
+                                                <input type="file" name="image" class="custom-file-input">
                                                 <label class="custom-file-label upload-sec bg-light" for="inputGroupFile02">Browse</label>
                                             </div>
                                             @error('image')
@@ -101,7 +102,7 @@
 
                     <div class="form-group">
                         <label for="text" class="input-label">Description</label>
-                        <textarea rows="6" class="form-control bg-light border-0 round-10" name="description" value="{{old('Description',$item->Description)}}" required="" id="description"> {{old('desc')}}</textarea>
+                        <textarea rows="6" class="form-control bg-light border-0 round-10" name="description" required="" id="description"> {{old('desc')}}</textarea>
                         @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

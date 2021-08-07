@@ -1,164 +1,166 @@
 <style>
-*{
-    box-shadow: none;
-}
+    * {
+        box-shadow: none;
+    }
 
-.main {
-    font-family: 'Poppins', sans-serif;
-}
+    .main {
+        font-family: 'Poppins', sans-serif;
+    }
 
 
 
-.referal-button {
-    display: flex;
-    margin-top: 30px;
-    padding: 8px 16px;
-    width: 16rem;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    /* box-shadow: -8px -8px 15px rgba(255,255,255,.7),
+    .referal-button {
+        display: flex;
+        margin-top: 30px;
+        padding: 8px 16px;
+        width: 16rem;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        /* box-shadow: -8px -8px 15px rgba(255,255,255,.7),
                 10px 10px 10px rgba(0,0,0, .3),
                 inset 8px 8px 15px rgba(255,255,255,.7),
                 inset 10px 10px 10px rgba(0,0,0, .3); */
-    justify-content: space-between;
-    align-items: center;
-}
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.referal-label {
-    width: 150px;
-}
+    .referal-label {
+        width: 150px;
+    }
 
-.referal-label i {
-    margin-right: 5px;
-}
+    .referal-label i {
+        margin-right: 5px;
+    }
 
-.referal-toggle {
-    height: 40px;
-}
+    .referal-toggle {
+        height: 40px;
+    }
 
-.referal-toggle input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    z-index: -2;
-}
+    .referal-toggle input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        z-index: -2;
+    }
 
-.referal-toggle input[type="checkbox"] + label {
-    position: relative;
-    /* top: 0px; */
-    right: 8.2rem;
-    display: inline-block;
-    width: 92px;
-    height: 35px;
-    border-radius: 20px;
-    margin: 0;
-    cursor: pointer;
-    box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
-}
+    .referal-toggle input[type="checkbox"]+label {
+        position: relative;
+        /* top: 0px; */
+        right: 8.2rem;
+        display: inline-block;
+        width: 92px;
+        height: 35px;
+        border-radius: 20px;
+        margin: 0;
+        cursor: pointer;
+        box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
+    }
 
-.referal-toggle input[type="checkbox"] + label::before {
-    position: absolute;
-    content: 'OFF';
-    font-size: 10px;
-    text-align: center;
-    line-height: 25px;
-    top: 2px;
-    left: 8px;
-    width: 37px;
-    height: 30px;
-    border-radius: 20px;
-    background-color: #d1dad3;
-    box-shadow: -3px -3px 5px rgb(255 255 255 / 50%), 3px 3px 5px rgb(0 0 0 / 25%);
-    transition: .3s ease-in-out;
-}
-.referal-toggle input[type="checkbox"]:checked + label::before {
-    left: 50%;
-    content: 'ON';
-    color: #fff;
-    background-color: #00b33c;
-    box-shadow: -3px -3px 5px rgba(255,255,255,.5),
-                3px 3px 5px #00b33c;
-}
+    .referal-toggle input[type="checkbox"]+label::before {
+        position: absolute;
+        content: 'OFF';
+        font-size: 10px;
+        text-align: center;
+        line-height: 25px;
+        top: 2px;
+        left: 8px;
+        width: 37px;
+        height: 30px;
+        border-radius: 20px;
+        background-color: #d1dad3;
+        box-shadow: -3px -3px 5px rgb(255 255 255 / 50%), 3px 3px 5px rgb(0 0 0 / 25%);
+        transition: .3s ease-in-out;
+    }
 
-label#refreltext {
-    position: absolute;
-    top: 5px;
-    font-size: 17px;
-}
+    .referal-toggle input[type="checkbox"]:checked+label::before {
+        left: 50%;
+        content: 'ON';
+        color: #fff;
+        background-color: #00b33c;
+        box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
+            3px 3px 5px #00b33c;
+    }
 
-.main {
-    font-family: 'Poppins', sans-serif;
-}
+    label#refreltext {
+        position: absolute;
+        top: 5px;
+        font-size: 17px;
+    }
+
+    .main {
+        font-family: 'Poppins', sans-serif;
+    }
 
 
 
-.reward-button {
-    display: flex;
-    margin-top: 30px;
-    padding: 8px 16px;
-    width: 16rem;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    /* box-shadow: -8px -8px 15px rgba(255,255,255,.7),
+    .reward-button {
+        display: flex;
+        margin-top: 30px;
+        padding: 8px 16px;
+        width: 16rem;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        /* box-shadow: -8px -8px 15px rgba(255,255,255,.7),
                 10px 10px 10px rgba(0,0,0, .3),
                 inset 8px 8px 15px rgba(255,255,255,.7),
                 inset 10px 10px 10px rgba(0,0,0, .3); */
-    justify-content: space-between;
-    align-items: center;
-}
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.reward-label {
-    width: 150px;
-}
+    .reward-label {
+        width: 150px;
+    }
 
-.reward-label i {
-    margin-right: 5px;
-}
+    .reward-label i {
+        margin-right: 5px;
+    }
 
-.reward-toggle {
-    height: 40px;
-}
+    .reward-toggle {
+        height: 40px;
+    }
 
-.reward-toggle input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    z-index: -2;
-}
+    .reward-toggle input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        z-index: -2;
+    }
 
-.reward-toggle input[type="checkbox"] + label {
-    position: relative;
-    /* top: 0px; */
-    display: inline-block;
-    width: 92px;
-    height: 35px;
-    border-radius: 20px;
-    margin: 0;
-    cursor: pointer;
-    box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
-}
+    .reward-toggle input[type="checkbox"]+label {
+        position: relative;
+        /* top: 0px; */
+        display: inline-block;
+        width: 92px;
+        height: 35px;
+        border-radius: 20px;
+        margin: 0;
+        cursor: pointer;
+        box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
+    }
 
-.reward-toggle input[type="checkbox"] + label::before {
-    position: absolute;
-    content: 'OFF';
-    font-size: 10px;
-    text-align: center;
-    line-height: 25px;
-    top: 2px;
-    left: 8px;
-    width: 37px;
-    height: 30px;
-    border-radius: 20px;
-    background-color: #d1dad3;
-    box-shadow: -3px -3px 5px rgb(255 255 255 / 50%), 3px 3px 5px rgb(0 0 0 / 25%);
-    transition: .3s ease-in-out;
-}
-.reward-toggle input[type="checkbox"]:checked + label::before {
-    left: 50%;
-    content: 'ON';
-    color: #fff;
-    background-color: #00b33c;
-    box-shadow: -3px -3px 5px rgba(255,255,255,.5),
-                3px 3px 5px #00b33c;
-}
+    .reward-toggle input[type="checkbox"]+label::before {
+        position: absolute;
+        content: 'OFF';
+        font-size: 10px;
+        text-align: center;
+        line-height: 25px;
+        top: 2px;
+        left: 8px;
+        width: 37px;
+        height: 30px;
+        border-radius: 20px;
+        background-color: #d1dad3;
+        box-shadow: -3px -3px 5px rgb(255 255 255 / 50%), 3px 3px 5px rgb(0 0 0 / 25%);
+        transition: .3s ease-in-out;
+    }
+
+    .reward-toggle input[type="checkbox"]:checked+label::before {
+        left: 50%;
+        content: 'ON';
+        color: #fff;
+        background-color: #00b33c;
+        box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
+            3px 3px 5px #00b33c;
+    }
 </style>
 
 <div class="modal fade" id="generalsettings" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
@@ -168,15 +170,15 @@ label#refreltext {
                 <h5 class="modal-title text-left" id="exampleModalLabel mt-0">General Settings</h5>
             </div>
             <div class="modal-body  pt-0">
-                <form action="{{route('general.settings.store')}}"  method="post">
+                <form action="{{route('general.settings.store')}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="text" class="input-label mb-0">website Name:</label>
                         <input type="text" name="web_title" value="{{old('name')}}" required="" class="form-control bg-light border-0 round-10 ">
                         @error('web_title')
                         <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -209,14 +211,14 @@ label#refreltext {
                                                     <label for="bluetooth"></label>
                                                 </div>
                                             </div>
-                                                        </div>
-                                                    <div>
+                                        </div>
+                                        <div>
 
-                                                    </div>
+                                        </div>
                                         @error('refrel_system')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -226,8 +228,8 @@ label#refreltext {
                                         <input type="text" name="refrelsystem_level" value="{{old('refrelsystem_level')}}" required="" class="form-control bg-light border-0 round-10 ">
                                         @error('refrelsystem_level')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -253,14 +255,14 @@ label#refreltext {
                                                     <label for="reward"></label>
                                                 </div>
                                             </div>
-                                                        </div>
-                                                    <div>
+                                        </div>
+                                        <div>
 
-                                                    </div>
+                                        </div>
                                         @error('refrel_system')
                                         <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>

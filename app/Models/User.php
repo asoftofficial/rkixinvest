@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'type',
         'password',
+        'role'
     ];
 
     /**
@@ -59,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(UserLicense::class);
     }
     public function savedArticles(){
-        return $this->hasMany(SavedArticle::class);   
+        return $this->hasMany(SavedArticle::class);
     }
     public function issues(){
         return $this->belongsToMany(Issue::class)->withPivot('read_time');

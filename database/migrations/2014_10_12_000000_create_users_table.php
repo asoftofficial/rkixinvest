@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->integer('country_id')->nullable();
             $table->string('post_code')->nullable();
             $table->tinyInteger('blocked')->nullable();
+            $table->string('role')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

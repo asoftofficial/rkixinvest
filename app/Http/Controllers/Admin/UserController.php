@@ -43,10 +43,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'fname' => ['required'],
             'lname' => ['required'],
             'email' => ['required'],
+            'role' => ['required'],
 
 
 
@@ -56,12 +58,14 @@ class UserController extends Controller
         'first_name' => $request->fname,
             'last_name' => $request->lname,
             'email' => $request->email,
+            'role' => $request->role,
 
 
 
 
 
     ]);
+
 return back()->with('success','user created successfully');
     }
 
