@@ -7,38 +7,42 @@
             <div class="modal-body pt-0">
                 <form action="{{route('admin.userprofile.store')}}" enctype="multipart/form-data" method="post">
                     @csrf
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="gap">
-                                        <h4 class="input-label mt-2">First Name</h4>
+                                        <h4 class="input-label mt-2">First name</h4>
                                         <div class="">
-                                            <input type="text" class="form-control bg-light round-10 border-0" name="fname">
+                                            <input type="text" class="form-control bg-light round-10 border-0" name="fname" >
                                         </div>
-                                        @error('amount')
+                                        @error('fname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
-                                    <div class="gap1">
-                                        <div class="form-group">
-                                            <label for="text" class="input-label1 mb-0">last name</label>
-                                            <input type="text" name="lname" class="form-control bg-light border-0 round-10" />
-                                            @error('refrel')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">Last name</h4>
+                                        <div class="">
+                                            <input type="text" class="form-control bg-light round-10 border-0" name="lname">
                                         </div>
+                                        @error('lname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -46,7 +50,7 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Email</h4>
                                         <div class="">
-                                            <input type="text" class="form-control bg-light round-10 border-0" name="email">
+                                            <input type="email" class="form-control bg-light round-10 border-0 mb-2" name="email" >
                                         </div>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -55,28 +59,58 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="gap1">
-                                        <div class="form-group">
-                                            <label for="text" class="input-label1 mb-0">User role</label>
-                                            <select name="role" required="" class="form-control bg-light round-10 border-0">
-                                                <option value="admin" class="sel-v">admin</option>
-                                                <option value="user" class="sel-v">user</option>
 
-                                            </select>
-                                            @error('role')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">role</h4>
+                                        <select name="role" required="" class="form-control bg-light round-10 border-0 mb-2">
+                                            <option value="admin" class="sel-v">admin</option>
+                                            <option value="user" class="sel-v">user</option>
+
+                                        </select>
+                                        @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">Password</h4>
+                                        <div class="">
+                                            <input type="password" class="form-control bg-light round-10 border-0 mb-4" name="password" >
+                                        </div>
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
 
-
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">Confirm Password</h4>
+                                        <div class="">
+                                            <input type="password" class="form-control bg-light round-10 border-0 mb-4" name="confirmpass">
+                                        </div>
+                                        @error('confirmpass')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="d-flex justify-content-center mt-1 mb-4">
                         <button type="button" class="btn btn-outline-dark px-4 mr-1 round-10 px-5" data-dismiss="modal">Cancel</button>

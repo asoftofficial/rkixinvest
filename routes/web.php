@@ -74,5 +74,6 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
 });
 
-Route::post('general/settings',[GeneralSettings::class,'store'])->name('general.settings.store');
+Route::post('general/settings',[GeneralSettings::class,'update'])->name('general.settings');
 Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user')->middleware('auth');
+Route::view('settings','admin.settings.generalsettings.modals.show');

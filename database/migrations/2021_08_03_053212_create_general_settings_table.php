@@ -17,9 +17,10 @@ class CreateGeneralSettingsTable extends Migration
             $table->id();
             $table->string('web_title')->nullable();
             $table->text('description')->nullable();
-            $table->enum('refrel_system',['on','off'])->default('off');
+            $table->enum('refrel_system',['on','off'])->nullable();
             $table->string('refrellevel_type')->nullable();
-            $table->enum('reward_system',['on','off'])->default('off');
+            $table->enum('reward_system',['on','off'])->nullable();
+            $table->enum('email_verification',['on','off'])->nullable();
             $table->timestamps();
         });
     }

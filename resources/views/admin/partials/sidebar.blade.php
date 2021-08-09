@@ -132,7 +132,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="" class="nav-link dropdown-toggle @if(Route::currentRouteName()=='admin.users') active dark-nav @endif" id="settings">
                         <img src="/backend/img/icons/settings.png" alt="">
                         <p>
@@ -140,19 +140,45 @@
                         </p>
                     </a>
 
-                </li>
-                <ul id="settings-list">
-                    <li class="nav-item">
-                        <button  class="nav-link"  @if(Route::currentRouteName()=='admin.users') active dark-nav @endif" style="border:none" type="button" class="btn btn-primary"data-toggle="modal" data-target="#generalsettings" $id = "generalsettings">
-                            <img src="/backend/img/icons/settings.png" alt="">
-                            <p>
-                               General Settings
-                            </p>
-                        </Button>
+                </li> --}}
 
-                         @include('admin.settings.generalsettings.modals.show');
-                    </li>
-                </ul>
+                <li class="nav-item menu-is-opening menu-open">
+                    <a href="#" class="nav-link  dropdown-toggle  @if(Route::currentRouteName()=='admin.users') active dark-nav @endif">
+                        <img src="/backend/img/icons/settings.png" alt="">
+                      <p>
+                        Settings
+                        {{-- <i class="right fas fa-angle-left"></i> --}}
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item" >
+                            <a  class="nav-link"  $id = "generalsettings" @if(Route::currentRouteName()=='admin.users') active dark-nav @endif style="border:none;font-weight:bold;color:black;font-size:17px;" type="button" class="btn btn-white text-dark" data-toggle="modal" data-target="#generalsettings" >
+                                <b><img src="/backend/img/icons/generalsettings.png" alt="" ></b>
+                                <p>
+                                   General Settings
+                                </p>
+                            </a>
+
+                             @include('admin.settings.generalsettings.modals.show');
+                        </li>
+                    </ul>
+                  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

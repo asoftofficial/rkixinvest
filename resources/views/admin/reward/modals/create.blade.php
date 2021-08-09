@@ -7,32 +7,18 @@
             <div class="modal-body  pt-0">
                 <form action="{{route('admin.reward.store')}}" enctype="multipart/form-data" method="post">
                     @csrf
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="gap">
-                                        <div class="form-group">
-                                            <label for="text" class="input-label1 mb-0">Reward title</label>
-                                            <input type="text" name="title" class="form-control bg-light border-0 round-10" />
-                                            @error('title')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                        <h4 class="input-label mt-2">reward title</h4>
+                                        <div class="">
+                                            <input type="text" class="form-control bg-light round-10 border-0 mb-4" name="title" >
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="gap1">
-                                        <h4 class="input-label mt-2">Status</h4>
-                                        <div class="drop-icon">
-                                            <select name="status" required class="form-control bg-light round-10 border-0">
-                                                <option value="active" class="sel-v">active</option>
-                                                <option value="inactive" class="sel-v">inactive</option>
-                                            </select>
-                                        </div>
-                                        @error('status')
+                                        @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -40,17 +26,35 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">Status</h4>
+                                        <select name="status" required="" class="form-control bg-light round-10 border-0 mb-4">
+                                            <option value="activate" class="sel-v">activate</option>
+                                            <option value="deactivate" class="sel-v">deactivate</option>
+
+                                        </select>
+                                        @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="gap">
-                                        <h4 class="input-label mt-2">Ammount</h4>
+                                        <h4 class="input-label mt-2">Amount</h4>
                                         <div class="">
-                                            <input type="text" class="form-control bg-light round-10 border-0" name="amount">
+                                            <input type="text" class="form-control bg-light round-10 border-0 mb-4" name="amount" >
                                         </div>
                                         @error('amount')
                                         <span class="invalid-feedback" role="alert">
@@ -59,29 +63,33 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
-                                    <div class="gap1">
-                                        <div class="form-group">
-                                            <label for="text" class="input-label1 mb-0">Referals</label>
-                                            <input type="text" name="refrel" class="form-control bg-light border-0 round-10" />
-                                            @error('refrel')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                    <div class="gap">
+
+                                        <h4 class="input-label mt-2">Referal</h4>
+                                        <div class="">
+                                            <input type="text" class="form-control bg-light round-10 border-0 mb-4" name="refrel" >
                                         </div>
+                                        @error('refrel')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <div class="row">
 
                                 <div class="col-md-12">
-                                    <div class="gap1">
+                                    <div class="gap">
                                         <h4 class="input-label">Choose reward Image</h4>
                                         <div class="input-group mb-3 ">
                                             <div class="custom-file">

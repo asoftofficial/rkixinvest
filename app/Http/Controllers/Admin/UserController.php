@@ -49,24 +49,34 @@ class UserController extends Controller
             'lname' => ['required'],
             'email' => ['required'],
             'role' => ['required'],
+            'password' => ['required'],
 
 
 
-    ]);
 
-    User::create([
+         ]);
+
+     User::create([
         'first_name' => $request->fname,
             'last_name' => $request->lname,
             'email' => $request->email,
             'role' => $request->role,
+            'password' =>$request->password,
 
 
 
 
 
-    ]);
+     ]);
 
-return back()->with('success','user created successfully');
+      $data = [$request->email,$request->password,$request->fname,$request->lname];
+
+     Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
+
+        $message->to($data[0]);
+    });
+
+      return back()->with('success','user created successfully');
     }
 
     /**

@@ -49,6 +49,7 @@ class PackageController extends Controller
 
         ]);
 
+
         Packages::create([
                 'name' => $request->name,
                 'min_invest' => $request->min_invest,

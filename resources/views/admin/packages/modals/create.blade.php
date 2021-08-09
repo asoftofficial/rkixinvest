@@ -95,7 +95,7 @@
         <div class="row">
 
             <div class="col-md-12">
-                <div class="gap1">
+                <div class="gap">
                     <h4 class="input-label">Choose packaeg Image</h4>
                     <div class="input-group mb-3 ">
                         <div class="custom-file">
