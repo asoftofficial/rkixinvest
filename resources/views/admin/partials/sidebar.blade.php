@@ -9,6 +9,12 @@
     ul#settings-list > li {
         background: white;
     }
+
+    p#generalsettings_text {
+    position: relative;
+    right: -5rem;
+    top: -4vh;
+}
 </style>
 
 <aside class="main-sidebar sidebar-light-primary">
@@ -97,7 +103,7 @@
                                                         style="border:none;font-weight:bold;color:black;font-size:17px;"
                                                         type="button">
                                                         <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                                                            <p>general settings</p>
+                                                            <p id="generalsettings_text">general settings</p>
                                                         </a>
                                                     </li>
                                                 </ul>

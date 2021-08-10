@@ -22,7 +22,7 @@
         <h2 class="mt-3 mb-3">{{$user->first_name.' '.$user->last_name}}</h2>
         <div class="adminside-profile-info">
             <div class="col-md-12">
-
+                <img src="http://via.placeholder.com/250x200" class="mt-4 mb-3"  style="position: relative;left:15rem;border-radius:50%;">
                 <p>
                     <strong>Customer ID:</strong>
                     {{$user->customer_id}}</p>
