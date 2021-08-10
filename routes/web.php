@@ -21,63 +21,39 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('user/dashboard');
 })->middleware('auth');
-//Route::get('/plans', [App\Http\Controllers\Users\SubscriptionController::class, 'getPlans'])->name('getPlans');
-Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-// Route::get('/newdashboard', [App\Http\Controllers\HomeController::class, 'newdashboard'])->name('newdashboard');
 Auth::routes(['verify' => true]);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 
 $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth', 'verified', 'IsUser'])->prefix('user')->name('user.')->group(function () {
-    Route::get('/plans','SubscriptionController@getPlans')->name('plans');
-    Route::get('/checkout', 'SubscriptionController@checkout')->name('checkout');
-    Route::post('/checkout', 'SubscriptionController@subscribtion')->name('subscribtion');
-
-    Route::middleware(['IsSubscribed'])->group(function(){
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-        Route::get('/saved-articles', 'DashboardController@savedArticles')->name('saved-articles');
-        Route::get('/issues', 'IssueController@index')->name('issues');
-        Route::get('/viewer/{id}', 'IssueController@view')->name('viewer');
         Route::get('/my-account', 'DashboardController@account')->name('account');
-        Route::get('/cancel-plan', 'SubscriptionController@cancelSubscription')->name('cancel-plan');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
-    });
 });
 
 
 $adminNameSpace = 'App\Http\Controllers\Admin';
 Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('/banners', 'BannerController');
-    Route::resource('/packages', 'PackageController');
-    Route::resource('/collections', 'CollectionController');
-    Route::get('/export-collections', 'CollectionController@export')->name('export-collections');
-    Route::resource('/customers', 'CustomerController');
-    Route::get('/export-customers', 'CustomerController@export')->name('export-customers');
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-    Route::resource('/issues', 'IssueController');
-    Route::resource('/plans', 'PlanController');
-    Route::get('/export-plans', 'PlanController@export')->name('export-plans');
-    Route::get('/export-plan-customers/{id}', 'PlanController@exportCustomers')->name('export-plan-customers');
-    Route::resource('promotions', 'PromotionController');
-    Route::resource('/magazines','MagazineController');
-    Route::get('/users','DashboardController@users')->name('users');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('packages', 'PackageController');
+    Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
     //reward routes
-    Route::get('/reward',[rewardController::class,'index'])->name('reward.index');
-    Route::post('/reward/create',[rewardController::class,'store'])->name('reward.store');
-    Route::delete('/reward/delete/{id}',[rewardController::class,'destroy'])->name('reward.destroy');
-    Route::post('/reward/update/{id}',[rewardController::class,'update'])->name('reward.update');
+    Route::get('reward',[rewardController::class,'index'])->name('reward.index');
+    Route::post('reward/create',[rewardController::class,'store'])->name('reward.store');
+    Route::delete('reward/delete/{id}',[rewardController::class,'destroy'])->name('reward.destroy');
+    Route::post('reward/update/{id}',[rewardController::class,'update'])->name('reward.update');
     //settings routes
-    Route::get('/settings',[GeneralSettings::class,'index'])->name('settings.index');
+    Route::get('settings',[GeneralSettings::class,'index'])->name('settings.index');
     Route::post('reward/settings',[GeneralSettings::class,'rewardUpdate'])->name('reward.settings');
     Route::get('web/settings',[GeneralSettings::class,'Update'])->name('web.settings');
     Route::get('refrel/settings',[GeneralSettings::class,'refrelUpdate'])->name('refrel.settings');
     // Route::post('general/settings',[GeneralSettings::class,'webUpdate'])->name('web.settings');
+    Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
 });
 
 
-Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user')->middleware('auth');
+
 
