@@ -99,9 +99,9 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Confirm Password</h4>
                                         <div class="">
-                                            <input type="password" class="form-control bg-light round-10 border-0 mb-4" name="confirmpass">
+                                            <input type="password" class="form-control bg-light round-10 border-0 mb-4" name="password_confirmation">
                                         </div>
-                                        @error('confirmpass')
+                                        @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
