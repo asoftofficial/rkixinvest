@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $data['ordersCount'] = UserLicense::count();
         $data['earning'] = Transaction::where('type',2)->sum('amount');
         $data['settings'] = GeneralSettings::first();
- 
+
     	return view('admin.dashboard',$data);
     }
     public function profile(){

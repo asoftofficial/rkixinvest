@@ -1,11 +1,23 @@
 @extends('admin.layouts.default') @section('page-title') UserProfile @endsection
-@push('style') @endpush @push('script') @endpush @section('content')
+@push('style')
+<style>
+    #userprofile_update {
+        position: relative;
+        top: -8vh;
+        height: 6vh;
+    }
+    .adminside-profile-info {
+        margin-top: -5vh !important;
+
+    }
+</style>
+@endpush @push('script') @endpush @section('content')
 <div class="container-fluid">
     {{--    Section Search Area    --}}
     <section class="admin-search-area">
         <div class="admin-search-left"></div>
         <div class="admin-search-right">
-            <div class="admin-section-search-area input-group mb-3">
+            <div class=" admin-section-search-area input-group mb-3">
                 <input type="text" class="">
                 <div class="admin-section-search-btn-area">
                     <button class="btn bg-transparent mr-2" type="button">
@@ -20,9 +32,20 @@
     {{--    User Details   --}}
     <section class="adminside-profile">
         <h2 class="mt-3 mb-3">{{$user->first_name.' '.$user->last_name}}</h2>
+        <div class="d-flex justify-content-end" id="userprofile_update">
+            <button
+                data-toggle="modal"
+                data-target="#UpdateModal"
+                style="   background: #7B60F0;border:none;border-radius:4px;width:5rem;
+            color: white;">Update</button>
+        </div>
+        {{-- <a href="#"  class="btn btn-info btn-dark round-10 px-4 mr-2">Edit</a> --}}
         <div class="adminside-profile-info">
             <div class="col-md-12">
-                <img src="http://via.placeholder.com/250x200" class="mt-4 mb-3"  style="position: relative;left:15rem;border-radius:50%;">
+                <img
+                    src="http://via.placeholder.com/250x250"
+                    class="mt-4 mb-3"
+                    style="position: relative;left:15rem;border-radius:50%;">
                 <p>
                     <strong>Customer ID:</strong>
                     {{$user->customer_id}}</p>
@@ -54,7 +77,7 @@
         </div>
 
         {{-- user subscription details --}}
-        <h2 class="mt-4 mb-3">Subscription Details</h2>
+        <h2 class="mt-3 mb-5">Subscription Details</h2>
         <div class="adminside-profile-info">
             <div class="col-md-12">
                 <table class="table table-striped">
@@ -87,6 +110,8 @@
                         </tr>
                     </tbody>
                 </table>
+                @include('admin.users.modals.updateprofile')
+
             </div>
         </div>
     </section>
