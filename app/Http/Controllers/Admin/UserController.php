@@ -170,7 +170,7 @@ return back();
         $user = $request->hidden_email;
         Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
 
-            $message->to($user)     ;
+            $message->to($user);
         });
 
     //    Mail::to($user)->send(new test);

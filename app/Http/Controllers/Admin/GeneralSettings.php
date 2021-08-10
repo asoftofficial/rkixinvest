@@ -9,31 +9,46 @@ use Illuminate\Http\Request;
 class GeneralSettings extends Controller
 {
 
-    public function update(Request $request)
+    public function index()
+        {
+           return view('admin.settings.generalsettings.index');
+        }
+
+    public function Update(Request $request)
     {
+
+
+        $settings = ModelsGeneralSettings::first();
+        $settings->web_title        = $request->web_title;
+        $settings->description = $request->description;
+        $settings->update();
+     return back()->with('success','settings chnaged successfully');
+    }
+
+    public function rewardUpdate(Request $request)
+    {
+
+
+        $settings = ModelsGeneralSettings::first();
+        $settings->reward_system      = $request->reward_system;
+        $settings->update();
+     return back()->with('success','reward settings chnaged successfully');
+    }
+
+    public function refrelUpdate(Request $request)
+    {
+
 
         $settings = ModelsGeneralSettings::first();
 
-
-        $settings->web_title        = $request->web_title;
-        $settings->description = $request->description;
         $settings->refrel_system      = $request->refrel_system;
         $settings->refrellevel_type      = $request->refrellevel_type;
-        $settings->reward_system      = $request->reward_system;
-        $settings->email_verification      = $request->email_verification;
         $settings->update();
-     return back()->with('success','settings chnaged successfully');
 
-    // return back()->with('success','settings chnaged successfully');
-    // ModelsGeneralSettings::create([
-    //     'web_title' => $request->web_title,
-    //     'description' => $request->description,
-    //     'refrel_system' => $request->refrel_system,
-    //     'refrellevel_type'=>$request->refrellevel_type,
-    //     'reward_system'=>$request->reward_system,
-    //     'email_verification'=>$request->confirmation_email,
-
-
-
+     return back()->with('success','referal settings chnaged successfully');
     }
+
+
+
+
 }

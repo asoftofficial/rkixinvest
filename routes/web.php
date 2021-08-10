@@ -70,10 +70,14 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('/reward/create',[rewardController::class,'store'])->name('reward.store');
     Route::delete('/reward/delete/{id}',[rewardController::class,'destroy'])->name('reward.destroy');
     Route::post('/reward/update/{id}',[rewardController::class,'update'])->name('reward.update');
-
-
+    //settings routes
+    Route::get('/settings',[GeneralSettings::class,'index'])->name('settings.index');
+    Route::post('reward/settings',[GeneralSettings::class,'rewardUpdate'])->name('reward.settings');
+    Route::get('web/settings',[GeneralSettings::class,'Update'])->name('web.settings');
+    Route::get('refrel/settings',[GeneralSettings::class,'refrelUpdate'])->name('refrel.settings');
+    // Route::post('general/settings',[GeneralSettings::class,'webUpdate'])->name('web.settings');
 });
 
-Route::post('general/settings',[GeneralSettings::class,'update'])->name('general.settings');
+
 Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user')->middleware('auth');
-Route::view('settings','admin.settings.generalsettings.modals.show');
+
