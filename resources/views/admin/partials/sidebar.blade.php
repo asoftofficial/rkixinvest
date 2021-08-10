@@ -48,56 +48,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('admin.customers.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.customers.index' || Route::currentRouteName()=='admin.customers.show') active lightblue-nav @endif">
-                        <img src="{{asset('/backend/img/icons/customers-icon.png')}}" alt="">
-                        <p>
-                            Customers
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{route('admin.reward.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">
                         <img src="{{asset('/backend/img/icons/reward-icon.png')}}" alt="">
                         <p>
-                           reward
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.banners.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.banners.index') active green-nav @endif">
-                        <img src="{{asset('/backend/img/icons/banners-icon.png')}}" alt="">
-                        <p>
-                            Banners
+                           Rewards
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('admin.issues.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.issues.index') active blue-nav @endif">
-                        <img src="{{asset('/backend/img/icons/issues.icon.png')}}" alt="">
-                        <p>
-                            Issues
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{route('admin.promotions.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.promotions.index') active yellow-nav @endif">
-                        <img src="{{asset('/backend/img/icons/promotions-icon.png')}}" alt="">
-                        <p>
-                            Promotions
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{route('admin.plans.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.plans.index' || Route::currentRouteName()=='admin.plans.show') active orange-nav @endif">
-                        <img src="{{asset('/backend/img/icons/plans-icon.png')}}" alt="">
-                        <p>
-                            Plans
-                        </p>
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a href="{{route('admin.packages.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.packages.index' || Route::currentRouteName()=='admin.package.show') active blue-nav @endif">
@@ -107,42 +65,6 @@
                         </p>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a href="{{route('admin.collections.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.collections.index') active pink-nav @endif">
-                        <img src="{{asset('/backend/img/icons/collections-icon.png')}}" alt="">
-                        <p>
-                            Collections
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.magazines.index')}}" class="nav-link @if(Route::currentRouteName()=='admin.magazines.index') active red-nav @endif">
-                        <img src="{{asset('/backend/img/icons/collections-icon.png')}}.
-                        " alt="">
-                        <p>
-                            Magazines
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.users')}}" class="nav-link @if(Route::currentRouteName()=='admin.users') active dark-nav @endif">
-                        <img src="{{asset('/backend/img/icons/collections-icon.png')}}.
-                        " alt="">
-                        <p>
-                            User Managment
-                        </p>
-                    </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="" class="nav-link dropdown-toggle @if(Route::currentRouteName()=='admin.users') active dark-nav @endif" id="settings">
-                        <img src="/backend/img/icons/settings.png" alt="">
-                        <p>
-                           Settings
-                        </p>
-                    </a>
-
-                </li> --}}
 
                 <li class="nav-item menu-is-opening menu-open">
                     <a href="#" class="nav-link  dropdown-toggle  @if(Route::currentRouteName()=='admin.users') active dark-nav @endif">
@@ -160,8 +82,6 @@
                                    General Settings
                                 </p>
                             </a>
-
-                             {{-- @include('admin.settings.generalsettings.modals.show'); --}}
                         </li>
                     </ul>
                   </li>
