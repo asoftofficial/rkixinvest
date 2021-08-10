@@ -30,9 +30,8 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Status</h4>
                                         <select name="status" required="" class="form-control bg-light round-10 border-0 mb-4">
-                                            <option value="activate" class="sel-v">activate</option>
-                                            <option value="deactivate" class="sel-v">deactivate</option>
-
+                                            <option value="activate" class="sel-v">Activate</option>
+                                            <option value="suspend" class="sel-v">Suspend</option>
                                         </select>
                                         @error('status')
                                         <span class="invalid-feedback" role="alert">

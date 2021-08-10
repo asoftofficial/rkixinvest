@@ -16,7 +16,7 @@ class BannerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $plans = Plan::where('status',1)->get();
         $banners = Banner::paginate(10);
         return view('admin.banners.index', compact('plans', 'banners'));
@@ -56,7 +56,7 @@ class BannerController extends Controller
                 'start_date'=> $request->start_date,
                 'end_date'  => $request->end_date,
                 'display_area'=> $request->display_area,
-                 
+
             ]);
         }catch (Exception $ex) {
            return redirect()->back()->with("error", $ex->getMessage());

@@ -18,7 +18,7 @@ class CreateReward extends Migration
             $table->string('title')->nullable();
             $table->integer('amount')->nullable();
             $table->integer('refrel')->nullable();
-            $table->enum('status',['active','inactive'])->nullable();
+            $table->enum('status',['activate','suspend']);
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
