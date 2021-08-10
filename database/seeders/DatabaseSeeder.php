@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             "type" => 3,
 
         ]);
-
+            // User::factory()->create(50);
     //    $this-> call([
     //     packagesFactory::class,
     //     ]);

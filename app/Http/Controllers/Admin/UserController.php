@@ -87,7 +87,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // $customer = User::where(['id'=> $id, 'type'=>1])->with('lisense')->first();
+        // if($customer){
+            $user = User::find($id);
+            return view('admin.users.userprofile', compact('user'));
+    //     }
+    //     return redirect(404);
     }
 
     /**

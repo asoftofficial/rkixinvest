@@ -62,7 +62,7 @@ User Management
                         <td>{{$item->role}}</td>
 
                         <td style="min-width: 256px">
-                            {{-- <a href="#" class="mr-2 text-dark" style="font-size: 20px"><i class="fas fa-eye"></i></a> --}}
+                            <a href="{{route('admin.userprofile.show',$item->id)}}" class="mr-2 text-dark" style="font-size: 20px"><i class="fas fa-eye"></i></a>
                             <a href="#" data-toggle="modal" data-target="#edituserModal-{{$item->id}}" class="btn btn-info btn-dark round-10 px-4 mr-2">Edit</a>
                             @if($item->blocked == 0)
                             <a href="#" class="btn btn-danger blocked_user " data-id="{{$item->id}}">
