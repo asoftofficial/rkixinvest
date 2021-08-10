@@ -118,7 +118,7 @@ User Management
             .then((willUpdate) => {
                 if (willUpdate) {
                     var user_id = $(this).attr('data-id');
-                    var url = "{{route('blocked.user', 'id')}}";
+                    var url = "{{route('admin.blocked.user', 'id')}}";
                     url = url.replace('id', user_id);
                     $("#update-form").attr('action', url);
                     $("#update-form").submit();
