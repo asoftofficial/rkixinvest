@@ -49,30 +49,20 @@ class UserController extends Controller
             'lname' => ['required'],
             'email' => ['required'],
             'role' => ['required'],
-            'password' => ['required'],
-
-
-
-
+            'password' => ['required|confirmed|min:6'],
          ]);
 
      User::create([
-        'first_name' => $request->fname,
+            'first_name' => $request->fname,
             'last_name' => $request->lname,
             'email' => $request->email,
             'role' => $request->role,
-            'password' =>$request->password,
-
-
-
-
-
+            'password' =>bcrypt($request->password),
      ]);
 
-      $data = [$request->email,$request->password,$request->fname,$request->lname];
-
-     Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
-
+        $data = [$request->email,$request->password,$request->fname,$request->lname];
+        // Sending Email to new user with details
+        Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
         $message->to($data[0]);
     });
 
@@ -87,50 +77,29 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // $customer = User::where(['id'=> $id, 'type'=>1])->with('lisense')->first();
-        // if($customer){
-            $user = User::find($id);
+            $user = User::findOrFail($id);
             return view('admin.users.userprofile', compact('user'));
-    //     }
-    //     return redirect(404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $users = User::findOrFail($id);
         if($request->hasFile('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/packages/');
-            $full_path = '/uploads/packages/'.$fileName;
+            $upload_path = public_path('uploads/users/');
+            $full_path = '/uploads/users/'.$fileName;
             $check = $request->file('image')->move($upload_path, $fileName);
             // $packages->file_path  = $full_path;
         }
 
-        $users->first_name        = $request->fname;
+        $users->first_name = $request->fname;
         $users->last_name = $request->lname;
-        $users->email      = $request->email;
+        $users->email = $request->email;
         $users->update();
-        // return redirect()->back()->with("success", "package Updated Successfully!");
-        return redirect()->back();
+        return redirect()->back()->with('success','User created successfully!');
     }
 
     /**
@@ -141,8 +110,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-
-
         $users = User::findOrFail($id);
         $users->delete();
         return redirect()->back()->with("success", "User Deleted Successfully!");
@@ -153,33 +120,21 @@ class UserController extends Controller
 
     public function blocked(Request $request,$id)
     {
-
-        $a = $request->id;
-        $b = User::findOrFail($id)->id;
-        $c = User::findOrFail($id)->blocked;
-        if($a == $b && $c== 0){
-            User::where('id', $b)->update(['Blocked' => 1]);
-        }elseif($a == $b && $c !==0){
-            User::where('id', $b)->update(['Blocked' => 0]);
-        }
-
-return back();
-
+        $user = User::findOrFail($id);
+        $status = $user->blocked == 1 ? 0 : 1;
+        $user->blocked = $status;
+        $user->update();
+        return back()->with('success','User Status updated');
     }
 
 
     public function sendmail(Request $request)
     {
-
-         $data = [$request->subject,$request->body];
+        $data = [$request->subject,$request->body];
         $user = $request->hidden_email;
         Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
-
-            $message->to($user);
-        });
-
-    //    Mail::to($user)->send(new test);
-
-return back()->with('success','email has sent');
+        $message->to($user);
+    });
+    return back()->with('success','email has sent');
     }
 }
