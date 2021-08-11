@@ -11,9 +11,7 @@
     }
 
     p#generalsettings_text {
-    position: relative;
-    right: -5rem;
-    top: -4vh;
+        padding-left: 5px;
 }
 </style>
 
@@ -102,8 +100,8 @@
                                                         class="btn btn-white text-dark"
                                                         style="border:none;font-weight:bold;color:black;font-size:17px;"
                                                         type="button">
-                                                        <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                                                            <p id="generalsettings_text">general settings</p>
+<p id="generalsettings_text">                                                        <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">general settings</p>
+
                                                         </a>
                                                     </li>
                                                 </ul>
