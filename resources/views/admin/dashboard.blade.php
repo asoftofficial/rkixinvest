@@ -5,8 +5,10 @@ Dashboard
 @section('page-subtitle')
 Welcome back,
 @endsection
-@push('style') < link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
-@push('script') < script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
+@push('style')
+<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@push('script')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $('.custom-file-input').change(function (e) {
     var filename = $(this)
@@ -23,7 +25,8 @@ $(function () {
 });
 </script>
 @endpush
-@section('content') < div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
+@section('content')
+<div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
     <div
         class="dashboard-card upload-issues d-flex align-items-center justify-content-center">
         <a
@@ -239,3 +242,8 @@ $(function () {
                     {{-- @include('admin.banners.modals.create') --}}
                     {{-- @include('admin.promotions.modals.create') --}}
                     @endsection
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
