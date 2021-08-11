@@ -7,7 +7,7 @@
 
     <title>@yield('page-title') | {{ env('APP_NAME') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
     @stack('style')
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">
-                <a href="/"><img src="{{ asset('backend/assets/images/logo.png') }}" alt=""></a>
+                <a href="/"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
             </div>
         </header>
         @yield('content')
