@@ -97,10 +97,11 @@
                                                         active="active"
                                                         dark-nav="dark-nav"
                                                         @endif
-                                                        class="btn btn-white text-dark"
+                                                        class="btn btn-white text-dark ml-5"
                                                         style="border:none;font-weight:bold;color:black;font-size:17px;"
                                                         type="button">
-<p id="generalsettings_text">                                                        <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">general settings</p>
+                                                        <p id="generalsettings_text">
+                                                                <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">&nbsp;&nbsp; general settings</p>
 
                                                         </a>
                                                     </li>
