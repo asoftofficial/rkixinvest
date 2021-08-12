@@ -8,9 +8,13 @@ User Management
 @push('script')
 
 @endpush
+<<<<<<< HEAD
 @section('content') 
 <div class = "container-fluid" > {{-- Section Search Area    --}} 
 <section class = "admin-search-area" > <div class="admin-search-left">
+=======
+@section('content') <div class = "container-fluid" > {{-- Section Search Area    --}} <section class = "admin-search-area" > <div class="admin-search-left">
+>>>>>>> ec3929f83cb037e610fa1269587c9043a1ba3e64
     <button
         class="btn btn-info px-5 btn-dark round-10"
         data-toggle="modal"
@@ -29,7 +33,11 @@ User Management
 </section>{{-- End Section Search Area    --}}
 
 {{-- Page Section Title Area    --}}
+<<<<<<< HEAD
 <section class = "page-section-title-area" > <div>
+=======
+ <section class = "page-section-title-area" > <div>
+>>>>>>> ec3929f83cb037e610fa1269587c9043a1ba3e64
     <h2>USER LIST</h2>
     <p>Latest users and information</p>
 </div>
