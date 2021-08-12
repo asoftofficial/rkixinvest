@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Carbon\Carbon;
@@ -50,7 +51,9 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+
+        $countries = Country::all();
+        return view('auth.register',compact('countries'));
     }
 
     /**
@@ -86,6 +89,9 @@ class RegisterController extends Controller
             $user->last_name = $data['last_name'];
             $user->username = Str::lower($data['username']);
             $user->email = $data['email'];
+            $user->country = $data['country'];
+            $user->post_code = $data['pcode'];
+            $user->address = $data['address'];
             $user->type = 1;
             $user->password = Hash::make($data['password']);
             $code = $user->email_verified_code = Str::random(50);

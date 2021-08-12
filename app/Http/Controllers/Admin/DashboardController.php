@@ -15,10 +15,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        $data['collections'] 	= Collection::where('status', 1)->get();
+
         $data['plans'] = Plan::all();
-        $data['magazines'] = Magazine::all();
-        $data['ordersCount'] = UserLicense::count();
         $data['earning'] = Transaction::where('type',2)->sum('amount');
         $data['settings'] = GeneralSettings::first();
 

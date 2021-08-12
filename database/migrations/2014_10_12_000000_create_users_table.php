@@ -28,10 +28,9 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('verified_user')->comment("1 = verified, 2 = unverified")->nullable();
             $table->string('password')->nullable();
             $table->tinyInteger('type')->default(1)->comment('1 = customer, 2 = brand,3 = admin');
-            $table->string('street1')->nullable();
-            $table->string('street2')->nullable();
+            $table->string('address')->nullable();
             $table->string('city')->nullable();
-            $table->string('county')->nullable();
+            $table->string('country')->nullable();
             $table->integer('country_id')->nullable();
             $table->string('post_code')->nullable();
             $table->tinyInteger('blocked')->nullable();

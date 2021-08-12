@@ -1,4 +1,15 @@
 @extends('layouts.auth-layout')
+@push('style')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#countries').select2();
+});
+</script>
+@endpush
 @section('page-title')
     Sign Up
 @endsection
@@ -54,7 +65,55 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <label for="Country" class="text-white">country</label>
+                <select
+                name="country"
+                required=""
+                id="countries"
+                class="form-control bg-light round-10 border-0 mb-2 ">
+                @foreach ($countries as $item)
+                <option value="{{$item->name}}">{{$item->name}}</option>
+                @endforeach
+            </select>
+                @error('country')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="text-white">referral</label>
+                <input id="text" name="referral" type="text" class="form-control autocar-input  @error('referral') is-invalid @enderror" placeholder="Referral"  value="{{ old('referral') }}">
+                @error('referral')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <label for="Address" class="text-white">Address</label>
+                <input id="Address" name="address" type="text" class="form-control autocar-input mb-1 @error('Address') is-invalid @enderror" placeholder="Address">
+                @error('Address')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-3">
+                <label for="pcode" class="text-white">post code</label>
+                <input id="pcode" name="pcode" type="text" class="form-control autocar-input mb-1 @error('pcode') is-invalid @enderror" placeholder="Post code">
+                @error('pcode')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-1">
                 <label for="password" class="text-white">Password</label>
                 <input id="password" name="password" type="password" class="form-control autocar-input mb-1 @error('email') is-invalid @enderror" placeholder="Password">
                 @error('password')
@@ -68,7 +127,7 @@
             <div class="col-md-12">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input required @error('terms') is-invalid @enderror" type="checkbox" id="inlineCheckbox1" name="terms" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">I confirm I have read and agree to the Terms and Conditions and Privacy Policy</label>
+                    <label class="form-check-label" for="inlineCheckbox1">I have read and agree to the Terms and Conditions and Privacy Policy</label>
 
                 </div>
                 <span class="forgot"><a href="{{ route('password.request') }}">Forgot password?</a></span>
