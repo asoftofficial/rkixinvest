@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Contracts\mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 use Session;
 class RegisterController extends Controller
 {
@@ -61,6 +66,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username'=> ['required','unique:users'],
             'password' => ['required', 'string', 'min:6'],
             'terms' => ['required'],
         ]);
@@ -74,14 +80,37 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //dd($data);
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'type'=>1,
-            'password' => Hash::make($data['password']),
-        ]);
+
+            $user = new User();
+            $user->first_name = $data['first_name'];
+            $user->last_name = $data['last_name'];
+            $user->username = Str::lower($data['username']);
+            $user->email = $data['email'];
+            $user->type = 1;
+            $user->password = Hash::make($data['password']);
+            $code = $user->email_verified_code = Str::random(50);
+            $user->save();
+            Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
+                $message->to($data['email']);
+            });
+    }
+
+    public function email_verification($email_verification_code)
+    {
+       $email_verify  = User::where('email_verification_code',$email_verification_code)->first();
+       if(!$email_verify){
+           return redirect(route('register'))->with('errors','invalid url');
+       }else{
+           if($email_verify->email_verified_at){
+            return redirect(route('register'))->with('errors','email already verified');
+           }else{
+            $email_verify->update([
+                'email_verified_at' => \carbon\carbon::now(),
+            ]);
+            return redirect(route('admin.dashboard'))->with('success','email successfylly verified');
+           }
+
+       }
     }
 
     public function register(Request $request)

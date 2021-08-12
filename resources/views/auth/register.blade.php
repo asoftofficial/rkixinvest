@@ -34,7 +34,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <label for="username" class="text-white">User Name</label>
+                <input id="username" name="username" value="{{ old('username') }}" type="text" class="form-control autocar-input @error('username') is-invalid @enderror" placeholder="Username">
+                @error('username')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-6">
                 <label for="email" class="text-white">Email</label>
                 <input id="email" name="email" type="text" class="form-control autocar-input  @error('email') is-invalid @enderror" placeholder="Email"  value="{{ old('email') }}">
                 @error('email')
@@ -47,7 +56,7 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="password" class="text-white">Password</label>
-                <input id="password" name="password" type="password" class="form-control autocar-input  @error('email') is-invalid @enderror" placeholder="Password">
+                <input id="password" name="password" type="password" class="form-control autocar-input mb-1 @error('email') is-invalid @enderror" placeholder="Password">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

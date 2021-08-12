@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->date('dob')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('email_verified_code')->nullable();
+            $table->tinyInteger('verified_user')->comment("1 = verified, 2 = unverified")->nullable();
             $table->string('password')->nullable();
             $table->tinyInteger('type')->default(1)->comment('1 = customer, 2 = brand,3 = admin');
             $table->string('street1')->nullable();
