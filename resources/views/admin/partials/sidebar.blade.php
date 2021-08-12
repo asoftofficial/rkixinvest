@@ -14,7 +14,6 @@
         padding-left: 5px;
 }
 </style>
-
 <aside class="main-sidebar sidebar-light-primary">
 
     <!-- Sidebar -->
@@ -81,34 +80,61 @@
                                             </p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
-                                                <p>
-                                                    Settings
-                                                    <i class="right fas fa-angle-left"></i>
-                                                </p>
-                                            </a>
-                                            <ul class="nav nav-treeview">
-                                                <li class="nav-item">
-                                                    <a
-                                                        href="{{route('admin.settings.index')}}"
-                                                        @if(Route::currentRouteName()=='admin.users')
-                                                        active="active"
-                                                        dark-nav="dark-nav"
-                                                        @endif
-                                                        class="btn btn-white text-dark"
-                                                        style="border:none;font-weight:bold;color:black;font-size:17px;"
-                                                        type="button">
-<p id="generalsettings_text">                                                        <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">general settings</p>
+                                </li>
+                                   <li class="nav-item">
+                                <a href="{{route('admin.settings.index')}}"
+                                class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
+                                  <p>
+                                   Settings
+                                    <i class="fas fa-angle-left right"></i>
+                                  </p>
+                                </a>
+                                <ul class="nav nav-treeview" style="display: none;">
+                                  <li class="nav-item ml-2">
+                                    <a href="{{route('admin.settings.index')}}"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>general settings</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </li>
 
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                </ul>
+            </nav>
+    </div>
+</aside>
+
+
+{{--
+
                                             </li>
                                         </ul>
                                     </nav>
                                     <!-- /.sidebar-menu -->
                                 </div>
                                 <!-- /.sidebar -->
-                            </aside>
+                            </aside> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
