@@ -137,4 +137,9 @@ class UserController extends Controller
     });
     return back()->with('success','email has sent');
     }
+
+    public function email_verification(Type $var = null)
+    {
+        # code...
+    }
 }

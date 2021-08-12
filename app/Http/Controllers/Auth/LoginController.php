@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class LoginController extends Controller
 {
     /*
@@ -51,9 +52,9 @@ class LoginController extends Controller
              'email' => 'required',
              'password' => 'required'
          ]);
-         $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-         $credentials = $request->only($fieldType, 'password');
-         if (Auth::attempt($credentials)) {
+
+         $usernamefield = Filter_var($request->email,FILTER_VALIDATE_EMAIL) ? 'email': 'username';
+         if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])) {
             if(Auth::user()->type==1){
                 return redirect()->route('user.dashboard');
             }elseif(Auth::user()->type==2){
@@ -62,8 +63,16 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
          }
+        //  if(Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])){
+        //                  return redirect('viewlist')->with('success', 'login successfully');
+        //         }else{
+        //             return back()->withErrors('something went wrong');
+        //         }
+        //  $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        //  $credentials = $request->only($fieldType, 'password');
 
-         return redirect("login")->withErrors('Oppes! You have entered invalid credentials');
+
+
      }
 
     public function __construct()
