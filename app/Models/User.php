@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Cashier\Billable;
 class User extends Authenticatable implements MustVerifyEmail
 //class User extends Authenticatable
 {
@@ -17,22 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
-        'customer_id',
-        'first_name',
-        'last_name',
-        'username',
-        'email_verified_code',
-        'country_id',
-        'street1',
-        'street2',
-        'dob',
-        'post_code',
-        'email',
-        'type',
-        'password',
-        'role'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
