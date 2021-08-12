@@ -10,7 +10,7 @@ use Laravel\Cashier\Billable;
 class User extends Authenticatable implements MustVerifyEmail
 //class User extends Authenticatable
 {
-    use HasFactory, Notifiable, Billable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -56,13 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function country(){
         return $this->belongsTo(Country::class);
     }
-    public function lisense(){
-        return $this->hasOne(UserLicense::class);
-    }
-    public function savedArticles(){
-        return $this->hasMany(SavedArticle::class);
-    }
-    public function issues(){
-        return $this->belongsToMany(Issue::class)->withPivot('read_time');
+    public function referrals(){
+        return $this->hasMany(Referral::class);
     }
 }

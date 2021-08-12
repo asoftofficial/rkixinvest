@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        $settings = GeneralSettings::first();
-        view()->share('settings', $settings);
+        // $settings = GeneralSettings::first();
+        // view()->share('settings', $settings);
         //
     }
 }

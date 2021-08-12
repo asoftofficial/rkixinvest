@@ -22,13 +22,7 @@ class generalSettingsFactory extends Factory
     public function definition()
     {
         return [
-         'web_title' => 'Rkix investment system',
-        'description' => 'lorem ipsum dummy text.lorem ipsum dummy text.',
-            'refrel_system' => 'off',
-            'refrellevel_type' => '6',
-            'reward_system' => 'off',
-            'email_verification' => 'off',
-
+            'description' => 'Rkixinvest is a laravel based Investment managament system with multi level referral system'
         ];
     }
 }

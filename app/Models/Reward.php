@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reward extends Model
 {
-    public $table = 'reward';
     use HasFactory;
     protected $guarded = [];
 }

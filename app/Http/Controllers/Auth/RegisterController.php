@@ -83,10 +83,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
         Session::flash("message", "Your account has created successfully Please Verify your email to login to your account!");
         return $this->registered($request, $user)

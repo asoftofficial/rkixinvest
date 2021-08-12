@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePackagesTable extends Migration
+class CreateRewards extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePackagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('rewards', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->integer('min_invest')->nullable();
-            $table->integer('max_invest')->nullable();
-            $table->double('roi')->nullable();
-            $table->enum('roi_type', ['daily','weekly', 'monthly', 'yearly'])->default('daily');
-            $table->text('description')->nullable();
+            $table->integer('amount')->nullable();
+            $table->integer('refrel')->nullable();
+            $table->enum('status',['enabled','disabled'])->default('enabled');
             $table->string('image')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreatePackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('rewards');
     }
 }
