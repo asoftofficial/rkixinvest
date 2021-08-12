@@ -2,8 +2,13 @@
 @section('page-title')
 Packages
 @endsection
-@push('style') < link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
-@push('script') < script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script> < script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> < script > $(
+@push('style') 
+<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > 
+@endpush
+@push('script') 
+<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script> 
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+<script > $(
     '.custom-file-input'
 ).change(function (e) {
     var filename = $(this)
@@ -34,7 +39,10 @@ $(".delete").click(function (e) {
 });
 </script>
 @endpush
-@section('content') < div class = "container-fluid" > {{-- Section Search Area    --}} < section class = "admin-search-area" > <div class="admin-search-left">
+@section('content') 
+<div class = "container-fluid" > {{-- Section Search Area    --}} 
+    <section class = "admin-search-area" > 
+        <div class="admin-search-left">
     <button
         class="btn btn-info px-3 blue-bg round-10"
         data-toggle="modal"
@@ -52,11 +60,15 @@ $(".delete").click(function (e) {
     </div>
 </section>{{-- End Section Search Area    --}}
 
-{{-- Page Section Title Area    --}} < section class = "page-section-title-area" > <div>
+{{-- Page Section Title Area    --}} 
+<section class = "page-section-title-area" > <div>
     <h2>Packages List</h2>
     <p>Latest Packages information</p>
 </div>
-</section>{{-- End Page Section Title Area    --}} < section class = "collections" > <div class="table-responsive">
+</section>
+{{-- End Page Section Title Area    --}} 
+<section class = "collections" > 
+    <div class="table-responsive">
         <table class="table custom-table">
             <thead class="thead-light">
                 <tr>
@@ -107,6 +119,9 @@ $(".delete").click(function (e) {
 <!-- /.container-fluid -->
 
 {{-- Add package Model  --}}
-@include('admin.packages.modals.create'){{-- End Add package Model  --}} < form action = "" method = "post" id = "delete-form" > @csrf
-@method('delete') < /form>
+@include('admin.packages.modals.create')
+{{-- End Add package Model  --}} 
+<form action = "" method = "post" id = "delete-form" > 
+    @csrf
+@method('delete') </form>
 @endsection

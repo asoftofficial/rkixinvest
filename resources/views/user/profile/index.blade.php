@@ -8,7 +8,11 @@ User Management
 @push('script')
 
 @endpush
-@section('content') < div class = "container-fluid" > {{-- Section Search Area    --}} < section class = "admin-search-area" > <div class="admin-search-left">
+@section('content') 
+<div class = "container-fluid" > 
+    {{-- Section Search Area    --}} 
+    <section class = "admin-search-area"> 
+        <div class="admin-search-left">
     <button
         class="btn btn-info px-5 btn-dark round-10"
         data-toggle="modal"
@@ -26,12 +30,16 @@ User Management
     </div>
 </section>{{-- End Section Search Area    --}}
 
-{{-- Page Section Title Area    --}} < section class = "page-section-title-area" > <div>
+{{-- Page Section Title Area    --}} 
+<section class = "page-section-title-area" > <div>
     <h2>USER LIST</h2>
     <p>Latest users and information</p>
 </div>
 <div class="section-title-right"></div>
-</section>{{-- End Page Section Title Area    --}} < section class = "magazines" > <div class="table-responsive">
+</section>
+{{-- End Page Section Title Area    --}} 
+<section class = "magazines" > 
+    <div class="table-responsive">
     <table class="table custom-table">
         <thead class="thead-light">
             <tr>

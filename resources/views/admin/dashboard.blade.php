@@ -58,7 +58,7 @@ $(function () {
             <p>9,30,2020</p>
         </div>
         <div class="dashboard-card-stat">
-            {{$ordersCount}}
+            75857
         </div>
     </div>
     <div class="dashboard-card total-earnings bg-dark">
@@ -70,7 +70,7 @@ $(function () {
             <p class="text-white">all income</p>
         </div>
         <div class="dashboard-card-stat">
-            £ {{$earning}}
+            £ 123
         </div>
     </div>
 </div>

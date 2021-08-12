@@ -106,7 +106,8 @@
     </style>
 @endpush
 
-@section('content'){{-- Page Section Title Area    --}} < div class = "issue-title-section" > <h2 class="issue-page-title">Issues</h2> < /div>
+@section('content'){{-- Page Section Title Area    --}} 
+<div class = "issue-title-section" > <h2 class="issue-page-title">Issues</h2> </div>
 {{-- End Page Section Title Area    --}}
 <div class="container-fluid">
     <section class="issue">

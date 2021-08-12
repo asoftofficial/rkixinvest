@@ -16,15 +16,8 @@ use Hash;
 class DashboardController extends Controller
 {
     public function index(){
-    	$data['collections'] 	= Collection::where('status', 1)->get();
-    	$data['savedArticles']  = Auth::user()->savedArticles()->with('issue')->get();
-    	$data['latestIssues'] = Issue::orderBy('id', 'DESC')->get();
-        $data['recentlyRead'] = Auth::user()->issues()->orderBy('pivot_read_time', 'DESC')->get();
         $now = Carbon::now()->toDateString();
-        $data['standard'] = Banner::where(['plan_id'=>Auth::user()->lisense->plan_id,'type'=>'Standard'])->whereDate('start_date','>=',$now)->whereDate('end_date','>',$now)->first();
-        $data['skyscraper'] = Banner::where(['plan_id'=>Auth::user()->lisense->plan_id,'type'=>'Skyscraper'])->whereDate('start_date','>=',$now)->whereDate('end_date','>',$now)->first();
-        $data['mobile'] = Banner::where(['plan_id'=>Auth::user()->lisense->plan_id,'type'=>'Mobile'])->whereDate('start_date','>=',$now)->whereDate('end_date','>',$now)->first();
-        return view('users.dashboard', $data);
+        return view('users.dashboard');
     }
 
     public function savedArticles (Request $request){
