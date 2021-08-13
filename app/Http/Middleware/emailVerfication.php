@@ -19,16 +19,18 @@ class emailVerfication
      */
     public function handle(Request $request, Closure $next)
     {
-            $settings =  new GeneralSettings();
+            $settings =  GeneralSettings::first();
             $user = Auth::user();
             if($settings->email_verification == 'on'){
-                    if($user->verified_user == 0){
+                // dd($user->email_verified);
+                    if($user->email_verified == 1){
                         return $next($request);
                     }else{
-                        return redirect()->route('login')->with('errors','something wnet wrong');
-
+                        Auth::logout();
+                        return back()->with('err','Please verify you email');
                     }
             }else{
+                // dd("lo mein a gya");
                 return $next($request);
         }
 

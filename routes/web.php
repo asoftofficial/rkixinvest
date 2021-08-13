@@ -22,9 +22,9 @@ Route::get('/', [App\Http\Controllers\FrontendController::class, 'home']);
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
-
+Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
 $userNameSpace = 'App\Http\Controllers\Users';
-Route::namespace($userNameSpace)->middleware(['auth','IsUser'])->prefix('user')->name('user.')->group(function () {
+Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->prefix('user')->name('user.')->group(function () {
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
@@ -39,7 +39,6 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
-    Route::get('/user/verify_email/{email_verification_code}',[UserController::class,'email_verification'])->name('eamil.verification');
     //reward routes
     Route::get('reward',[rewardController::class,'index'])->name('reward.index');
     Route::post('reward/create',[rewardController::class,'store'])->name('reward.store');

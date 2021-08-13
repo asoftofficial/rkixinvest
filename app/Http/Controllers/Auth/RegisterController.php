@@ -96,7 +96,7 @@ class RegisterController extends Controller
             $user->address = $data['address'];
             $user->type = 1;
             $user->password = Hash::make($data['password']);
-            $code = $user->email_verified_code = Str::random(50);
+            $code = $user->email_verification_code = Str::random(50);
             $user->save();
 
             $ref = Referral::create([
@@ -105,25 +105,25 @@ class RegisterController extends Controller
                 'level' => 1
             ]);
             if($set->email_verification=="on"){
-                Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
-                    $message->to($data['email']);
-                });
+                return sendEmailVerificationCode($data,$code);
             }
     }
 
     public function email_verification($email_verification_code)
     {
-       $email_verify  = User::where('email_verification_code',$email_verification_code)->first();
-       if(!$email_verify){
+       $user  = User::where('email_verification_code',$email_verification_code)->first();
+       if(empty($user)){
            return redirect(route('register'))->with('errors','invalid url');
        }else{
-           if($email_verify->email_verified_at){
+           if($user->email_verified==1){
             return redirect(route('register'))->with('errors','email already verified');
            }else{
-            $email_verify->update([
+            $user->update([
                 'email_verified_at' => \carbon\carbon::now(),
+                'email_verification_code' => NULL,
+                'email_verified' => 1
             ]);
-            return redirect(route('admin.dashboard'))->with('success','email successfylly verified');
+            return redirect(route('login'))->with('err','Email successfully verified');
            }
        }
     }
@@ -132,7 +132,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        Session::flash("message", "Your account has created successfully Please Verify your email to login to your account!");
+        Session::flash("message", "Your account has created successfully!");
         return $this->registered($request, $user)
             ?: redirect('/login');
     }

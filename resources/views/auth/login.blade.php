@@ -33,6 +33,11 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
+                        @if(Session::has('err'))
+                            <div class="alert alert-success">
+                                {{ Session::get('err') }}
+                            </div>
+                        @endif
                             <div class="login-title-area">
                                 <h2>Log into Your Account</h2>
                                 <p>Log your account so you can continue using our customer experience.</p>
@@ -41,7 +46,7 @@
                                 @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input id="exampleInputEmail1" type="email" class="form-control autocar-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="exampleInputEmail1" type="text" class="form-control autocar-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

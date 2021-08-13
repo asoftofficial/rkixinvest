@@ -63,16 +63,6 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
          }
-        //  if(Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])){
-        //                  return redirect('viewlist')->with('success', 'login successfully');
-        //         }else{
-        //             return back()->withErrors('something went wrong');
-        //         }
-        //  $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        //  $credentials = $request->only($fieldType, 'password');
-
-
-
      }
 
     public function __construct()
