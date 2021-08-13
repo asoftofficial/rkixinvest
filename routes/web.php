@@ -25,12 +25,9 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
 
-<<<<<<< HEAD
-=======
 // User Routes
 Route::get('/verify_email/form',[App\Http\Controllers\Auth\RegisterController::class,'showVerificationForm'])->name('verification_form');
 Route::post('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'checkVerificationForm'])->name('verificationForm.post');
->>>>>>> 4ec2e92c8ba56bfeee05173ea7eea4ef3a9b7f86
 $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
