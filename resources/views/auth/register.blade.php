@@ -2,7 +2,18 @@
 @push('style')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
+.select2-container--default .select2-selection--single {
 
+    border: none;
+    height: 42px;
+    border-radius: 8px;
+    padding: 8px;
+    color: var(--gray);
+    background-color: var(--input-bg)
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 10px;
+}
 </style>
 @endpush
 @push('script')
