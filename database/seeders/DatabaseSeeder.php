@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Country;
+use App\Models\GeneralSettings;
 use App\Models\Packages;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -264,6 +265,9 @@ class DatabaseSeeder extends Seeder
                 'name' => $country
             ]);
         }
+        GeneralSettings::create([
+            'description' => 'Rkixinvest is a laravel based Investment managament system with multi level referral system'
+        ]);
         User::create([
             "first_name" => "Admin",
             "last_name" => "Admin",

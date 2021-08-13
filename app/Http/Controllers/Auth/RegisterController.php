@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\GeneralSettings;
+use App\Models\Referral;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Carbon\Carbon;
@@ -51,9 +53,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-
-        $countries = Country::all();
-        return view('auth.register',compact('countries'));
+        $data['countries'] = Country::all();
+        return view('auth.register',$data);
     }
 
     /**
@@ -64,7 +65,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-       // dd($data);
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -83,7 +83,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $set = GeneralSettings::first();
+        $getsponser = User::where('username',$data['referral'])->first();
+        $sponserId = empty($getsponser) ? "1" : $getsponser->id;
             $user = new User();
             $user->first_name = $data['first_name'];
             $user->last_name = $data['last_name'];
@@ -96,9 +98,17 @@ class RegisterController extends Controller
             $user->password = Hash::make($data['password']);
             $code = $user->email_verified_code = Str::random(50);
             $user->save();
-            Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
-                $message->to($data['email']);
-            });
+
+            $ref = Referral::create([
+                'user_id' => $sponserId,
+                'ref_id' => $user->id,
+                'level' => 1
+            ]);
+            if($set->email_verification=="on"){
+                Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
+                    $message->to($data['email']);
+                });
+            }
     }
 
     public function email_verification($email_verification_code)
@@ -115,7 +125,6 @@ class RegisterController extends Controller
             ]);
             return redirect(route('admin.dashboard'))->with('success','email successfylly verified');
            }
-
        }
     }
 

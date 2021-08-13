@@ -58,11 +58,6 @@ $(function () {
             <p>9,30,2020</p>
         </div>
         <div class="dashboard-card-stat">
-<<<<<<< HEAD
-            75857
-=======
-
->>>>>>> ec3929f83cb037e610fa1269587c9043a1ba3e64
         </div>
     </div>
     <div class="dashboard-card total-earnings bg-dark">
