@@ -137,6 +137,14 @@ class UserController extends Controller
     });
     return back()->with('success','email has sent');
     }
+ public function showVerificationForm()
+    {
+      return view('auth.email-verify');
+    }
 
+    public function checkVerificationForm()
+    {
+        # code...
+    }
 
 }

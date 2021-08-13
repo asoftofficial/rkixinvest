@@ -26,8 +26,8 @@ class emailVerfication
                     if($user->email_verified == 1){
                         return $next($request);
                     }else{
-                        Auth::logout();
-                        return back()->with('err','Please verify you email');
+                        // Auth::logout();
+                        return redirect(route('verification_form'))->with('err','Please verify you email');
                     }
             }else{
                 // dd("lo mein a gya");

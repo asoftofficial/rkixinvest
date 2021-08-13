@@ -97,6 +97,7 @@ class RegisterController extends Controller
             $user->type = 1;
             $user->password = Hash::make($data['password']);
             $code = $user->email_verification_code = Str::random(50);
+            // $code = $user->email_verification_code = openssl_random_pseudo_bytes(6);
             $user->save();
 
             $ref = Referral::create([
@@ -137,13 +138,5 @@ class RegisterController extends Controller
             ?: redirect('/login');
     }
 
-    public function showVerificationForm()
-    {
-        # code...
-    }
 
-    public function checkVerificationForm()
-    {
-        # code...
-    }
 }
