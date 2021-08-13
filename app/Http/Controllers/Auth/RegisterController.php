@@ -96,7 +96,7 @@ class RegisterController extends Controller
             $user->address = $data['address'];
             $user->type = 1;
             $user->password = Hash::make($data['password']);
-            $code = $user->email_verification_code = Str::random(50);
+            $code = $user->email_verification_code = rand(000000,999999);
             // $code = $user->email_verification_code = openssl_random_pseudo_bytes(6);
             $user->save();
 
@@ -111,7 +111,7 @@ class RegisterController extends Controller
                     $sponserId = getparent($sponserId);
                 }
             }
-            
+
             // Send Verification Email if on from Admin panel
             if($set->email_verification=="on"){
                 return sendEmailVerificationCode($data,$code);

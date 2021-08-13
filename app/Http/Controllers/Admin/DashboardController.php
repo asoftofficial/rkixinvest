@@ -22,4 +22,6 @@ class DashboardController extends Controller
         $users = User::all();
         return view('admin.users.index');
     }
+
+
 }

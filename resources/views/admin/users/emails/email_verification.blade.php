@@ -138,7 +138,7 @@
                                 align="center"
                                 valign="top"
                                 style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                                <h1 style="font-size: 48px; font-weight: 400; margin: 2;">ConfirmTION EMAIL!</h1>
+                                <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Confirmation EMAIL!</h1>
                                 <img
                                     src=" https://img.icons8.com/clouds/100/000000/handshake.png"
                                     width="125"
@@ -161,8 +161,9 @@
                             <td
                                 bgcolor="#ffffff"
                                 align="left"
-                                style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eos iste quam aut. Quas, fugiat dolores fugit beatae voluptate, perferendis magni porro alias nostrum rerum aliquam expedita voluptatem amet provident?</p>
+                                style="text-align:center;padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                                <h3>Your verification code</h3>
+                               <h1 class="ml-5">{{$code}}</h1>
                             </td>
                         </tr>
                         <tr>

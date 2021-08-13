@@ -138,9 +138,6 @@ class UserController extends Controller
 
 
 
-    public function checkVerificationForm()
-    {
-        # code...
-    }
+
 
 }
