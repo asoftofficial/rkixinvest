@@ -23,9 +23,11 @@ Route::get('/', [App\Http\Controllers\FrontendController::class, 'home']);
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
+
+// User Routes
 $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->prefix('user')->name('user.')->group(function () {
-        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
 });
