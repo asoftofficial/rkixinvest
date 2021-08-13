@@ -1,6 +1,9 @@
 @extends('layouts.auth-layout')
 @push('style')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+
+</style>
 @endpush
 @push('script')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -8,6 +11,7 @@
     $(document).ready(function() {
     $('#countries').select2();
 });
+
 </script>
 @endpush
 @section('page-title')
@@ -71,7 +75,9 @@
                 name="country"
                 required=""
                 id="countries"
-                class="form-control bg-light round-10 border-0 mb-2 ">
+                class="form-control bg-light round-10 border-0 mb-2 "
+                style="height:10vh !important;">
+
                 @foreach ($countries as $item)
                 <option value="{{$item->name}}">{{$item->name}}</option>
                 @endforeach
