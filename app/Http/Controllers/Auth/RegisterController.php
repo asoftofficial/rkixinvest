@@ -100,11 +100,19 @@ class RegisterController extends Controller
             // $code = $user->email_verification_code = openssl_random_pseudo_bytes(6);
             $user->save();
 
-            $ref = Referral::create([
-                'user_id' => $sponserId,
-                'ref_id' => $user->id,
-                'level' => 1
-            ]);
+            // Adding Referrals to the database
+            for($i=1; $i <= $set->referral_levels; $i++){
+                if($sponserId>0 || !empty($sponserId)){
+                    $ref = Referral::create([
+                        'user_id' => $sponserId,
+                        'ref_id' => $user->id,
+                        'level' => 1
+                    ]);
+                    $sponserId = getparent($sponserId);
+                }
+            }
+            
+            // Send Verification Email if on from Admin panel
             if($set->email_verification=="on"){
                 return sendEmailVerificationCode($data,$code);
             }

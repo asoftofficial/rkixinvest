@@ -18,7 +18,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->string('web_title')->default('RkixInvest');
             $table->text('description')->nullable();
             $table->enum('refrel_system',['on','off'])->default('off');
-            $table->integer('refrel_levels')->default(1);
+            $table->integer('referral_levels')->default(1);
             $table->enum('reward_system',['on','off'])->default('on');
             $table->enum('email_verification',['on','off'])->default('off');
             $table->enum('add_remove_funds_from_admin',['on','off'])->default('on');
