@@ -22,6 +22,9 @@
 .container-fluid{
     padding-bottom: 50px;
 }
+.content-wrapper{
+    height:auto;
+}
 .content-header .container-fluid{
     padding-bottom: 0;
 }
