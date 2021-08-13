@@ -136,4 +136,14 @@ class RegisterController extends Controller
         return $this->registered($request, $user)
             ?: redirect('/login');
     }
+
+    public function showVerificationForm()
+    {
+        # code...
+    }
+
+    public function checkVerificationForm()
+    {
+        # code...
+    }
 }
