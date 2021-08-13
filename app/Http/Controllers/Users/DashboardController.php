@@ -17,6 +17,12 @@ class DashboardController extends Controller
     }
 
 
+    public function showVerificationForm()
+    {
+      return view('auth.email-verify');
+    }
+
+
     public function account(){
         $data['countries'] = Country::all();
         $data['plans'] =  Plan::where(['front'=> 1, 'status' => 1])->with('magzines')->orderBy('price', 'ASC')->get();

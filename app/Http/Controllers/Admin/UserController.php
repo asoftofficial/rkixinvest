@@ -19,10 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
             $users = User::all();
             return view('admin.users.index' ,compact('users'));
-
     }
 
     /**
@@ -137,10 +135,8 @@ class UserController extends Controller
     });
     return back()->with('success','email has sent');
     }
- public function showVerificationForm()
-    {
-      return view('auth.email-verify');
-    }
+
+
 
     public function checkVerificationForm()
     {
