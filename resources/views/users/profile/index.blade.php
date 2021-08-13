@@ -3,153 +3,158 @@
 User Management
 @endsection
 @push('style')
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 @endpush
 @push('script')
-
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endpush
-@section('content') 
-<div class = "container-fluid" > 
-    {{-- Section Search Area    --}} 
-    <section class = "admin-search-area"> 
-        <div class="admin-search-left">
-    <button
-        class="btn btn-info px-5 btn-dark round-10"
-        data-toggle="modal"
-        data-target="#addUserModal">Add a user</button>
-</div>
-<div class="admin-search-right">
-    <div class="admin-section-search-area input-group mb-3">
-        <input type="text" class="">
-            <div class="admin-section-search-btn-area">
-                <button class="btn bg-transparent mr-2" type="button">
-                    <i class="fas fa-search mr-2"></i>
-                    Search here</button>
-            </div>
+@section('content')
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Kshiti Ghelani
+                                    </h5>
+                                    <h6>
+                                        Web Developer and Designer
+                                    </h6>
+                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>WORK LINK</p>
+                            <a href="">Website Link</a><br/>
+                            <a href="">Bootsnipp Profile</a><br/>
+                            <a href="">Bootply Profile</a>
+                            <p>SKILLS</p>
+                            <a href="">Web Designer</a><br/>
+                            <a href="">Web Developer</a><br/>
+                            <a href="">WordPress</a><br/>
+                            <a href="">WooCommerce</a><br/>
+                            <a href="">PHP, .Net</a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Kshiti123</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Kshiti Ghelani</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>kshitighelani@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>123 456 7890</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Profession</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Web Developer and Designer</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experience</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hourly Rate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Projects</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>230</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>English Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Availability</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months</p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                        <p>Your detail description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
-</section>{{-- End Section Search Area    --}}
-
-{{-- Page Section Title Area    --}} 
-<section class = "page-section-title-area" > <div>
-    <h2>USER LIST</h2>
-    <p>Latest users and information</p>
-</div>
-<div class="section-title-right"></div>
-</section>
-{{-- End Page Section Title Area    --}} 
-<section class = "magazines" > 
-    <div class="table-responsive">
-    <table class="table custom-table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">User ID
-                </th>
-                <th scope="col">First Name
-                </th>
-                <th scope="col">Last Name
-                </th>
-                <th scope="col">Email Address
-                </th>
-                <th scope="col">role</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $item)
-            <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->first_name}}</td>
-                <td>{{$item->last_name}}</td>
-                <td>{{$item->email}}</td>
-
-                <td>{{$item->role}}</td>
-
-                <td style="min-width: 256px">
-                    <a
-                        href="{{route('admin.userprofile.show',$item->id)}}"
-                        class="mr-2 text-dark"
-                        style="font-size: 20px">
-                        <i class="fas fa-eye"></i>
-                    </a>
-                    <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#edituserModal-{{$item->id}}"
-                        class="btn btn-info btn-dark round-10 px-4 mr-2">Edit</a>
-                    @if($item->blocked == 0)
-                    <a href="#" class="btn btn-danger blocked_user " data-id="{{$item->id}}">
-                        <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
-                    </a>
-                    @else
-                    <a href="#" class="btn btn-success blocked_user " data-id="{{$item->id}}">
-                        <p class="text-white block_button" style="font-size: 17px;height:1vh;">Unblock</p>
-                    </a>
-                    @endif
-
-                    <a
-                        href="#"
-                        class="user_email  btn btn-dark"
-                        data-toggle="modal"
-                        data-target="#userEmailModal-{{$item->id}}">
-                        <i class="fas fa-envelope text-white" size="3"></i>
-                    </a>
-                    <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
-                        <i class='fas fa-trash-alt text-white' style='font-size:20px;'></i>
-                    </a>
-
-                </td>
-            </tr>
-            <form action="" method="post" id="update-form">
-                @csrf
-                <input type="hidden" value="{{$item->id}}" name="user_id"></form>
-                @include('admin.users.modals.email') @include('admin.users.modals.edit')
-                @endforeach
-
-            </tbody>
-        </table>
-    </div>
-</section>
-
-</div>
-<!-- /.container-fluid -->
-
-{{-- Add Plan Modal  --}}
-@include("admin.users.modals.create")
-{{-- End Add Plan Modal  --}}
-<form action="" method="post" id="delete-form">
-@csrf @method('delete')
-</form>
-@endsection @push('script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-$(".blocked_user").click(function (e) {
-    swal(
-        {title: "Are you sure ?", text: "you want to apply this opreation", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willUpdate) => {
-        if (willUpdate) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.blocked.user', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#update-form").attr('action', url);
-            $("#update-form").submit();
-        }
-    });
-});
-
-$(".delete").click(function (e) {
-    console.log("asdhsakdash")
-    swal(
-        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willDelete) => {
-        if (willDelete) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.userprofile.destroy', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#delete-form").attr('action', url);
-            $("#delete-form").submit();
-        }
-    });
-});
-</script>
 @endpush

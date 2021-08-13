@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\rewardController;
+use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,8 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
-});
+        Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('user.profile');
+    });
 
 
 $adminNameSpace = 'App\Http\Controllers\Admin';

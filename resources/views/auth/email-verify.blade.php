@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <section class="register-form py-5">
-    <form method="POST" action="{{route('email.verification')}}">
+    <form method="POST" action="">
         @csrf
 
 
