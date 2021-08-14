@@ -8,9 +8,9 @@ function sendEmailVerificationCode($data,$code){
 //Get Parent
 function getparent($id)
 {
-    $user = User::find($id);
+    $user = App\Models\User::find($id);
     if(!empty($user)){
-        $parent = Referral::where(['ref_id'=>$user->id,'level'=>1])->first();
+        $parent = App\Models\Referral::where(['ref_id'=>$user->id,'level'=>1])->first();
         if(!empty($parent)){
             return $parent->user_id;
         }else{

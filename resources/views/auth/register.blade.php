@@ -110,7 +110,7 @@ $("#username").on({
             </div>
             <div class="col-md-6">
                 <label for="email" class="text-white">referral</label>
-                <input id="text" name="referral" type="text" class="form-control autocar-input  @error('referral') is-invalid @enderror" placeholder="Referral"  value="{{ old('referral') }}">
+                <input id="text" name="referral" type="text" class="form-control autocar-input  @error('referral') is-invalid @enderror" placeholder="Referral"  value="{{ old('referral',$sponser->username) }}">
                 @error('referral')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
