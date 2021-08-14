@@ -51,10 +51,10 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function showRegistrationForm($sponser)
+    public function showRegistrationForm(Request $request)
     {
         $data['countries'] = Country::all();
-        $data['sponser'] = User::where('username',$sponser)->first();
+        $data['sponser'] = User::where('username',$request->sponser)->first();
         $data['sponser'] = empty($data['sponser']) ? User::first() :  $data['sponser'];
         return view('auth.register',$data);
     }

@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Chwaqas\Laramail\LaramailServiceProvider::class,
         /*
          * Application Service Providers...
          */

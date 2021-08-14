@@ -91,7 +91,7 @@
                                   </p>
                                 </a>
                                 <ul class="nav nav-treeview" style="display: none;">
-                                
+
                                   <li class="nav-item ml-2">
                                     <a href="{{route('admin.settings.index')}}"
                                     class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
@@ -108,22 +108,10 @@
                                   </li>
                                 </ul>
                               </li>
-
                 </ul>
             </nav>
     </div>
 </aside>
-
-
-{{--
-
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <!-- /.sidebar-menu -->
-                                </div>
-                                <!-- /.sidebar -->
-                            </aside> --}}
 
 
 
