@@ -83,21 +83,23 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $users = User::findOrFail($id);
-        if($request->hasFile('image')){
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/users/');
-            $full_path = '/uploads/users/'.$fileName;
-            $check = $request->file('image')->move($upload_path, $fileName);
-            // $packages->file_path  = $full_path;
-        }
+        // if($request->hasFile('image')){
+        //     $extension = $request->file('image')->getClientOriginalExtension();
+        //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+        //     $upload_path = public_path('uploads/users/');
+        //     $full_path = '/uploads/users/'.$fileName;
+        //     $check = $request->file('image')->move($upload_path, $fileName);
+        //     // $packages->file_path  = $full_path;
+        // }
 
         $users->first_name = $request->fname;
         $users->last_name = $request->lname;
         $users->email = $request->email;
+         $users->password = $request->newpas;
         $users->update();
-        return redirect()->back()->with('success','User created successfully!');
+        return redirect()->back()->with('success','profile updated successfully!');
     }
 
     /**

@@ -51,6 +51,35 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', $msg);
     }
 
+    public function user_profile()
+    {
+        $user = User::find(auth::user()->id);
+        return view('users.profile.index',compact('user'));
+    }
+    public function update_profile(Request $request, $id)
+    {
+        // dd($request->newpas);
+        //     $this->validate($request,[
+        //         'newpas' => 'required|confirmed',
+        //     ]);
+
+         $user_profile = User::findOrFail($id);
+        // if($request->hasFile('image')){
+        //     $extension = $request->file('image')->getClientOriginalExtension();
+        //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+        //     $upload_path = public_path('uploads/packages/');
+        //     $full_path = '/uploads/packages/'.$fileName;
+        //     $check = $request->file('image')->move($upload_path, $fileName);
+        //     // $packages->file_path  = $full_path;
+        // }
+
+        $user_profile->first_name   = $request->fname;
+        $user_profile->last_name  = $request->lname;
+        $user_profile->email      = $request->email;
+         $user_profile->password =  $request->newpas;
+        $user_profile->update();
+        return redirect()->back()->with("success", "profile Updated Successfully!");
+    }
      public function showVerificationForm()
     {
       return view('auth.email-verify');

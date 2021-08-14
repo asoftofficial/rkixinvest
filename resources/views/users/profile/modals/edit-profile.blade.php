@@ -1,6 +1,6 @@
 <div
     class="modal fade"
-    id="userProfileModal"
+    id="UpdateProfileModal"
     tabindex="-1"
     role="dialog"
     aria-hidden="true">

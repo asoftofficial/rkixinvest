@@ -1,6 +1,6 @@
 <div
     class="modal fade"
-    id="editpackagesModal-{{$item->id}}"
+    id="editpackagesModal"
     tabindex="-1"
     role="dialog"
     aria-hidden="true">
@@ -21,7 +21,7 @@
                         <input
                             type="text"
                             name="name"
-                            value="{{old('name', $item->name)}}"
+                            value=""
                             required=""
                             class="form-control bg-light border-0 round-10 ">
                             @error('name')
@@ -42,7 +42,7 @@
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="roi"
-                                                    value="{{old('roi', $item->roi)}}"></div>
+                                                    value=""></div>
                                                 @error('roi')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                                                         name="roi_type"
                                                         required=""
                                                         class="form-control bg-light round-10 border-0"
-                                                        value="{{old('roi_type', $item->roi_type)}}">
+                                                        value="">
                                                         <option value="daily" class="sel-v">daily</option>
                                                         <option value="weekly" class="sel-v">weekly</option>
                                                         <option value="monthly" class="sel-v">monthly</option>
@@ -87,7 +87,7 @@
                                                         type="text"
                                                         class="form-control bg-light round-10 border-0"
                                                         name="min_invest"
-                                                        value="{{old('min_invest', $item->min_invest)}}"></div>
+                                                        value="{{old('min_invest')}}"></div>
                                                     @error('min-invest')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
                                                             type="text"
                                                             class="form-control bg-light round-10 border-0"
                                                             name="max_invest"
-                                                            value="{{old('max_invest', $item->max_invest)}}"></div>
+                                                            value="{{old('max_invest')}}"></div>
                                                         @error('max-invest')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -129,7 +129,7 @@
                                                                     name="image"
                                                                     required=""
                                                                     class="custom-file-input"
-                                                                    value="{{old('image',$item->image)}}">
+                                                                    value="{{old('image')}}">
                                                                     <label class="custom-file-label upload-sec bg-light" for="inputGroupFile02">Browse</label>
                                                                 </div>
                                                                 @error('image')
@@ -152,7 +152,7 @@
                                                 name="description"
                                                 required=""
                                                 id="description">
-                                                {{old('Description',$item->Description)}}</textarea>
+                                                {{old('Description')}}</textarea>
                                             @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

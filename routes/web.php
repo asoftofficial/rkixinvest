@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
@@ -32,7 +33,8 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
-        Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('user.profile');
+        Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
+        Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile'])->name('update.profile');
     });
 
 
@@ -44,6 +46,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
+
     //reward routes
     Route::get('reward',[rewardController::class,'index'])->name('reward.index');
     Route::post('reward/create',[rewardController::class,'store'])->name('reward.store');

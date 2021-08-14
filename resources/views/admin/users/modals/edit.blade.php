@@ -1,18 +1,18 @@
 <div
     class="modal fade"
-    id="edituserModal-{{$item->id}}"
+    id="UserProfileModal"
     tabindex="-1"
     role="dialog"
     aria-hidden="true">
     <div class="modal-dialog modal-610" role="document">
         <div class="modal-content issue-padd">
             <div class="modal-header pb-0">
-                <h5 class="modal-title" id="exampleModalLabel mt-0">Update user</h5>
+                <h5 class="modal-title" id="exampleModalLabel mt-0">Update profile</h5>
             </div>
             <div class="modal-body  pt-0">
 
                 <form
-                    action="{{route('admin.userprofile.update',$item->id)}}"
+                    action="{{route('admin.userprofile.update',$user->id)}}"
                     enctype="multipart/form-data"
                     method="post">
                     @csrf @method('put')
@@ -27,7 +27,7 @@
                                                 type="text"
                                                 class="form-control bg-light round-10 border-0"
                                                 name="fname"
-                                                value="{{$item->first_name}}"></div>
+                                                value="{{old('fname',$user->first_name)}}"></div>
                                             @error('fname')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="lname"
-                                                    value="{{$item->last_name}}"></div>
+                                                    value="{{old('fname',$user->last_name)}}"></div>
                                                 @error('lname')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -55,48 +55,90 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="gap">
-                                                <h4 class="input-label mt-2">Email</h4>
-                                                <div class="">
-                                                    <input
-                                                        type="email"
-                                                        class="form-control bg-light round-10 border-0 mb-4"
-                                                        name="email"
-                                                        value="{{$item->email}}"></div>
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">email</h4>
+                                        <div class="">
+                                            <input
+                                                type="email"
+                                                class="form-control bg-light round-10 border-0"
+                                                name="email"
+                                                value="{{old('fname',$user->email)}}"></div>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-                                            <div class="col-md-6">
-                                                <div class="gap">
-                                                    <h4 class="input-label mt-2">role</h4>
-                                                    <select
-                                                        name="role"
-                                                        required=""
-                                                        class="form-control bg-light round-10 border-0 mb-4">
-                                                        <option value="admin" class="sel-v">admin</option>
-                                                        <option value="user" class="sel-v">user</option>
-
-                                                    </select>
-                                                    @error('role')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
+                                    <div class="col-md-6">
+                                        <div class="gap">
+                                            <h4 class="input-label mt-2">old password</h4>
+                                            <div class="">
+                                                <input
+                                                    type="text"
+                                                    class="form-control bg-light round-10 border-0"
+                                                    name="oldpas"
+                                                    value=""></div>
+                                                @error('oldpas')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                              <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">new password</h4>
+                                        <div class="">
+                                            <input
+                                                type="text"
+                                                class="form-control bg-light round-10 border-0"
+                                                name="newpas"
+                                                value=""></div>
+                                            @error('newpas')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="gap">
+                                            <h4 class="input-label mt-2">confirm password</h4>
+                                            <div class="">
+                                                <input
+                                                    type="text"
+                                                    class="form-control bg-light round-10 border-0"
+                                                    name="password_confirmation"
+                                                    value=""></div>
+                                                @error('password_confirmation')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h4 class="input-label mt-2">change image</h4>
+                                    <input type="file" name="image" class="form-control bg-light round-10 border-0">
+                                </div>
+                            </div>
                                 <div class="d-flex justify-content-center mt-1 mb-4">
                                     <button
                                         type="button"

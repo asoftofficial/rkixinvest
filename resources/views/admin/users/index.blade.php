@@ -2,11 +2,11 @@
 @section('page-title')
 User Management
 @endsection
-@push('style') 
+@push('style')
 <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
-@push('script') 
-<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script> 
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script> 
+@push('script')
+<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script > $(
 $(".blocked_user").click(function (e) {
     swal(
@@ -38,9 +38,9 @@ $(".delete").click(function (e) {
 });
 </script>
 @endpush
-@section('content') 
-<div class = "container-fluid" > {{-- Section Search Area    --}} 
-    <section class = "admin-search-area" > 
+@section('content')
+<div class = "container-fluid" > {{-- Section Search Area    --}}
+    <section class = "admin-search-area" >
         <div class="admin-search-left">
     <button
         class="btn btn-info px-3 blue-bg round-10"
@@ -59,14 +59,14 @@ $(".delete").click(function (e) {
     </div>
 </section>{{-- End Section Search Area    --}}
 
-{{-- Page Section Title Area    --}} 
+{{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
     <h2>Reward List</h2>
     <p>Latest reward information</p>
 </div>
 </section>
-{{-- End Page Section Title Area    --}} 
-<section class = "collections" > 
+{{-- End Page Section Title Area    --}}
+<section class = "collections" >
     <div class="table-responsive">
         <table class="table custom-table">
             <thead class="thead-light">
@@ -90,9 +90,9 @@ $(".delete").click(function (e) {
                     <td>{{$item->first_name}}</td>
                     <td>{{$item->last_name}}</td>
                     <td>{{$item->email}}</td>
-    
+
                     <td>{{$item->role}}</td>
-    
+
                     <td style="min-width: 256px">
                         <a
                             href="{{route('admin.userprofile.show',$item->id)}}"
@@ -100,11 +100,7 @@ $(".delete").click(function (e) {
                             style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a
-                            href="#"
-                            data-toggle="modal"
-                            data-target="#edituserModal-{{$item->id}}"
-                            class="btn btn-info btn-dark round-10 px-4 mr-2">Edit</a>
+
                         @if($item->blocked == 0)
                         <a href="#" class="btn btn-danger blocked_user " data-id="{{$item->id}}">
                             <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
@@ -114,7 +110,7 @@ $(".delete").click(function (e) {
                             <p class="text-white block_button" style="font-size: 17px;height:1vh;">Unblock</p>
                         </a>
                         @endif
-    
+
                         <a
                             href="#"
                             class="user_email  btn btn-dark"
@@ -125,7 +121,7 @@ $(".delete").click(function (e) {
                         <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt text-white' style='font-size:20px;'></i>
                         </a>
-    
+
                     </td>
                 </tr>
                 <form action="" method="post" id="update-form">
@@ -133,7 +129,7 @@ $(".delete").click(function (e) {
                     <input type="hidden" value="{{$item->id}}" name="user_id"></form>
                     @include('admin.users.modals.email') @include('admin.users.modals.edit')
                     @endforeach
-    
+
                 </tbody>
             </table>
     </div>
@@ -143,8 +139,8 @@ $(".delete").click(function (e) {
 <!-- /.container-fluid -->
 
 {{-- Add User Model  --}}
-@include("admin.users.modals.create")
-<form action = "" method = "post" id = "delete-form" > 
+// @include("admin.users.modals.create")
+<form action = "" method = "post" id = "delete-form" >
     @csrf
 @method('delete') </form>
 

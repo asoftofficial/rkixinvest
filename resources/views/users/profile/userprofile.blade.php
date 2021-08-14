@@ -1,122 +1,257 @@
-@extends('admin.layouts.default') @section('page-title') UserProfile @endsection
+@extends('admin.layouts.default')
+
 @push('style')
+{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 <style>
-    #userprofile_update {
-        position: relative;
-        top: -8vh;
-        height: 6vh;
-    }
-    .adminside-profile-info {
-        margin-top: -5vh !important;
+    body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    /* border-radius: 10px; */
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    margin-left: 17px;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
 
-    }
-</style>
-@endpush @push('script') @endpush @section('content')
-<div class="container-fluid">
-    {{--    Section Search Area    --}}
-    <section class="admin-search-area">
-        <div class="admin-search-left"></div>
-        <div class="admin-search-right">
-            <div class=" admin-section-search-area input-group mb-3">
-                <input type="text" class="">
-                <div class="admin-section-search-btn-area">
-                    <button class="btn bg-transparent mr-2" type="button">
-                        <i class="fas fa-search mr-2"></i>
-                        Search here</button>
+    </style>
+@endpush
+@push('script')
+{{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+@endpush
+
+@section('content')
+<div class="row">
+    <div class="col-12">
+        <div class="container emp-profile">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h3>
+                                       {{$user->username}}
+                                    </h3>
+                                    <h6>
+                                        Web Developer and Designer
+                                    </h6>
+                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#userProfileModal"/>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    {{--    End Section Search Area    --}}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>WORK LINK</p>
+                            <a href="">Website Link</a><br/>
+                            <a href="">Bootsnipp Profile</a><br/>
+                            <a href="">Bootply Profile</a>
+                            <p>SKILLS</p>
+                            <a href="">Web Designer</a><br/>
+                            <a href="">Web Developer</a><br/>
+                            <a href="">WordPress</a><br/>
+                            <a href="">WooCommerce</a><br/>
+                            <a href="">PHP, .Net</a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{$user->id}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{$user->username}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{$user->first_name}} {{$user->last_name}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{$user->email}}</p>
+                                            </div>
+                                        </div>
 
-    {{--    User Details   --}}
-    <section class="adminside-profile">
-        <h2 class="mt-3 mb-3">{{$user->first_name.' '.$user->last_name}}</h2>
-        <div class="d-flex justify-content-end" id="userprofile_update">
-            <button
-                data-toggle="modal"
-                data-target="#UpdateModal"
-                style="   background: #7B60F0;border:none;border-radius:4px;width:5rem;
-            color: white;">Update</button>
-        </div>
-        {{-- <a href="#"  class="btn btn-info btn-dark round-10 px-4 mr-2">Edit</a> --}}
-        <div class="adminside-profile-info">
-            <div class="col-md-12">
-                <img
-                    src="http://via.placeholder.com/250x250"
-                    class="mt-4 mb-3"
-                    style="position: relative;left:15rem;border-radius:50%;">
-                <p>
-                    <strong>Customer ID:</strong>
-                    {{$user->customer_id}}</p>
-                <p>
-                    <strong>Email address:</strong>
-                    {{$user->email}}</p>
-                <p>
-                    <strong>Account created on:</strong>
-                    {{date('d/m/Y'), strtotime($user->created_at)}}</p>
-                <p>
-                    <strong>Date of birth:</strong>
-                    {{$user->dob}}</p>
-                <p>
-                    <strong>Address 1:
-                    </strong>{{$user->street1}}</p>
-                <p>
-                    <strong>Address 2:
-                    </strong>{{$user->street2}}</p>
-                <p>
-                    <strong>PostCode:
-                    </strong>{{$user->post_code}}</p>
-                <p>
-                    <strong>City/Town:</strong>
-                    {{$user->city}}</p>
-                <p>
-                    <strong>Country:</strong>
-                    {{$user->country?$user->country->name:''}}</p>
-            </div>
-        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experience</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Hourly Rate</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Projects</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>230</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>English Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Expert</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Availability</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 months</p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Your Bio</label><br/>
+                                        <p>Your detail description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+@include('users.profile.modals.edit-profile')
 
-        {{-- user subscription details --}}
-        <h2 class="mt-3 mb-5">Subscription Details</h2>
-        <div class="adminside-profile-info">
-            <div class="col-md-12">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#id</th>
-                            <th scope="col">package</th>
-                            <th scope="col">duration</th>
-                            <th scope="col">remaing time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>new year</td>
-                            <td>1 week</td>
-                            <td>2 days</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Eid package</td>
-                            <td>2 week</td>
-                            <td>6 days</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>independent package</td>
-                            <td>10 days</td>
-                            <td>2 days</td>
-                        </tr>
-                    </tbody>
-                </table>
-                @include('admin.users.modals.updateprofile')
 
-            </div>
         </div>
-    </section>
-
+    </div>
 </div>
-<!-- /.container-fluid -->
-
 @endsection
