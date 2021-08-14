@@ -91,11 +91,19 @@
                                   </p>
                                 </a>
                                 <ul class="nav nav-treeview" style="display: none;">
+                                
                                   <li class="nav-item ml-2">
                                     <a href="{{route('admin.settings.index')}}"
                                     class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
                                     <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
                                       <p>general settings</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item ml-2">
+                                    <a href="/maileclipse"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>Edit Emails</p>
                                     </a>
                                   </li>
                                 </ul>

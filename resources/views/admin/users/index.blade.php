@@ -22,6 +22,7 @@ $(".blocked_user").click(function (e) {
     });
 });
 
+
 $(".delete").click(function (e) {
     console.log("asdhsakdash")
     swal(
