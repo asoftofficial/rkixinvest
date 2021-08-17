@@ -4,7 +4,10 @@
 @endsection
 @section('content')
 <section class="register-form py-5">
-    <form method="POST" action="">
+    @if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+@endif
+    <form method="POST" action="{{route('verificationForm.post')}}">
         @csrf
 
 
@@ -16,9 +19,9 @@
                 <h2>Let's Verify your account</h2>
             </div>
         </div>
-                <label for="vcode" class="text-white">Verification code</label>
-                <input id="vcode" name="Vcode" type="text" class="form-control autocar-input mb-1 @error('vcode') is-invalid @enderror" placeholder="Enter your code">
-                @error('pcode')
+                <label for="code" class="text-white">Verification code</label>
+                <input id="code" name="code" type="text" class="form-control autocar-input mb-1 @error('code') is-invalid @enderror" placeholder="Enter your code">
+                @error('code')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -26,6 +29,7 @@
             </div>
         </div>
 
+        <a href="{{route('resend.code')}}" class="text-danger float-right">resend code</a>
 
         <div class="row mt-3 justify-content-center">
             <div class="col-md-6">

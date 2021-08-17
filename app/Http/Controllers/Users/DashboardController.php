@@ -85,10 +85,33 @@ class DashboardController extends Controller
       return view('auth.email-verify');
     }
 
-    public  function checkVerificationForm()
+    public  function checkVerificationForm(Request $request)
     {
-
+        $this->validate($request,[
+            'code' => 'required|min:6'
+        ]);
+         $user  = User::where('email_verification_code',$request->code)->first();
+       if(empty($user)){
+           return redirect(route('register'))->with('errors','invalid url');
+       }else{
+           if($user->email_verified==1){
+            return redirect(route('register'))->with('errors','email already verified');
+           }else{
+            $user->update([
+                'email_verified_at' => \carbon\carbon::now(),
+                'email_verification_code' => NULL,
+                'email_verified' => 1
+            ]);
+            return redirect(route('login'))->with('err','Email successfully verified');
+           }
+       }
     }
-
+public function resendCode()
+{
+    $data = User::find(Auth::user()->id);
+    $code = $data->email_verification_code;
+   sendEmailVerificationCode($data,$code);
+   return back()->with('success', 'code send successfully');
+}
 
 }

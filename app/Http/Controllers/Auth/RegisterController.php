@@ -98,7 +98,7 @@ class RegisterController extends Controller
             $user->address = $data['address'];
             $user->type = 1;
             $user->password = Hash::make($data['password']);
-            $code = $user->email_verification_code = rand(000000,999999);
+            $code = $user->email_verification_code = mt_rand(000000,999999);
             // $code = $user->email_verification_code = openssl_random_pseudo_bytes(6);
             $user->save();
 
@@ -113,11 +113,11 @@ class RegisterController extends Controller
                     $sponserId = getparent($sponserId);
                 }
             }
-
             // Send Verification Email if on from Admin panel
             if($set->email_verification=="on"){
                 return sendEmailVerificationCode($data,$code);
             }
+            //  return redirect()->route('verification_form')->with('success','please check your email');
     }
 
     public function email_verification($email_verification_code)
@@ -143,9 +143,11 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        Session::flash("message", "Your account has created successfully!");
-        return $this->registered($request, $user)
-            ?: redirect('/login');
+        Session::flash("message", "Your account has created successfully!please check your email");
+        // return $this->registered($request, $user)
+        //     ?: redirect('/login');
+        return redirect()->route('verification_form');
+
     }
 
 
