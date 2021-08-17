@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\photoController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
@@ -63,5 +64,5 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 });
 
 
-
-
+Route::get('photo/form',[photoController::class,'photoform'])->name('photo.form');
+Route::post('photo/store',[photoController::class,'photostore'])->name('photo.store');

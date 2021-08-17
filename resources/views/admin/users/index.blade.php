@@ -128,7 +128,8 @@ $(".delete").click(function (e) {
                 <form action="" method="post" id="update-form">
                     @csrf
                     <input type="hidden" value="{{$item->id}}" name="user_id"></form>
-                    @include('admin.users.modals.email') @include('admin.users.modals.edit')
+                    @include('admin.users.modals.email')
+
                     @endforeach
 
                 </tbody>
