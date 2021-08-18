@@ -138,6 +138,7 @@ header {
 /* Slider */
 #mainSlider {
     padding: 20px;
+    background: var(--blue);
 }
 .slider-area {
     overflow: hidden;
