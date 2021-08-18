@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers\admin;
+<?php namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\test;
@@ -8,19 +6,19 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Mail\Mailable;
+use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Stmt\TryCatch;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-            $users = User::all();
-            return view('admin.users.index' ,compact('users'));
+    public function index() {
+        $users=User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -28,8 +26,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -39,32 +36,31 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        $this->validate($request, [ 'fname'=> ['required'],
+            'lname'=> ['required'],
+            'email'=> ['required'],
+            'role'=> ['required'],
+            'password'=> ['required|confirmed|min:6'],
+            ]);
+        User::create([ 'first_name'=> $request->fname,
+                'last_name'=> $request->lname,
+                'email'=> $request->email,
+                'role'=> $request->role,
+                'password'=>bcrypt($request->password),
+                ]);
+        $data=[$request->email,
+        $request->password,
+        $request->fname,
+        $request->lname];
 
-        $this->validate($request,[
-            'fname' => ['required'],
-            'lname' => ['required'],
-            'email' => ['required'],
-            'role' => ['required'],
-            'password' => ['required|confirmed|min:6'],
-         ]);
-
-     User::create([
-            'first_name' => $request->fname,
-            'last_name' => $request->lname,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' =>bcrypt($request->password),
-     ]);
-
-        $data = [$request->email,$request->password,$request->fname,$request->lname];
         // Sending Email to new user with details
         Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
-        $message->to($data[0]);
-    });
+                $message->to($data[0]);
+            }
 
-      return back()->with('success','user created successfully');
+        );
+        return back()->with('success', 'user created successfully');
     }
 
     /**
@@ -73,18 +69,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-            $user = User::findOrFail($id);
-            return view('admin.users.userprofile', compact('user'));
+    public function show($id) {
+        $user=User::findOrFail($id);
+        return view('admin.users.userprofile', compact('user'));
     }
 
 
 
-    public function update(Request $request, $id)
-    {
-
-        $users = User::findOrFail($id);
+    public function update(Request $request, $id) {
+        $users=User::findOrFail($id);
         // if($request->hasFile('image')){
         //     $extension = $request->file('image')->getClientOriginalExtension();
         //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
@@ -93,13 +86,12 @@ class UserController extends Controller
         //     $check = $request->file('image')->move($upload_path, $fileName);
         //     // $packages->file_path  = $full_path;
         // }
-
-        $users->first_name = $request->fname;
-        $users->last_name = $request->lname;
-        $users->email = $request->email;
-         $users->password = $request->newpas;
+        $users->first_name=$request->fname;
+        $users->last_name=$request->lname;
+        $users->email=$request->email;
+        $users->password=$request->newpas;
         $users->update();
-        return redirect()->back()->with('success','profile updated successfully!');
+        return redirect()->back()->with('success', 'profile updated successfully!');
     }
 
     /**
@@ -108,9 +100,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $users = User::findOrFail($id);
+    public function destroy($id) {
+        $users=User::findOrFail($id);
         $users->delete();
         return redirect()->back()->with("success", "User Deleted Successfully!");
     }
@@ -118,28 +109,65 @@ class UserController extends Controller
 
 
 
-    public function blocked(Request $request,$id)
-    {
-        $user = User::findOrFail($id);
-        $status = $user->blocked == 1 ? 0 : 1;
-        $user->blocked = $status;
+    public function blocked(Request $request, $id) {
+        $user=User::findOrFail($id);
+        $status=$user->blocked==1 ? 0: 1;
+        $user->blocked=$status;
         $user->update();
-        return back()->with('success','User Status updated');
+        return back()->with('success', 'User Status updated');
     }
 
 
-    public function sendmail(Request $request)
-    {
-        $data = [$request->subject,$request->body];
-        $user = $request->hidden_email;
+    public function sendmail(Request $request) {
+        $data=[$request->subject,
+        $request->body];
+        $user=$request->hidden_email;
+
         Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
-        $message->to($user);
-    });
-    return back()->with('success','email has sent');
+                $message->to($user);
+            }
+
+        );
+        return back()->with('success', 'email has sent');
     }
 
+    // user funds form
+    public function showFundsForm() {
+        return view('admin.users.modals.funds');
+    }
+
+    //add fund
+    public function addFund(Request $request) {
+        $this->validate($request, ['amount'=> 'required|integer'
+            ]);
+
+        $user=User::findOrFail($request->user_id);
+        $current_balance=$user->balance;
+        $user->balance=$request->amount+$current_balance;
+        $user->update();
+        trx($user->id,$request->amount,1,'Funds added by admin');
+        Session::flash("message", "Fund added successfully");
+        return back();
 
 
+    }
+
+    public function subFund(Request $request) {
+    $this->validate($request, [ 'amount'=> 'required|integer'
+            ]);
+        $user=User::findOrFail($request->user_id);
+        $current_balance=$user->balance;
+        if($current_balance == 0){
+        return back()->with('error','user balance is already 0.00');
+        }else
+        $user->balance=$current_balance - $request->amount;
+        $user->update();
+        trx($user->id,$request->amount,1,'Funds deducted by admin');
+        Session::flash("message", "Fund has deduct successfully");
+        return back();
+
+
+    }
 
 
 }

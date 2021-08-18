@@ -83,16 +83,7 @@
                                             </p>
                                         </a>
                                     </li>
-                                     <li class="nav-item">
-                                    <a
-                                        href="{{route('photo.form')}}"
-                                        class="nav-link @if(Route::currentRouteName()=='admin.packages.index' || Route::currentRouteName()=='admin.package.show') active blue-nav @endif">
-                                        <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
-                                            <p>
-                                               photo
-                                            </p>
-                                        </a>
-                                    </li>
+                                
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
