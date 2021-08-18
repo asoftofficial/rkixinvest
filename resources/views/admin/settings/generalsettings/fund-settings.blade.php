@@ -108,7 +108,7 @@ div#refrel_div {
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h4 class="border-bottom pb-2 mb-0">fund System Settings</h4>
     <div class="d-flex text-muted pt-3">
-        <form action="{{route('admin.refrel.settings')}}" method="get">
+        <form action="{{route('admin.post.fund.settings')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -122,7 +122,7 @@ div#refrel_div {
                                         <label for="bluetooth" id="refreltext" class="input-label">Add fund</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
                                         <div class="fund-toggle">
-                                            @if($settings->refrel_system == 'on')
+                                            @if($settings->add_fund == 'on')
                                             <input type="checkbox" id="addfund" name="addfund" checked>
                                             <label for="addfund"></label>
                                             @else
@@ -152,11 +152,11 @@ div#refrel_div {
                                         <label for="bluetooth" id="refreltext" class="input-label">fund subtraction</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
                                         <div class="fund-toggle">
-                                            @if($settings->refrel_system == 'on')
-                                            <input type="checkbox" id="removefund" name="removeFund" checked>
+                                            @if($settings->remove_fund == 'on')
+                                            <input type="checkbox" id="removefund" name="removefund" checked>
                                             <label for="removefund"></label>
                                             @else
-                                            <input type="checkbox" id="removefund" name="removeFund">
+                                            <input type="checkbox" id="removefund" name="removefund">
                                             <label for="removefund"></label>
                                             @endif
                                         </div>

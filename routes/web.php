@@ -63,6 +63,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('web/settings',[GeneralSettings::class,'Update'])->name('web.settings');
     Route::get('refrel/settings',[GeneralSettings::class,'refrelUpdate'])->name('refrel.settings');
     Route::get('fund/settings',[GeneralSettings::class,'fundsSettings'])->name('fund.settings');
+    Route::post('fund/settings',[GeneralSettings::class,'fundUpdate'])->name('post.fund.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
 });
 

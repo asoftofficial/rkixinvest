@@ -52,5 +52,21 @@ public function fundsSettings()
     return view('admin.settings.generalsettings.fund-settings');
 }
 
-
+public function fundUpdate(Request $request)
+    {
+        dd($request);
+        $settings = ModelsGeneralSettings::first();
+        if(empty($request->add_fund)){
+        $settings->add_fund = 'off';
+        $settings->update();
+        }elseif(empty($request->remove_fund)){
+        $settings->remove_fund = 'off';
+        $settings->update();
+        }else{
+        $settings->add_fund = $request->add_fund;
+        $settings->remove_fund = $request->add_fund;
+        $settings->update();
+        }
+     return back()->with('success','funds settings updated successfully');
+    }
 }
