@@ -17,7 +17,7 @@ class CreateRewards extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->integer('amount')->nullable();
-            $table->integer('refrel')->nullable();
+            $table->integer('referral')->nullable();
             $table->enum('status',['enabled','disabled'])->default('enabled');
             $table->string('image')->nullable();
             $table->text('description')->nullable();

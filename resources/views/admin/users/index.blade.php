@@ -7,7 +7,7 @@ User Management
 @push('script')
 <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
-<script > $(
+<script>
 $(".blocked_user").click(function (e) {
     swal(
         {title: "Are you sure ?", text: "you want to apply this opreation", icon: "warning", buttons: true, dangerMode: true}
@@ -103,7 +103,7 @@ $(".delete").click(function (e) {
                         </a>
 
                         @if($item->blocked == 0)
-                        <a href="#" class="btn btn-danger blocked_user " data-id="{{$item->id}}">
+                        <a href="#" class="btn btn-danger blocked_user" data-id="{{$item->id}}">
                             <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
                         </a>
                         @else
@@ -119,8 +119,8 @@ $(".delete").click(function (e) {
                             data-target="#userEmailModal-{{$item->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                        <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
-                            <i class='fas fa-trash-alt text-white' style='font-size:20px;'></i>
+                       <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
+                            <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
                         </a>
 
                     </td>
@@ -141,7 +141,7 @@ $(".delete").click(function (e) {
 <!-- /.container-fluid -->
 
 {{-- Add User Model  --}}
-// @include("admin.users.modals.create")
+@include("admin.users.modals.create")
 <form action = "" method = "post" id = "delete-form" >
     @csrf
 @method('delete') </form>

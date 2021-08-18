@@ -37,7 +37,7 @@
                                 class="form-control bg-light border-0 round-10"
                                 name="body"
                                 required=""
-                                id="description">
+                                id="emaildescription">
                                 {{old('desc')}}</textarea>
                             @error('body')
                             <span class="invalid-feedback" role="alert">

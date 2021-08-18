@@ -42,7 +42,7 @@ class rewardController extends Controller
             'title' => ['required','string','max:255'],
             'amount'=> ['required','integer'],
             'status' => ['required'],
-            'refrel' => ['required','integer'],
+            // 'referral' => ['required'],
             'description' => ['required'],
 
         ]);
@@ -51,7 +51,7 @@ class rewardController extends Controller
             'title' => $request->title,
             'amount' => $request->amount,
             'status' => $request->status,
-            'refrel' =>$request->refrel,
+            'referral' =>$request->referral,
             'image' => $request->image,
             'description' =>$request->description,
         ]);

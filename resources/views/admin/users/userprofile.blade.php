@@ -5,9 +5,7 @@ user profile
 @push('style')
 {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 <style>
-    body {
-        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    }
+
 
     .emp-profile {
         padding: 3%;

@@ -38,20 +38,22 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+            $data = [$request->email,$request->password,$request->fname,$request->lname];
             $request->validate([
                 'fname'=> 'required',
                 'lname'=> 'required',
                 'email'=> 'required',
                 'role'=> 'required',
-            '   password'=> 'required|password_confirmation'
+                'password'=> 'required|confirmed'
             ]);
+
         User::create([ 'first_name'=> $request->fname,
                 'last_name'=> $request->lname,
                 'email'=> $request->email,
                 'role'=> $request->role,
                 'password'=>bcrypt($request->password),
                 ]);
-     
+
         // Sending Email to new user with details
         Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
                 $message->to($data[0]);
@@ -136,11 +138,10 @@ class UserController extends Controller {
 
     //add fund
     public function addFund(Request $request) {
-        $settings = GeneralSettings::find()->first();
-        dd($settings);
+        $settings = GeneralSettings::first();
+        if($settings->add_fund == 'on'){
         $this->validate($request, ['amount'=> 'required|integer'
             ]);
-
         $user=User::findOrFail($request->user_id);
         $current_balance=$user->balance;
         $user->balance=$request->amount+$current_balance;
@@ -148,12 +149,16 @@ class UserController extends Controller {
         trx($user->id,$request->amount,1,'Funds added by admin');
         Session::flash("message", "Fund added successfully");
         return back();
-
+        }else{
+            return back()->with('error','Add fund settings is off.');
+        }
 
     }
 
     public function subFund(Request $request) {
-    $this->validate($request, [ 'amount'=> 'required|integer'
+        $settings = GeneralSettings::first();
+        if($settings->remove_fund == 'on'){
+        $this->validate($request, [ 'amount'=> 'required|integer'
             ]);
         $user=User::findOrFail($request->user_id);
         $current_balance=$user->balance;
@@ -165,7 +170,9 @@ class UserController extends Controller {
         trx($user->id,$request->amount,1,'Funds deducted by admin');
         Session::flash("message", "Fund has deduct successfully");
         return back();
-
+         }else{
+            return back()->with('error','Subtraction settings is off.');
+        }
 
     }
 

@@ -66,22 +66,24 @@ Funds settings
     text-align: center;
     line-height: 25px;
     top: 2px;
-    left: 8px;
+    left: 2px;
     width: 37px;
-    height: 30px;
+    /* height: 30px; */
     border-radius: 20px;
     background-color: #d1dad3;
     box-shadow: -3px -3px 5px rgb(255 255 255 / 50%), 3px 3px 5px rgb(0 0 0 / 25%);
     transition: .3s ease-in-out;
+    padding: 3px 7px;
 }
 
 .fund-toggle input[type="checkbox"]:checked+label::before {
-    left: 50%;
+    left: 59%;
     content: 'ON';
     color: #fff;
     background-color: #00b33c;
     box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
         3px 3px 5px #00b33c;
+        padding: 3px;
 }
 
 label#refreltext {

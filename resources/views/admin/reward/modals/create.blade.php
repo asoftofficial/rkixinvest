@@ -42,8 +42,8 @@
                                                 name="status"
                                                 required=""
                                                 class="form-control bg-light round-10 border-0 mb-4">
-                                                <option value="activate" class="sel-v">Activate</option>
-                                                <option value="suspend" class="sel-v">Suspend</option>
+                                                <option value="enabled" class="sel-v">enabled</option>
+                                                <option value="disabled" class="sel-v">disabled</option>
                                             </select>
                                             @error('status')
                                             <span class="invalid-feedback" role="alert">
@@ -78,13 +78,13 @@
                                         <div class="col-md-6">
                                             <div class="gap">
 
-                                                <h4 class="input-label mt-2">Referal</h4>
+                                                <h4 class="input-label mt-2">referral </h4>
                                                 <div class="">
                                                     <input
                                                         type="text"
                                                         class="form-control bg-light round-10 border-0 mb-4"
-                                                        name="refrel"></div>
-                                                    @error('refrel')
+                                                        name="referral "></div>
+                                                    @error('referral ')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
