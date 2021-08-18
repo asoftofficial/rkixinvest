@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Mail\test;
+use App\Models\GeneralSettings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -41,7 +42,7 @@ class UserController extends Controller {
             'lname'=> ['required'],
             'email'=> ['required'],
             'role'=> ['required'],
-            'password'=> ['required|confirmed|min:6'],
+            'password'=> ['required'],
             ]);
         User::create([ 'first_name'=> $request->fname,
                 'last_name'=> $request->lname,
@@ -138,6 +139,8 @@ class UserController extends Controller {
 
     //add fund
     public function addFund(Request $request) {
+        $settings = GeneralSettings::find()->first();
+        dd($settings);
         $this->validate($request, ['amount'=> 'required|integer'
             ]);
 
