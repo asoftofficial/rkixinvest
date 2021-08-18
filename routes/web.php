@@ -48,6 +48,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
+    Route::get('user/funds',[UserController::class,'showFundsForm'])->name('show.fund');
+    Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');
+    Route::post('sub/funds',[UserController::class,'subFund'])->name('sub.fund');
 
     //reward routes
     Route::get('reward',[rewardController::class,'index'])->name('reward.index');
