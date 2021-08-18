@@ -38,11 +38,12 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $this->validate($request, [ 'fname'=> ['required'],
-            'lname'=> ['required'],
-            'email'=> ['required'],
-            'role'=> ['required'],
-            'password'=> ['required'],
+            $request->validate([
+                'fname'=> 'required',
+                'lname'=> 'required',
+                'email'=> 'required',
+                'role'=> 'required',
+            '   password'=> 'required|password_confirmation'
             ]);
         User::create([ 'first_name'=> $request->fname,
                 'last_name'=> $request->lname,
@@ -50,11 +51,7 @@ class UserController extends Controller {
                 'role'=> $request->role,
                 'password'=>bcrypt($request->password),
                 ]);
-        $data=[$request->email,
-        $request->password,
-        $request->fname,
-        $request->lname];
-
+     
         // Sending Email to new user with details
         Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
                 $message->to($data[0]);

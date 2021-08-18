@@ -109,7 +109,9 @@
                 ]
             });
         });
-
+        $('.top-bar-left ul li').click(function(){
+            $(this).children().children().slideToggle()
+        })
     </script>
     @stack('script')
 </body>

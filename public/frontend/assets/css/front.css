@@ -99,19 +99,20 @@ a.social-links {
 
 @media(max-width:800px) {
     .top-bar-left span {
-        display: block;
+        display: none;
         position: absolute;
         top: 21px;
+        left: 0;
         background: var(--white);
         width: 100%;
         min-width: 200px;
         padding: 10px;
+        z-index: 1;
         box-shadow: 1px 1px 11px rgb(0 0 0 / 30%);
-        opacity: 0;
     }
 
     .top-bar-left ul li:hover .top-bar-left ul li span {
-        opacity: 1;
+        display: block;
     }
 }
 
@@ -194,7 +195,9 @@ header {
 /* Slider Responsive */
 @media(max-width:1200px){
     .slider-content {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
     }
     .slider-img img {
         max-width: 400px;

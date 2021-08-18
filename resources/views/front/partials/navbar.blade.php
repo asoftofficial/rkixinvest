@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 main-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 main-nav mt-3">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +27,8 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-outline-blue d-inline-block px-5 round-20" href="#">Pricing</a>
-                <a class="nav-link btn banner-btn d-inline-block px-5" href="#">Pricing</a>
+                <a class="nav-link btn btn-outline-blue d-inline-block px-5 round-20 mr-2" href="{{ route('login') }}">Login</a>
+                <a class="nav-link btn banner-btn d-inline-block px-5" href="{{ route('register') }}">Register</a>
             </li>
         </ul>
     </div>
