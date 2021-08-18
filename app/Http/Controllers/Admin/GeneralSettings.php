@@ -47,8 +47,10 @@ class GeneralSettings extends Controller
 
      return back()->with('success','referal settings chnaged successfully');
     }
-
-
+public function fundsSettings()
+{
+    return view('admin.settings.generalsettings.fund-settings');
+}
 
 
 }

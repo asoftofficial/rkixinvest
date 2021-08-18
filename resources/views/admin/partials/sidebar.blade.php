@@ -101,9 +101,16 @@
                                   </li>
                                   <li class="nav-item ml-2">
                                     <a href="/maileclipse"
-                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
                                       <p>Edit Emails</p>
+                                    </a>
+                                  </li>
+                                   <li class="nav-item ml-2">
+                                    <a href="{{route('admin.fund.settings')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/fundicon.png')}}" alt="">
+                                      <p>Funds settings</p>
                                     </a>
                                   </li>
                                 </ul>
