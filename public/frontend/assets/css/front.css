@@ -717,3 +717,11 @@ img.shap.dots {
     align-items: center;
     flex-wrap: wrap;
 } */
+ul.slick-dots button {
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    background-color: var(--blue);
+}
