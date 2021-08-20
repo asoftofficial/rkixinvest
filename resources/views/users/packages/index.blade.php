@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('users.layouts.default')
 @section('page-title')
 Packages
 @endsection
@@ -41,7 +41,7 @@ $(".delete").click(function (e) {
 @endpush
 @section('content') 
 <div class = "container-fluid" > {{-- Section Search Area    --}} 
-    <section class = "admin-search-area" > 
+    {{-- <section class = "admin-search-area" > 
         <div class="admin-search-left">
     <button
         class="btn btn-info px-3 blue-bg round-10"
@@ -57,63 +57,58 @@ $(".delete").click(function (e) {
                     Search here</button>
             </div>
         </div>
-    </div>
-</section>{{-- End Section Search Area    --}}
+    </div> 
+</section>--}}
+{{-- End Section Search Area    --}}
 
 {{-- Page Section Title Area    --}} 
 <section class = "page-section-title-area" > <div>
     <h2>Packages List</h2>
-    <p>Latest Packages information</p>
+    <p>All Investment Packages</p>
 </div>
 </section>
 {{-- End Page Section Title Area    --}} 
-<section class = "collections" > 
-    <div class="table-responsive">
-        <table class="table custom-table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Package ID
-                    </th>
-                    <th scope="col">Name
-                    </th>
-                    <th scope="col">min-invest
-                    </th>
-                    <th scope="col">max-invest
-                    </th>
-                    <th scope="col">Roi
-                    </th>
-                    <th scope="col">Roi_type</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($pack as $item)
-                <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->min_invest}}</td>
-                    <td>{{$item->max_invest}}</td>
-                    <td>{{$item->roi}}</td>
-                    <td>{{$item->roi_type}}</td>
-                    <td style="min-width: 256px; text-align: right">
-                        <a href="#" class="mr-2">
-                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)'></i>
-                        </a>
-                        <a
-                            href="#"
-                            class="btn btn-info blue-bg round-10 px-5 mr-2"
-                            data-target="#editpackagesModal-{{$item->id}}"
-                            data-toggle="modal">Edit</a>
-                        <a href="#" class="delete" data-id="{{$item->id}}">
-                            <i class='fas fa-trash-alt' style='font-size:20px;color:var(--blue)'></i>
-                        </a>
-                    </td>
-                </tr>
-                @include('admin.packages.modals.edit') @endforeach
-            </tbody>
-        </table>
-    </div>
-</section>
+<div class="packages">
+    @if(!empty($packages))
+        @foreach($packages as $pack)
+       <div class="table basic">
+           <div class="price-section">
+               <div class="price-area">
+                   <div class="inner-area">
+                       <span class="text">
+                         $
+                       </span>
+                       <span class="price">00</span>
+                   </div>
+               </div>
+           </div>
+           <div class="package-name">
+                <span>Gold</span>
+           </div>
+           <div class="features">
+               <li>
+                   <span class="list-name">One Selected Template</span>
+                   <span class="icon check"><i class="fas fa-check-circle"></i></span>
+               </li>
+               <li>
+                   <span class="list-name">100% Responsive Design</span>
+                   <span class="icon check"><i class="fas fa-check-circle"></i></span>
+               </li>
+               <li>
+                   <span class="list-name">Credit Remove Permission</span>
+                   <span class="icon cross"><i class="far fa-times-circle"></i></span>
+               </li>
+               <li>
+                   <span class="list-name">Lifetime Template Updates</span>
+                   <span class="icon cross"><i class="far fa-times-circle"></i></span>
+               </li>
+               <div class="btn"><button>Purchase</button></div>
+           </div>
+       </div>
+    @endforeach
+    @endif
+       
+   </div>
 
 </div>
 <!-- /.container-fluid -->

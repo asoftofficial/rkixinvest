@@ -9,6 +9,9 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <p class="main-p" title="Balance"><i class="fas fa-wallet"></i> $ {{ round(Auth::user()->balance,2) }}</p>
+    </li>
         <li class="nav-item">
             <p class="main-p">Hello! {{Auth::user()->username}}</p>
             <a href="#" class="dashboard-profile-image">
