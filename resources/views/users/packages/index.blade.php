@@ -94,7 +94,8 @@ $(".delete").click(function (e) {
                    <span class="list-name">{{ $pack->roi_type }} ROI</span>
                    <span class="icon check"><i class="fas fa-check-circle"></i></span>
                </li>
-               <div class="btn"><button>Purchase</button></div>
+               <button
+        class="btn btn-info pl-3 ml-5 blue-bg round-10">purchase</button>
            </div>
        </div>
     @endforeach

@@ -736,15 +736,15 @@ table.table.custom-table td img {
 }
 
 .price-area .inner-area .text{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 400;
     position: absolute;
     top: -10px;
-    left: 17px;
+    left: 4px;
 }
 
 .price-area .inner-area .price{
-    font-size: 55px;
+    font-size: 35px;
     font-weight: 500;
 }
 
