@@ -76,9 +76,15 @@ class DashboardController extends Controller
         $user_profile->first_name   = $request->fname;
         $user_profile->last_name  = $request->lname;
         $user_profile->email      = $request->email;
-         $user_profile->password =  $request->newpas;
         $user_profile->update();
         return redirect()->back()->with("success", "profile Updated Successfully!");
+    }
+    public function changePassword(Request $request, $id)
+    {
+       $user = User::find($id);
+       $user->password = bcrypt($request->newpas);
+       $user->update();
+       return back()->with('success','password updated successfully');
     }
      public function showVerificationForm()
     {

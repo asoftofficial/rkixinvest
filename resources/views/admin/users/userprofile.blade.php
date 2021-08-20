@@ -53,7 +53,7 @@ user profile
     .profile-edit-btn {
         border: none;
         /* border-radius: 10px; */
-        width: 70%;
+        width: 90%;
         padding: 2%;
         font-weight: 600;
         color: #6c757d;
@@ -175,17 +175,24 @@ user profile
                 <div class="col-md-2">
                     <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"
                         data-toggle="modal" data-target="#UserProfileModal" />
+                    <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
+                        data-toggle="modal" data-target="#editPasswordModal" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <div id="user_action" class="mt-4">
-                        <h6 class="text-bold mt-3">User actions</h6>
-                        <a href="{{route('admin.show.fund')}}" class="btn btn-info text-white p-2" data-toggle="modal"
-                            data-target="#userFundsModal">Add or subtract balance</a><br />
-
-                        </div>
+                     <h5 class="text-bold mt-3">User actions</h5>
+                     <a href="{{route('admin.show.fund')}}" data-toggle="modal"
+                            data-target="#userFundsModal">Add & Subtract balance</a><br/>
+                            <a href="">Bootsnipp Profile</a><br/>
+                            <a href="">Bootply Profile</a>
+                            <p>SKILLS</p>
+                            <a href="">Web Designer</a><br/>
+                            <a href="">Web Developer</a><br/>
+                            <a href="">WordPress</a><br/>
+                            <a href="">WooCommerce</a><br/>
+                            <a href="">PHP, .Net</a><br/>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -278,6 +285,7 @@ user profile
             </div>
             @include('admin.users.modals.edit')
             @include('admin.users.modals.funds')
+            @include('admin.users.modals.edit-password')
 
 
         </div>

@@ -83,7 +83,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data,Request $request)
+    protected function create(array $data)
     {
         $set = GeneralSettings::first();
         $getsponser = User::where('username',$data['referral'])->first();

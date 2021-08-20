@@ -3,7 +3,7 @@
 Settings
 @endsection
 @section('page-subtitle')
-Funds settings
+emails settings
 @endsection
 @push('style')
 <link href="{{asset('backend/assets/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -17,7 +17,7 @@ Funds settings
 
 
 
-.fund-button {
+.email-button {
     display: flex;
     margin-top: 30px;
     padding: 8px 16px;
@@ -28,25 +28,25 @@ Funds settings
     align-items: center;
 }
 
-.fund-label {
+.email-label {
     width: 150px;
 }
 
-.fund-label i {
+.email-label i {
     margin-right: 5px;
 }
 
-.fund-toggle {
+.email-toggle {
     height: 40px;
 }
 
-.fund-toggle input[type="checkbox"] {
+.email-toggle input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     z-index: -2;
 }
 
-.fund-toggle input[type="checkbox"]+label {
+.email-toggle input[type="checkbox"]+label {
     position: relative;
     /* top: 0px; */
     right: 9rem;
@@ -59,7 +59,7 @@ Funds settings
     box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
 }
 
-.fund-toggle input[type="checkbox"]+label::before {
+.email-toggle input[type="checkbox"]+label::before {
     position: absolute;
     content: 'OFF';
     font-size: 10px;
@@ -76,7 +76,7 @@ Funds settings
     padding: 3px 7px;
 }
 
-.fund-toggle input[type="checkbox"]:checked+label::before {
+.email-toggle input[type="checkbox"]:checked+label::before {
     left: 59%;
     content: 'ON';
     color: #fff;
@@ -106,11 +106,11 @@ div#refrel_div {
 
 @section('content')
 <div class="container-fluid">
-{{-- fund system settings --}}
+{{-- email settings --}}
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h4 class="border-bottom pb-2 mb-0">fund System Settings</h4>
+    <h4 class="border-bottom pb-2 mb-0">email Settings</h4>
     <div class="d-flex text-muted pt-3">
-        <form action="{{route('admin.post.fund.settings')}}" method="post">
+        <form action="{{route('admin.update.email.settings')}}" method="post">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -118,46 +118,21 @@ div#refrel_div {
                         <div class="col-md-6">
                             <div class="gap">
                                 <div class="main mt-3 justify-content-start">
-                                    <div class="fund-button">
-                                        <div class="fund-label">
+                                    <div class="email-button">
+                                        <div class="email-label">
                                         </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">Add fund</label>
+                                        <label for="bluetooth" id="refreltext" class="input-label">Add email</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
-                                        <div class="fund-toggle">
-                                            <input type="checkbox" id="addfund" name="addfund"  @if($settings->add_fund == 'on') checked @endif>
-                                            <label for="addfund"></label>
+                                        <div class="email-toggle">
+                                            <input type="checkbox" id="email" name="email" @if($settings->email_verification == 'on') checked @endif>
+                                            <label for="addemail"></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
 
                                 </div>
-                                @error('refrel_system')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="gap">
-                                <div class="main mt-3 justify-content-start">
-                                    <div class="fund-button">
-                                        <div class="fund-label">
-                                        </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">fund subtraction</label>
-                                        <h4 class="input-label mt-2" id="refrel_level"></h4>
-                                        <div class="fund-toggle">
-                                            <input type="checkbox" id="removefund" name="removefund" @if($settings->remove_fund == 'on') checked @endif>
-                                            <label for="removefund"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-
-                                </div>
-                                @error('refrel_system')
+                                @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -99,6 +99,13 @@
                                       <p>general settings</p>
                                     </a>
                                   </li>
+                                   <li class="nav-item ml-2">
+                                    <a href="{{route('admin.show.email.settings')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
+                                      <p>Email settings</p>
+                                    </a>
+                                  </li>
                                   <li class="nav-item ml-2">
                                     <a href="/maileclipse"
                                     class="nav-link">
@@ -111,6 +118,13 @@
                                     class="nav-link">
                                     <img src="{{asset('/backend/img/icons/fundicon.png')}}" alt="">
                                       <p>Funds settings</p>
+                                    </a>
+                                  </li>
+                                   <li class="nav-item ml-2">
+                                    <a href="{{route('admin.show.kyc.settings')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/kycicon.png')}}" alt="">
+                                      <p>KYC settings</p>
                                     </a>
                                   </li>
                                 </ul>

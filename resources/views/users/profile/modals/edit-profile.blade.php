@@ -77,53 +77,15 @@
 
                                     <div class="col-md-6">
                                         <div class="gap">
-                                            <h4 class="input-label mt-2">old password</h4>
+                                            <h4 class="input-label mt-2">Username</h4>
                                             <div class="">
                                                 <input
+                                                    disabled
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="oldpas"
-                                                    value=""></div>
+                                                    value="{{$user->username}}"></div>
                                                 @error('oldpas')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                              <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="gap">
-                                        <h4 class="input-label mt-2">new password</h4>
-                                        <div class="">
-                                            <input
-                                                type="text"
-                                                class="form-control bg-light round-10 border-0"
-                                                name="newpas"
-                                                value=""></div>
-                                            @error('newpas')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="gap">
-                                            <h4 class="input-label mt-2">confirm password</h4>
-                                            <div class="">
-                                                <input
-                                                    type="text"
-                                                    class="form-control bg-light round-10 border-0"
-                                                    name="password_confirmation"
-                                                    value=""></div>
-                                                @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

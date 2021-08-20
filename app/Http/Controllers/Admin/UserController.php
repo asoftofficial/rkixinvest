@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -89,11 +90,22 @@ class UserController extends Controller {
         $users->first_name=$request->fname;
         $users->last_name=$request->lname;
         $users->email=$request->email;
-        $users->password=$request->newpas;
         $users->update();
         return redirect()->back()->with('success', 'profile updated successfully!');
     }
+    public function changePassword(Request $request,$id)
+    {
+        dd("hello");
+        $request->validate([
+            'oldpas' => 'required',
+            // 'newpas' => 'required|confirmed'
+        ]);
+        $user = User::find($id);
+        $user->password = bcrypt($request->newpas);
+        $user->update();
+        return back()->with('success','password updated successfully');
 
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -108,7 +120,7 @@ class UserController extends Controller {
 
 
 
-
+//block unblock user by admin
     public function blocked(Request $request, $id) {
         $user=User::findOrFail($id);
         $status=$user->blocked==1 ? 0: 1;
@@ -154,7 +166,7 @@ class UserController extends Controller {
         }
 
     }
-
+// deduction of balance
     public function subFund(Request $request) {
         $settings = GeneralSettings::first();
         if($settings->remove_fund == 'on'){
