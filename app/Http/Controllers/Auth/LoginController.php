@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -54,7 +54,7 @@ class LoginController extends Controller
          ]);
 
          $usernamefield = Filter_var($request->email,FILTER_VALIDATE_EMAIL) ? 'email': 'username';
-         if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])){
             if(Auth::user()->type==1){
                 return redirect()->route('user.dashboard');
             }elseif(Auth::user()->type==2){
@@ -62,6 +62,8 @@ class LoginController extends Controller
             }else{
                 return redirect()->route('admin.dashboard');
             }
+         }else{
+             return back()->with('error', 'credentails does not match');
          }
      }
 

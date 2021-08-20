@@ -45,7 +45,7 @@
 .profile-edit-btn{
     border: none;
     /* border-radius: 10px; */
-    width: 70%;
+    width: 90%;
     padding: 2%;
     font-weight: 600;
     color: #6c757d;
@@ -143,6 +143,8 @@
                     </div>
                     <div class="col-md-2">
                         <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
+                    <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
+                        data-toggle="modal" data-target="#editPasswordModal" />
                     </div>
                 </div>
                 <div class="row">
@@ -249,6 +251,7 @@
                     </div>
                 </div>
 @include('users.profile.modals.edit-profile')
+@include('users.profile.modals.edit-password')
 
 
         </div>

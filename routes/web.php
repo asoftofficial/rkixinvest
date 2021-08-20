@@ -37,6 +37,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
         Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile'])->name('update.profile');
+        Route::post('change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
     });
 
 
@@ -47,6 +48,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     //user routes
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
+    Route::post('change/password/{id}',[UserController::class,'changePassword'])->name('change.password');
     Route::post('/user/email',[UserController::class,'sendmail'])->name('user.email');
     Route::get('user/funds',[UserController::class,'showFundsForm'])->name('show.fund');
     Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');
@@ -64,6 +66,10 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('refrel/settings',[GeneralSettings::class,'refrelUpdate'])->name('refrel.settings');
     Route::get('fund/settings',[GeneralSettings::class,'fundsSettings'])->name('fund.settings');
     Route::post('fund/settings',[GeneralSettings::class,'fundupdate'])->name('post.fund.settings');
+    Route::get('show/email/settings',[GeneralSettings::class,'showEmailSettings'])->name('show.email.settings');
+    Route::post('update/email/settings',[GeneralSettings::class,'emailSettings'])->name('update.email.settings');
+    Route::get('show/kyc/settings',[GeneralSettings::class,'showKycSettings'])->name('show.kyc.settings');
+       Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
 });
 

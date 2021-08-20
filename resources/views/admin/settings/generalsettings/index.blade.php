@@ -294,6 +294,29 @@ General Settings
                 </span>
                 @enderror
             </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Favicon icon</label>
+                <input type="file" name="favicon" value=""
+                    class="form-control bg-light border-0 round-10 ">
+                @error('favicon')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Website logo</label>
+                <input type="file" name="logo" value=""
+                    class="form-control bg-light border-0 round-10 ">
+                @error('logo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+            </div>
             <div class="form-group">
                 <label for="text" class="input-label">Website Description</label>
                 <textarea rows="6" class="form-control bg-light border-0 round-10" name="description"

@@ -47,6 +47,9 @@ class GeneralSettings extends Controller
 
      return back()->with('success','referal settings chnaged successfully');
     }
+
+
+// user balance settings
 public function fundsSettings()
 {
     return view('admin.settings.generalsettings.fund-settings');
@@ -62,4 +65,34 @@ public function fundUpdate(Request $request)
         $settings->update();
         return back()->with('success','funds settings updated successfully');
     }
+
+
+//email verification settings by admin panel
+public function showEmailSettings()
+{
+    return view('admin.settings.generalsettings.email-settings');
+}
+public function emailSettings(Request $request)
+{
+      $settings = ModelsGeneralSettings::first();
+        $emailStatus = empty($request->email) ? "off" : $request->email;
+        $settings->email_verification = $emailStatus;
+        $settings->Update();
+        return back()->with('success','email settings updated successfully');
+}
+
+
+//manage kyc settings by admin panel
+public function showKycSettings()
+{
+    return view('admin.settings.generalsettings.kyc-settings');
+}
+public function kycSettings(Request $request)
+{
+   $settings = ModelsGeneralSettings::first();
+        $kycStatus = empty($request->kyc) ? "off" : $request->kyc;
+        $settings->kyc = $kycStatus;
+        $settings->Update();
+        return back()->with('success','KYC settings updated successfully');
+}
 }
