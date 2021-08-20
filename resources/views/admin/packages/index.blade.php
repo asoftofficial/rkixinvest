@@ -36,8 +36,8 @@ $(".delete").click(function (e) {
 });
 </script>
 @endpush
-@section('content') 
-<div class = "container-fluid" > {{-- Section Search Area    --}} 
+@section('content')
+<div class = "container-fluid" > {{-- Section Search Area    --}}
     <section class = "admin-search-area" > <div class="admin-search-left">
     <button
         class="btn btn-info px-3 blue-bg round-10"
@@ -56,12 +56,12 @@ $(".delete").click(function (e) {
     </div>
 </section>{{-- End Section Search Area    --}}
 
-{{-- Page Section Title Area    --}} 
+{{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
     <h2>Packages List</h2>
     <p>Latest Packages information</p>
 </div>
-</section>{{-- End Page Section Title Area    --}} 
+</section>{{-- End Page Section Title Area    --}}
 <section class = "collections" > <div class="table-responsive">
         <table class="table custom-table">
             <thead class="thead-light">
@@ -84,7 +84,7 @@ $(".delete").click(function (e) {
                 @foreach($pack as $item)
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->name}}</td>
+                    <td>{{$item->title}}</td>
                     <td>{{$item->min_invest}}</td>
                     <td>{{$item->max_invest}}</td>
                     <td>{{$item->roi}}</td>
@@ -114,7 +114,7 @@ $(".delete").click(function (e) {
 
 {{-- Add package Model  --}}
 @include('admin.packages.modals.create')
-{{-- End Add package Model  --}} 
+{{-- End Add package Model  --}}
 <form action = "" method = "post" id = "delete-form" > @csrf
 @method('delete') </form>
 @endsection

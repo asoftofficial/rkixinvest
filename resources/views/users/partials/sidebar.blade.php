@@ -75,40 +75,34 @@
 
                                 <li class="nav-item">
                                     <a
-                                        href="{{route('user.packages')}}"
-                                        class="nav-link @if(Route::currentRouteName()=='user.packages' || Route::currentRouteName()=='user.package.show') active blue-nav @endif">
+                                        href="{{route('admin.packages.index')}}"
+                                        class="nav-link @if(Route::currentRouteName()=='admin.packages.index' || Route::currentRouteName()=='admin.package.show') active blue-nav @endif">
                                         <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
                                             <p>
                                                 Packages
                                             </p>
                                         </a>
                                     </li>
+                                <li class="nav-item">
+                                <a href="{{route('admin.settings.index')}}"
+                                class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
+                                  <p>
+                                   Settings
+                                    <i class="fas fa-angle-left right"></i>
+                                  </p>
+                                </a>
+                                <ul class="nav nav-treeview" style="display: none;">
 
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
-                                                <p>
-                                                    Settings
-                                                    <i class="right fas fa-angle-left"></i>
-                                                </p>
-                                            </a>
-                                            <ul class="nav nav-treeview">
-                                                <li class="nav-item">
-                                                    <a
-                                                        href="{{route('admin.settings.index')}}"
-                                                        @if(Route::currentRouteName()=='admin.users')
-                                                        active="active"
-                                                        dark-nav="dark-nav"
-                                                        @endif
-                                                        class="btn btn-white text-dark"
-                                                        style="border:none;font-weight:bold;color:black;font-size:17px;"
-                                                        type="button">
-                                                        <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                                                            <p id="generalsettings_text">general settings</p>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                  <li class="nav-item ml-2">
+                                    <a href="{{route('admin.settings.index')}}"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>general settings</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </li>
                                         </ul>
                                     </nav>
                                     <!-- /.sidebar-menu -->

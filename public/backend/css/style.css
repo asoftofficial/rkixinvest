@@ -796,11 +796,11 @@ table.table.custom-table td img {
     color: #cd3241;
 }
 
-.table .btn{
+/* .table .btn{
     display: flex;
     justify-content: center;
     margin-top: 35px;
-}
+} */
 
 .table .btn button{
     width: 80%;

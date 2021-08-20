@@ -72,7 +72,7 @@
 
                                 <li class="nav-item">
                                     <a
-                                        href="{{route('admin.packages.index')}}"
+                                        href="{{route('user.packages')}}"
                                         class="nav-link @if(Route::currentRouteName()=='admin.packages.index' || Route::currentRouteName()=='admin.package.show') active blue-nav @endif">
                                         <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
                                             <p>
@@ -82,7 +82,7 @@
                                     </li>
                                 </li>
                                    <li class="nav-item">
-                                <a href="{{route('admin.settings.index')}}"
+                                <a href=""
                                 class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
                                 <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
                                   <p>
@@ -93,7 +93,7 @@
                                 <ul class="nav nav-treeview" style="display: none;">
 
                                   <li class="nav-item ml-2">
-                                    <a href="{{route('admin.settings.index')}}"
+                                    <a href=""
                                     class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
                                     <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
                                       <p>general settings</p>

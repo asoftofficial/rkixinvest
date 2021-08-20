@@ -10,6 +10,7 @@ class PackagesController extends Controller
 {
     public function index(Request $request)
     {
+        dd("hello");
         $data['packages'] = Package::all();
         return view('users.packages.index',$data);
     }
