@@ -75,8 +75,8 @@
 
                                 <li class="nav-item">
                                     <a
-                                        href="{{route('admin.packages.index')}}"
-                                        class="nav-link @if(Route::currentRouteName()=='admin.packages.index' || Route::currentRouteName()=='admin.package.show') active blue-nav @endif">
+                                        href="{{route('user.packages')}}"
+                                        class="nav-link @if(Route::currentRouteName()=='user.packages' || Route::currentRouteName()=='user.package.show') active blue-nav @endif">
                                         <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
                                             <p>
                                                 Packages
