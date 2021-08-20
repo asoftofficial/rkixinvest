@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Packages;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -15,7 +15,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $pack = Packages::all();
+        $pack = Package::all();
         return view('admin.packages.index',compact('pack'));
     }
 
@@ -50,13 +50,12 @@ class PackageController extends Controller
         ]);
 
 
-        Packages::create([
-                'name' => $request->name,
+        Package::create([
+                'title' => $request->name,
                 'min_invest' => $request->min_invest,
                 'max_invest' => $request->max_invest,
                 'roi' => $request->roi,
                 'roi_type' =>$request->roi_type,
-                'image'=>$request->image,
                 'description' =>$request->description,
 
 
@@ -87,7 +86,7 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        $data = Packages::findOrFail($id);
+        $data = Package::findOrFail($id);
         return back()->with('data',$data);
     }
 
@@ -100,7 +99,7 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $package = Packages::findOrFail($id);
+        $package = Package::findOrFail($id);
         if($request->hasFile('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
@@ -125,7 +124,7 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        $package = Packages::findOrFail($id);
+        $package = Package::findOrFail($id);
         $package->delete();
         return redirect()->back()->with("success", "package Deleted Successfully!");
     }
