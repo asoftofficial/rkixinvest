@@ -70,10 +70,6 @@
 <script src="/frontend/dashboard//js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="/frontend/dashboard/plugins/chart.js/Chart.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/frontend/dashboard/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/frontend/dashboard/js/pages/dashboard3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>

@@ -3,63 +3,19 @@
 Packages
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" >
 @endpush
 @push('script')
-<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
-<script > $(
-    '.custom-file-input'
-).change(function (e) {
-    var filename = $(this)
-        .val()
-        .split('\\')
-        .pop();
-    var lastIndex = filename.lastIndexOf("\\");
-    var nextSibling = e.target.nextElementSibling
-    nextSibling.innerText = filename
-});
-$(function () {
-    $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
-});
-
-$(".delete").click(function (e) {
-    console.log("asdhsakdash")
-    swal(
-        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willDelete) => {
-        if (willDelete) {
-            var package_id = $(this).attr('data-id');
-            var url = "{{route('admin.packages.destroy', 'id')}}";
-            url = url.replace('id', package_id);
-            $("#delete-form").attr('action', url);
-            $("#delete-form").submit();
-        }
-    });
-});
+<script>
+$('#investModal').on('show.bs.modal', function(e) {
+        var button = $(e.relatedTarget);
+        var id = button.data('id');
+        $('#packageId').val(id)
+})
 </script>
 @endpush
 @section('content')
-<div class = "container-fluid" > {{-- Section Search Area    --}}
-    {{-- <section class = "admin-search-area" >
-        <div class="admin-search-left">
-    <button
-        class="btn btn-info px-3 blue-bg round-10"
-        data-toggle="modal"
-        data-target="#addIssuesModal">Create Package</button>
-</div>
-<div class="admin-search-right">
-    <div class="admin-section-search-area input-group mb-3">
-        <input type="text" class="">
-            <div class="admin-section-search-btn-area">
-                <button class="btn bg-transparent mr-2" type="button">
-                    <i class="fas fa-search mr-2"></i>
-                    Search here</button>
-            </div>
-        </div>
-    </div>
-</section>--}}
-{{-- End Section Search Area    --}}
+<div class = "container-fluid">
 
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
@@ -94,22 +50,16 @@ $(".delete").click(function (e) {
                    <span class="list-name">{{ $pack->roi_type }} ROI</span>
                    <span class="icon check"><i class="fas fa-check-circle"></i></span>
                </li>
-               <button
-        class="btn btn-info pl-3 ml-5 blue-bg round-10">purchase</button>
+               <button class="btn btn-info blue-bg round-10 invest"  data-toggle="modal" data-target="#investModal" data-id="{{ $pack->id }}">purchase</button>
            </div>
        </div>
     @endforeach
     @endif
-
    </div>
-
 </div>
 <!-- /.container-fluid -->
 
 {{-- Add package Model  --}}
-@include('admin.packages.modals.create')
+@include('users.packages.modals.invest')
 {{-- End Add package Model  --}}
-<form action = "" method = "post" id = "delete-form" >
-    @csrf
-@method('delete') </form>
 @endsection
