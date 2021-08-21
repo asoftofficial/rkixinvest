@@ -738,9 +738,9 @@ table.table.custom-table td img {
 .price-area .inner-area .text{
     font-size: 30px;
     font-weight: 400;
-    position: absolute;
+    position: relative;
     top: -10px;
-    left: 4px;
+    right: -6px;
 }
 
 .price-area .inner-area .price{
