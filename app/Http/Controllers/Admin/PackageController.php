@@ -46,25 +46,29 @@ class PackageController extends Controller
                 'description'  =>['required'],
                 'roi'  =>['required'],
                 'roi_type'  =>['required'],
-
+                'duration' => ['required','min:1','integer'],
+                'duration_type' => ['required']
         ]);
-
-
+        if($request->duration_type=="day" && $request->roi_type=="weekly" || $request->roi_type=="monthly" || $request->roi_type=="yearly"){
+            return back()->with('error','Invalid ROI Type.');
+        }
+        if($request->duration_type=="week" && $request->roi_type=="monthly" || $request->roi_type=="yearly"){
+            return back()->with('error','Invalid ROI Type.');
+        }
+        if($request->duration_type=="month" && $request->roi_type=="yearly"){
+            return back()->with('error','Invalid ROI Type.');
+        }
         Package::create([
                 'title' => $request->name,
                 'min_invest' => $request->min_invest,
                 'max_invest' => $request->max_invest,
                 'roi' => $request->roi,
                 'roi_type' =>$request->roi_type,
+                'duration' => $request->duration,
+                'duration_type' => $request->duration_type,
                 'description' =>$request->description,
-
-
-
         ]);
-
-            return back();
-
-
+            return back()->with('success','Package created successfully');
     }
 
     /**
@@ -113,7 +117,7 @@ class PackageController extends Controller
         $package->description = $request->description;
         $package->status      = $request->status;
         $package->update();
-        return redirect()->back()->with("success", "package Updated Successfully!");
+        return back()->with("success", "package Updated Successfully!");
     }
 
     /**
@@ -126,6 +130,6 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->delete();
-        return redirect()->back()->with("success", "package Deleted Successfully!");
+        return back()->with("success", "package Deleted Successfully!");
     }
 }

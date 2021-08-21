@@ -18,6 +18,8 @@ class CreatePackagesTable extends Migration
             $table->string('title')->nullable();
             $table->integer('min_invest')->nullable();
             $table->integer('max_invest')->nullable();
+            $table->integer('duration')->default(1);
+            $table->enum('duration_type',['day','week','month','year']);
             $table->double('roi')->nullable();
             $table->enum('roi_type', ['daily','weekly', 'monthly', 'yearly'])->default('daily');
             $table->text('description')->nullable();

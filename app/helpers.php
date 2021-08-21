@@ -2,6 +2,7 @@
 //Send Email Verification code
 
 use App\Models\Transaction;
+use \Illuminate\Support\Carbon;
 
 function sendEmailVerificationCode($data,$code){
     Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
@@ -33,5 +34,25 @@ function trx($id,$amount,$type,$desc)
             'description' => $desc
         ]);
         return $trx;
+}
+function getdays($now=NULL,$enddate=NULL,$duration,$type){
+    switch ($type) {
+        case 'day':
+            $enddate->addDays($duration);
+            break;
+        case 'week':
+            $enddate->addWeeks($duration);
+            break;
+        case 'month':
+            $enddate->addMonths($duration);
+            break;
+        case 'year':
+            $enddate->addYears($duration);
+            break;
+        default:
+            $enddate->addDays($duration);
+            break;
+    }
+    return $enddate;
 }
 ?>

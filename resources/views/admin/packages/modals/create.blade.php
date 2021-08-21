@@ -38,7 +38,7 @@
                                             <h4 class="input-label mt-2">ROI</h4>
                                             <div class="">
                                                 <input type="text" class="form-control bg-light round-10 border-0" name="roi"></div>
-                                                @error('magazine_id')
+                                                @error('roi')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -60,7 +60,7 @@
 
                                                     </select>
                                                 </div>
-                                                @error('collection_id')
+                                                @error('roi_type')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -70,6 +70,45 @@
                                     </div>
                                 </div>
                             </div>
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">Duration</h4>
+                                        <div class="">
+                                            <input type="text" class="form-control bg-light round-10 border-0" name="duration"></div>
+                                        @error('duration')
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="gap1">
+                                        <h4 class="input-label mt-2">Duration Type</h4>
+                                        <div class="drop-icon">
+                                            <select
+                                                name="duration_type"
+                                                required=""
+                                                class="form-control bg-light round-10 border-0">
+                                                <option value="day" class="sel-v">Day</option>
+                                                <option value="week" class="sel-v">Week</option>
+                                                <option value="month" class="sel-v">Month</option>
+                                                <option value="year" class="sel-v">Year</option>
+                                            </select>
+                                        </div>
+                                        @error('duration_type')
+                                        <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -138,8 +177,7 @@
                                                 class="form-control bg-light border-0 round-10"
                                                 name="description"
                                                 required=""
-                                                id="description">
-                                                {{old('desc')}}</textarea>
+                                                id="description">{{old('desc')}}</textarea>
                                             @error('desc')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

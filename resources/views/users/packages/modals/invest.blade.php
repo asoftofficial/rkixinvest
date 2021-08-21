@@ -11,8 +11,7 @@
             </div>
             <div class="modal-body  pt-0">
                 <form
-                    action="{{route('admin.packages.store')}}"
-                    enctype="multipart/form-data"
+                    action="{{route('user.invest.post')}}"
                     method="post">
                     @csrf
                     <div class="form-group">
