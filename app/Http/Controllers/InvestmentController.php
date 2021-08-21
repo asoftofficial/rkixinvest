@@ -32,7 +32,8 @@ class InvestmentController extends Controller
             $now = Carbon::now();
             $enddate = Carbon::now();
             $enddate = getdays($now,$enddate,$package->duration,$package->duration_type);
-            $days = $now->diffInWeeks($enddate);
+            $days = $now->diffInDays($enddate);
+            $totalroi = ($package->roi/100) * $request->amount;
             if($package->roi_type=="daily"){
                 $period = CarbonPeriod::create($now, $enddate);
                 foreach($period as $date){
@@ -43,7 +44,7 @@ class InvestmentController extends Controller
                     $roi->user_id = $user->id;
                     $roi->package_id = $package->id;
                     $roi->status = 1;
-                    $roi->amount = mt_rand(00,99);
+                    $roi->amount = $totalroi/$days;
                     $roi->date = $date;
                     $roi->save();
                 }
@@ -56,21 +57,20 @@ class InvestmentController extends Controller
                     $roi->user_id = $user->id;
                     $roi->package_id = $package->id;
                     $roi->status = 1;
-                    $roi->amount = mt_rand(00,99);
+                    $roi->amount = $totalroi/$weeks;
                     $roi->date = $date;
                     $roi->save();
                 }
             }elseif($package->roi_type=="monthly"){
                 $date = $now;
                 $months = $now->diffInMonths($enddate);
-//                dd($months);
                 for($i = 1; $i <= $months; $i++){
                     $date = $date->addMonth();
                     $roi = new Roi();
                     $roi->user_id = $user->id;
                     $roi->package_id = $package->id;
                     $roi->status = 1;
-                    $roi->amount = mt_rand(00,99);
+                    $roi->amount =$totalroi/$months;
                     $roi->date = $date;
                     $roi->save();
                 }
@@ -83,7 +83,7 @@ class InvestmentController extends Controller
                     $roi->user_id = $user->id;
                     $roi->package_id = $package->id;
                     $roi->status = 1;
-                    $roi->amount = mt_rand(00,99);
+                    $roi->amount = $totalroi/$years;
                     $roi->date = $date;
                     $roi->save();
                 }
