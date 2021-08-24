@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\admin\Ge neralSettings;
+use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\photoController;
