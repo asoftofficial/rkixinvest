@@ -167,7 +167,7 @@ user profile
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                    aria-controls="profile" aria-selected="false">Timeline</a>
+                                    aria-controls="profile" aria-selected="false">Other info</a>
                             </li>
                         </ul>
                     </div>

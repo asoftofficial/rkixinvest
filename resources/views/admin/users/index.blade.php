@@ -43,22 +43,22 @@ $(".delete").click(function (e) {
 <div class = "container-fluid" > {{-- Section Search Area    --}}
     <section class = "admin-search-area" >
         <div class="admin-search-left">
-    <button
-        class="btn btn-info px-3 blue-bg round-10"
-        data-toggle="modal"
-        data-target="#addUserModal">Add a User</button>
-</div>
-<div class="admin-search-right">
-    <div class="admin-section-search-area input-group mb-3">
-        <input type="text" class="">
-            <div class="admin-section-search-btn-area">
-                <button class="btn bg-transparent mr-2" type="button">
-                    <i class="fas fa-search mr-2"></i>
-                    Search here</button>
+            <button
+                class="btn btn-info px-3 blue-bg round-10"
+                data-toggle="modal"
+                data-target="#addUserModal">Add a User</button>
+        </div>
+        <div class="admin-search-right">
+            <div class="admin-section-search-area input-group mb-3">
+                <input type="text" class="">
+                    <div class="admin-section-search-btn-area">
+                        <button class="btn bg-transparent mr-2" type="button">
+                            <i class="fas fa-search mr-2"></i>
+                            Search here</button>
+                    </div>
             </div>
         </div>
-    </div>
-</section>{{-- End Section Search Area    --}}
+    </section>{{-- End Section Search Area    --}}
 
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
@@ -101,7 +101,6 @@ $(".delete").click(function (e) {
                             style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-
                         @if($item->blocked == 0)
                         <a href="#" class="btn btn-danger blocked_user" data-id="{{$item->id}}">
                             <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
@@ -111,7 +110,6 @@ $(".delete").click(function (e) {
                             <p class="text-white block_button" style="font-size: 17px;height:1vh;">Unblock</p>
                         </a>
                         @endif
-
                         <a
                             href="#"
                             class="user_email  btn btn-dark"
@@ -122,7 +120,6 @@ $(".delete").click(function (e) {
                        <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
                         </a>
-
                     </td>
                 </tr>
                 <form action="" method="post" id="update-form">
@@ -132,8 +129,8 @@ $(".delete").click(function (e) {
 
                     @endforeach
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
     </div>
 </section>
 

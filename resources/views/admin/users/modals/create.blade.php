@@ -17,7 +17,7 @@
                                         <h4 class="input-label mt-2">First name</h4>
                                         <div class="">
                                             <input type="text" class="form-control bg-light round-10 border-0"
-                                                name="fname"></div>
+                                                name="fname" value="{{old('fname')}}"></div>
                                         @error('fname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                                         <h4 class="input-label mt-2">Last name</h4>
                                         <div class="">
                                             <input type="text" class="form-control bg-light round-10 border-0"
-                                                name="lname"></div>
+                                                name="lname" value="{{old('lname')}}"></div>
                                         @error('lname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                                         <h4 class="input-label mt-2">Email</h4>
                                         <div class="">
                                             <input type="email" class="form-control bg-light round-10 border-0 mb-2"
-                                                name="email"></div>
+                                                name="email" value="{{old('email')}}"></div>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

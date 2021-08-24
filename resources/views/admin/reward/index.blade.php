@@ -7,9 +7,8 @@ Reward
 @push('script')
 <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
-<script > $(
-    '.custom-file-input'
-).change(function (e) {
+<script >
+$('.custom-file-input').change(function (e) {
     var filename = $(this)
         .val()
         .split('\\')

@@ -38,7 +38,7 @@
                                 name="body"
                                 required=""
                                 id="emaildescription">
-                                {{old('desc')}}</textarea>
+                                {{old('body')}}</textarea>
                             @error('body')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

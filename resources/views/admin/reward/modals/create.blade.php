@@ -26,7 +26,7 @@
                                             <input
                                                 type="text"
                                                 class="form-control bg-light round-10 border-0 mb-4"
-                                                name="title"></div>
+                                                name="title" value="{{old('title')}}"></div>
                                             @error('title')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                                                 <input
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0 mb-4"
-                                                    name="amount"></div>
+                                                    name="amount" value="{{old('status')}}"></div>
                                                 @error('amount')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@
                                                     <input
                                                         type="text"
                                                         class="form-control bg-light round-10 border-0 mb-4"
-                                                        name="referral "></div>
+                                                        name="referral" value="{{old('referral')}}"></div>
                                                     @error('referral ')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
