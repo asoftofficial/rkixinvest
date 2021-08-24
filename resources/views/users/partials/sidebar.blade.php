@@ -85,7 +85,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a
-                                        href="{{route('user.transactions')}}}"
+                                        href="{{route('user.transactions')}}"
                                         class="nav-link">
                                         <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
                                             <p>
