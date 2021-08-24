@@ -127,6 +127,13 @@
                                       <p>KYC settings</p>
                                     </a>
                                   </li>
+                                  <li class="nav-item ml-2">
+                                    <a href="{{route('admin.deposit.geteways')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/kycicon.png')}}" alt="">
+                                      <p>Deposit Gateways</p>
+                                    </a>
+                                  </li>
                                 </ul>
                               </li>
                 </ul>

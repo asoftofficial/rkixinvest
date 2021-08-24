@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\admin\GeneralSettings;
+use App\Http\Controllers\Admin\DepositGateways;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\photoController;
@@ -72,8 +73,10 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('show/email/settings',[GeneralSettings::class,'showEmailSettings'])->name('show.email.settings');
     Route::post('update/email/settings',[GeneralSettings::class,'emailSettings'])->name('update.email.settings');
     Route::get('show/kyc/settings',[GeneralSettings::class,'showKycSettings'])->name('show.kyc.settings');
-       Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
+    Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
+    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    
 });
 
 
