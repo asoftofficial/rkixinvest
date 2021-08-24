@@ -155,6 +155,8 @@ $(function () {
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Date</th>
+                                                <th scope="col">Total ROIs</th>
+                                                <th scope="col">Recieved ROIs</th>
                                                 <th scope="col">Progress</th>
                                             </tr>
                                         </thead>
@@ -166,6 +168,8 @@ $(function () {
                                                         <td>{{$inv->amount}}</td>
                                                         <td>{{$status = $inv->status==1 ? 'Active' : 'Expired'}}</td>
                                                         <td>{{$inv->created_at}}</td>
+                                                        <td>{{$inv->rois->count()}}</td>
+                                                        <td>{{$inv->rois->where('status',0)->count()}}</td>
                                                         <td>
                                                         @php
                                                             $progress = get_percentage($inv->rois->count(), $inv->rois->where('status',0)->count());
