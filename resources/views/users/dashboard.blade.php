@@ -31,22 +31,20 @@ $(function () {
         class="dashboard-card upload-issues d-flex align-items-center justify-content-center">
         <a
             href="#"
-            class="dashboard-card-link"
-            data-toggle="modal"
-            data-target="#addIssuesModal">
-            UPLOAD ISSUES
+            class="dashboard-card-link">
+            Add Funds
         </a>
     </div>
     <div class="dashboard-card page-views">
-        <a href="#" class=" dashboard-card-dropdown">
+        {{-- <a href="#" class=" dashboard-card-dropdown">
             <i class="fas fa-ellipsis-h"></i>
-        </a>
+        </a> --}}
         <div class="dashboard-card-header">
-            <h2>PAGES VIEWS</h2>
-            <p>from Aug 2020</p>
+            <h2>BALANCE</h2>
+            <p>Total Balance</p>
         </div>
         <div class="dashboard-card-stat">
-            8,514
+            {{round(Auth::user()->balance,2)}}
         </div>
     </div>
     <div class="dashboard-card new-orders">
@@ -79,11 +77,9 @@ $(function () {
         <div
             class="dashboard-card upload-banner d-flex align-items-center justify-content-center">
             <a
-                href="#"
-                class="dashboard-card-link"
-                data-toggle="modal"
-                data-target="#addBannersModal">
-                UPLOAD BANNERS
+                href="{{route('user.transactions')}}"
+                class="dashboard-card-link">
+                Transactions
             </a>
         </div>
         <div
@@ -143,89 +139,45 @@ $(function () {
         {{--    Page Section Title Area    --}}
         <section class="page-section-title-area">
             <div>
-                <h2>RECENT ORDERS</h2>
-                <p>Latest orders and information</p>
+                <h2>RECENT INVESTMENTS</h2>
+                <p>Latest investments details</p>
             </div>
             <div class="section-title-right"></div>
         </section>
         {{--    End Page Section Title Area    --}}
-
-        <section class="customers">
-            <div class="table-responsive">
-                <table class="table custom-table">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Customer ID
-                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                <th scope="col">First Name
-                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                    <th scope="col">Last Name
-                                        <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                        <th scope="col">Email
-                                            <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                            <th scope="col">Date
-                                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                <th scope="col">Plan
-                                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
+                            <section class="customers">
+                                <div class="table-responsive">
+                                    <table class="table custom-table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Investment ID</th>
+                                                <th scope="col">Package</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Progress</th>
+                                            </tr>
+                                        </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($investments as $inv)
+                                                    <tr>
+                                                        <td>{{$inv->id}}</td>
+                                                        <td>{{$inv->package->title}}</td>
+                                                        <td>{{$inv->amount}}</td>
+                                                        <td>{{$status = $inv->status==1 ? 'Active' : 'Expired'}}</td>
+                                                        <td>{{$inv->created_at}}</td>
+                                                        <td>
+                                                        @php
+                                                            $progress = get_percentage($inv->rois->count(), $inv->rois->where('status',0)->count());
+                                                        @endphp
+                                                            <div class="progress progress-sm active">
+                                                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{$progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$progress}}%">
+                                                                    <span class="sr-only">{{$progress}}% Complete</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach 
                                             </tbody>
                                         </table>
                                     </div>

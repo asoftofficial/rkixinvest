@@ -8,12 +8,13 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Investment;
 use Hash;
 class DashboardController extends Controller
 {
     public function index(){
-        $now = Carbon::now()->toDateString();
-        return view('users.dashboard');
+        $data['investments'] = Investment::latest()->paginate(10);
+        return view('users.dashboard',$data);
     }
     public function account(){
         $data['countries'] = Country::all();

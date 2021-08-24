@@ -45,7 +45,7 @@ class InvestmentController extends Controller
                     }
                     $roi = new Roi();
                     $roi->user_id = $user->id;
-                    $roi->package_id = $package->id;
+                    $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$days;
                     $roi->date = $date;
@@ -58,7 +58,7 @@ class InvestmentController extends Controller
                     $date = $date->addWeek();
                     $roi = new Roi();
                     $roi->user_id = $user->id;
-                    $roi->package_id = $package->id;
+                    $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$weeks;
                     $roi->date = $date;
@@ -71,7 +71,7 @@ class InvestmentController extends Controller
                     $date = $date->addMonth();
                     $roi = new Roi();
                     $roi->user_id = $user->id;
-                    $roi->package_id = $package->id;
+                    $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount =$totalroi/$months;
                     $roi->date = $date;
@@ -84,7 +84,7 @@ class InvestmentController extends Controller
                     $date = $date->addYear();
                     $roi = new Roi();
                     $roi->user_id = $user->id;
-                    $roi->package_id = $package->id;
+                    $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$years;
                     $roi->date = $date;
