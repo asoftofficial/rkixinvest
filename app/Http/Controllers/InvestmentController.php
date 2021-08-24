@@ -96,7 +96,7 @@ class InvestmentController extends Controller
 
 
         }else{
-            return back()->with('error','Insufficient amount for this package.');
+            return back()->with('error','Invalid amount for this package, minimum investment is '.$package->min_invest.' and maximum investment is '.$package->max_invest);
         }
 
     }
