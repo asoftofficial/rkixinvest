@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\photoController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\transactionController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification'])->
         Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile'])->name('update.profile');
         Route::post('change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('invest',[InvestmentController::class,'invest'])->name('invest.post');
+        Route::get('show/transactions', [App\Http\Controllers\Users\transactionController::class, 'index'])->name('transactions');
     });
 
 

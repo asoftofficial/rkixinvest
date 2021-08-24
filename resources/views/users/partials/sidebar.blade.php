@@ -60,7 +60,7 @@
                                         Users
                                     </p>
                                 </a>
-                            </li>
+                        </li>
 
                             <li class="nav-item">
                                 <a
@@ -82,7 +82,17 @@
                                                 Packages
                                             </p>
                                         </a>
-                                    </li>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="{{route('user.transactions')}}}"
+                                        class="nav-link">
+                                        <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                                            <p>
+                                                Transactions
+                                            </p>
+                                        </a>
+                                </li>
                                 <li class="nav-item">
                                 <a href="{{route('admin.settings.index')}}"
                                 class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
