@@ -132,7 +132,7 @@ div#refrel_div {
                                 <div>
 
                                 </div>
-                                @error('refrel_system')
+                                @error('addfund')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -157,7 +157,7 @@ div#refrel_div {
                                 <div>
 
                                 </div>
-                                @error('refrel_system')
+                                @error('removefund')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

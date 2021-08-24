@@ -40,7 +40,6 @@ class BannerController extends Controller
      */
     public function store(BannerRequest $request)
     {
-
         try{
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "collection_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;

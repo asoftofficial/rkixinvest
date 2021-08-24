@@ -83,9 +83,9 @@
                                                     disabled
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
-                                                    name="oldpas"
+                                                    name="username"
                                                     value="{{$user->username}}"></div>
-                                                @error('oldpas')
+                                                @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

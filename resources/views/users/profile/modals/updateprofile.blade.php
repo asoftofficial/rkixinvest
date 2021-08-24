@@ -1,4 +1,4 @@
-<div
+{{-- <div
     class="modal fade"
     id="UpdateModal"
     tabindex="-1"
@@ -12,7 +12,7 @@
             <div class="modal-body  pt-0">
 
                 <form
-                    action="{{route('admin.userprofile.update',$user->id)}}"
+                    action="{{route('admin.userpr5ofile.update',$user->id)}}"
                     enctype="multipart/form-data"
                     method="post">
                     @csrf @method('put')
@@ -111,4 +111,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}

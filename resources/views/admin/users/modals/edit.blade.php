@@ -44,7 +44,7 @@
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="lname"
-                                                    value="{{old('fname',$user->last_name)}}"></div>
+                                                    value="{{old('lname',$user->last_name)}}"></div>
                                                 @error('lname')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                                                 type="email"
                                                 class="form-control bg-light round-10 border-0"
                                                 name="email"
-                                                value="{{old('fname',$user->email)}}"></div>
+                                                value="{{old('email',$user->email)}}"></div>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -84,7 +84,7 @@
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="username"
-                                                    value="{{$user->username}}"></div>
+                                                    value="{{'username',$user->username}}"></div>
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -101,15 +101,15 @@
                                     <input type="file" name="image" class="form-control bg-light round-10 border-0">
                                 </div>
                             </div>
-                                <div class="d-flex justify-content-center mt-1 mb-4">
+                        <div class="d-flex justify-content-center mt-1 mb-4">
                                     <button
                                         type="button"
                                         class="btn btn-outline-dark px-4 mr-1 round-10 px-5"
                                         data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-dark px-4 round-10 px-5">Update</button>
-                                </div>
-                            </form>
                         </div>
-                    </div>
-                </div>
+                </form>
             </div>
+        </div>
+    </div>
+</div>

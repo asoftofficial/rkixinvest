@@ -87,7 +87,12 @@
                                                             <span class="input-group-text">$</span>
                                                         </div>
                                                         <input type="text" name="amount" class="form-control"
-                                                            placeholder="0.00" />
+                                                            placeholder="0.00" value="{{old('amount')}}"/>
+                                                        @error('amount')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                         <input type="hidden" value="{{$user->id}}" name="user_id">
                                                         <input type="submit" value="Add" class="btn btn-success ml-3">
                                                     </div>
@@ -106,7 +111,12 @@
                                                             <span class="input-group-text">$</span>
                                                         </div>
                                                         <input type="text" name="amount" class="form-control"
-                                                            placeholder="0.00" />
+                                                            placeholder="0.00" value="{{old('amount')}}"/>
+                                                        @error('amount')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
                                                         <input type="hidden" value="{{$user->id}}" name="user_id">
                                                         <input type="submit" value="Subtract"
                                                             class="btn btn-danger ml-3">

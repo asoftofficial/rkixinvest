@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body pt-0">
                 <form
-                    action="{{route('admin.userprofile.store')}}"
+                    action="{{route('admin.user.profile.store')}}"
                     enctype="multipart/form-data"
                     method="post">
                     @csrf
@@ -24,7 +24,7 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">First name</h4>
                                         <div class="">
-                                            <input type="text" class="form-control bg-light round-10 border-0" name="fname"></div>
+                                            <input type="text" class="form-control bg-light round-10 border-0" name="fname" value="{{old('fname')}}"></div>
                                             @error('fname')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                         <div class="gap">
                                             <h4 class="input-label mt-2">Last name</h4>
                                             <div class="">
-                                                <input type="text" class="form-control bg-light round-10 border-0" name="lname"></div>
+                                                <input type="text" class="form-control bg-light round-10 border-0" name="lname" value="{{old('lname')}}"></div>
                                                 @error('lname')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                                                     <input
                                                         type="email"
                                                         class="form-control bg-light round-10 border-0 mb-2"
-                                                        name="email"></div>
+                                                        name="email" value="{{old('email')}}"></div>
                                                     @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

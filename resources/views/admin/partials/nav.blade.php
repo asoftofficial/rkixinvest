@@ -95,7 +95,7 @@
 {{--            </div>--}}
 {{--        </li>--}}
         <li class="nav-item">
-            <p class="main-p">Hello! Erick Rowan</p>
+            <p class="main-p">Welcome {{auth::user()->username}}</p>
             <a href="#" class="dashboard-profile-image">
                 <img src="{{asset('frontend/dashboard/img/avatar5.png')}}" alt="">
             </a>

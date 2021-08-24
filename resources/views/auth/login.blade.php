@@ -33,9 +33,9 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
-                        @if(Session::has('err'))
+                        @if(Session::has('error'))
                             <div class="alert alert-success">
-                                {{ Session::get('err') }}
+                                {{ Session::get('error') }}
                             </div>
                         @endif
                             <div class="login-title-area">
