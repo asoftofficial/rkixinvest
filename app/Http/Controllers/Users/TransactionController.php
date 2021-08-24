@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = User::find(auth()->user()->transactions);
+        $transactions = auth()->user()->transactions;
         return view('users.transactions.transactions',compact('transactions'));
     }
 }
