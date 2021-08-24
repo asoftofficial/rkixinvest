@@ -27,7 +27,7 @@ class CheckInvestments
                         //check if ROI is pendding
                         if($roi->status==1){
                             //check if this user eligible for roi
-                            if(Carbon::now() >= $roi->date){
+                            if(Carbon::now() >= $roi->roi_date){
                                 // add user balance
                                 auth()->user()->balance += $roi->amount;
                                 auth()->user()->update();

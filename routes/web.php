@@ -5,8 +5,10 @@ use App\Http\Controllers\admin\GeneralSettings;
 use App\Http\Controllers\Admin\DepositGateways;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\photoController;
 use App\Http\Controllers\rewardController;
+use App\Http\Controllers\RoiController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +44,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
+        Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
     });
 
 
@@ -76,7 +79,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-    
+
 });
 
 

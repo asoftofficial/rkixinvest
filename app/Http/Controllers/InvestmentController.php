@@ -48,7 +48,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$days;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }elseif($package->roi_type=="weekly"){
@@ -61,7 +61,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$weeks;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }elseif($package->roi_type=="monthly"){
@@ -74,7 +74,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount =$totalroi/$months;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }else{
@@ -87,7 +87,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$years;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }

@@ -36,7 +36,7 @@
                                     <div class="col-md-6">
                                         <div class="gap">
                                             <h4 class="input-label mt-2">ROI</h4>
-                                            {{-- <div class=""> --}}
+                                            <div class="">
                                                 <input type="text" class="form-control bg-light round-10 border-0" name="roi" value="{{old('roi')}}"></div>
                                                 @error('roi')
                                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                                 @enderror
                                         </div>
                                     </div>
-                                        <div class="col-md-6">
+                                    <div class="col-md-6">
                                             <div class="gap1">
                                                 <h4 class="input-label mt-2">ROI Type</h4>
                                                 <div class="drop-icon">

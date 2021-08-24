@@ -38,12 +38,12 @@ class PackageController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
+        $request->validate([
                 'name' => ['required'],
                 'min_invest'  =>['required'],
                 'max_invest'  =>['required'],
-                'image'  =>['required'],
-                'description'  =>['required'],
+                // 'image'  =>['required'],
+                // 'description'  =>['required'],
                 'roi'  =>['required'],
                 'roi_type'  =>['required'],
                 'duration' => ['required','min:1','integer'],
@@ -66,7 +66,7 @@ class PackageController extends Controller
                 'roi_type' =>$request->roi_type,
                 'duration' => $request->duration,
                 'duration_type' => $request->duration_type,
-                'description' =>$request->description,
+                // 'description' =>$request->description,
         ]);
             return back()->with('success','Package created successfully');
     }

@@ -1,0 +1,60 @@
+@extends('users.layouts.default')
+@section('page-title')
+Dashboard
+@endsection
+@section('page-subtitle')
+Welcome back,
+@endsection
+@section('content')
+<div class="row">
+    <div class="col-md-12">
+        {{--    Page Section Title Area    --}}
+        <section class="page-section-title-area">
+            <div>
+                <h2>RECENT INVESTMENTS</h2>
+                <p>Latest investments details</p>
+            </div>
+            <div class="section-title-right"></div>
+        </section>
+        {{--    End Page Section Title Area    --}}
+                            <section class="customers">
+                                <div class="table-responsive">
+                                    <table class="table custom-table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Investment ID</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody>
+                                                @foreach ($investment->rois as $item)
+                                                    <tr>
+                                                        <td>{{$item->investment_id}}</td>
+                                                        <td>{{$item->amount}}</td>
+                                                        <td>{{$item = $item->status==1 ? 'Active' : 'Expired'}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+
+                    {{--  Add Issues Model  --}}
+                    {{-- @include('admin.issues.modals.create') --}}
+                    {{--  End Add Issues Model  --}}
+                    {{-- @include('admin.banners.modals.create') --}}
+                    {{-- @include('admin.promotions.modals.create') --}}
+                    {{-- @endsection --}}
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+@endsection

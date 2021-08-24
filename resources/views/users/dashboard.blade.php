@@ -158,6 +158,7 @@ $(function () {
                                                 <th scope="col">Total ROIs</th>
                                                 <th scope="col">Recieved ROIs</th>
                                                 <th scope="col">Progress</th>
+                                                <th scope="col">action</th>
                                             </tr>
                                         </thead>
                                             <tbody>
@@ -180,8 +181,9 @@ $(function () {
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td><a href="{{route('user.rois',$inv->id)}}" class="btn btn-primary">Details</a></td>
                                                     </tr>
-                                                @endforeach 
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
