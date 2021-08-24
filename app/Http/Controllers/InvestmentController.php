@@ -28,6 +28,9 @@ class InvestmentController extends Controller
              $investment->status = 1;
              $investment->save();
 
+             // Create Transaction
+             trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at);
+
             //Create ROIs record
             $now = Carbon::now();
             $enddate = Carbon::now();
@@ -63,7 +66,6 @@ class InvestmentController extends Controller
             }elseif($package->roi_type=="monthly"){
                 $date = $now;
                 $months = $now->diffInMonths($enddate);
-//                dd($months);
                 for($i = 1; $i <= $months; $i++){
                     $date = $date->addMonth();
                     $roi = new Roi();

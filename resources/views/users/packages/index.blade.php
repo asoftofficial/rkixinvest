@@ -50,7 +50,7 @@ $('#investModal').on('show.bs.modal', function(e) {
                    <span class="list-name">{{ $pack->roi_type }} ROI</span>
                    <span class="icon check"><i class="fas fa-check-circle"></i></span>
                </li>
-               <button class="btn btn-info blue-bg round-10 invest"  data-toggle="modal" data-target="#investModal" data-id="{{ $pack->id }}">purchase</button>
+               <button class="btn btn-info blue-bg round-10 invest"  data-toggle="modal" data-target="#investModal" data-id="{{ $pack->id }}">Invest Now</button>
            </div>
        </div>
     @endforeach
