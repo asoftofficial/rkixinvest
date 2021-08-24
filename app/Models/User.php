@@ -44,6 +44,10 @@ class User extends Authenticatable
     public function referrals(){
         return $this->hasMany(Referral::class);
     }
+    public function investments()
+    {
+        return $this->hasMany(Investment::class);
+    }
 
 
 }
