@@ -16,7 +16,7 @@ class CreateRoisTable extends Migration
         Schema::create('rois', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('package_id');
+            $table->integer('investment_id');
             $table->string('amount');
             $table->tinyInteger('status');
             $table->timestamp('date');

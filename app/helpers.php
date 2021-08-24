@@ -54,4 +54,12 @@ function getdays($now=NULL,$enddate=NULL,$duration,$type){
     }
     return $enddate;
 }
+function get_percentage($total, $number)
+{
+  if ( $total > 0 ) {
+   return round(($number * 100) / $total, 2);
+  } else {
+    return 0;
+  }
+}
 ?>
