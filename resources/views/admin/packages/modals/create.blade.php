@@ -1,19 +1,13 @@
-<div
-    class="modal fade"
-    id="addIssuesModal"
-    tabindex="-1"
-    role="dialog"
-    aria-hidden="true">
+<div class="modal fade" id="addIssuesModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-610" role="document">
         <div class="modal-content issue-padd">
             <div class="modal-header pb-0">
                 <h5 class="modal-title" id="exampleModalLabel mt-0">Create a Package</h5>
             </div>
+            <form action="{{route('admin.packages.store')}}"
+                  enctype="multipart/form-data"
+                  method="post">
             <div class="modal-body  pt-0">
-                <form
-                    action="{{route('admin.packages.store')}}"
-                    enctype="multipart/form-data"
-                    method="post">
                     @csrf
                     <div class="form-group">
                         <label for="text" class="input-label mb-0">Package Name:</label>
@@ -149,45 +143,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="row mt-3">
-                                        <div class="col-md-12">
-                                            <div class="row">
-
-                                                <div class="col-md-12">
-                                                    <div class="gap">
-                                                        <h4 class="input-label">Choose packaeg Image</h4>
-                                                        <div class="input-group mb-3 ">
-                                                            <div class="custom-file">
-                                                                <input type="file" name="image" required="" class="custom-file-input">
-                                                                    <label class="custom-file-label upload-sec bg-light" for="inputGroupFile02">Browse</label>
-                                                                </div>
-                                                                @error('image')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
-                                        {{-- <div class="form-group">
-                                            <label for="text" class="input-label">Description</label>
-                                            <textarea
-                                                rows="6"
-                                                class="form-control bg-light border-0 round-10"
-                                                name="description"
-                                                required=""
-                                                id="description">{{old('desc')}}</textarea>
-                                            @error('desc')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div> --}}
-
                                         <div class="d-flex justify-content-center">
                                             <button
                                                 type="button"
@@ -199,4 +154,3 @@
             </div>
         </div>
     </div>
-</div>
