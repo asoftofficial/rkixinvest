@@ -25,15 +25,16 @@ Welcome back,
                                                 <th scope="col">Investment ID</th>
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Date</th>
+                                                {{-- <th scope="col">Date</th> --}}
                                             </tr>
                                         </thead>
                                             <tbody>
-                                                @foreach ($investment->rois as $item)
+                                                @foreach ($investment->rois as $roi)
                                                     <tr>
-                                                        <td>{{$item->investment_id}}</td>
-                                                        <td>{{$item->amount}}</td>
-                                                        <td>{{$item = $item->status==1 ? 'Active' : 'Expired'}}</td>
+                                                        <td>{{$roi->investment_id}}</td>
+                                                        <td>{{$roi->amount}}</td>
+                                                        <td>{{$roi = $roi->status==1 ? 'Pending' : 'Received'}}</td>
+                                                        {{-- <td>{{dd($roi->date)}}</td> --}}
                                                     </tr>
                                                 @endforeach
                                             </tbody>

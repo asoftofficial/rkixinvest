@@ -12,7 +12,7 @@ class RoiController extends Controller
 {
     public function index($id)
     {
-        $investment = Investment::find($id);
-        return view('users.Rois.index',compact('investment'));
+        $data['investment'] = Investment::find($id);
+        return view('users.rois.index',$data);
     }
 }
