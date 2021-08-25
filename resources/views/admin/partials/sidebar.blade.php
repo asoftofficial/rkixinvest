@@ -120,6 +120,13 @@
                                       <p>Funds settings</p>
                                     </a>
                                   </li>
+                                  <li class="nav-item ml-2">
+                                    <a href="{{route('admin.referral.bonus')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('backend/img/icons/referral_icon.png')}}" alt="">
+                                      <p>Referral bonus</p>
+                                    </a>
+                                  </li>
                                    <li class="nav-item ml-2">
                                     <a href="{{route('admin.show.kyc.settings')}}"
                                     class="nav-link">

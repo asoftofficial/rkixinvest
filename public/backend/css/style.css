@@ -336,7 +336,9 @@ section.admin-search-area {
     padding: 7px;
     border-radius: 34px !important;
     width: 100%;
+
 }
+
 @media(max-width: 606px){
     section.admin-search-area {
         flex-direction: column;

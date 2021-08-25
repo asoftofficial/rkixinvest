@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\photoController;
+use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
 use App\Http\Controllers\Users\DashboardController;
@@ -60,6 +61,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('user/funds',[UserController::class,'showFundsForm'])->name('show.fund');
     Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');
     Route::post('sub/funds',[UserController::class,'subFund'])->name('sub.fund');
+    Route::get('referral/bonus',[ReferralbonusController::class,'refbonus'])->name('referral.bonus');
 
     //reward routes
     Route::get('reward',[rewardController::class,'index'])->name('reward.index');
