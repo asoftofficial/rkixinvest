@@ -18,14 +18,10 @@ class CheckInvestments
     public function handle(Request $request, Closure $next)
     {
         if(!empty(auth()->user())){
-            //Get all investments
-            foreach(auth()->user()->investments as $investment){
-                //check if investment is active
-                if($investment->status==1){
-                    //get all ROIs records
-                    foreach($investment->rois as $roi){
-                        //check if ROI is pendding
-                        if($roi->status==1){
+            //Get all active investments
+            foreach(auth()->user()->investments->where('status',1)->get() as $investment){
+                    //get all pending ROIs records
+                    foreach($investment->rois->where('status',1)->get() as $roi){
                             //check if this user eligible for roi
                             if(Carbon::now() >= $roi->roi_date){
                                 // add user balance
@@ -37,9 +33,7 @@ class CheckInvestments
                                 $roi->status = 0;
                                 $roi->update();
                             }
-                        }
                     }
-                }
             }
         }
         return $next($request);

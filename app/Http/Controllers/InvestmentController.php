@@ -91,6 +91,8 @@ class InvestmentController extends Controller
                     $roi->save();
                 }
             }
+            //give referral bonus
+
             return back()->with('success','Your Investment placed successfully.');
         }else{
             return back()->with('error','Invalid amount for this package, minimum investment is '.$package->min_invest.' and maximum investment is '.$package->max_invest);
