@@ -94,7 +94,7 @@ class InvestmentController extends Controller
             }
             //give referral bonus
             $totalLevels = Referralbonus::count();
-            $levels = Referralbonus::lateast();
+            $levels = Referralbonus::latest();
             $parentId = getparent($user->id);
             foreach($levels as $level){
                 //check if got parent Id
@@ -107,7 +107,7 @@ class InvestmentController extends Controller
                         $parent->balance += $bonus;
                         $parent->update();
                         // Create Transaction
-                        trx($parent->id,$investment->amount,'2','');
+                        trx($parent->id,$bonus,'1','Referral level '.$level->id.' bonus from '.$parent->username.' at '.\Carbon\Carbon::now());
                     }
                 }else{
                     break;

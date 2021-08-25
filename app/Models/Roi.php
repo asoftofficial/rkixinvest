@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Roi extends Model
 {
     use HasFactory;
-    // protected $fillable = ['date'];
     protected $guarded=[];
 }
