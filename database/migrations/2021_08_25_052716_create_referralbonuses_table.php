@@ -14,7 +14,7 @@ class CreateReferralbonusesTable extends Migration
     public function up()
     {
         Schema::create('referralbonuses', function (Blueprint $table) {
-            $table->integer('id')->unique();
+            $table->id();
             $table->string('bonus')->default(0);
             $table->timestamps();
         });

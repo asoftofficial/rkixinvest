@@ -10,4 +10,9 @@ class ReferralbonusController extends Controller
     {
         return view('admin.referral.index');
     }
+
+    public function update(Request $request)
+    {
+        dd($request);
+    }
 }

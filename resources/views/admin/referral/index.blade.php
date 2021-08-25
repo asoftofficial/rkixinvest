@@ -43,10 +43,11 @@ Create referral
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-bold mt-3 mb-3">Referral level bonus</h1>
-            <form action="" method="POST">
+            <form action="{{route('admin.referrals.post')}}" method="POST">
                 @csrf
                 <div class="ref-bonuses">
                 </div>
+                <button class="btn btn-primary btn-blue saveReferrals px-5" style="display: none">Save</button>
             </form>
         </div>
     </div>
@@ -56,18 +57,20 @@ Create referral
 @endsection
 @push('script')
     <script>
-        $("#refLevels").on("keypress keyup blur",function (event) {
+        $("#refLevels").on("keypress",function (event) {
             $(this).val($(this).val().replace(/[^\d].+/, ""));
             if ((event.which < 48 || event.which > 57)) {
                 event.preventDefault();
             }
         });
         $('.createLevels').click(function(){
-            if($('#refLevels').val()<=100){
+            let refLevels = $('#refLevels').val();
+            if(refLevels<=100){
                 $('.ref-bonuses').html("");
-                for(var i=1; i<=$('#refLevels').val(); i++){
+                for(var i=1; i<=refLevels; i++){
                     $('.ref-bonuses').append(" <div class='row'><div class='col-md-12'><div class='gap mt-3'><div class='d-flex justify-content-between'><h4 class='input-label align-self-center'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
                 }
+                $('.saveReferrals').slideDown();
             }else{
                 alert('too large value')
             }
