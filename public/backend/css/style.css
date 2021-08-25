@@ -423,6 +423,18 @@ section.adminside-profile h2 {
         max-width: 100% !important;
     }
 }
+@media only screen and (max-width:430px) {
+    input.form-control.bg-white.round-10.border-0.bonusinput {
+    max-width: 100% !important;
+}
+    .refbonus-div{
+            display: flex;
+            flex-direction: column;
+    }
+    .reflabel {
+    align-self: start !important;
+    }
+}
 @media(max-width: 425px){
     .adminside-billin-info-inner p {
         min-width: 100%;

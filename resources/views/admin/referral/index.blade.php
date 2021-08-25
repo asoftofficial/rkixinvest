@@ -17,6 +17,13 @@ Create referral
         input.form-control.bg-white.round-10.border-0.bonusinput {
     max-width: 240px;
 }
+     .refbonus-div{
+            display: flex;
+            justify-content: space-between;
+        }
+        .reflabel{
+            align-self: center;
+        }
     </style>
 @endpush
 @section('content')
@@ -47,7 +54,7 @@ Create referral
                 @csrf
                 <div class="ref-bonuses">
                 </div>
-                <button class="btn btn-primary btn-blue saveReferrals px-5" style="display: none">Save</button>
+                <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3" style="display: none">Save</button>
             </form>
         </div>
     </div>
@@ -68,7 +75,7 @@ Create referral
             if(refLevels<=100){
                 $('.ref-bonuses').html("");
                 for(var i=1; i<=refLevels; i++){
-                    $('.ref-bonuses').append(" <div class='row'><div class='col-md-12'><div class='gap mt-3'><div class='d-flex justify-content-between'><h4 class='input-label align-self-center'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
+                    $('.ref-bonuses').append(" <div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
                 }
                 $('.saveReferrals').slideDown();
             }else{
