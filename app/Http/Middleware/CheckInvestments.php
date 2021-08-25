@@ -19,9 +19,9 @@ class CheckInvestments
     {
         if(!empty(auth()->user())){
             //Get all active investments
-            foreach(auth()->user()->investments->where('status',1)->get() as $investment){
+            foreach(auth()->user()->investments->where('status',1) as $investment){
                     //get all pending ROIs records
-                    foreach($investment->rois->where('status',1)->get() as $roi){
+                    foreach($investment->rois->where('status',1) as $roi){
                             //check if this user eligible for roi
                             if(Carbon::now() >= $roi->roi_date){
                                 // add user balance
