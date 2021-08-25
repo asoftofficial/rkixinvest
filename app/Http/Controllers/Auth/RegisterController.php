@@ -141,13 +141,17 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+         $set = GeneralSettings::first();
+        if($set->email_verification=="off"){
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        Session::flash("message", "Your account has created successfully!please check your email");
-        // return $this->registered($request, $user)
-        //     ?: redirect('/login');
-        return redirect()->route('verification_form');
-
+        Session::flash("message", "Your account has created successfully");
+        return $this->registered($request, $user)
+            ?: redirect('/login');
+        }else{
+            Session::flash("message", "Your account has created successfully! check your emai to verify your account");
+            return redirect()->route('verification_form');
+        }
     }
 
 

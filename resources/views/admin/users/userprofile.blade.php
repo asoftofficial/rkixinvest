@@ -138,7 +138,7 @@ user profile
     <div class="col-12">
         <div class="container emp-profile">
             @if(Session::has('message'))
-            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
             @endif
             <div class="row">
                 <div class="col-md-4">

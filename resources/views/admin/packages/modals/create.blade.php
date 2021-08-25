@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-center mt-3">
                                             <button
                                                 type="button"
                                                 class="btn btn-outline-blue px-4 mr-1 px-5"
