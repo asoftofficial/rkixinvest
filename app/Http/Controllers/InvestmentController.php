@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Investment;
 use App\Models\Package;
+use App\Models\Referralbonus;
 use App\Models\Roi;
 use App\Models\User;
 use Carbon\CarbonPeriod;
@@ -92,6 +93,28 @@ class InvestmentController extends Controller
                 }
             }
             //give referral bonus
+            $totalLevels = Referralbonus::count();
+            $levels = Referralbonus::lateast();
+            $parentId = getparent($user->id);
+            foreach($levels as $level){
+                //check if got parent Id
+                if($parentId>0){
+                    //Check if parent available in users table
+                    $parent = User::find($parentId);
+                    if(!empty($parent)){
+                        //Update parent bonus
+                        $bonus = ($level->bonus / 100) * $investment->amount;
+                        $parent->balance += $bonus;
+                        $parent->update();
+                        // Create Transaction
+                        trx($parent->id,$investment->amount,'2','');
+                    }
+                }else{
+                    break;
+                }
+                // get next parent
+                $parentId = getparent($parent->id);
+            }
 
             return back()->with('success','Your Investment placed successfully.');
         }else{

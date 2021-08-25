@@ -37,7 +37,7 @@ Create referral
                             <h4 class="input-label mt-2">Referral Levels</h4>
                                 <div id="refdiv">
                                     <input type="text" class="form-control bg-white round-10 border-0" name="refLevels" id="refLevels">
-                                    <button type="button" class="btn btn-blue round-10 border-0 text-white px-5 createLevels"> Create </button>
+                                    <button type="button" class="btn btn-blue round-10 border-0 text-white px-5 createLevels" disabled="TRUE"> Create </button>
                                 </div>
                         </div>
                 </div>
@@ -53,6 +53,12 @@ Create referral
             <form action="{{route('admin.referrals.post')}}" method="POST">
                 @csrf
                 <div class="ref-bonuses">
+                    @if(!empty($referrals))
+                        @foreach($referrals as $ref)
+                            <div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level {{$ref->id}} bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' value="{{$ref->bonus}}" name='bonuses[]'></div></div></div></div>
+                        @endforeach
+                            <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3">Save</button>
+                    @endif
                 </div>
                 <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3" style="display: none">Save</button>
             </form>
@@ -64,18 +70,24 @@ Create referral
 @endsection
 @push('script')
     <script>
-        $("#refLevels").on("keypress",function (event) {
+        $("#refLevels").on("keypress keyup blur",function (event) {
             $(this).val($(this).val().replace(/[^\d].+/, ""));
             if ((event.which < 48 || event.which > 57)) {
                 event.preventDefault();
+            }else{
+                $(".createLevels").removeAttr("disabled");
             }
+            if($(this).val()==""){
+                $(".createLevels").attr("disabled","TRUE");
+            }
+
         });
         $('.createLevels').click(function(){
             let refLevels = $('#refLevels').val();
             if(refLevels<=100){
                 $('.ref-bonuses').html("");
                 for(var i=1; i<=refLevels; i++){
-                    $('.ref-bonuses').append(" <div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
+                    $('.ref-bonuses').append("<div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
                 }
                 $('.saveReferrals').slideDown();
             }else{
