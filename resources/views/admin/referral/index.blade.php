@@ -26,20 +26,12 @@ Create referral
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                            <div class="row justify-content-end">
-                                <button class="btn btn-blue round-10 border-0 text-white px-5 mr-4 p-2">Save</button>
-                            </div>
                         <div class="gap">
                             <h4 class="input-label mt-2">Referral Levels</h4>
                                 <div id="refdiv">
                                     <input type="text" class="form-control bg-white round-10 border-0" name="refLevels" id="refLevels">
                                     <button type="button" class="btn btn-blue round-10 border-0 text-white px-5 createLevels"> Create </button>
                                 </div>
-                                @error('refbonus')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                         </div>
                 </div>
             </div>
@@ -51,9 +43,11 @@ Create referral
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-bold mt-3 mb-3">Referral level bonus</h1>
-            <div class="ref-bonuses">
-
-            </div>
+            <form action="" method="POST">
+                @csrf
+                <div class="ref-bonuses">
+                </div>
+            </form>
         </div>
     </div>
 
@@ -72,7 +66,7 @@ Create referral
             if($('#refLevels').val()<=100){
                 $('.ref-bonuses').html("");
                 for(var i=1; i<=$('#refLevels').val(); i++){
-                    $('.ref-bonuses').append(" <div class='row'><div class='col-md-12'><div class='gap mt-3'><div class='d-flex justify-content-between'><h4 class='input-label'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
+                    $('.ref-bonuses').append(" <div class='row'><div class='col-md-12'><div class='gap mt-3'><div class='d-flex justify-content-between'><h4 class='input-label align-self-center'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
                 }
             }else{
                 alert('too large value')

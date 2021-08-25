@@ -81,9 +81,6 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals');
 
 });
-
-
-Route::get('photo/form',[photoController::class,'photoform'])->name('photo.form');
-Route::post('photo/store',[photoController::class,'photostore'])->name('photo.store');
