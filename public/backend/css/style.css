@@ -413,6 +413,16 @@ section.adminside-profile h2 {
 .adminside-billin-info-inner p {
     min-width: 300px;
 }
+
+@media only screen and (max-width:470px) {
+    div#refdiv {
+    flex-direction: column;
+}
+    input#refLevels {
+        margin-bottom: 20px;
+        max-width: 100% !important;
+    }
+}
 @media(max-width: 425px){
     .adminside-billin-info-inner p {
         min-width: 100%;
