@@ -94,7 +94,7 @@ class InvestmentController extends Controller
             }
             //give referral bonus
             $totalLevels = Referralbonus::count();
-            $levels = Referralbonus::latest();
+            $levels = Referralbonus::latest()->get();
             $parentId = getparent($user->id);
             foreach($levels as $level){
                 //check if got parent Id
