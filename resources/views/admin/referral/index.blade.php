@@ -26,7 +26,7 @@ Create referral
                         <div class="gap">
                             <h4 class="input-label mt-2">Referral level</h4>
                                 <div class="d-flex justify-content-between" id="refdiv">
-                                <input type="text" class="form-control bg-white round-10 border-0 pb-3" name="refbonus" value="{{old('refbonus')}}" id="refbonus">
+                                <input type="text" class="form-control bg-white round-10 border-0" name="refbonus" value="{{old('refbonus')}}" id="refbonus">
                                 <input type="submit" value="Create bonus" class="btn btn-blue round-10 border-0 text-white">
                             </div>
                                 @error('refbonus')
@@ -52,7 +52,7 @@ Create referral
                         {{-- <h4 class="input-label mt-2">Referral level</h4> --}}
                             <div class="d-flex justify-content-between">
                                 <h4 class="input-label">Level 1 bonus</h4>
-                                <input type="text" class="form-control bg-white round-10 border-0 pb-3" name="levels" id="refbonus">
+                                <input type="text" class="form-control bg-white round-10 border-0" name="levels" id="refbonus">
                         </div>
                             @error('levels')
                                 <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@ Create referral
                         {{-- <h4 class="input-label mt-2">Referral level</h4> --}}
                             <div class="d-flex justify-content-between">
                                 <h4 class="input-label">Level 2 bonus</h4>
-                                <input type="text" class="form-control bg-white round-10 border-0 pb-3" name="levels" id="refbonus">
+                                <input type="text" class="form-control bg-white round-10 border-0" name="levels" id="refbonus">
                         </div>
                             @error('levels')
                                 <span class="invalid-feedback" role="alert">
@@ -84,7 +84,7 @@ Create referral
                         {{-- <h4 class="input-label mt-2">Referral level</h4> --}}
                             <div class="d-flex justify-content-between">
                                 <h4 class="input-label">Level 3 bonus</h4>
-                                <input type="text" class="form-control bg-white round-10 border-0 pb-3" name="levels" id="refbonus">
+                                <input type="text" class="form-control bg-white round-10 border-0" name="levels" id="refbonus">
                         </div>
                             @error('levels')
                                 <span class="invalid-feedback" role="alert">
