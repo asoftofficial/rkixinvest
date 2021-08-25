@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = auth()->user()->transactions;
+        $transactions = auth()->user()->transactions()->paginate(25);
         return view('users.transactions.transactions',compact('transactions'));
     }
 }

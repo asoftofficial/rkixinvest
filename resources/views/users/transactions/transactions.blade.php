@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('users.layouts.default')
 @section('page-title')
 Transactions
 @endsection
@@ -35,13 +35,14 @@ Transactions
                 @foreach($transactions as $item)
                 <tr class="bg-light">
                     <td>{{$item->id}}</td>
-                    <td>{{$item->type}}</td>
+                    <td class="{{$item->type==1 ? 'text-success' : 'text-danger'}}">{{$item->type==1 ? 'Credit' : 'Debit'}}</td>
                     <td>{{$item->amount}}</td>
                     <td>{{$item->description}}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {!! $transactions->render('admin.custom-paginator') !!}
     </div>
 </section>
 </div>
