@@ -99,4 +99,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
     Route::get('frontemd/testimonial',[App\Http\Controllers\Admin\TestimonialController::class,'index'])->name('testimonial.index');
     Route::post('frontemd/testimonial/store',[App\Http\Controllers\Admin\TestimonialController::class,'store'])->name('testimonial.store');
+    Route::get('frontend/testimonial/edit/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'edit'])->name('testimonial.edit');
+    Route::post('frontend/testimonial/update/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'update'])->name('testimonial.update');
+    Route::delete('frontend/testimonial/delete/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'destroy'])->name('testimonial.delete');
 });
