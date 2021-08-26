@@ -5,6 +5,9 @@
 @section('page-subtitle')
     Welcome back,
 @endsection
+@section('header-right')
+    <a href="{{route('admin.withdraw.gateways.create')}}" class="btn btn-primary btn-blue header-right-btn">Add Method</a>
+@endsection
 @push('style')
 
 @endpush

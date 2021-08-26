@@ -13,4 +13,24 @@ class WithdrawMethodController extends Controller
         $data['methods'] = WithdrawalMethod::orderBy('status','desc')->orderBy('id')->get();
         return view('admin.withdraw.index', $data);
     }
+
+    public function activate(Request $request)
+    {
+        $request->validate(['id' => 'required|integer']);
+        $method = WithdrawalMethod::findOrFail($request->id);
+        $method->status = 1;
+        $method->save();
+        $notify[] = ['success', $method->name . ' has been activated.'];
+        return redirect()->route('admin.withdraw.method.index')->withNotify($notify);
+    }
+
+    public function deactivate(Request $request)
+    {
+        $request->validate(['id' => 'required|integer']);
+        $method = WithdrawalMethod::findOrFail($request->id);
+        $method->status = 0;
+        $method->save();
+        $notify[] = ['success', $method->name . ' has been deactivated.'];
+        return redirect()->route('admin.withdraw.method.index')->withNotify($notify);
+    }
 }

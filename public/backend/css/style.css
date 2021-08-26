@@ -90,6 +90,9 @@
     border: 1px solid var(--blue);
     color: var(--blue);
 }
+.header-right-btn{
+    max-height: 48px;
+}
 .title-right-btn {
     color: #989595;
     font-size: 15px;
