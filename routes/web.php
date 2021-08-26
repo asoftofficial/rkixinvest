@@ -87,8 +87,10 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('general/information',[GeneralSettingsController::class,'generalinfo'])->name('general.info');
     Route::post('general/information/update',[GeneralSettingsController::class,'generalinfoUpdate'])->name('general.info.update');
     Route::post('social/links/update',[GeneralSettingsController::class,'sociallinks'])->name('social.links.update');
-    Route::get('aboutus',[HomepageController::class,'about'])->name('aboutus.settings');
-    Route::post('aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
-    Route::get('steps',[HomepageController::class,'steps'])->name('how.to.settings');
-    Route::post('how/to/update',[HomepageController::class,'stepsUpdate'])->name('how.to.update.settings');
+    Route::get('frontend/aboutus',[HomepageController::class,'about'])->name('aboutus.settings');
+    Route::post('frontend/aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
+    Route::get('frontend/steps',[HomepageController::class,'steps'])->name('how.to.settings');
+    Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
+    Route::get('frontend/testimonial',[HomepageController::class,'testimonial'])->name('testimonial');
+    Route::post('frontend/testimonial/update',[HomepageController::class,'testimonialUpdate'])->name('testimonial.update');
 });

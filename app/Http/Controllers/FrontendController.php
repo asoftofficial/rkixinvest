@@ -12,6 +12,7 @@ class FrontendController extends Controller
     {
         $sociallinks = SocialLink::first();
         $aboutus = Homepage::first();
-        return view('front.index',compact('sociallinks','aboutus'));
+        $data = Homepage::first();
+        return view('front.index',compact('sociallinks','aboutus','data'));
     }
 }

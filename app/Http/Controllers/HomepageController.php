@@ -36,15 +36,18 @@ class HomepageController extends Controller
 
     public function updateHowto(Request $request)
     {
-        dd($request);
         $data = Homepage::first();
         $data->section_title = $request->title;
-        $data->section_heading = $request->heading;
-        $data->section_image = $request->image;
-        $data->section_description = $request->description;
-        $data->button_text = $request->button_text;
-        $data->link = $request->link;
+        $data->step1 = $request->step1;
+        $data->step2 = $request->step2;
+        $data->step3 = $request->step3;
+        $data->step_content = $request->description;
         $data->update();
-        return back()->with('success','about us section updated successfyully');
+        return back()->with('success','how to section updated successfyully');
+    }
+
+    public function testimonial()
+    {
+        return view('admin.settings.frontend-pages.testimonial');
     }
 }

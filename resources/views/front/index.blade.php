@@ -26,30 +26,28 @@
     <!-- How to Section Start-->
     <section class="steps-section bg-light">
         <div class="container text-center">
-            <h2>How to invest</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi illo, perspiciatis fugit blanditiis fuga
-                quas quo laboriosam alias sequi rem, id tempora, error rerum. Fugiat beatae sint repudiandae ab
-                blanditiis?</p>
+            <h2>{{$data->step_title}}</h2>
+            <p>{{$data->step_content}}</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">1</div>
                         <span class="step-icon"></span>
-                        <p>Deposit Amount</p>
+                        <p>{{$data->step1}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">2</div>
                         <span class="step-icon"></span>
-                        <p>Buy Package</p>
+                        <p>{{$data->step2}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">3</div>
                         <span class="step-icon"></span>
-                        <p>Earn Profit</p>
+                        <p>{{$data->step3}}</p>
                     </div>
                 </div>
             </div>

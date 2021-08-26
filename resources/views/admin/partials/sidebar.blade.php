@@ -105,6 +105,13 @@
                                       <p>how-to</p>
                                     </a>
                                   </li>
+                                  <li class="nav-item">
+                                    <a href="{{route('admin.testimonial')}}"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>testimonial</p>
+                                    </a>
+                                  </li>
                                 </ul>
                                 </li>
                                    <li class="nav-item">
