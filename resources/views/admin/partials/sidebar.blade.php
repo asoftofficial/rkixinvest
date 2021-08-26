@@ -81,6 +81,32 @@
                                         </a>
                                     </li>
                                 </li>
+                                <li class="nav-item align-items-center">
+                                <a href=""
+                                class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
+                                  <p>
+                                   manage section
+                                    <i class="fas fa-angle-left right"></i>
+                                  </p>
+                                </a>
+                                <ul class="nav nav-treeview" style="display: none;">
+                                  <li class="nav-item">
+                                    <a href="{{route('admin.aboutus.settings')}}"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>about us</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="{{route('admin.how.to.settings')}}"
+                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                                      <p>how-to</p>
+                                    </a>
+                                  </li>
+                                </ul>
+                                </li>
                                    <li class="nav-item">
                                 <a href=""
                                 class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
@@ -97,6 +123,13 @@
                                     class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
                                     <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
                                       <p>general settings</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item ml-2">
+                                    <a href="{{route('admin.general.info')}}"
+                                    class="nav-link">
+                                    <img src="{{asset('/backend/img/icons/info-icon.png')}}" alt="">
+                                      <p>General info</p>
                                     </a>
                                   </li>
                                    <li class="nav-item ml-2">

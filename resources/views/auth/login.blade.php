@@ -68,10 +68,10 @@
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                           </div>
                                           @if (Route::has('password.request'))
-                                              <span><a href="{{ route('password.request') }}" class="text-red">Forgot password?</a></span>
+                                              <span><a href="{{ route('password.request') }}" class="btn-blue">Forgot password?</a></span>
                                           @endif
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block btn-red">LOG IN</button>
+                                    <button type="submit" class="btn btn-primary btn-block .btn-blue">LOG IN</button>
                             </form>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="login-right-area">
                         <h2>Don't Have an Account Yet?</h2>
                         <p>Register in a few easy steps</p>
-                        <a href="{{ route('register') }}" class="btn btn-primary btn-block btn-red">SIGN UP</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary btn-block .btn-blue">SIGN UP</a>
                     </div>
                 </div>
             </div>

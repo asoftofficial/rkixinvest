@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\admin\GeneralSettings;
+use App\Http\Controllers\admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\DepositGateways;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\photoController;
 use App\Http\Controllers\ReferralbonusController;
@@ -69,18 +70,24 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::delete('reward/delete/{id}',[rewardController::class,'destroy'])->name('reward.destroy');
     Route::post('reward/update/{id}',[rewardController::class,'update'])->name('reward.update');
     //settings routes
-    Route::get('settings',[GeneralSettings::class,'index'])->name('settings.index');
-    Route::post('reward/settings',[GeneralSettings::class,'rewardUpdate'])->name('reward.settings');
-    Route::get('web/settings',[GeneralSettings::class,'Update'])->name('web.settings');
-    Route::get('refrel/settings',[GeneralSettings::class,'refrelUpdate'])->name('refrel.settings');
-    Route::get('fund/settings',[GeneralSettings::class,'fundsSettings'])->name('fund.settings');
-    Route::post('fund/settings',[GeneralSettings::class,'fundupdate'])->name('post.fund.settings');
-    Route::get('show/email/settings',[GeneralSettings::class,'showEmailSettings'])->name('show.email.settings');
-    Route::post('update/email/settings',[GeneralSettings::class,'emailSettings'])->name('update.email.settings');
-    Route::get('show/kyc/settings',[GeneralSettings::class,'showKycSettings'])->name('show.kyc.settings');
-    Route::post('update/kyc/settings',[GeneralSettings::class,'kycSettings'])->name('update.kyc.settings');
+    Route::get('settings',[GeneralSettingsController::class,'index'])->name('settings.index');
+    Route::post('reward/settings',[GeneralSettingsController::class,'rewardUpdate'])->name('reward.settings');
+    Route::get('web/settings',[GeneralSettingsController::class,'Update'])->name('web.settings');
+    Route::get('refrel/settings',[GeneralSettingsController::class,'refrelUpdate'])->name('refrel.settings');
+    Route::get('fund/settings',[GeneralSettingsController::class,'fundsSettings'])->name('fund.settings');
+    Route::post('fund/settings',[GeneralSettingsController::class,'fundupdate'])->name('post.fund.settings');
+    Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
+    Route::post('update/email/settings',[GeneralSettingsController::class,'emailSettings'])->name('update.email.settings');
+    Route::get('show/kyc/settings',[GeneralSettingsController::class,'showKycSettings'])->name('show.kyc.settings');
+    Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
     Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals.post');
-
+    Route::get('general/information',[GeneralSettingsController::class,'generalinfo'])->name('general.info');
+    Route::post('general/information/update',[GeneralSettingsController::class,'generalinfoUpdate'])->name('general.info.update');
+    Route::post('social/links/update',[GeneralSettingsController::class,'sociallinks'])->name('social.links.update');
+    Route::get('aboutus',[HomepageController::class,'about'])->name('aboutus.settings');
+    Route::post('aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
+    Route::get('steps',[HomepageController::class,'steps'])->name('how.to.settings');
+    Route::post('how/to/update',[HomepageController::class,'stepsUpdate'])->name('how.to.update.settings');
 });

@@ -13,13 +13,10 @@
                     <img src="{{ asset('frontend/assets/images/about.png') }}" alt="About RkixInvest">
                 </div>
                 <div class="about-text">
-                    <h3>About Us</h3>
-                    <h2>Boost Your Business.</h2>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
-                        Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-                        words, consectetur,</p>
-                    <a href="#" class="btn blue-iconic-btn">More Details</a>
+                    <h3>{{$aboutus->section_title}}</h3>
+                    <h2>{{$aboutus->section_heading}}</h2>
+                    <p>{{$aboutus->section_description}}</p>
+                    <a href="{{$aboutus->link}}" class="btn blue-iconic-btn">{{$aboutus->button_text}}</a>
                 </div>
             </div>
         </div>

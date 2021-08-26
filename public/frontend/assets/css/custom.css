@@ -6,6 +6,7 @@
     --light-gray:#E1E1DE;
     --grey: #A9A9A9;
     --black: #000;
+    --blue: #3490DC;
   }
 html,body{
     min-height: 100%;
@@ -110,7 +111,7 @@ a.text-red:hover{
     color: var(--white) !important;
 }
 .forgot a{
-    color: var(--red);
+    color: var(--blue) !important;
     font-weight: bold;
     font-size: 12px;
 }
