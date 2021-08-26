@@ -11,6 +11,8 @@ use App\Http\Controllers\photoController;
 use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\TestimonialController as ControllersTestimonialController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -95,6 +97,6 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('frontend/aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
     Route::get('frontend/steps',[HomepageController::class,'steps'])->name('how.to.settings');
     Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
-    Route::get('frontend/testimonial',[HomepageController::class,'testimonial'])->name('testimonial');
-    Route::post('frontend/testimonial/update',[HomepageController::class,'testimonialUpdate'])->name('testimonial.update');
+    Route::get('frontemd/testimonial',[App\Http\Controllers\Admin\TestimonialController::class,'index'])->name('testimonial.index');
+    Route::post('frontemd/testimonial/store',[App\Http\Controllers\Admin\TestimonialController::class,'store'])->name('testimonial.store');
 });

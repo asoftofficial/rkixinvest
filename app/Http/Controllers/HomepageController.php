@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homepage;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -46,8 +47,5 @@ class HomepageController extends Controller
         return back()->with('success','how to section updated successfyully');
     }
 
-    public function testimonial()
-    {
-        return view('admin.settings.frontend-pages.testimonial');
-    }
+
 }

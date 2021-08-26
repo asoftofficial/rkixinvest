@@ -106,7 +106,7 @@
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="{{route('admin.testimonial')}}"
+                                    <a href="{{route('admin.testimonial.index')}}"
                                     class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
                                     <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
                                       <p>testimonial</p>
