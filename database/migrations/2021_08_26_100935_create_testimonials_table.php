@@ -15,11 +15,9 @@ class CreateTestimonialsTable extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->default('testimonial');
-            $table->string('heading')->default('what client says');
-            $table->string('content')->nullable();
-            $table->string('username')->default('azeem');
-            $table->string('designation')->default('developer');
+            $table->text('content')->nullable();
+            $table->string('username')->nullable();
+            $table->string('designation')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

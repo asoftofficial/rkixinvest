@@ -19,6 +19,21 @@ $('.custom-file-input').change(function (e) {
 $(function () {
     $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
 });
+
+$(".delete").click(function (e) {
+    console.log("asdhsakdash")
+    swal(
+        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+    ).then((willDelete) => {
+        if (willDelete) {
+            var reward_id = $(this).attr('data-id');
+            var url = "{{route('admin.testimonial.delete', 'id')}}";
+            url = url.replace('id', reward_id);
+            $("#delete-form").attr('action', url);
+            $("#delete-form").submit();
+        }
+    });
+});
 </script>
 @endpush
 @section('content')
@@ -65,7 +80,9 @@ $(function () {
                     </th>
                     <th scope="col">posted at
                     </th>
+                    <th scope="col">actions
                     </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -74,23 +91,24 @@ $(function () {
                     <td>{{$item->id}}</td>
                     <td>{{$item->username}}</td>
                     <td>{{$item->designation}}</td>
-                    <td>{{$item->content}}</td>
+                    <td>{{Str::limit($item->content,20)}}</td>
                     <td>{{$item->created_at}}</td>
-                    {{-- <td style="min-width: 256px; text-align: right">
+                    <td style="min-width: 256px; text-align: right">
                         <a href="#" class="mr-2">
-                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)'></i>
+                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)' data-target="#showTestimonialModal"
+                            data-toggle="modal"></i>
                         </a>
                         <a
                             href="#"
                             class="btn btn-info blue-bg round-10 px-5 mr-2"
-                            data-target="#editRewardModal-{{$item->id}}"
+                            data-target="#editTestimonialModal-{{$item->id}}"
                             data-toggle="modal">Edit</a>
                         <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a> --}}
+                        </a>
                     </td>
                 </tr>
-                {{-- @include('admin.reward.modals.edit')  --}}
+                @include('admin.settings.frontend-pages.modals.testimonial.edit')
                 @endforeach
             </tbody>
         </table>
@@ -102,4 +120,12 @@ $(function () {
 
 {{-- Add testimonialModel  --}}
 @include('admin.settings.frontend-pages.modals.testimonial.create')
+<form action = "" method = "post" id = "delete-form" >
+    @csrf
+@method('delete') </form>
+@endsection
+
+
+@section('content')
+
 @endsection

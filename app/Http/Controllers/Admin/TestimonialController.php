@@ -22,12 +22,35 @@ class TestimonialController extends Controller
             'designation' => 'required',
             'description'     => 'required',
         ]);
-
-        $testimonials = new Testimonial();
-        $testimonials->username = $request->username;
-        $testimonials->designation =$request->designation;
-        $testimonials->content = $request->description;
-        $testimonials->create();
+        Testimonial::create([
+            'username'=>$request->username,
+            'content'=>$request->description,
+            'designation'=>$request->designation,
+        ]);
         return back()->with('success','you have created testimonial successfully');
+        // $testimonials = new Testimonial;
+        // dd($testimonials);
+        // $testimonials->username = $request->username;
+        // $testimonials->designation =$request->designation;
+        // $testimonials->content = $request->description;
+        // $testimonials->create();
+        // return back()->with('success','you have created testimonial successfully');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $testimonials = Testimonial::find($id);
+        $testimonials->username = $request->username;
+        $testimonials->designation = $request->designation;
+        $testimonials->content = $request->description;
+        $testimonials->update();
+        return back()->with('success','testimonial updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $testimonial = Testimonial::find($id);
+        $testimonial->delete();
+        return back()->with('success','testimonial deleted');
     }
 }
