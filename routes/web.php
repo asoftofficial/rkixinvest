@@ -82,6 +82,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    Route::get('withdraw/gateways',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'index'])->name('withdraw.geteways');
     Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals.post');
     Route::get('general/information',[GeneralSettingsController::class,'generalinfo'])->name('general.info');
     Route::post('general/information/update',[GeneralSettingsController::class,'generalinfoUpdate'])->name('general.info.update');
