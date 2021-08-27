@@ -415,6 +415,7 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
 
         //seeding for about us page and how-to page
         Homepage::create([
+            'section_image'=> 'uploads/aboutus/aboutus_29777_1630048426_.png',
              'section_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla, ipsum quis pellentesque molestie, ligula neque pretium ipsum, sit amet facilisis odio enim eu mauris.',
               'step_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi illo, perspiciatis fugit blanditiis fuga quas quo laboriosam alias sequi rem, id tempora, error rerum. Fugiat beatae sint repudiandae ab blanditiis?',
         ]);
@@ -430,11 +431,13 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
                             of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
                             a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
                             Latin words,',
+            'image' => 'uploads/testimonial/testimonial_79606_1630048824_.jpg',
         ]);
 
         //seeding for reward
         Reward::create([
             'description' => 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
+
         ]);
 
         //Slider seeding
