@@ -104,18 +104,13 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         $package = Package::findOrFail($id);
-        if($request->hasFile('image')){
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/packages/');
-            $full_path = '/uploads/packages/'.$fileName;
-            $check = $request->file('image')->move($upload_path, $fileName);
-            // $packages->file_path  = $full_path;
-        }
-
-        $package->name        = $request->name;
-        $package->description = $request->description;
-        $package->status      = $request->status;
+        $package->title         = $request->name;
+        $package->min_invest    = $request->min_invest;
+        $package->max_invest    = $request->max_invest;
+        $package->roi           = $request->roi;
+        $package->roi_type      = $request->roi_type;
+        $package->duration      = $request->duration;
+        $package->duration_type = $request->duration_type;
         $package->update();
         return back()->with("success", "package Updated Successfully!");
     }

@@ -37,7 +37,6 @@ class rewardController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'title' => ['required','string','max:255'],
             'amount'=> ['required','integer'],
@@ -46,13 +45,20 @@ class rewardController extends Controller
             'description' => ['required'],
 
         ]);
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = "reward_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+        $upload_path = public_path('uploads/reward/');
+        $full_path = '/uploads/reward/'.$fileName;
+        $request->file('image')->move($upload_path, $fileName);
+        $file_path  = $full_path;
 
+        $status = $request->status ? 'enabled' : 'disabled';
         Reward::create([
             'title' => $request->title,
             'amount' => $request->amount,
-            'status' => $request->status,
+            'status' => $status,
             'referral' =>$request->referral,
-            'image' => $request->image,
+            'image' => $file_path,
             'description' =>$request->description,
         ]);
 
@@ -91,18 +97,20 @@ class rewardController extends Controller
     public function update(Request $request, $id)
     {
         $reward = Reward::findOrFail($id);
-        // if($request->hasFile('image')){
-        //     $extension = $request->file('image')->getClientOriginalExtension();
-        //     $fileName = "reward_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        //     $upload_path = public_path('uploads/reward/');
-        //     $full_path = '/uploads/reward/'.$fileName;
-        //     $check = $request->file('image')->move($upload_path, $fileName);
-        //     $reward->file_path = $full_path;
-        // }
+        if($request->hasFile('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = "reward_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/reward/');
+            $full_path = '/uploads/reward/'.$fileName;
+            $request->file('image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $reward->image   = $file_path;
+        }
+        $status = $request->status ? 'enabled' : 'disabled';
         $reward->title       = $request->title;
         $reward->amount       = $request->amount;
-        $reward->status    = $request->status;
-        $reward->refrel = $request->refrel;
+        $reward->status    = $status;
+        $reward->referral = $request->refrel;
         $reward->description   = $request->description;
         $reward->update();
         return redirect()->back()->with("success", "reward Updated Successfully!");

@@ -122,13 +122,7 @@
 
                                     <div class="form-group">
                                         <label for="text" class="input-label">Description</label>
-                                        <textarea
-                                            rows="6"
-                                            class="form-control bg-light border-0 round-10"
-                                            name="description"
-                                            required=""
-                                            id="description">
-                                            {{old('desc')}}</textarea>
+                                        <textarea rows="6" class="form-control bg-light border-0 round-10" name="description" required="" id="description">{{old('desc')}}</textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

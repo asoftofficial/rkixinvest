@@ -44,8 +44,8 @@
                                                 name="status"
                                                 required=""
                                                 class="form-control bg-light round-10 border-0 mb-4">
-                                                <option value="activate" class="sel-v">Activate</option>
-                                                <option value="suspend" class="sel-v">Suspend</option>
+                                                <option value="enabled" class="sel-v">enabled</option>
+                                                <option value="disabled" class="sel-v">disabled</option>
                                             </select>
                                             @error('status')
                                             <span class="invalid-feedback" role="alert">
@@ -131,8 +131,7 @@
                                             class="form-control bg-light border-0 round-10"
                                             name="description"
                                             required=""
-                                            id="description">
-                                            {{old('description',$item->description)}}</textarea>
+                                            id="description">{{old('description',$item->description)}}</textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -32,13 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="body" class="input-label">Body of email</label>
-                            <textarea
-                                rows="6"
-                                class="form-control bg-light border-0 round-10"
-                                name="body"
-                                required=""
-                                id="emaildescription">
-                                {{old('body')}}</textarea>
+                            <textarea rows="6" class="form-control bg-light border-0 round-10" name="body" required="" id="emaildescription">{{old('body')}}</textarea>
                             @error('body')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
