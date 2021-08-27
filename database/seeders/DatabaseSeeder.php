@@ -409,7 +409,8 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
     <tr>
       <td height="60"></td>
     </tr>
-  </tbody></table>'
+  </tbody></table>',
+            'email_config' => '{"name":"php"}'
         ]);
 
         //seeding for about us page and how-to page

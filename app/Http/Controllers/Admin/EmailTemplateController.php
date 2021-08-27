@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\GeneralSettings;
 use Illuminate\Http\Request;
 
 class EmailTemplateController extends Controller
@@ -43,7 +44,7 @@ class EmailTemplateController extends Controller
     public function emailSetting()
     {
         $pageTitle = 'Email Configuration';
-        return view('admin.email_template.email_setting', compact('pageTitle'));
+        return view('admin.email_templates.email_settings', compact('pageTitle'));
     }
 
     public function emailSettingUpdate(Request $request)
@@ -80,7 +81,7 @@ class EmailTemplateController extends Controller
             $request->merge(['name' => 'mailjet']);
             $data = $request->only('name', 'public_key', 'secret_key');
         }
-        $general = GeneralSetting::first();
+        $general = GeneralSettings::first();
         $general->mail_config = $data;
         $general->save();
         $notify[] = ['success', 'Email configuration has been updated.'];
@@ -100,13 +101,13 @@ class EmailTemplateController extends Controller
             'email_from' => 'required|email',
         ]);
 
-        $general = GeneralSetting::first();
+        $general = GeneralSettings::first();
         $general->email_from = $request->email_from;
         $general->email_template = $request->email_template;
         $general->save();
 
-        $notify[] = ['success', 'Global email template has been updated.'];
-        return back()->withNotify($notify);
+        $msg = 'Global email template has been updated.';
+        return back()->with('success',$msg);
     }
 
     public function sendTestMail(Request $request)
@@ -115,7 +116,7 @@ class EmailTemplateController extends Controller
             'email' => 'required|email'
         ]);
 
-        $general = GeneralSetting::first();
+        $general = GeneralSettings::first();
         $config = $general->mail_config;
         $receiver_name = explode('@', $request->email)[0];
         $subject = 'Testing ' . strtoupper($config->name) . ' Mail';

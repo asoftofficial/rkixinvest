@@ -67,7 +67,7 @@
                                     <textarea name="email_template" rows="10" class="form-control form-control-lg nicEdit" placeholder="@lang('Your email template')">{{ $settings->email_template }}</textarea>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-block btn--primary mr-2">@lang('Update')</button>
+                            <button type="submit" class="btn btn-block btn-blue text-white mr-2">@lang('Update')</button>
                         </form>
                     </div>
                 </div><!-- card end -->

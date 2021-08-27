@@ -23,6 +23,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->string('address')->default('joharTown,F block,Lahore');
             $table->string('email_from')->default('admin@rkixinvest.com');
             $table->text('email_template')->nullable();
+            $table->text('email_config')->nullable();
             $table->text('description')->nullable();
             $table->enum('referral_system',['on','off'])->default('off');
             $table->integer('referral_levels')->default(1);
