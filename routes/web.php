@@ -7,7 +7,6 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
-use App\Http\Controllers\photoController;
 use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
