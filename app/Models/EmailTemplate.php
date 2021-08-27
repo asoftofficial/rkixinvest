@@ -11,6 +11,6 @@ class EmailTemplate extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'shortcodes' => 'object'
+        'shortcodes' => 'object',
     ];
 }

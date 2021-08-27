@@ -2,6 +2,8 @@
 //Send Email Verification code
 
 use App\Models\Transaction;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 function sendEmailVerificationCode($data,$code){
     Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
@@ -256,4 +258,194 @@ function imagePath()
     ];
     return $data;
 }
+
+function shortCodeReplacer($shortCode, $replace_with, $template_string)
+{
+    return str_replace($shortCode, $replace_with, $template_string);
+}
+function sendEmail($user, $type = null, $shortCodes = [])
+{
+    $general = \App\Models\GeneralSettings::first();
+
+    $emailTemplate = \App\Models\EmailTemplate::where('action', $type)->where('email_status', 1)->first();
+    if (!$emailTemplate) {
+        return;
+    }
+
+
+    $message = shortCodeReplacer("{{fullname}}", $user->fullname, $general->email_template);
+    $message = shortCodeReplacer("{{username}}", $user->username, $message);
+    $message = shortCodeReplacer("{{message}}", $emailTemplate->email_body, $message);
+
+    if (empty($message)) {
+        $message = $emailTemplate->email_body;
+    }
+
+    foreach ($shortCodes as $code => $value) {
+        $message = shortCodeReplacer('{{' . $code . '}}', $value, $message);
+    }
+
+    $config = $general->mail_config;
+
+    $emailLog = new \App\Models\EmailLog();
+    $emailLog->user_id = $user->id;
+    $emailLog->mail_sender = $config->name;
+    $emailLog->email_from = $general->sitename.' '.$general->email_from;
+    $emailLog->email_to = $user->email;
+    $emailLog->subject = $emailTemplate->subj;
+    $emailLog->message = $message;
+    $emailLog->save();
+
+
+    if ($config->name == 'php') {
+        sendPhpMail($user->email, $user->username,$emailTemplate->subj, $message, $general);
+    } else if ($config->name == 'smtp') {
+        sendSmtpMail($config, $user->email, $user->username, $emailTemplate->subj, $message,$general);
+    } else if ($config->name == 'sendgrid') {
+        sendSendGridMail($config, $user->email, $user->username, $emailTemplate->subj, $message,$general);
+    } else if ($config->name == 'mailjet') {
+        sendMailjetMail($config, $user->email, $user->username, $emailTemplate->subj, $message,$general);
+    }
+}
+
+function sendPhpMail($email, $name, $subject, $message,$general,$contact = false)
+{
+    if ($contact) {
+        $headers = "From: $name <$email> \r\n";
+        $headers .= "Reply-To: $name <$email> \r\n";
+        $email = $general->email_from;
+    }else{
+        $headers = "From: $general->sitename <$general->email_from> \r\n";
+        $headers .= "Reply-To: $general->sitename <$general->email_from> \r\n";
+    }
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+    @mail($email, $subject, $message, $headers);
+}
+
+
+function sendSmtpMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
+{
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->isSMTP();
+        $mail->Host       = $config->host;
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $config->username;
+        $mail->Password   = $config->password;
+        if ($config->enc == 'ssl') {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        }else{
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        }
+        $mail->Port       = $config->port;
+        $mail->CharSet = 'UTF-8';
+        //Recipients
+        if ($contact) {
+            $mail->setFrom($receiver_email, $receiver_name);
+            $mail->addAddress($general->email_from, $general->sitename);
+            $mail->addReplyTo($receiver_email, $receiver_name);
+        }else{
+            $mail->setFrom($general->email_from, $general->sitename);
+            $mail->addAddress($receiver_email, $receiver_name);
+            $mail->addReplyTo($general->email_from, $general->sitename);
+        }
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+        $mail->send();
+    } catch (Exception $e) {
+        throw new Exception($e);
+    }
+}
+
+
+function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
+{
+    $sendgridMail = new \SendGrid\Mail\Mail();
+    if ($contact) {
+        $sendgridMail->setFrom($receiver_email, $receiver_name);
+        $sendgridMail->setSubject($subject);
+        $sendgridMail->addTo($general->email_from, $general->sitename);
+    }else{
+        $sendgridMail->setFrom($general->email_from, $general->sitename);
+        $sendgridMail->setSubject($subject);
+        $sendgridMail->addTo($receiver_email, $receiver_name);
+    }
+
+    $sendgridMail->addContent("text/html", $message);
+    $sendgrid = new \SendGrid($config->appkey);
+    try {
+        $response = $sendgrid->send($sendgridMail);
+    } catch (Exception $e) {
+        throw new Exception($e);
+    }
+}
+
+
+function sendMailjetMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
+{
+    $mj = new \Mailjet\Client($config->public_key, $config->secret_key, true, ['version' => 'v3.1']);
+    if ($contact) {
+        $fromMail = $receiver_email;
+        $fromName = $receiver_name;
+        $toMail = $general->email_from;
+        $toName = $general->sitename;
+    }else{
+        $toMail = $receiver_email;
+        $toName = $receiver_name;
+        $fromMail = $general->email_from;
+        $fromName = $general->sitename;
+    }
+    $body = [
+        'Messages' => [
+            [
+                'From' => [
+                    'Email' => $fromMail,
+                    'Name' => $fromName,
+                ],
+                'To' => [
+                    [
+                        'Email' => $toMail,
+                        'Name' => $toName,
+                    ]
+                ],
+                'Subject' => $subject,
+                'TextPart' => "",
+                'HTMLPart' => $message,
+            ]
+        ]
+    ];
+    $response = $mj->post(\Mailjet\Resources::$Email, ['body' => $body]);
+}
+
+function sendGeneralEmail($email, $subject, $message, $receiver_name = '')
+{
+
+    $general = \App\Models\GeneralSettings::first();
+
+
+    if (!$general->email_from) {
+        return;
+    }
+
+    $message = shortCodeReplacer("{{message}}", $message, $general->email_template);
+    $message = shortCodeReplacer("{{fullname}}", $receiver_name, $message);
+    $message = shortCodeReplacer("{{username}}", $email, $message);
+
+    $config = $general->email_config;
+
+    if ($config->name == 'php') {
+        sendPhpMail($email, $receiver_name, $subject, $message, $general);
+    } else if ($config->name == 'smtp') {
+        sendSmtpMail($config, $email, $receiver_name, $subject, $message, $general);
+    } else if ($config->name == 'sendgrid') {
+        sendSendGridMail($config, $email, $receiver_name,$subject, $message,$general);
+    } else if ($config->name == 'mailjet') {
+        sendMailjetMail($config, $email, $receiver_name,$subject, $message, $general);
+    }
+}
+
 ?>

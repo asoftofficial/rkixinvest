@@ -12,7 +12,27 @@
 
 @endpush
 @push('script')
+    <script>
+        (function ($) {
+            "use strict";
 
+            var method = '{{ $settings->email_config->name }}';
+            emailMethod(method);
+            $('select[name=email_method]').on('change', function() {
+                var method = $(this).val();
+                emailMethod(method);
+            });
+
+            function emailMethod(method){
+                $('.configForm').addClass('d-none');
+                if(method != 'php') {
+                    $(`#${method}`).removeClass('d-none');
+                }
+            }
+
+        })(jQuery);
+
+    </script>
 @endpush
 @section('content')
     <div class="container-fluid">
@@ -26,15 +46,15 @@
                                 <div class="form-group col-md-6">
                                     <label class="mb-4">@lang('Email Send Method')</label>
                                     <select name="email_method" class="form-control" >
-                                        <option value="php" @if($general->mail_config->name == 'php') selected @endif>@lang('PHP Mail')</option>
-                                        <option value="smtp" @if($general->mail_config->name == 'smtp') selected @endif>@lang('SMTP')</option>
-                                        <option value="sendgrid" @if($general->mail_config->name == 'sendgrid') selected @endif>@lang('SendGrid API')</option>
-                                        <option value="mailjet" @if($general->mail_config->name == 'mailjet') selected @endif>@lang('Mailjet API')</option>
+                                        <option value="php" @if($settings->email_config->name == 'php') selected @endif>@lang('PHP Mail')</option>
+                                        <option value="smtp" @if($settings->email_config->name == 'smtp') selected @endif>@lang('SMTP')</option>
+                                        <option value="sendgrid" @if($settings->email_config->name == 'sendgrid') selected @endif>@lang('SendGrid API')</option>
+                                        <option value="mailjet" @if($settings->email_config->name == 'mailjet') selected @endif>@lang('Mailjet API')</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6 text-right">
                                     <h6 class="mb-4">&nbsp;</h6>
-                                    <button type="button" data-target="#testMailModal" data-toggle="modal" class="btn btn--info">@lang('Send Test Mail')</button>
+                                    <button type="button" data-target="#testMailModal" data-toggle="modal" class="btn btn-info">@lang('Send Test Mail')</button>
                                 </div>
                             </div>
                             <div class="form-row mt-4 d-none configForm" id="smtp">
@@ -89,7 +109,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-block btn--primary mr-2">@lang('Update')</button>
+                            <button type="submit" class="btn btn-block btn-blue text-white mr-2">@lang('Update')</button>
                         </div>
                     </form>
                 </div><!-- card end -->
