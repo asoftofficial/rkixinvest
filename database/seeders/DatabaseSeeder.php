@@ -7,6 +7,7 @@ use App\Models\GeneralSettings;
 use App\Models\Homepage;
 use App\Models\Packages;
 use App\Models\Reward;
+use App\Models\Slider;
 use App\Models\SocialLink;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -297,6 +298,11 @@ class DatabaseSeeder extends Seeder
         //seeding for reward
         Reward::create([
             'description' => 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
+        ]);
+
+        //Slider seeding
+        Slider::create([
+            'slider_content' => 'Recording Your Business Finances Effortlessly.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
         ]);
         // seeding for user model
         User::create([

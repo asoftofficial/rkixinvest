@@ -12,6 +12,7 @@ use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController as ControllersTestimonialController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
 $adminNameSpace = 'App\Http\Controllers\Admin';
 Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-    Route::resource('packages', 'PackageController');
+    Route::resource('packages','PackageController');
     //user routes
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
@@ -104,4 +105,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('frontend/testimonial/edit/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'edit'])->name('testimonial.edit');
     Route::post('frontend/testimonial/update/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'update'])->name('testimonial.update');
     Route::delete('frontend/testimonial/delete/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'destroy'])->name('testimonial.delete');
+
+    //slider route
+    Route::resource('slider','SliderController');
 });

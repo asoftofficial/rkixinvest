@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homepage;
+use App\Models\Slider;
 use App\Models\SocialLink;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class FrontendController extends Controller
         $aboutus = Homepage::first();
         $data = Homepage::first();
         $testimonials = Testimonial::all();
-        return view('front.index',compact('sociallinks','aboutus','data','testimonials'));
+        $slider = Slider::first();
+        return view('front.index',compact('sociallinks','aboutus','data','testimonials','slider'));
     }
 }
