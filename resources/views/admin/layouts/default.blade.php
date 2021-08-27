@@ -61,7 +61,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+<script src="{{ asset('/js/nicEdit.js') }}"></script>
 <!-- jQuery -->
 <script src="/frontend/dashboard/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -118,6 +118,36 @@
     toastr.info("Some Errors Occured Please Check and Try Again");
 
   @endif
+</script>
+<script>
+    "use strict";
+    bkLib.onDomLoaded(function() {
+        $( ".nicEdit" ).each(function( index ) {
+            $(this).attr("id","nicEditor"+index);
+            new nicEditor({fullPanel : true}).panelInstance('nicEditor'+index,{hasPanel : true});
+        });
+    });
+    (function($){
+        $( document ).on('mouseover ', '.nicEdit-main,.nicEdit-panelContain',function(){
+            $('.nicEdit-main').focus();
+        });
+    })(jQuery);
+    function proPicURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var preview = $(input).parents('.thumb').find('.profilePicPreview');
+                $(preview).css('background-image', 'url(' + e.target.result + ')');
+                $(preview).addClass('has-image');
+                $(preview).hide();
+                $(preview).fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(".profilePicUpload").on('change', function () {
+        proPicURL(this);
+    });
 </script>
 @stack('script')
 </body>

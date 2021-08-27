@@ -14,6 +14,11 @@ class WithdrawMethodController extends Controller
         return view('admin.withdraw.index', $data);
     }
 
+    public function create(){
+        $pageTitle = 'New Withdrawal Method';
+        return view('admin.withdraw.create', compact('pageTitle'));
+    }
+
     public function activate(Request $request)
     {
         $request->validate(['id' => 'required|integer']);

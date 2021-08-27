@@ -33,6 +33,7 @@ Route::get('resend/code',[DashboardController::class, 'resendCode'])->name('rese
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
+Route::get('placeholder-image/{size}', [HomeController::class,'placeholderImage'])->name('placeholder.image');
 // Route::get('/register/{user?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 // User Routes
 $userNameSpace = 'App\Http\Controllers\Users';
@@ -86,7 +87,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('deposit/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::post('deposit/gateway/activate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'activate'])->name('withdraw.method.activate');
     Route::post('deposit/gateway/deactivate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'deactivate'])->name('withdraw.method.deactivate');
-    Route::get('withdraw/gateways',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'index'])->name('withdraw.geteways');
+    Route::get('withdraw/gateways',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'index'])->name('withdraw.gateways');
     Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals.post');
     Route::get('general/information',[GeneralSettingsController::class,'generalinfo'])->name('general.info');
     Route::post('general/information/update',[GeneralSettingsController::class,'generalinfoUpdate'])->name('general.info.update');
