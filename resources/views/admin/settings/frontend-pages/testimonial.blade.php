@@ -94,9 +94,8 @@ $(".delete").click(function (e) {
                     <td>{{Str::limit($item->content,20)}}</td>
                     <td>{{$item->created_at}}</td>
                     <td style="min-width: 256px; text-align: right">
-                        <a href="#" class="mr-2">
-                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)' data-target="#showTestimonialModal"
-                            data-toggle="modal"></i>
+                        <a href="{{route('admin.testimonial.show',$item->id)}}" class="mr-2">
+                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)'></i>
                         </a>
                         <a
                             href="#"

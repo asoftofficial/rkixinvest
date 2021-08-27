@@ -10,7 +10,7 @@ About us
     {{-- About Us Page --}}
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h4 class="border-bottom pb-2 mb-0">about us</h4>
-        <form action="{{route('admin.aboutus.update.settings')}}" method="post">
+        <form action="{{route('admin.aboutus.update.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row mb-1 pt-3">
                 <div class="col-md-6">
@@ -61,7 +61,7 @@ About us
              <div class="row mb-1 pt-3">
                 <div class="col-md-12">
                     <label class="input-label mb-0">section image</label>
-                <input type="file" name="image" value="{{old('image',$aboutus->section_image)}}"
+                <input type="file" name="image"
                     class="form-control bg-white border-0 round-10">
                 @error('image')
                 <span class="invalid-feedback" role="alert">

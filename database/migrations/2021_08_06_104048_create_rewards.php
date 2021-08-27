@@ -15,9 +15,9 @@ class CreateRewards extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->integer('amount')->nullable();
-            $table->integer('referral')->nullable();
+            $table->string('title')->default('gold reward');
+            $table->integer('amount')->default('200');
+            $table->integer('referral')->default('2');
             $table->enum('status',['enabled','disabled'])->default('enabled');
             $table->string('image')->nullable();
             $table->text('description')->nullable();

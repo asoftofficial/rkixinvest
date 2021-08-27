@@ -14,18 +14,33 @@ class TestimonialController extends Controller
         return view('admin.settings.frontend-pages.testimonial',compact('testimonials'));
     }
 
+    public function show($id)
+    {
+        $testimonial = Testimonial::find($id);
+        return view('admin.settings.frontend-pages.modals.testimonial.show',compact('testimonial'));
+    }
     public function store(Request $request)
     {
 
         $request->validate([
             'username'    => 'required',
             'designation' => 'required',
-            'description'     => 'required',
+            'description' => 'required',
+            'image'     => 'required',
         ]);
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = "testimonial_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+        $upload_path = public_path('uploads/testimonial/');
+        $full_path = '/uploads/testimonial/'.$fileName;
+        $request->file('image')->move($upload_path, $fileName);
+        $file_path  = $full_path;
+
         Testimonial::create([
             'username'=>$request->username,
             'content'=>$request->description,
             'designation'=>$request->designation,
+            'image' =>  $file_path,
         ]);
         return back()->with('success','you have created testimonial successfully');
         // $testimonials = new Testimonial;
