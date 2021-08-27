@@ -175,7 +175,7 @@
                         </p>
                         <div class="testimonial-user">
                             <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
+                                <img src="{{$item->image}}" alt="">
                             </div>
                             <div class="testimonial-user-info">
                                 <h4>{{$item->username}}</h2>
@@ -184,104 +184,7 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
-                {{-- <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+            </div>       @endforeach
     </section>
     <!-- testimonials section end-->
 @endsection

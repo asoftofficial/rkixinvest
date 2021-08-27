@@ -12,8 +12,7 @@
         "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.3",
-        "qoraiche/laravel-mail-editor": "^3.4"
+        "laravel/ui": "^3.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -31,8 +30,7 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Chwaqas\\Laramail\\": "packages/chwaqas/laramail/src/"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {

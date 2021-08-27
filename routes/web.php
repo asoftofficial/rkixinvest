@@ -108,4 +108,13 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
     //slider route
     Route::resource('slider','SliderController');
+    // Email Setting
+    Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
+    Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');
+    Route::get('email-template/setting', 'EmailTemplateController@emailSetting')->name('email.template.setting');
+    Route::post('email-template/setting', 'EmailTemplateController@emailSettingUpdate')->name('email.template.setting');
+    Route::get('email-template/index', 'EmailTemplateController@index')->name('email.template.index');
+    Route::get('email-template/{id}/edit', 'EmailTemplateController@edit')->name('email.template.edit');
+    Route::post('email-template/{id}/update', 'EmailTemplateController@update')->name('email.template.update');
+    Route::post('email-template/send-test-mail', 'EmailTemplateController@sendTestMail')->name('email.template.test.mail');
 });

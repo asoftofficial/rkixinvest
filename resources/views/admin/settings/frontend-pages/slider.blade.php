@@ -3,7 +3,7 @@
 Settings
 @endsection
 @section('page-subtitle')
-About us
+Slider
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -51,7 +51,7 @@ About us
             <div class="row mb-1 pt-3">
                 <div class="col-md-12">
                     <label class="input-label">Slider content</label>
-                    <textarea rows="6" name="description" class="form-control bg-white border-0 round-10 nicEdit">{{old('description')}}</textarea>
+                    <textarea rows="6" name="description" class="form-control bg-white border-0 round-10 nicEdit">{{old('description',$slider->slider_content)}}</textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
