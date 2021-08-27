@@ -27,9 +27,6 @@ class rewardFactory extends Factory
            'refrel' => '2',
            'status' => 'suspend',
            'description' => 'lorem ipsum dummy text lorem ipsum dummy text vlorem ipsum dummy text lorem ipsum dummy text lorem ipsum dummy text lorem ipsum dummy text lorem ipsum dummy text',
-
-
-
         ];
     }
 }
