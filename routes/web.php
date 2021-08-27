@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\photoController;
 use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
@@ -97,8 +98,8 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('frontend/aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
     Route::get('frontend/steps',[HomepageController::class,'steps'])->name('how.to.settings');
     Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
-    Route::get('frontemd/testimonial',[App\Http\Controllers\Admin\TestimonialController::class,'index'])->name('testimonial.index');
-    Route::post('frontemd/testimonial/store',[App\Http\Controllers\Admin\TestimonialController::class,'store'])->name('testimonial.store');
+    Route::get('frontend/testimonial',[App\Http\Controllers\Admin\TestimonialController::class,'index'])->name('testimonial.index');
+    Route::post('frontend/testimonial/store',[App\Http\Controllers\Admin\TestimonialController::class,'store'])->name('testimonial.store');
     Route::get('frontend/testimonial/edit/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'edit'])->name('testimonial.edit');
     Route::post('frontend/testimonial/update/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'update'])->name('testimonial.update');
     Route::delete('frontend/testimonial/delete/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'destroy'])->name('testimonial.delete');
