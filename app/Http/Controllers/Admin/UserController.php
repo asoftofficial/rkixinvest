@@ -43,23 +43,33 @@ class UserController extends Controller {
             $request->validate([
                 'fname'=> 'required',
                 'lname'=> 'required',
+                'username'=> 'required',
                 'email'=> 'required',
                 'role'=> 'required',
+                'image'=> 'required',
                 'password'=> 'required|confirmed'
             ]);
 
-        User::create([ 'first_name'=> $request->fname,
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = "user_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/users/');
+            $full_path = '/uploads/users/'.$fileName;
+            $request->file('image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+        User::create([
+                'first_name'=> $request->fname,
                 'last_name'=> $request->lname,
                 'email'=> $request->email,
+                'username'=> $request->username,
                 'role'=> $request->role,
                 'password'=>bcrypt($request->password),
+                'image' => $file_path,
                 ]);
 
         // Sending Email to new user with details
         Mail::send('admin.users.emails.userinfo', compact('data'), function ($message) use ($data) {
                 $message->to($data[0]);
             }
-
         );
         return back()->with('success', 'user created successfully');
     }
@@ -75,21 +85,20 @@ class UserController extends Controller {
         return view('admin.users.userprofile', compact('user'));
     }
 
-
-
     public function update(Request $request, $id) {
         $users=User::findOrFail($id);
-        // if($request->hasFile('image')){
-        //     $extension = $request->file('image')->getClientOriginalExtension();
-        //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        //     $upload_path = public_path('uploads/users/');
-        //     $full_path = '/uploads/users/'.$fileName;
-        //     $check = $request->file('image')->move($upload_path, $fileName);
-        //     // $packages->file_path  = $full_path;
-        // }
+        if($request->hasFile('image')){
+           $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = "user_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/users/');
+            $full_path = '/uploads/users/'.$fileName;
+            $request->file('image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+        }
         $users->first_name=$request->fname;
         $users->last_name=$request->lname;
         $users->email=$request->email;
+        $users->image=$file_path;
         $users->update();
         return redirect()->back()->with('success', 'profile updated successfully!');
     }

@@ -1,265 +1,151 @@
+@extends('admin.layouts.default')
+@section('page-title')
+Testimonial
+@endsection
+@push('style')
 
+    <style>
 
+.testimonial2 {
+  font-family: "Montserrat", sans-serif;
+  color: #8d97ad;
+  font-weight: 300;
+}
 
+.testimonial2 h1,
+.testimonial2 h2,
+.testimonial2 h3,
+.testimonial2 h4,
+.testimonial2 h5,
+.testimonial2 h6 {
+  color: #3e4555;
+}
 
+.testimonial2 h5 {
+    line-height: 22px;
+    font-size: 18px;
+	font-weight: 400;
+}
 
+.testimonial2 .font-weight-medium {
+  font-weight: 500;
+}
 
+.testimonial2 .bg-light {
+  background-color: #f4f8fa !important;
+}
 
+.testimonial2 .subtitle {
+  color: #8d97ad;
+  line-height: 24px;
+}
 
-        <div class="modal fade" id="showTestimonialModal" tabindex="-1" role="dialog"aria-hidden="true">
-    <div class="modal-dialog modal-610" role="document">
-        <div class="modal-content issue-padd">
-            <div class="modal-header pb-0">
-                <h5 class="modal-title" id="exampleModalLabel mt-0">Edit testimonial</h5>
-            </div>
-            <div class="modal-body  pt-0">
-                         <div class="container text-center">
-            <h3 class="text-blue opacity-1">Testimonials</h3>
-            <h2 class="text-blue">What Client Say</h2>
-            <div class="testimonials-carousal slick-initialized slick-slider">
-                <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 5595px; transform: translate3d(-2238px, 0px, 0px);"><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide" data-slick-index="0" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-active" data-slick-index="5" aria-hidden="false" tabindex="0" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="testimonials-inner slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" tabindex="-1" style="width: 348px;">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="http://rkixinvest.test/frontend/assets/images/lilly.png" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h4>
-                                    <h5>Manager</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div></div></div>
+.testimonial2 .testi2 .image-thumb {
+  background: url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/testimonial/greadint-bg.png) no-repeat top center;
+  text-align: center;
+  padding: 10% 0;
+}
 
+.testimonial2 .testi2 .image-thumb img {
+  width: 400px;
+}
 
+.testimonial2 .testi2 .owl-dots {
+  display: inline-block;
+  position: relative;
+  top: -100px;
+}
 
+.testimonial2 .testi2 .owl-dots .owl-dot {
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  margin-right: 10px;
+  opacity: 0.4;
+  cursor: pointer;
+}
 
+.testimonial2 .testi2 .owl-dots .owl-dot span {
+  display: none;
+}
 
-            </div>
-        </div>
-            </div>
+.testimonial2 .testi2 .owl-dots .owl-dot.active,
+.testimonial2 .testi2 .owl-dots .owl-dot:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .testimonial2 .testi2 .owl-dots {
+    top: 0px;
+  }
+}
+
+.testimonial2 .btn-md {
+    padding: 18px 0px;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.testimonial2 .btn-danger {
+    background: #ff4d7e !important;
+    border: 1px solid #ff4d7e !important;
+}
+
+.position-relative{
+    top: -15vh !important;
+}
+        </style>
+@endpush
+@push('script')
+    <script>
+        $('.testi2').owlCarousel({
+  loop: true,
+  margin: 20,
+  nav: false,
+  dots: true,
+  autoplay: true,
+  responsiveClass: true,
+  responsive: {
+    0: {
+      items: 1,
+      nav: false
+    },
+    1170: {
+      items: 1
+    }
+  }
+});
+
+        </script>
+@endpush
+@section('content')
+<div class="container-fluid">
+
+<div class="testimonial2">
+  <div class="container">
+    <div class="heading">
+    </div>
+    <div class="owl-carousel owl-theme testi2">
+      <div class="item">
+        <div class="row position-relative">
+          <div class="col-lg-6 col-md-6 align-self-center">
+            {{-- <button class="btn rounded-circle btn-danger btn-md"><i class="icon-bubble"></i></button> --}}
+            <h4 class="my-3">Customer Review</h4>
+            <p>
+             {{$testimonial->content}}
+            </p>
+            <h5 class="mt-4">{{$testimonial->username}}</h5>
+            <h6 class="subtitle font-weight-normal">{{$testimonial->designation}}</h6>
+          </div>
+          <div class="col-lg-6 col-md-6 image-thumb d-none d-md-block">
+            <img src="{{$testimonial->image}}" alt="wrapkit" class="rounded-circle img-fluid" />
+          </div>
         </div>
     </div>
+    </div>
+  </div>
 </div>
+</div>
+@endsection

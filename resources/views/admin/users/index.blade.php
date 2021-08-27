@@ -74,6 +74,8 @@ $(".delete").click(function (e) {
                 <tr>
                     <th scope="col">User ID
                     </th>
+                    <th scope="col">Username
+                    </th>
                     <th scope="col">First Name
                     </th>
                     <th scope="col">Last Name
@@ -88,6 +90,7 @@ $(".delete").click(function (e) {
                 @foreach ($users as $item)
                 <tr>
                     <td>{{$item->id}}</td>
+                     <td>{{$item->username}}</td>
                     <td>{{$item->first_name}}</td>
                     <td>{{$item->last_name}}</td>
                     <td>{{$item->email}}</td>

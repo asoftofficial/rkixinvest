@@ -10,7 +10,7 @@
                 <img class="shap triangle" src="{{ asset('frontend/assets/bg-shapes/triangle.png') }}" alt="">
                 <img class="shap dots" src="{{ asset('frontend/assets/bg-shapes/dots.png') }}" alt="">
                 <div class="about-image">
-                    <img src="{{ asset('frontend/assets/images/about.png') }}" alt="About RkixInvest">
+                    <img src="{{$aboutus->section_image}}" alt="About RkixInvest">
                 </div>
                 <div class="about-text">
                     <h3>{{$aboutus->section_title}}</h3>

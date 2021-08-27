@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel mt-0">Add testimonial</h5>
             </div>
             <div class="modal-body  pt-0">
-                  <form action="{{route('admin.testimonial.store')}}" method="post">
+                  <form action="{{route('admin.testimonial.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             {{-- <div class="row mb-1 pt-3">
                 <div class="col-md-6">
