@@ -39,7 +39,7 @@
                     other icon font library -->
                     <li class="nav-item">
                         <a
-                            href="/"
+                            href="{{route('admin.dashboard')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.dashboard') active pink-nav @endif">
                             <img src="{{asset('/backend/img/icons/dashboard-icon.png')}}" alt="">
                                 <p>

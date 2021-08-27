@@ -103,4 +103,14 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('frontend/testimonial/edit/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'edit'])->name('testimonial.edit');
     Route::post('frontend/testimonial/update/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'update'])->name('testimonial.update');
     Route::delete('frontend/testimonial/delete/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'destroy'])->name('testimonial.delete');
+
+    // Email Setting
+    Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
+    Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');
+    Route::get('email-template/setting', 'EmailTemplateController@emailSetting')->name('email.template.setting');
+    Route::post('email-template/setting', 'EmailTemplateController@emailSettingUpdate')->name('email.template.setting');
+    Route::get('email-template/index', 'EmailTemplateController@index')->name('email.template.index');
+    Route::get('email-template/{id}/edit', 'EmailTemplateController@edit')->name('email.template.edit');
+    Route::post('email-template/{id}/update', 'EmailTemplateController@update')->name('email.template.update');
+    Route::post('email-template/send-test-mail', 'EmailTemplateController@sendTestMail')->name('email.template.test.mail');
 });
