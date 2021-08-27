@@ -1,89 +1,131 @@
 @extends('admin.layouts.default')
 @section('page-title')
-Settings
-@endsection
-@section('page-subtitle')
 Testimonial
 @endsection
+@push('style')
+<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@push('script')
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+<script >
+$('.custom-file-input').change(function (e) {
+    var filename = $(this)
+        .val()
+        .split('\\')
+        .pop();
+    var lastIndex = filename.lastIndexOf("\\");
+    var nextSibling = e.target.nextElementSibling
+    nextSibling.innerText = filename
+});
+$(function () {
+    $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
+});
+
+$(".delete").click(function (e) {
+    console.log("asdhsakdash")
+    swal(
+        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+    ).then((willDelete) => {
+        if (willDelete) {
+            var reward_id = $(this).attr('data-id');
+            var url = "{{route('admin.testimonial.delete', 'id')}}";
+            url = url.replace('id', reward_id);
+            $("#delete-form").attr('action', url);
+            $("#delete-form").submit();
+        }
+    });
+});
+</script>
+@endpush
 @section('content')
-<div class="container-fluid">
-    {{-- About Us Page --}}
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h4 class="border-bottom pb-2 mb-0">Testimonial</h4>
-        <form action="{{route('admin.testimonial.update')}}" method="post">
-            @csrf
-            <div class="row mb-1 pt-3">
-                <div class="col-md-6">
-                    <label class="input-label mb-0">Section title</label>
-                <input type="text" name="title" value=""
-                    class="form-control bg-white border-0 round-10 ">
-                @error('title')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-                <div class="col-md-6">
-                    <label class="input-label mb-0">Section heading</label>
-                <input type="text" name="heading" value=""
-                    class="form-control bg-white border-0 round-10 ">
-                @error('step1')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
+<div class = "container-fluid" >
+     {{-- Section Search Area    --}}
+    <section class = "admin-search-area" >
+        <div class="admin-search-left">
+    <button
+        class="btn btn-info px-3 blue-bg round-10"
+        data-toggle="modal"
+        data-target="#addTestimonialrdModal">Add Testimonial</button>
+</div>
+<div class="admin-search-right">
+    <div class="admin-section-search-area input-group mb-3">
+        <input type="text" class="">
+            <div class="admin-section-search-btn-area">
+                <button class="btn bg-transparent mr-2" type="button">
+                    <i class="fas fa-search mr-2"></i>
+                    Search here</button>
             </div>
-
-             <div class="row mb-1 pt-3">
-                <div class="col-md-6">
-                    <label class="input-label mb-0">username</label>
-                <input type="text" name="username" value=""
-                    class="form-control bg-white border-0 round-10 ">
-                @error('username')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-                <div class="col-md-6">
-                    <label class="input-label mb-0">Designation</label>
-                <input type="text" name="Designation" value=""
-                    class="form-control bg-white border-0 round-10 ">
-                @error('Designation')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-            </div>
-            <div class="row mb-1 pt-3">
-                <div class="col-md-12">
-                    <label class="input-label">Testimonial content</label>
-                    <input type="file" name="image" class="form-control bg-white border-0 round-10">
-                    @error('image')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
-            <div class="row mb-1 pt-3">
-                <div class="col-md-12">
-                    <label class="input-label">Testimonial content</label>
-                    <textarea rows="6" name="description" class="form-control bg-white border-0 round-10"></textarea>
-                    @error('description')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary btn-blue px-4 px-5 mt-3">Update</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>  <!-- /.container-fluid -->
+</section>{{-- End Section Search Area    --}}
+
+{{-- Page Section Title Area    --}}
+<section class = "page-section-title-area" > <div>
+    <h2>Testimonial List</h2>
+    <p>Latest testimonials here</p>
+</div>
+</section>
+{{-- End Page Section Title Area    --}}
+<section class = "collections" >
+    <div class="table-responsive">
+        <table class="table custom-table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#id
+                    </th>
+                    <th scope="col">Client
+                    </th>
+                    <th scope="col">designation
+                    </th>
+                    <th scope="col">content
+                    </th>
+                    <th scope="col">posted at
+                    </th>
+                    <th scope="col">actions
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($testimonials as $item)
+                <tr>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->username}}</td>
+                    <td>{{$item->designation}}</td>
+                    <td>{{Str::limit($item->content,20)}}</td>
+                    <td>{{$item->created_at}}</td>
+                    <td style="min-width: 256px; text-align: right">
+                        <a href="#" class="mr-2">
+                            <i class='fas fa-eye' style='font-size:20px;color:var(--gray)' data-target="#showTestimonialModal"
+                            data-toggle="modal"></i>
+                        </a>
+                        <a
+                            href="#"
+                            class="btn btn-info blue-bg round-10 px-5 mr-2"
+                            data-target="#editTestimonialModal-{{$item->id}}"
+                            data-toggle="modal">Edit</a>
+                        <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
+                            <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
+                        </a>
+                    </td>
+                </tr>
+                @include('admin.settings.frontend-pages.modals.testimonial.edit')
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</div>
+<!-- /.container-fluid -->
+
+{{-- Add testimonialModel  --}}
+@include('admin.settings.frontend-pages.modals.testimonial.create')
+<form action = "" method = "post" id = "delete-form" >
+    @csrf
+@method('delete') </form>
+@endsection
+
+
+@section('content')
+
 @endsection
