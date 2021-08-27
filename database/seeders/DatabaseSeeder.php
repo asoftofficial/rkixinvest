@@ -6,6 +6,7 @@ use App\Models\Country;
 use App\Models\GeneralSettings;
 use App\Models\Homepage;
 use App\Models\Packages;
+use App\Models\Reward;
 use App\Models\SocialLink;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -268,28 +269,36 @@ class DatabaseSeeder extends Seeder
                 'name' => $country
             ]);
         }
+
+        //seeding for general settings
         GeneralSettings::create([
             'description' => 'Rkixinvest is a laravel based Investment managament system with multi level referral system'
         ]);
 
-        //adding data into the Homepage model
+        //seeding for about us page and how-to page
         Homepage::create([
              'section_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fringilla, ipsum quis pellentesque molestie, ligula neque pretium ipsum, sit amet facilisis odio enim eu mauris.',
               'step_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi illo, perspiciatis fugit blanditiis fuga quas quo laboriosam alias sequi rem, id tempora, error rerum. Fugiat beatae sint repudiandae ab blanditiis?',
         ]);
 
-       //create data into the Sociallink model
+        //seeding for sociallinks page
         SocialLink::create([
              'facebook' => 'https://www.facebook.com/Rkixtech',
         ]);
 
-        //create data into the Testimonial model
+        //seeding for Testimonial model
         Testimonial::create([
              'content' => 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
                             of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
                             a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
                             Latin words,',
         ]);
+
+        //seeding for reward
+        Reward::create([
+            'description' => 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
+        ]);
+        // seeding for user model
         User::create([
             "first_name" => "Admin",
             "last_name" => "Admin",
@@ -298,10 +307,7 @@ class DatabaseSeeder extends Seeder
             "password" => Hash::make('password'),
             "type" => 3,
         ]);
-            // User::factory()->create(50);
-    //    $this-> call([
-    //     packagesFactory::class,
-    //     ]);
+
 
     }
 }
