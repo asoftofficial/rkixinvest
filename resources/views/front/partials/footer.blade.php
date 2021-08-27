@@ -23,10 +23,10 @@
             <div class="footer-col">
                 <h2>Social Links</h2>
                 <ul class="footer-social-links">
-                    <li><a class="social-link footer-social-link" href=""><i class="fab fa-pinterest-p"></i></a></li>
-                    <li><a class="social-link footer-social-link" href=""><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a class="social-link footer-social-link" href=""><i class="fab fa-twitter"></i></a></li>
-                    <li><a class="social-link footer-social-link" href=""><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a class="social-link footer-social-link" href="{{$sociallinks->pintrest}}"><i class="fab fa-pinterest-p"></i></a></li>
+                    <li><a class="social-link footer-social-link" href="{{$sociallinks->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a class="social-link footer-social-link" href="{{$sociallinks->twitter}}"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="social-link footer-social-link" href="{{$sociallinks->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
                 </ul>
             </div>
         </div>
