@@ -6,8 +6,9 @@
             style="">
             <div class="slider-content d-flex">
                 <div class="slider-caption">
-                    <h2>Recording Your Business Finances <span>Effortlessly.</span></h2>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    {{-- <h2>Recording Your Business Finances <span>Effortlessly.</span></h2>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p> --}}
+                    <p>{!!$slider->slider_content!!}</p>
                     <a class="banner-btn" href="{{$slider->link}}">{{$slider->button_text}}</a>
                 </div>
                 <div class="slider-img">

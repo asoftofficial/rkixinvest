@@ -439,7 +439,9 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
 
         //Slider seeding
         Slider::create([
-            'slider_content' => 'Recording Your Business Finances Effortlessly.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+            'slider_content' => '<h2>Recording Your Business Finances <span>Effortlessly.</span></h2>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>',
+            'image' => 'uploads/slider/banner-img.png'
         ]);
         // seeding for user model
         User::create([
