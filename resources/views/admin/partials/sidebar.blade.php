@@ -126,74 +126,107 @@
                         </li>
                     </ul>
                 </li>
-                    <li class="nav-item">
-                        <a href=""
-                        class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                        <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
-                            <p>
-                            Settings
-                            <i class="fas fa-angle-left right angle-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
-                            <li class="nav-item">
-                                <a href="{{route('admin.settings.index')}}"
-                                class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                                <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                                <p>general settings</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.general.info')}}"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/info-icon.png')}}" alt="">
-                                <p>General info</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.show.email.settings')}}"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
-                                    <p>Email settings</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/maileclipse"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
-                                    <p>Edit Emails</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.fund.settings')}}"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/fundicon.png')}}" alt="">
-                                    <p>Funds settings</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.referral.bonus')}}"
-                                class="nav-link">
-                                <img src="{{asset('backend/img/icons/referral_icon.png')}}" alt="">
-                                    <p>Referral bonus</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.show.kyc.settings')}}"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/kycicon.png')}}" alt="">
-                                    <p>KYC settings</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.deposit.geteways')}}"
-                                class="nav-link">
-                                <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
-                                    <p>Deposit Gateways</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global') menu-is-opening menu-open @endif">
+                    <a href=""
+                    class="nav-link @if(Route::currentRouteName()=='admin.email.template.global') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
+                        <p>
+                        Manage Emails
+                        <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview pl-5 text-bold" style="display: @if(Route::currentRouteName()=='admin.email.template.global') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.email.template.global')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.email.template.global') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/slider.png')}}" alt="">
+                                <p>Global Email</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.email.template.index')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.aboutus.settings' || Route::currentRouteName()=='admin.aboutus.show') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/aboutus.png')}}" alt="">
+                                <p>Email Templates</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.email.template.setting')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.how.to.settings') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/how-to.png')}}" alt="">
+                                <p>Email Configuration</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href=""
+                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
+                        <p>
+                        Settings
+                        <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{route('admin.settings.index')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
+                            <p>general settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.general.info')}}"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/info-icon.png')}}" alt="">
+                            <p>General info</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.show.email.settings')}}"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
+                                <p>Email settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/maileclipse"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
+                                <p>Edit Emails</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.fund.settings')}}"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/fundicon.png')}}" alt="">
+                                <p>Funds settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.referral.bonus')}}"
+                            class="nav-link">
+                            <img src="{{asset('backend/img/icons/referral_icon.png')}}" alt="">
+                                <p>Referral bonus</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.show.kyc.settings')}}"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/kycicon.png')}}" alt="">
+                                <p>KYC settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.deposit.geteways')}}"
+                            class="nav-link">
+                            <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
+                                <p>Deposit Gateways</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
