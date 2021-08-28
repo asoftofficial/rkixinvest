@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\WithdrawalMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class WithdrawMethodController extends Controller
 {
@@ -17,6 +18,68 @@ class WithdrawMethodController extends Controller
     public function create(){
         $pageTitle = 'New Withdrawal Method';
         return view('admin.withdraw.create', compact('pageTitle'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max: 60',
+            'image' => 'required','image',
+            'rate' => 'required|numeric|gt:0',
+            'delay' => 'required',
+            'currency' => 'required',
+            'min_limit' => 'required|numeric|gt:0',
+            'max_limit' => 'required|numeric|gt:min_limit',
+            'fixed_charge' => 'required|numeric|gte:0',
+            'percent_charge' => 'required|numeric|between:0,100',
+            'instruction' => 'required|max:64000',
+            'field_name.*'    => 'sometimes|required'
+        ],[
+            'field_name.*.required'=>'All field is required'
+        ]);
+        $filename = '';
+        $path = imagePath()['withdraw']['method']['path'];
+        $size = imagePath()['withdraw']['method']['size'];
+        if ($request->hasFile('image')) {
+            try {
+                $filename = uploadImage($request->image, $path, $size);
+            } catch (\Exception $exp) {
+                return back()->with('error', 'Image could not be uploaded.');
+            }
+        }
+
+        $input_form = [];
+        if ($request->has('field_name')) {
+            for ($a = 0; $a < count($request->field_name); $a++) {
+                $arr = [];
+                $arr['field_name'] = Str::lower(Str::replace(' ', '_', $request->field_name[$a]));
+                $arr['field_level'] = $request->field_name[$a];
+                $arr['type'] = $request->type[$a];
+                $arr['validation'] = $request->validation[$a];
+                $input_form[$arr['field_name']] = $arr;
+            }
+        }
+        $method = new WithdrawalMethod();
+        $method->name = $request->name;
+        $method->image = $filename;
+        $method->rate = $request->rate;
+        $method->delay = $request->delay;
+        $method->min_limit = $request->min_limit;
+        $method->max_limit = $request->max_limit;
+        $method->fixed_charge = $request->fixed_charge;
+        $method->percent_charge = $request->percent_charge;
+        $method->currency = $request->currency;
+        $method->description = $request->instruction;
+        $method->user_data = json_encode($input_form);
+        $method->save();
+        return redirect()->route('admin.withdraw.gateways')->with('success', $method->name . ' has been added.');
+    }
+
+    public function edit($id)
+    {
+        $pageTitle = 'Update Withdrawal Method';
+        $method = WithdrawalMethod::findOrFail($id);
+        return view('admin.withdraw.edit', compact('pageTitle', 'method'));
     }
 
     public function activate(Request $request)

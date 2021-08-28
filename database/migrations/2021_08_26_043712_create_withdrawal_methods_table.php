@@ -21,9 +21,10 @@ class CreateWithdrawalMethodsTable extends Migration
             $table->decimal('max_limit',28,8)->default(0.00000000);
             $table->string('delay')->nullable();
             $table->decimal('fixed_charge',28,8)->default(0.00000000);
+            $table->decimal('rate',28,8)->default(0.00000000);
             $table->decimal('percent_charge',28,8)->nullable();
             $table->string('currency')->nullable();
-            $table->text('user_date')->nullable();
+            $table->text('user_data')->nullable();
             $table->text('description')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
