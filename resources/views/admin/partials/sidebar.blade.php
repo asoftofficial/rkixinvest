@@ -94,7 +94,7 @@
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-4 text-bold" style="display:@if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') block @else none @endif">
+                    <ul class="nav nav-treeview text-bold oncollapse-sidebar open-sidebar" style="display:@if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.slider.index')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.slider.index') active blue-nav @endif">
@@ -134,7 +134,7 @@
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-4 text-bold" style="display: @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') block @else none @endif">
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.email.template.global')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.email.template.global') active blue-nav @endif">
@@ -167,7 +167,7 @@
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-4 text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') block @else none @endif">
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.settings.index')}}"
                             class="nav-link  @if(Route::currentRouteName()=='admin.settings.index') active blue-nav @endif">

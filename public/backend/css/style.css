@@ -279,6 +279,12 @@ a.nav-link.active.dark-nav img {
 body:not(.layout-fixed) .main-sidebar .sidebar {
     overflow-y: initial;
 }
+body.sidebar-mini.sidebar-collapse ul .oncollapse-sidebar {
+    padding-left: 16px !important;
+}
+body.sidebar-mini ul .open-sidebar {
+    padding-left: 45px !important;
+}
 .content-header h1 {
     font-size: 48px;
     font-weight: bold;
