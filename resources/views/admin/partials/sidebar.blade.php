@@ -170,42 +170,42 @@
                     <ul class="nav nav-treeview pl-4 text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.settings.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index') active blue-nav @endif">
+                            class="nav-link  @if(Route::currentRouteName()=='admin.settings.index') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                             <p>General Settings</p>
                             </a>
                         </li>
-                        <li class="nav-item @if(Route::currentRouteName()=='admin.general.info') active blue-nav @endif">
+                        <li class="nav-item">
                             <a href="{{route('admin.general.info')}}"
-                            class="nav-link">
+                            class="nav-link @if(Route::currentRouteName()=='admin.general.info') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                             <p>General info</p>
                             </a>
                         </li>
-                        <li class="nav-item @if(Route::currentRouteName()=='admin.fund.settings') active blue-nav @endif">
+                        <li class="nav-item">
                             <a href="{{route('admin.fund.settings')}}"
-                            class="nav-link">
+                            class="nav-link @if(Route::currentRouteName()=='admin.fund.settings') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Funds settings</p>
                             </a>
                         </li>
-                        <li class="nav-item @if(Route::currentRouteName()=='admin.referral.bonus') active blue-nav @endif">
+                        <li class="nav-item">
                             <a href="{{route('admin.referral.bonus')}}"
-                            class="nav-link">
+                            class="nav-link @if(Route::currentRouteName()=='admin.referral.bonus') active blue-nav @endif">
                             <img src="{{asset('backend/img/icons/child-link.png')}}" alt="">
                                 <p>Referral bonus</p>
                             </a>
                         </li>
-                        <li class="nav-item @if(Route::currentRouteName()=='admin.show.kyc.settings') active blue-nav @endif">
+                        <li class="nav-item">
                             <a href="{{route('admin.show.kyc.settings')}}"
-                            class="nav-link">
+                            class="nav-link  @if(Route::currentRouteName()=='admin.show.kyc.settings') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>KYC settings</p>
                             </a>
                         </li>
-                        <li class="nav-item @if(Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
+                        <li class="nav-item">
                             <a href="{{route('admin.deposit.geteways')}}"
-                            class="nav-link">
+                            class="nav-link  @if(Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Deposit Gateways</p>
                             </a>
