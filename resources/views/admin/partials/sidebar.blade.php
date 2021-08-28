@@ -13,6 +13,11 @@
     p#generalsettings_text {
         padding-left: 5px;
 }
+
+.angle-icon{
+    margin-top: -3px;
+    margin-right: -4px;
+}
 </style>
 <aside class="main-sidebar sidebar-light-primary">
 
@@ -87,7 +92,7 @@
                                 <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
                                   <p>
                                    manage section
-                                    <i class="fas fa-angle-left right"></i>
+                                    <i class="fas fa-angle-left right angle-icon"></i>
                                   </p>
                                 </a>
                                 <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
@@ -128,7 +133,7 @@
                                 <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
                                   <p>
                                    Settings
-                                    <i class="fas fa-angle-left right"></i>
+                                    <i class="fas fa-angle-left right angle-icon"></i>
                                   </p>
                                 </a>
                                 <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
