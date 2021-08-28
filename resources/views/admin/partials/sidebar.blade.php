@@ -15,8 +15,8 @@
 }
 
 .angle-icon{
-    margin-top: -3px;
-    margin-right: -4px;
+    margin-top: -3px !important;
+    margin-right: -4px !important;
 }
 </style>
 <aside class="main-sidebar sidebar-light-primary">
@@ -88,7 +88,7 @@
 
                 <li class="nav-item align-items-center">
                     <a href=""
-                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                    class="nav-link">
                     <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
                         <p>
                         manage section
@@ -98,28 +98,28 @@
                     <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
                         <li class="nav-item">
                             <a href="{{route('admin.slider.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='admin.slider.index' || Route::currentRouteName()=='admin.slider.show') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/slider.png')}}" alt="">
                                 <p>Slider</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.aboutus.settings')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='admin.aboutus.settings' || Route::currentRouteName()=='admin.aboutus.show') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/aboutus.png')}}" alt="">
                                 <p>about us</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.how.to.settings')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='admin.how.to.settings') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/how-to.png')}}" alt="">
                                 <p>how-to</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.testimonial.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='admin.testimonial.index' || Route::currentRouteName()=='admin.testimonial.show') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/testimonial-icon.png')}}" alt="">
                                 <p>testimonial</p>
                             </a>
