@@ -125,7 +125,7 @@
                             </a>
                         </li>
                     </ul>
-                                {{-- </li> --}}
+                </li>
                     <li class="nav-item">
                         <a href=""
                         class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
@@ -194,7 +194,6 @@
                             </li>
                         </ul>
                     </li>
-                </li>
             </ul>
         </nav>
     </div>
