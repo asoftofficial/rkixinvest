@@ -15,7 +15,8 @@
 }
 
     .angle-icon{
-    right:0px !important;
+   top: 4px !important;
+    right: -8px !important;
     }
 </style>
 <aside class="main-sidebar sidebar-light-primary">
@@ -179,28 +180,28 @@
                             <a href="{{route('admin.general.info')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.general.info') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
-                            <p>General info</p>
+                            <p>General Info</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.fund.settings')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.fund.settings') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
-                                <p>Funds settings</p>
+                                <p>Funds Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.referral.bonus')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.referral.bonus') active blue-nav @endif">
                             <img src="{{asset('backend/img/icons/child-link.png')}}" alt="">
-                                <p>Referral bonus</p>
+                                <p>Referral Bonus</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.show.kyc.settings')}}"
                             class="nav-link  @if(Route::currentRouteName()=='admin.show.kyc.settings') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
-                                <p>KYC settings</p>
+                                <p>KYC Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -212,15 +213,31 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a
-                    href="{{route('admin.withdraw.gateways')}}"
-                    class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways') active blue-nav @endif">
-                    <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
+                <li class="nav-item align-items-center  @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='admin.withdraw.gateways.create') menu-is-opening menu-open @endif">
+                    <a href=""
+                    class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='admin.withdraw.gateways.create') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
                         <p>
-                            withdrawal
+                      withdraw Method
+                        <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display:  @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='withdraw.gateways.create') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.gateways')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>View Method</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.gateways.create')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways.create') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Add Method</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul>
