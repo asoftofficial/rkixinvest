@@ -141,7 +141,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-         $set = GeneralSettings::first();
+        $set = GeneralSettings::first();
         if($set->email_verification=="off"){
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
