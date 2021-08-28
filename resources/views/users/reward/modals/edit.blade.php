@@ -81,7 +81,7 @@
                                         <div class="col-md-6">
                                             <div class="gap">
 
-                                                <h4 class="input-label mt-2">Referal</h4>
+                                                <h4 class="input-label mt-2">referral</h4>
                                                 <div class="">
                                                     <input
                                                         type="text"

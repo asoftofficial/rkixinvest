@@ -32,13 +32,13 @@ class GeneralSettingsController extends Controller
         return back()->with('success','reward settings chnaged successfully');
     }
 
-    public function refrelUpdate(Request $request)
+    public function referralUpdate(Request $request)
     {
         $settings = ModelsGeneralSettings::first();
-        $settings->refrel_system    = $request->refrel_system;
-        $settings->refrellevel_type = $request->refrellevel_type;
+        $settings->referral_system    = $request->referral_system;
+        $settings->referrallevel_type = $request->referrallevel_type;
         $settings->update();
-        return back()->with('success','referal settings chnaged successfully');
+        return back()->with('success','referral settings changed successfully');
     }
 
     // user balance settings

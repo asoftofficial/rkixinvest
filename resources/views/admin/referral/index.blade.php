@@ -46,7 +46,7 @@ Create referral
     </div>
     {{-- end referral bonus --}}
 
-    {{-- referal level bonus --}}
+    {{-- referral level bonus --}}
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-bold mt-3 mb-3">Referral level bonus</h1>
