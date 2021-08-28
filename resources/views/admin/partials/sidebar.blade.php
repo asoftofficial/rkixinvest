@@ -14,10 +14,9 @@
         padding-left: 5px;
 }
 
-.angle-icon{
-    margin-top: -3px !important;
-    margin-right: -4px !important;
-}
+    .angle-icon{
+    right:0px !important;
+    }
 </style>
 <aside class="main-sidebar sidebar-light-primary">
     <!-- Sidebar -->
@@ -86,147 +85,144 @@
                     </a>
                 </li>
 
-                <li class="nav-item align-items-center">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link">
+                    class="nav-link  @if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
                         <p>
                         manage section
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
+                    <ul class="nav nav-treeview pl-5 text-bold" style="display:@if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.slider.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.slider.index' || Route::currentRouteName()=='admin.slider.show') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/slider.png')}}" alt="">
+                            class="nav-link @if(Route::currentRouteName()=='admin.slider.index') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Slider</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.aboutus.settings')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.aboutus.settings' || Route::currentRouteName()=='admin.aboutus.show') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/aboutus.png')}}" alt="">
-                                <p>about us</p>
+                            class="nav-link @if(Route::currentRouteName()=='admin.aboutus.settings') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>About us</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.how.to.settings')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.how.to.settings') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/how-to.png')}}" alt="">
-                                <p>how-to</p>
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>How To</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.testimonial.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.testimonial.index' || Route::currentRouteName()=='admin.testimonial.show') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/testimonial-icon.png')}}" alt="">
-                                <p>testimonial</p>
+                            class="nav-link @if(Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Testimonial</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global') menu-is-opening menu-open @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link @if(Route::currentRouteName()=='admin.email.template.global') active blue-nav @endif">
-                    <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
+                    class="nav-link @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
                         <p>
                         Manage Emails
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-5 text-bold" style="display: @if(Route::currentRouteName()=='admin.email.template.global') block @else none @endif">
+                    <ul class="nav nav-treeview pl-5 text-bold" style="display: @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.email.template.global')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.email.template.global') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/slider.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Global Email</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.email.template.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.aboutus.settings' || Route::currentRouteName()=='admin.aboutus.show') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/aboutus.png')}}" alt="">
+                            class="nav-link @if(Route::currentRouteName()=='admin.email.template.index') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Email Templates</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.email.template.setting')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.how.to.settings') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/how-to.png')}}" alt="">
+                            class="nav-link @if(Route::currentRouteName()=='admin.email.template.setting') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Email Configuration</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
+                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
                         <p>
                         Settings
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview pl-5 text-bold" style="display: none;">
+                    <ul class="nav nav-treeview pl-5 text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.settings.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                            <p>general settings</p>
+                            class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.show.kyc.settings' ||Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                            <p>General Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.general.info')}}"
                             class="nav-link">
-                            <img src="{{asset('/backend/img/icons/info-icon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                             <p>General info</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.show.email.settings')}}"
-                            class="nav-link">
-                            <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
-                                <p>Email settings</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/maileclipse"
-                            class="nav-link">
-                            <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
-                                <p>Edit Emails</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.fund.settings')}}"
                             class="nav-link">
-                            <img src="{{asset('/backend/img/icons/fundicon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Funds settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.referral.bonus')}}"
                             class="nav-link">
-                            <img src="{{asset('backend/img/icons/referral_icon.png')}}" alt="">
+                            <img src="{{asset('backend/img/icons/child-link.png')}}" alt="">
                                 <p>Referral bonus</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.show.kyc.settings')}}"
                             class="nav-link">
-                            <img src="{{asset('/backend/img/icons/kycicon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>KYC settings</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.deposit.geteways')}}"
                             class="nav-link">
-                            <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Deposit Gateways</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a
+                    href="{{route('admin.withdraw.gateways')}}"
+                    class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
+                        <p>
+                            withdrawal
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>
