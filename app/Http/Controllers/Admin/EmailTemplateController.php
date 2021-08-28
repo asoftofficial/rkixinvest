@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmailTemplate;
 use App\Models\GeneralSettings;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class EmailTemplateController extends Controller
         $pageTitle = 'Email Templates';
         $emptyMessage = 'No templates available';
         $email_templates = EmailTemplate::get();
-        return view('admin.email_template.index', compact('pageTitle', 'emptyMessage', 'email_templates'));
+        return view('admin.email_templates.index', compact('pageTitle', 'emptyMessage', 'email_templates'));
     }
 
     public function edit($id)
@@ -21,7 +22,7 @@ class EmailTemplateController extends Controller
         $email_template = EmailTemplate::findOrFail($id);
         $pageTitle = $email_template->name;
         $emptyMessage = 'No shortcode available';
-        return view('admin.email_template.edit', compact('pageTitle', 'email_template','emptyMessage'));
+        return view('admin.email_templates.edit', compact('pageTitle', 'email_template','emptyMessage'));
     }
 
     public function update(Request $request, $id)
@@ -35,9 +36,7 @@ class EmailTemplateController extends Controller
         $email_template->email_body = $request->email_body;
         $email_template->email_status = $request->email_status ? 1 : 0;
         $email_template->save();
-
-        $notify[] = ['success', $email_template->name . ' template has been updated.'];
-        return back()->withNotify($notify);
+        return back()->with('success',$email_template->name . ' template has been updated.');
     }
 
 
@@ -82,10 +81,9 @@ class EmailTemplateController extends Controller
             $data = $request->only('name', 'public_key', 'secret_key');
         }
         $general = GeneralSettings::first();
-        $general->mail_config = $data;
+        $general->email_config = $data;
         $general->save();
-        $notify[] = ['success', 'Email configuration has been updated.'];
-        return back()->withNotify($notify);
+        return back()->with('success','Email configuration has been updated.');
     }
 
 
@@ -117,7 +115,7 @@ class EmailTemplateController extends Controller
         ]);
 
         $general = GeneralSettings::first();
-        $config = $general->mail_config;
+        $config = $general->email_config;
         $receiver_name = explode('@', $request->email)[0];
         $subject = 'Testing ' . strtoupper($config->name) . ' Mail';
         $message = 'This is a test email, please ignore it if you are not meant to get this email.';
@@ -125,11 +123,9 @@ class EmailTemplateController extends Controller
         try {
             sendGeneralEmail($request->email, $subject, $message, $receiver_name);
         } catch (\Exception $exp) {
-            $notify[] = ['error', 'Invalid credential'];
-            return back()->withNotify($notify);
+            return back()->with('error','Invalid credential '.$exp);
         }
 
-        $notify[] = ['success', 'You should receive a test mail at ' . $request->email . ' shortly.'];
-        return back()->withNotify($notify);
+        return back()->with('success','You should receive a test mail at ' . $request->email . ' shortly.');
     }
 }
