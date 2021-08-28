@@ -368,9 +368,9 @@ function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $m
     if ($contact) {
         $sendgridMail->setFrom($receiver_email, $receiver_name);
         $sendgridMail->setSubject($subject);
-        $sendgridMail->addTo($general->email_from, $general->sitename);
+        $sendgridMail->addTo($general->email_from, $general->web_title);
     }else{
-        $sendgridMail->setFrom($general->email_from, $general->sitename);
+        $sendgridMail->setFrom($general->email_from, $general->web_title);
         $sendgridMail->setSubject($subject);
         $sendgridMail->addTo($receiver_email, $receiver_name);
     }
@@ -392,12 +392,12 @@ function sendMailjetMail($config, $receiver_email, $receiver_name, $subject, $me
         $fromMail = $receiver_email;
         $fromName = $receiver_name;
         $toMail = $general->email_from;
-        $toName = $general->sitename;
+        $toName = $general->web_title;
     }else{
         $toMail = $receiver_email;
         $toName = $receiver_name;
         $fromMail = $general->email_from;
-        $fromName = $general->sitename;
+        $fromName = $general->web_title;
     }
     $body = [
         'Messages' => [
