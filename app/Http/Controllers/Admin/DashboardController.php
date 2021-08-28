@@ -26,21 +26,16 @@ class DashboardController extends Controller
 
     public function update_profile(Request $request, $id)
     {
-        // dd($request->newpas);
-        //     $this->validate($request,[
-        //         'newpas' => 'required|confirmed',
-        //     ]);
-
-         $user_profile = User::findOrFail($id);
-        // if($request->hasFile('image')){
-        //     $extension = $request->file('image')->getClientOriginalExtension();
-        //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        //     $upload_path = public_path('uploads/packages/');
-        //     $full_path = '/uploads/packages/'.$fileName;
-        //     $check = $request->file('image')->move($upload_path, $fileName);
-        //     // $packages->file_path  = $full_path;
-        // }
-
+        $user_profile = User::findOrFail($id);
+        if($request->hasFile('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = "users_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/users/');
+            $full_path = '/uploads/users/'.$fileName;
+            $check = $request->file('image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $user_profile->image = $file_path;
+        }
         $user_profile->first_name   = $request->fname;
         $user_profile->last_name  = $request->lname;
         $user_profile->email      = $request->email;
