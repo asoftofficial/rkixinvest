@@ -115,7 +115,15 @@ class RegisterController extends Controller
             }
             // Send Verification Email if on from Admin panel
             if($set->email_verification=="on"){
-                return sendEmailVerificationCode($data,$code);
+                $userIpInfo = getIpInfo();
+                $userBrowser = osBrowser();
+                // return sendEmailVerificationCode($data,$code);
+            sendEmail($user, 'PASS_RESET_DONE', [
+            'operating_system' => $userBrowser['os_platform'],
+            'browser' => $userBrowser['browser'],
+            'ip' => $userIpInfo['ip'],
+            'time' => $userIpInfo['time']
+        ]);
             }
             //  return redirect()->route('verification_form')->with('success','please check your email');
     }

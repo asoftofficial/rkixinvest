@@ -74,7 +74,6 @@ class HomeController extends Controller
     public function adminProfile(){
         return view('backend.profile');
     }
-
     public function placeholderImage($size = null){
         $imgWidth = explode('x',$size)[0];
         $imgHeight = explode('x',$size)[1];
