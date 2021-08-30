@@ -133,14 +133,17 @@ class UserController extends Controller {
         return back()->with('success', 'User Status updated');
     }
 
-    public function sendmail(Request $request) {
-        $data=[$request->subject,
-        $request->body];
-        $user=$request->hidden_email;
-        Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
-                $message->to($user);
-            }
-        );
+    public function sendmail(Request $request,$id)
+    {
+        $user = User::find($id);
+        // $data=[$request->subject,
+        // $request->body];
+        // $user=$request->hidden_email;
+        // Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
+        //         $message->to($user);
+        //     }
+        // );
+        sendGeneralEmail($user->email,$request->subject,$request->body,$user->username);
         return back()->with('success', 'email has sent');
     }
 
@@ -156,16 +159,17 @@ class UserController extends Controller {
         $this->validate($request, ['amount'=> 'required|integer'
             ]);
         $user=User::findOrFail($request->user_id);
-        $current_balance=$user->balance;
-        $user->balance=$request->amount+$current_balance;
+        $old_balance=$user->balance;
+        $total_balance = $user->balance=$request->amount+$old_balance;
         $user->update();
         $trx = trx($user->id,$request->amount,1,'Funds added by admin');
         //send email to notify the user
             sendEmail($user, 'BAL_ADD', [
-                'post_balance' => $user->balance,
+                'post_balance' => $old_balance,
                 'amount' => $request->amount,
                 'currency' => 'USD',
-                'trx' => $trx->id
+                'trx' => $trx->id,
+                'total_balance'=> $total_balance,
                 ]);
         Session::flash("message", "Fund added successfully");
         return back();
@@ -182,18 +186,20 @@ class UserController extends Controller {
             ]);
         $user=User::findOrFail($request->user_id);
         $current_balance=$user->balance;
-        if($current_balance == 0){
+        if($current_balance <= 0){
         return back()->with('error','user balance is already 0.00');
         }else
-        $user->balance=$current_balance - $request->amount;
+        $total_balance = $user->balance =$current_balance - $request->amount;
         $user->update();
-        trx($user->id,$request->amount,1,'Funds deducted by admin');
+        $trx = trx($user->id,$request->amount,1,'Funds deducted by admin');
          //send email to notify the user
             sendEmail($user, 'BAL_SUB', [
-                'Total Balance' => $user->balance,
-                'Debit Ammount' => $request->amount,
-                'Current Balance ' =>  $user->balance - $request->amount,
-                ]);
+                'post_balance' => $current_balance,
+                'amount' => $request->amount,
+                'currency' => 'USD',
+                'trx' => $trx->id,
+                'total_balance'=> $total_balance,
+            ]);
         Session::flash("message", "Fund has deduct successfully");
         return back();
          }else{

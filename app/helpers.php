@@ -450,20 +450,14 @@ function sendMailjetMail($config, $receiver_email, $receiver_name, $subject, $me
 
 function sendGeneralEmail($email, $subject, $message, $receiver_name = '')
 {
-
     $general = \App\Models\GeneralSettings::first();
-
-
     if (!$general->email_from) {
         return;
     }
-
     $message = shortCodeReplacer("{{message}}", $message, $general->email_template);
     $message = shortCodeReplacer("{{fullname}}", $receiver_name, $message);
     $message = shortCodeReplacer("{{username}}", $email, $message);
-
     $config = $general->email_config;
-
     if ($config->name == 'php') {
         sendPhpMail($email, $receiver_name, $subject, $message, $general);
     } else if ($config->name == 'smtp') {

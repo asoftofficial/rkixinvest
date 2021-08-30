@@ -29,7 +29,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class="list">
-                                @forelse($email_template->shortcodes as $shortcode => $key)
+                                {{-- @forelse($email_template->shortcodes as $shortcode => $key)
                                     <tr>
                                         <th data-label="@lang('Short Code')">@php echo "{{"$shortcode"}}"  @endphp</th>
                                         <td data-label="@lang('Description')">{{ __($key) }}</td>
@@ -38,7 +38,7 @@
                                     <tr>
                                         <td colspan="100%" class="text-muted text-center">{{ __($emptyMessage) }}</td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
                                 </tbody>
                             </table>
                         </div>
