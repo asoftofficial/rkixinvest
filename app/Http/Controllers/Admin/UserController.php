@@ -159,12 +159,13 @@ class UserController extends Controller {
         $current_balance=$user->balance;
         $user->balance=$request->amount+$current_balance;
         $user->update();
-        trx($user->id,$request->amount,1,'Funds added by admin');
+        $trx = trx($user->id,$request->amount,1,'Funds added by admin');
         //send email to notify the user
             sendEmail($user, 'BAL_ADD', [
-                'PBalance' => $user->balance,
-                'CAmmount' => $request->amount,
-                'TBalance' => $user->balance - $request->amount,
+                'post_balance' => $user->balance,
+                'amount' => $request->amount,
+                'currency' => 'USD',
+                'trx' => $trx->id
                 ]);
         Session::flash("message", "Fund added successfully");
         return back();
@@ -200,6 +201,5 @@ class UserController extends Controller {
         }
 
     }
-
 
 }

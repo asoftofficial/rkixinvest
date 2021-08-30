@@ -5,10 +5,15 @@ use App\Models\Transaction;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
-function sendEmailVerificationCode($data,$code){
-    Mail::send('admin.users.emails.email_verification', compact('data','code'), function ($message) use ($data) {
-        $message->to($data['email']);
-    });
+function getTrx($length = 12)
+{
+    $characters = 'ABCDEFGHJKMNOPQRSTUVWXYZ123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }
 
 function showAmount($amount, $decimal = 2, $separate = true, $exceptZeros = false){
