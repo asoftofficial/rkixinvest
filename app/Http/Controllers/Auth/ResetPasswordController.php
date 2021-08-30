@@ -31,17 +31,17 @@ class ResetPasswordController extends Controller
 
 
 
-    public function showResetForm(Request $request, $token)
-    {
-        $pageTitle = "Account Recovery";
-        $resetToken = AdminPasswordReset::where('token', $token)->where('status', 0)->first();
-
-        if (!$resetToken) {
-            $notify[] = ['error', 'Token not found!'];
-            return redirect()->route('admin.password.reset')->withNotify($notify);
-        }
-        $email = $resetToken->email;
-        return view('admin.auth.passwords.reset', compact('pageTitle', 'email', 'token'));
-    }
+//    public function showResetForm(Request $request, $token)
+//    {
+//        $pageTitle = "Account Recovery";
+//        $resetToken = AdminPasswordReset::where('token', $token)->where('status', 0)->first();
+//
+//        if (!$resetToken) {
+//            $notify[] = ['error', 'Token not found!'];
+//            return redirect()->route('admin.password.reset')->withNotify($notify);
+//        }
+//        $email = $resetToken->email;
+//        return view('admin.auth.passwords.reset', compact('pageTitle', 'email', 'token'));
+//    }
 
 }
