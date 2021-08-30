@@ -115,15 +115,18 @@ class RegisterController extends Controller
             }
             // Send Verification Email if on from Admin panel
             if($set->email_verification=="off"){
-                $userIpInfo = getIpInfo();
-                $userBrowser = osBrowser();
-                // return sendEmailVerificationCode($data,$code);
-            sendEmail($user, 'REGISTER_WELCOME', [
-            'username' => $user->username,
-            'password' => $data['password'],
-        ]);
+                sendEmail($user, 'REGISTER_WELCOME', [
+                'username' => $user->username,
+                'password' => $data['password'],
+                ]);
+                return redirect()->route('login')->with('success','your account ceated successfully');
+            }else{
+                sendEmail($user, 'EVER_CODE', [
+                'code' => $user->email_verification_code,
+               ]);
+                return redirect()->route('verification_form')->with('success','please check your email');
             }
-            //  return redirect()->route('verification_form')->with('success','please check your email');
+
     }
 
     public function email_verification($email_verification_code)
@@ -147,17 +150,17 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $set = GeneralSettings::first();
-        if($set->email_verification=="off"){
+        // $set = GeneralSettings::first();
+        // if($set->email_verification=="off"){
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        Session::flash("message", "Your account has created successfully");
+        Session::flash("message", "please check your eamil");
         return $this->registered($request, $user)
             ?: redirect('/login');
-        }else{
-            Session::flash("message", "Your account has created successfully! check your emai to verify your account");
-            return redirect()->route('verification_form');
-        }
+        // }else{
+        //     Session::flash("message", "Your account has created successfully! check your email to verify your account");
+        //     return redirect()->route('verification_form');
+        // }
     }
 
 

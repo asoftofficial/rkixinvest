@@ -160,6 +160,12 @@ class UserController extends Controller {
         $user->balance=$request->amount+$current_balance;
         $user->update();
         trx($user->id,$request->amount,1,'Funds added by admin');
+        //send email to notify the user
+            sendEmail($user, 'BAL_ADD', [
+                'PBalance' => $user->balance,
+                'CAmmount' => $request->amount,
+                'TBalance' => $user->balance - $request->amount,
+                ]);
         Session::flash("message", "Fund added successfully");
         return back();
         }else{
@@ -181,6 +187,12 @@ class UserController extends Controller {
         $user->balance=$current_balance - $request->amount;
         $user->update();
         trx($user->id,$request->amount,1,'Funds deducted by admin');
+         //send email to notify the user
+            sendEmail($user, 'BAL_SUB', [
+                'Total Balance' => $user->balance,
+                'Debit Ammount' => $request->amount,
+                'Current Balance ' =>  $user->balance - $request->amount,
+                ]);
         Session::flash("message", "Fund has deduct successfully");
         return back();
          }else{

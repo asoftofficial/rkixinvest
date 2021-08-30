@@ -31,7 +31,7 @@
                                 <tbody class="list">
                                 @forelse($email_template->shortcodes as $shortcode => $key)
                                     <tr>
-                                        <th data-label="@lang('Short Code')">@php echo "{{". $shortcode ."}}"  @endphp</th>
+                                        <th data-label="@lang('Short Code')">@php echo "{{"$shortcode"}}"  @endphp</th>
                                         <td data-label="@lang('Description')">{{ __($key) }}</td>
                                     </tr>
                                 @empty
@@ -57,7 +57,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                     <label class="font-weight-bold">@lang('Subject') <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="@lang('Email subject')" name="subject" value="{{ $email_template->subj }}"/>
+                                    <input type="text" class="form-control form-control-lg" placeholder="@lang('Email subject')" name="subject" value="{{ $email_template->subject }}"/>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="font-weight-bold">@lang('Status') <span class="text-danger">*</span></label>

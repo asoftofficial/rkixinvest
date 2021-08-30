@@ -14,6 +14,7 @@ class EmailTemplateController extends Controller
         $pageTitle = 'Email Templates';
         $emptyMessage = 'No templates available';
         $email_templates = EmailTemplate::get();
+        // dd($email_templates);
         return view('admin.email_templates.index', compact('pageTitle', 'emptyMessage', 'email_templates'));
     }
 

@@ -32,6 +32,11 @@ class InvestmentController extends Controller
              // Create Transaction
              trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at);
 
+            //send email to notify the user
+            sendEmail($user, 'INVESTMENT', [
+                'package' => $package->title,
+                'amount' => $request->amount,
+                ]);
             //Create ROIs record
             $now = Carbon::now();
             $enddate = Carbon::now();
