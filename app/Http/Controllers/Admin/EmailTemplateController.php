@@ -32,7 +32,7 @@ class EmailTemplateController extends Controller
             'email_body' => 'required',
         ]);
         $email_template = EmailTemplate::findOrFail($id);
-        $email_template->subj = $request->subject;
+        $email_template->subject = $request->subject;
         $email_template->email_body = $request->email_body;
         $email_template->email_status = $request->email_status ? 1 : 0;
         $email_template->save();

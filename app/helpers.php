@@ -287,6 +287,7 @@ function shortCodeReplacer($shortCode, $replace_with, $template_string)
 function sendEmail($user, $type = null, $shortCodes = [])
 {
     $general = \App\Models\GeneralSettings::first();
+//    dd($general);
 
     $emailTemplate = \App\Models\EmailTemplate::where('action', $type)->where('email_status', 1)->first();
     if (!$emailTemplate) {
@@ -306,13 +307,13 @@ function sendEmail($user, $type = null, $shortCodes = [])
         $message = shortCodeReplacer('{{' . $code . '}}', $value, $message);
     }
 
-    $config = $general->mail_config;
+    $config = $general->email_config;
 
     $emailLog = new \App\Models\EmailLog();
     $emailLog->user_id = $user->id;
     $emailLog->mail_sender = $config->name;
-    $emailLog->email_from = $general->sitename.' '.$general->email_from;
-    $emailLog->email_to = $user->email;
+    $emailLog->from = $general->sitename.' '.$general->email_from;
+    $emailLog->to = $user->email;
     $emailLog->subject = $emailTemplate->subj;
     $emailLog->message = $message;
     $emailLog->save();
