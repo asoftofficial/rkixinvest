@@ -57,21 +57,32 @@
                                 class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
                                 <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
                                     <p>
-                                        Users
+                                        Investments
                                     </p>
                                 </a>
                         </li>
 
-                            <li class="nav-item">
-                                <a
-                                    href="{{route('admin.reward.index')}}"
-                                    class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">
-                                    <img src="{{asset('/backend/img/icons/reward-icon.png')}}" alt="">
-                                        <p>
-                                            Rewards
-                                        </p>
-                                    </a>
-                                </li>
+                    <li class="nav-item">
+                        <a
+                            href="{{route('admin.userprofile.index')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
+                            <p>
+                                Referrals
+                            </p>
+                        </a>
+                    </li>
+
+{{--                            <li class="nav-item">--}}
+{{--                                <a--}}
+{{--                                    href="{{route('admin.reward.index')}}"--}}
+{{--                                    class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">--}}
+{{--                                    <img src="{{asset('/backend/img/icons/reward-icon.png')}}" alt="">--}}
+{{--                                        <p>--}}
+{{--                                            Rewards--}}
+{{--                                        </p>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
 
                                 <li class="nav-item">
                                     <a
@@ -93,26 +104,16 @@
                                             </p>
                                         </a>
                                 </li>
-                                <li class="nav-item">
-                                <a href="{{route('admin.settings.index')}}"
-                                class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                                <img src="{{asset('/backend/img/icons/settings.png')}}" alt="">
-                                  <p>
-                                   Settings
-                                    <i class="fas fa-angle-left right"></i>
-                                  </p>
-                                </a>
-                                <ul class="nav nav-treeview" style="display: none;">
-
-                                  <li class="nav-item ml-2">
-                                    <a href="{{route('admin.settings.index')}}"
-                                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.settings.show') active blue-nav @endif">
-                                    <img src="{{asset('/backend/img/icons/generalsettings.png')}}" alt="">
-                                      <p>general settings</p>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
+                    <li class="nav-item">
+                        <a
+                            href="{{route('user.withdraw')}}"
+                            class="nav-link @if(Route::currentRouteName()=='user.withdraw' || Route::currentRouteName()=='user.withdraw.preview') || Route::currentRouteName()=='user.withdraw.history') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                            <p>
+                                Withdraw
+                            </p>
+                        </a>
+                    </li>
                                         </ul>
                                     </nav>
                                     <!-- /.sidebar-menu -->

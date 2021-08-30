@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\admin\GeneralSettingsController;
+use App\Http\Controllers\Admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\DepositGateways;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
@@ -51,6 +51,12 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
+        // Withdraw
+        Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');
+        Route::post('/withdraw', 'WithdrawController@withdrawStore')->name('withdraw.money');
+        Route::get('/withdraw/preview', 'WithdrawController@withdrawPreview')->name('withdraw.preview');
+        Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');
+        Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
     });
 
 
