@@ -1,5 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 main-nav mt-3">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">
+        @if(empty($settings->logo))
+            <img src="{{route('placeholder.image','200x80')}}"
+                                alt="" />
+        @else
+            <img
+            src="{{$settings->logo}}"
+            class=""
+            alt="logo">
+        @endif
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

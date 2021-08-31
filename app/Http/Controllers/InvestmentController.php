@@ -127,4 +127,12 @@ class InvestmentController extends Controller
         }
 
     }
+
+    //show user investments
+
+    function showUserInvestments()
+    {
+        $investments = Auth::user()->investments;
+        return view('users.investments.index',compact('investments'));
+    }
 }

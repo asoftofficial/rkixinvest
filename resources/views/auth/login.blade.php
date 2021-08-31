@@ -24,7 +24,15 @@
             <div class="col-md-5 login-form">
                     <div class="login-header">
                         <div class="logo">
-                            <a href="/"><img src="{{$settings->logo}}" alt=""></a>
+                            @if(empty($settings->logo))
+                                <img src="{{route('placeholder.image','200x80')}}"
+                                alt="" />
+                            @else
+                                <img
+                                src="{{$settings->logo}}"
+                                class=""
+                                alt="logo">
+                                 @endif
                         </div>
                     </div>
                     <div class="center-container">
