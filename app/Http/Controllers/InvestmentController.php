@@ -30,7 +30,7 @@ class InvestmentController extends Controller
              $investment->save();
 
              // Create Transaction
-             trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at);
+             trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at,'investment');
 
             //send email to notify the user
             sendEmail($user, 'INVESTMENT', [
@@ -112,7 +112,7 @@ class InvestmentController extends Controller
                         $parent->balance += $bonus;
                         $parent->update();
                         // Create Transaction
-                        trx($parent->id,$bonus,'1','Referral level '.$level->id.' bonus from '.$parent->username.' at '.\Carbon\Carbon::now());
+                        trx($parent->id,$bonus,'1','Referral level '.$level->id.' bonus from '.$parent->username.' at '.\Carbon\Carbon::now(),'ref_bonus');
                     }
                 }else{
                     break;
