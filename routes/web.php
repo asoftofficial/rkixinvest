@@ -115,16 +115,16 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('frontend/testimonial/update/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'update'])->name('testimonial.update');
     Route::delete('frontend/testimonial/delete/{id}',[App\Http\Controllers\Admin\TestimonialController::class,'destroy'])->name('testimonial.delete');
     //Withdraw Routes
-    Route::get('withdraw/pending', 'WithdrawController@pending')->name('pending');
-    Route::get('withdraw/approved', 'WithdrawController@approved')->name('approved');
-    Route::get('withdraw/rejected', 'WithdrawController@rejected')->name('rejected');
+    Route::get('withdraw/pending', 'WithdrawController@pending')->name('withdraw.pending');
+    Route::get('withdraw/approved', 'WithdrawController@approved')->name('withdraw.approved');
+    Route::get('withdraw/rejected', 'WithdrawController@rejected')->name('withdraw.rejected');
     Route::get('withdraw/log', 'WithdrawController@log')->name('log');
-    Route::get('withdraw/via/{method_id}/{type?}', 'WithdrawController@logViaMethod')->name('method');
-    Route::get('withdraw/{scope}/search', 'WithdrawController@search')->name('search');
-    Route::get('withdraw/date-search/{scope}', 'WithdrawController@dateSearch')->name('dateSearch');
-    Route::get('withdraw/details/{id}', 'WithdrawController@details')->name('details');
-    Route::post('withdraw/approve', 'WithdrawController@approve')->name('approve');
-    Route::post('withdraw/reject', 'WithdrawController@reject')->name('reject');
+    Route::get('withdraw/via/{method_id}/{type?}', 'WithdrawController@logViaMethod')->name('withdraw.method');
+    Route::get('withdraw/{scope}/search', 'WithdrawController@search')->name('withdraw.search');
+    Route::get('withdraw/date-search/{scope}', 'WithdrawController@dateSearch')->name('withdraw.dateSearch');
+    Route::get('withdraw/details/{id}', 'WithdrawController@details')->name('withdraw.details');
+    Route::post('withdraw/approve', 'WithdrawController@approve')->name('withdraw.approve');
+    Route::post('withdraw/reject', 'WithdrawController@reject')->name('withdraw.reject');
 
     //slider route
     Route::resource('slider','SliderController');

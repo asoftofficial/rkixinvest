@@ -39,10 +39,10 @@ class WithdrawController extends Controller
 
     public function log()
     {
-        $pageTitle = 'Withdrawals Log';
+        $pageTitle = 'Withdrawals Logs';
         $withdrawals = Withdrawal::where('status', '!=', 0)->with(['user','method'])->orderBy('id','desc')->paginate(25);
         $emptyMessage = 'No withdrawal history';
-        return view('admin.withdraw.withdrawals', compact('pageTitle', 'withdrawals', 'emptyMessage'));
+        return view('admin.withdraws.index', compact('pageTitle', 'withdrawals', 'emptyMessage'));
     }
 
 

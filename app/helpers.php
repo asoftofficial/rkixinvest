@@ -483,4 +483,11 @@ function showDateTime($date, $format = 'Y-m-d h:i A')
     return Carbon::parse($date)->translatedFormat($format);
 }
 
+function diffForHumans($date)
+{
+    $lang = session()->get('lang');
+    Carbon::setlocale($lang);
+    return Carbon::parse($date)->diffForHumans();
+}
+
 ?>
