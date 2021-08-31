@@ -12,12 +12,12 @@ class WithdrawMethodController extends Controller
     public function index(){
         $data['emptyMessage'] = 'Withdrawal Methods not found.';
         $data['methods'] = WithdrawalMethod::orderBy('status','desc')->orderBy('id')->get();
-        return view('admin.withdraw.index', $data);
+        return view('admin.withdraw_methods.index', $data);
     }
 
     public function create(){
         $pageTitle = 'New Withdrawal Method';
-        return view('admin.withdraw.create', compact('pageTitle'));
+        return view('admin.withdraw_methods.create', compact('pageTitle'));
     }
 
     public function store(Request $request)
@@ -79,7 +79,7 @@ class WithdrawMethodController extends Controller
     {
         $pageTitle = 'Update Withdrawal Method';
         $method = WithdrawalMethod::findOrFail($id);
-        return view('admin.withdraw.edit', compact('pageTitle', 'method'));
+        return view('admin.withdraw_methods.edit', compact('pageTitle', 'method'));
     }
 
     public function update(Request $request, $id)
