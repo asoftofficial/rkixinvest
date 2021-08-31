@@ -162,7 +162,7 @@ class UserController extends Controller {
         $old_balance=$user->balance;
         $total_balance = $user->balance=$request->amount+$old_balance;
         $user->update();
-        $trx = trx($user->id,$request->amount,1,'Funds added by admin');
+        $trx = trx($user->id,$request->amount,1,'Funds added by admin','deposit');
         //send email to notify the user
             sendEmail($user, 'BAL_ADD', [
                 'post_balance' => $old_balance,
@@ -191,7 +191,7 @@ class UserController extends Controller {
         }else
         $total_balance = $user->balance =$current_balance - $request->amount;
         $user->update();
-        $trx = trx($user->id,$request->amount,1,'Funds deducted by admin');
+        $trx = trx($user->id,$request->amount,1,'Funds deducted by admin','debit');
          //send email to notify the user
             sendEmail($user, 'BAL_SUB', [
                 'post_balance' => $current_balance,
