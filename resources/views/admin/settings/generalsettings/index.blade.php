@@ -276,7 +276,7 @@ General Settings
     {{-- website settings --}}
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h4 class="border-bottom pb-2 mb-0">Web Settings</h4>
-        <form action="{{route('admin.web.settings')}}" method="get">
+        <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="text" class="input-label mb-0">website Name:</label>

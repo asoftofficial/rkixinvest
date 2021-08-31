@@ -23,7 +23,7 @@
             <div class="col-md-5 login-form">
                     <div class="login-header">
                         <div class="logo">
-                            <a href="/"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
+                            <a href="/"><img src="{{$settings->logo}}" alt=""></a>
                         </div>
                     </div>
                     <div class="center-container">
