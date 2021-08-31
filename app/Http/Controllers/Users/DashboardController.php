@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Investment;
+use App\Models\Plan;
 use Hash;
+use Illuminate\Support\Facades\Session;
+
 class DashboardController extends Controller
 {
     public function index(){
@@ -114,12 +117,23 @@ class DashboardController extends Controller
            }
        }
     }
+
+    //resend verification code via email
     public function resendCode()
     {
-        $data = User::find(Auth::user()->id);
-        $code = $data->email_verification_code;
-        sendEmailVerificationCode($data,$code);
-        return back()->with('success', 'code send successfully');
+        $user = User::find(Auth::user()->id);
+        $code = $user->email_verification_code;
+        $userIpInfo = getIpInfo();
+        $userBrowser = osBrowser();
+        sendEmail($user, 'RESEND_CODE', [
+            'operating_system' => $userBrowser['os_platform'],
+            'browser' => $userBrowser['browser'],
+            'ip' => $userIpInfo['ip'],
+            'time' => Carbon::now(),
+            'code' => $code,
+        ]);
+        Session::flash("message", "Verification code has sent check.Please your email");
+        return back()->with('success', 'Code send successfully');
     }
 
 }

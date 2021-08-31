@@ -29,15 +29,6 @@
                     </div>
                     <div class="center-container">
                         <div class="login-form-area">
-                            @if(Session::has('message'))
-                            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">
-                                {{ Session::get('message')}}</p>
-                            @endif
-                                @if(Session::has('error'))
-                                    <div class="alert alert-danger">
-                                        {{ Session::get('error') }}
-                                    </div>
-                                @endif
                             <div class="login-title-area">
                                 <h2>Log into Your Account</h2>
                                 <p>Log your account so you can continue using our customer experience.</p>

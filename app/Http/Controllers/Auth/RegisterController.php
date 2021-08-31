@@ -113,20 +113,20 @@ class RegisterController extends Controller
                     $sponserId = getparent($sponserId);
                 }
             }
+            Auth::loginUsingId($user->id);
             // Send Verification Email if on from Admin panel
             if($set->email_verification=="off"){
                 sendEmail($user, 'REGISTER_WELCOME', [
                 'username' => $user->username,
                 'password' => $request->password,
                 ]);
-                Session::flash("message", "Your account has created.Please login!");
-                return redirect()->route('user.dashboard');
+                return redirect()->route('user.dashboard')->with('success','Account created successfully');
             }else{
                 sendEmail($user, 'EVER_CODE', [
                 'code' => $user->email_verification_code,
                ]);
                 Session::flash("message", "Your account has created successfully! check your email to verify your account");
-                return redirect()->route('verification_form');
+                return redirect()->route('verification_form')->with('success','Please check your email yo verify');
             }
 
     }
