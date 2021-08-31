@@ -53,12 +53,13 @@ function getparent($id)
     }
 }
 
-function trx($id,$amount,$type,$desc)
+function trx($id,$amount,$type,$desc,$trxType="deposit")
 {
     $trx = Transaction::create([
             'user_id' => $id,
             'amount' => $amount,
             'type' => $type,
+            'trx_type' => $type,
             'description' => $desc
         ]);
         return $trx;
