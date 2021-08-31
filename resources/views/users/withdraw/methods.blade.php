@@ -6,7 +6,7 @@
     Welcome back,
 @endsection
 @section('header-right')
-    <a href="{{ route('user.withdraw.history') }}" class="btn btn-primary btn-blue header-right-btn">@lang('Withdraw History')</a>
+    <a href="{{ route('user.withdraw') }}" class="btn btn-primary btn-blue header-right-btn">@lang('Withdraw History')</a>
 @endsection
 @push('style')
     <style>

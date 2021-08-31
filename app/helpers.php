@@ -2,6 +2,7 @@
 //Send Email Verification code
 
 use App\Models\Transaction;
+use Carbon\Carbon;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -467,6 +468,13 @@ function sendGeneralEmail($email, $subject, $message, $receiver_name = '')
     } else if ($config->name == 'mailjet') {
         sendMailjetMail($config, $email, $receiver_name,$subject, $message, $general);
     }
+}
+
+function showDateTime($date, $format = 'Y-m-d h:i A')
+{
+    $lang = session()->get('lang');
+    Carbon::setlocale($lang);
+    return Carbon::parse($date)->translatedFormat($format);
 }
 
 ?>

@@ -53,6 +53,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');
+        Route::get('/withdraw/methods', 'WithdrawController@withdrawMethods')->name('withdraw.methods');
         Route::post('/withdraw', 'WithdrawController@store')->name('withdraw.money');
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
         Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');

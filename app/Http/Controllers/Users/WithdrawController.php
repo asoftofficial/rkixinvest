@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\GeneralSettings;
+use App\Models\Transaction;
 use App\Models\Withdrawal;
 use App\Models\WithdrawalMethod;
 use Illuminate\Http\Request;
@@ -10,6 +12,13 @@ use Illuminate\Http\Request;
 class WithdrawController extends Controller
 {
     public function withdraw(){
+        $data['pageTitle'] = "Withdrawals";
+        $data['withdraws'] = auth()->user()->withdraws()->where('status', '!=', 0)->paginate(25);
+        $data['emptyMessage'] = "No Data Found!";
+        return view('users.withdraw.index',$data);
+    }
+
+    public function withdrawMethods(){
         $data['pageTitle'] = "Withdraw Amount";
         $data['methods'] = WithdrawalMethod::where('status',1)->get();
         return view('users.withdraw.methods',$data);
@@ -60,5 +69,108 @@ class WithdrawController extends Controller
         $withdraw = Withdrawal::with('method','user')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
         $pageTitle = 'Withdraw Preview';
         return view('users.withdraw.preview', compact('pageTitle','withdraw'));
+    }
+
+    public function withdrawSubmit(Request $request)
+    {
+        $general = GeneralSettings::first();
+        $withdraw = Withdrawal::with('method','user')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
+
+        $rules = [];
+        $inputField = [];
+        if ($withdraw->method->user_data != null) {
+            foreach ($withdraw->method->user_data as $key => $cus) {
+                $rules[$key] = [$cus->validation];
+                if ($cus->type == 'file') {
+                    array_push($rules[$key], 'image');
+                    array_push($rules[$key], 'jpg','jpeg','png');
+                    array_push($rules[$key], 'max:2048');
+                }
+                if ($cus->type == 'text') {
+                    array_push($rules[$key], 'max:191');
+                }
+                if ($cus->type == 'textarea') {
+                    array_push($rules[$key], 'max:300');
+                }
+                $inputField[] = $key;
+            }
+        }
+
+        $this->validate($request, $rules);
+
+        $user = auth()->user();
+
+        if($withdraw->amount > $user->balance) {
+            return back()->with('error', 'Your request amount is larger then your current balance.');
+        }
+
+        $directory = date("Y")."/".date("m")."/".date("d");
+        $path = imagePath()['verify']['withdraw']['path'].'/'.$directory;
+        $collection = collect($request);
+        $reqField = [];
+        if ($withdraw->method->user_data != null) {
+            foreach ($collection as $k => $v) {
+                foreach ($withdraw->method->user_data as $inKey => $inVal) {
+                    if ($k != $inKey) {
+                        continue;
+                    } else {
+                        if ($inVal->type == 'file') {
+                            if ($request->hasFile($inKey)) {
+                                try {
+                                    $reqField[$inKey] = [
+                                        'field_name' => $directory.'/'.uploadImage($request[$inKey], $path),
+                                        'type' => $inVal->type,
+                                    ];
+                                } catch (\Exception $exp) {
+                                    $notify[] = ['error', 'Could not upload your ' . $request[$inKey]];
+                                    return back()->withNotify($notify)->withInput();
+                                }
+                            }
+                        } else {
+                            $reqField[$inKey] = $v;
+                            $reqField[$inKey] = [
+                                'field_name' => $v,
+                                'type' => $inVal->type,
+                            ];
+                        }
+                    }
+                }
+            }
+            $withdraw['withdraw_information'] = $reqField;
+        } else {
+            $withdraw['withdraw_information'] = null;
+        }
+
+
+        $withdraw->status = 2;
+        $withdraw->save();
+        $user->balance  -=  $withdraw->amount;
+        $user->save();
+
+
+
+        $transaction = new Transaction();
+        $transaction->user_id = $withdraw->user_id;
+        $transaction->amount = $withdraw->amount;
+//        $transaction->post_balance = $user->balance;
+//        $transaction->charge = $withdraw->charge;
+        $transaction->type = 2;
+        $transaction->details = showAmount($withdraw->final_amount) . ' ' . $withdraw->currency . ' Withdraw Via ' . $withdraw->method->name;
+//        $transaction->trx =  $withdraw->trx;
+        $transaction->save();
+
+        sendEmail($user, 'WITHDRAW_REQUEST', [
+            'method_name' => $withdraw->method->name,
+            'method_currency' => $withdraw->currency,
+            'method_amount' => showAmount($withdraw->final_amount),
+            'amount' => showAmount($withdraw->amount),
+            'charge' => showAmount($withdraw->charge),
+            'currency' => $general->cur_text,
+            'rate' => showAmount($withdraw->rate),
+            'trx' => $withdraw->trx,
+            'post_balance' => showAmount($user->balance),
+            'delay' => $withdraw->method->delay
+        ]);
+        return redirect()->route('user.withdraw.history')->with('success', 'Withdraw request sent successfully');
     }
 }
