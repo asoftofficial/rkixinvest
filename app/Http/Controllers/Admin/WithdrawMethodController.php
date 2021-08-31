@@ -82,6 +82,65 @@ class WithdrawMethodController extends Controller
         return view('admin.withdraw.edit', compact('pageTitle', 'method'));
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name'           => 'required|max: 60',
+            'image'         =>  'image|mimes:jpg,png.jpeg,svg,gif',
+            'rate'           => 'required|numeric|gt:0',
+            'delay'          => 'required',
+            'min_limit'      => 'required|numeric|gt:0',
+            'max_limit'      => 'required|numeric|gt:min_limit',
+            'fixed_charge'   => 'required|numeric|gte:0',
+            'percent_charge' => 'required|numeric|between:0,100',
+            'currency'       => 'required',
+            'instruction'    => 'required|max:64000',
+            'field_name.*'    => 'sometimes|required'
+        ],[
+            'field_name.*.required'=>'All field is required'
+        ]);
+
+        $method = WithdrawalMethod::findOrFail($id);
+        $filename = $method->image;
+
+        $path = imagePath()['withdraw']['method']['path'];
+        $size = imagePath()['withdraw']['method']['size'];
+
+        if ($request->hasFile('image')) {
+            try {
+                $filename = uploadImage($request->image,$path, $size, $method->image);
+                $method->image          = $filename;
+            } catch (\Exception $exp) {
+                return back()->with('error', 'Image could not be uploaded. '.$exp);
+            }
+        }
+
+
+        $input_form = [];
+        if ($request->has('field_name')) {
+            for ($a = 0; $a < count($request->field_name); $a++) {
+                $arr = [];
+                $arr['field_name'] = strtolower(str_replace(' ', '_', $request->field_name[$a]));
+                $arr['field_level'] = $request->field_name[$a];
+                $arr['type'] = $request->type[$a];
+                $arr['validation'] = $request->validation[$a];
+                $input_form[$arr['field_name']] = $arr;
+            }
+        }
+        $method->name           = $request->name;
+        $method->rate           = $request->rate;
+        $method->delay          = $request->delay;
+        $method->min_limit      = $request->min_limit;
+        $method->max_limit      = $request->max_limit;
+        $method->fixed_charge   = $request->fixed_charge;
+        $method->percent_charge = $request->percent_charge;
+        $method->description    = $request->instruction;
+        $method->user_data      = $input_form;
+        $method->currency       = $request->currency;
+        $method->update();
+        return back()->with('success', $method->name . ' has been updated.');
+    }
+
     public function activate(Request $request)
     {
         $request->validate(['id' => 'required|integer']);

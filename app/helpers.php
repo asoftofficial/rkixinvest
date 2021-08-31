@@ -17,6 +17,12 @@ function getTrx($length = 12)
     return $randomString;
 }
 
+function getAmount($amount, $length = 2)
+{
+    $amount = round($amount, $length);
+    return $amount + 0;
+}
+
 function showAmount($amount, $decimal = 2, $separate = true, $exceptZeros = false){
     $separator = '';
     if($separate){

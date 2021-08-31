@@ -95,7 +95,8 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
-    Route::get('method/edit/{id}', [\App\Http\Controllers\Admin\WithdrawMethodController::class,'edit'])->name('withdraw.gateways.edit');
+    Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');
+    Route::get('withdraw/gateway/edit/{id}', [\App\Http\Controllers\Admin\WithdrawMethodController::class,'edit'])->name('withdraw.gateways.edit');
     Route::post('withdraw/gateway/activate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'activate'])->name('withdraw.method.activate');
     Route::post('withdraw/gateway/deactivate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'deactivate'])->name('withdraw.method.deactivate');
     Route::get('withdraw/gateways',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'index'])->name('withdraw.gateways');
