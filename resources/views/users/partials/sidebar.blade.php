@@ -59,7 +59,7 @@
 
                         <li class="nav-item">
                             <a
-                                href="{{route('admin.userprofile.index')}}"
+                                href="{{route('user.investment')}}"
                                 class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
                                 <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
                                     <p>

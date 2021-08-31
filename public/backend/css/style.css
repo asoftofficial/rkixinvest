@@ -166,7 +166,7 @@ table.table.custom-table td {
 }
 .user-panel img {
     height: auto;
-    width: 120px;
+    width: 200px;
 }
 [class*=sidebar-light] .user-panel {
     border-bottom: none;
