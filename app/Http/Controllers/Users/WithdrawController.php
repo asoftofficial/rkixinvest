@@ -78,8 +78,8 @@ class WithdrawController extends Controller
 
         $rules = [];
         $inputField = [];
-        if ($withdraw->method->user_data != null) {
-            foreach ($withdraw->method->user_data as $key => $cus) {
+        if ($withdraw->method->user_data != null){
+            foreach (json_decode($withdraw->method->user_data) as $key => $cus) {
                 $rules[$key] = [$cus->validation];
                 if ($cus->type == 'file') {
                     array_push($rules[$key], 'image');
@@ -108,9 +108,9 @@ class WithdrawController extends Controller
         $path = imagePath()['verify']['withdraw']['path'].'/'.$directory;
         $collection = collect($request);
         $reqField = [];
-        if ($withdraw->method->user_data != null) {
+        if (json_decode($withdraw->method->user_data) != null) {
             foreach ($collection as $k => $v) {
-                foreach ($withdraw->method->user_data as $inKey => $inVal) {
+                foreach (json_decode($withdraw->method->user_data) as $inKey => $inVal) {
                     if ($k != $inKey) {
                         continue;
                     } else {
@@ -136,9 +136,9 @@ class WithdrawController extends Controller
                     }
                 }
             }
-            $withdraw['withdraw_information'] = $reqField;
+            $withdraw['information'] = $reqField;
         } else {
-            $withdraw['withdraw_information'] = null;
+            $withdraw['information'] = null;
         }
 
 
@@ -155,7 +155,7 @@ class WithdrawController extends Controller
 //        $transaction->post_balance = $user->balance;
 //        $transaction->charge = $withdraw->charge;
         $transaction->type = 2;
-        $transaction->details = showAmount($withdraw->final_amount) . ' ' . $withdraw->currency . ' Withdraw Via ' . $withdraw->method->name;
+        $transaction->description = showAmount($withdraw->final_amount) . ' ' . $withdraw->currency . ' Withdraw Via ' . $withdraw->method->name;
 //        $transaction->trx =  $withdraw->trx;
         $transaction->save();
 
@@ -171,6 +171,6 @@ class WithdrawController extends Controller
             'post_balance' => showAmount($user->balance),
             'delay' => $withdraw->method->delay
         ]);
-        return redirect()->route('user.withdraw.history')->with('success', 'Withdraw request sent successfully');
+        return redirect()->route('user.withdraw')->with('success', 'Withdraw request sent successfully');
     }
 }

@@ -92,7 +92,7 @@
                                             @if($v->type == "text")
                                                 <div class="form-group">
                                                     <label><strong>{{__($v->field_level)}} @if($v->validation == 'required') <span class="text-danger">*</span>  @endif</strong></label>
-                                                    <input type="text" name="{{$k}}" class="form--control" value="{{old($k)}}" placeholder="{{__($v->field_level)}}" @if($v->validation == "required") required @endif>
+                                                    <input type="text" name="{{$k}}" class="form-control" value="{{old($k)}}" placeholder="{{__($v->field_level)}}" @if($v->validation == "required") required @endif>
                                                     @if ($errors->has($k))
                                                         <span class="text-danger">{{ __($errors->first($k)) }}</span>
                                                     @endif
