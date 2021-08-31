@@ -62,7 +62,7 @@
                     @endforelse
                     </tbody>
                 </table>
-                {!! $investments->render('admin.custom-paginator') !!}
+                {!! $investments->links('admin.custom-paginator') !!}
             </div>
         </section>
     </div>

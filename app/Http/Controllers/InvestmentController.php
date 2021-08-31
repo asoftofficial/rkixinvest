@@ -132,7 +132,8 @@ class InvestmentController extends Controller
 
     function showUserInvestments()
     {
-        $investments = Auth::user()->investments;
-        return view('users.investments.index',compact('investments'));
+        $investments = Auth::user()->investments()->paginate(25);
+        $emptyMessage = "No Investment found";
+        return view('users.investments.index',compact('investments','emptyMessage'));
     }
 }
