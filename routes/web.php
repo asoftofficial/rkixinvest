@@ -83,7 +83,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     //settings routes
     Route::get('settings',[GeneralSettingsController::class,'index'])->name('settings.index');
     Route::post('reward/settings',[GeneralSettingsController::class,'rewardUpdate'])->name('reward.settings');
-    Route::get('web/settings',[GeneralSettingsController::class,'Update'])->name('web.settings');
+    Route::post('web/settings',[GeneralSettingsController::class,'Update'])->name('web.settings');
     Route::get('referral/settings',[GeneralSettingsController::class,'referralUpdate'])->name('referral.settings');
     Route::get('fund/settings',[GeneralSettingsController::class,'fundsSettings'])->name('fund.settings');
     Route::post('fund/settings',[GeneralSettingsController::class,'fundupdate'])->name('post.fund.settings');

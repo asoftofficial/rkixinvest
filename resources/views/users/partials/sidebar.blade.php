@@ -26,7 +26,7 @@
             class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-items-center">
             <div class="image">
                 <img
-                    src="{{asset('backend/img/dashboard-profile.png')}}"
+                    src="{{$settings->logo}}"
                     class=""
                     alt="User Image"></div>
             </div>

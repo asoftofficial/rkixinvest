@@ -18,6 +18,24 @@ class GeneralSettingsController extends Controller
     public function Update(Request $request)
     {
         $settings = ModelsGeneralSettings::first();
+         if($request->hasFile('favicon')){
+            $extension = $request->file('favicon')->getClientOriginalExtension();
+            $fileName = "favicon_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/web/');
+            $full_path = '/uploads/web/'.$fileName;
+            $request->file('favicon')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $settings->fav_icon   = $file_path;
+        }
+        if($request->hasFile('logo')){
+            $extension = $request->file('logo')->getClientOriginalExtension();
+            $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/web/');
+            $full_path = '/uploads/web/'.$fileName;
+            $request->file('logo')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $settings->logo  = $file_path;
+        }
         $settings->web_title   = $request->web_title;
         $settings->description = $request->description;
         $settings->update();

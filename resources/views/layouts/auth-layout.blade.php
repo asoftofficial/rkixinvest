@@ -15,7 +15,7 @@
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">
-                <a href="/"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
+                <a href="/"><img src="{{$settings->logo}}" alt=""></a>
             </div>
         </header>
         @yield('content')
