@@ -6,6 +6,8 @@ use App\Models\Homepage;
 use App\Models\Slider;
 use App\Models\SocialLink;
 use App\Models\Testimonial;
+use App\Models\Transaction;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -17,6 +19,9 @@ class FrontendController extends Controller
         $data = Homepage::first();
         $testimonials = Testimonial::all();
         $slider = Slider::first();
-        return view('front.index',compact('sociallinks','aboutus','data','testimonials','slider'));
+        $withdrawals = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
+        $deposit = Transaction::where('type','2')->get();
+        $emptyMessage = "No withdraws found";
+        return view('front.index',compact('sociallinks','aboutus','data','testimonials','slider','withdrawals','emptyMessage'));
     }
 }

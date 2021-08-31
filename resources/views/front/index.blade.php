@@ -83,32 +83,6 @@
                                     <td>23000$</td>
                                     <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
                                 </tr>
-                                <tr>
-                                    <td>Anthony</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Calor Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>John Jarry</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/master-card-logo.png') }}" alt="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Jamie</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Clark</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
                             </table>
                         </div>
                     </div>
@@ -121,37 +95,17 @@
                                     <th>Amount</th>
                                     <th>Gateway</th>
                                 </tr>
-                                <tr>
-                                    <td>John Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Anthony</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Calor Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>John Jarry</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/master-card-logo.png') }}" alt="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Jamie</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Clark</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
+                                @forelse($withdrawals as $item)
+                                    <tr>
+                                        <td>{{$item->user->username}}</td>
+                                        <td>{{$item->amount}}$</td>
+                                        <td>{{$item->method->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="100%">{{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>
