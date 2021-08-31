@@ -5,8 +5,9 @@
 @section('content')
 <section class="register-form py-5">
     @if(Session::has('message'))
-<p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
-@endif
+    <p class="alert {{ Session::get('alert-class', 'alert-success') }}">
+        {{ Session::get('message') }}</p>
+    @endif
     <form method="POST" action="{{route('verificationForm.post')}}">
         @csrf
 

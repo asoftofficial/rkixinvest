@@ -18,6 +18,7 @@
             <a href="/"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
         </div>
     </header> --}}
+
     <div class="main">
         <div class="row">
             <div class="col-md-5 login-form">
@@ -29,15 +30,14 @@
                     <div class="center-container">
                         <div class="login-form-area">
                             @if(Session::has('message'))
-                            <div class="alert alert-success">
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
-                        @if(Session::has('error'))
-                            <div class="alert alert-success">
-                                {{ Session::get('error') }}
-                            </div>
-                        @endif
+                            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">
+                                {{ Session::get('message')}}</p>
+                            @endif
+                                @if(Session::has('error'))
+                                    <div class="alert alert-danger">
+                                        {{ Session::get('error') }}
+                                    </div>
+                                @endif
                             <div class="login-title-area">
                                 <h2>Log into Your Account</h2>
                                 <p>Log your account so you can continue using our customer experience.</p>

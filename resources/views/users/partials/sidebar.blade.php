@@ -25,11 +25,17 @@
         <div
             class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-items-center">
             <div class="image">
-                <img
+                @if(empty($settings->logo))
+                            <img src="{{route('placeholder.image','100x150')}}"
+                                alt="" />
+                @else
+                     <img
                     src="{{$settings->logo}}"
                     class=""
-                    alt="User Image"></div>
+                    alt="logo">
+                @endif
             </div>
+        </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
