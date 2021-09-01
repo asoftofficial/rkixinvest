@@ -6,14 +6,10 @@
     Welcome back,
 @endsection
 @section('header-right')
-    <a href="{{route('admin.dashboard')}}" class="btn btn-primary btn-blue header-right-btn">Dashboard</a>
+    <a href="{{route('admin.withdraw.log')}}" class="btn btn-primary btn-blue header-right-btn">All Logs</a>
 @endsection
 @push('style')
-    <style>
-        .widget-two {
-            padding: 10px 10px 1px 10px;
-        }
-    </style>
+
 @endpush
 @push('script')
 
@@ -66,8 +62,6 @@
                                     <th>@lang('Amount')</th>
                                     <th>@lang('Conversion')</th>
                                     <th>@lang('Status')</th>
-                                    <th>@lang('Action')</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -120,19 +114,6 @@
                                                 <br>{{ diffForHumans($withdraw->updated_at) }}
                                             @endif
                                         </td>
-                                        <td data-label="@lang('Action')">
-{{--                                            <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="icon-btn ml-1 "  data-tooltip="tooltip" title="@lang('Detail')">--}}
-{{--                                                <i class="fas fa-desktop"></i>--}}
-{{--                                            </a>--}}
-                                            @if($withdraw->status==2)
-                                                <a href="#" class="text-success ml-1 approve" data-id="{{$withdraw->id}}" data-tooltip="tooltip" title="@lang('Approve')" data-toggle="modal" data-target="#approveModal">
-                                                    <i class="fas fa-check"></i>
-                                                </a>
-                                                <a href="#" class="text-danger ml-1 reject" data-id="{{$withdraw->id}}" data-tooltip="tooltip" title="@lang('Reject')" data-toggle="modal" data-target="#rejectModal">
-                                                    <i class="fas fa-ban"></i>
-                                                </a>
-                                            @endif
-                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -148,8 +129,7 @@
                 </div><!-- card end -->
 
             </div>
+        </div>
     </div>
     <!-- /.container-fluid -->
-        @include('admin.withdraws.modals.approve')
-        @include('admin.withdraws.modals.reject')
 @endsection

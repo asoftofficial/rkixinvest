@@ -16,25 +16,25 @@ class WithdrawController extends Controller
     public function pending()
     {
         $pageTitle = 'Pending Withdrawals';
-        $withdrawals = Withdrawal::pending()->with(['user','method'])->orderBy('id','desc')->paginate(25);
-        $emptyMessage = 'No withdrawal found';
-        return view('admin.withdraw.withdrawals', compact('pageTitle', 'withdrawals', 'emptyMessage'));
+        $withdrawals = Withdrawal::where('status',2)->with(['user','method'])->orderBy('id','desc')->paginate(25);
+        $emptyMessage = 'No pending withdrawal found';
+        return view('admin.withdraws.pending', compact('pageTitle', 'withdrawals', 'emptyMessage'));
     }
 
     public function approved()
     {
         $pageTitle = 'Approved Withdrawals';
-        $withdrawals = Withdrawal::approved()->with(['user','method'])->orderBy('id','desc')->paginate(25);
-        $emptyMessage = 'No withdrawal found';
-        return view('admin.withdraw.withdrawals', compact('pageTitle', 'withdrawals', 'emptyMessage'));
+        $withdrawals = Withdrawal::where('status',1)->with(['user','method'])->orderBy('id','desc')->paginate(25);
+        $emptyMessage = 'No approved withdrawal found';
+        return view('admin.withdraws.approved', compact('pageTitle', 'withdrawals', 'emptyMessage'));
     }
 
     public function rejected()
     {
         $pageTitle = 'Rejected Withdrawals';
-        $withdrawals = Withdrawal::rejected()->with(['user','method'])->orderBy('id','desc')->paginate(25);
-        $emptyMessage = 'No withdrawal found';
-        return view('admin.withdraw.withdrawals', compact('pageTitle', 'withdrawals', 'emptyMessage'));
+        $withdrawals = Withdrawal::where('status',3)->with(['user','method'])->orderBy('id','desc')->paginate(25);
+        $emptyMessage = 'No rejected withdrawal found';
+        return view('admin.withdraws.rejected', compact('pageTitle', 'withdrawals', 'emptyMessage'));
     }
 
     public function log()
@@ -166,7 +166,7 @@ class WithdrawController extends Controller
         $request->validate(['id' => 'required|integer']);
         $withdraw = Withdrawal::where('id',$request->id)->where('status',2)->with('user')->firstOrFail();
         $withdraw->status = 1;
-        $withdraw->admin_feedback = $request->details;
+        $withdraw->feedback = $request->details;
         $withdraw->save();
 
         $general = GeneralSettings::first();

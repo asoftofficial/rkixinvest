@@ -120,7 +120,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('withdraw/pending', 'WithdrawController@pending')->name('withdraw.pending');
     Route::get('withdraw/approved', 'WithdrawController@approved')->name('withdraw.approved');
     Route::get('withdraw/rejected', 'WithdrawController@rejected')->name('withdraw.rejected');
-    Route::get('withdraw/log', 'WithdrawController@log')->name('log');
+    Route::get('withdraw/log', 'WithdrawController@log')->name('withdraw.log');
     Route::get('withdraw/via/{method_id}/{type?}', 'WithdrawController@logViaMethod')->name('withdraw.method');
     Route::get('withdraw/{scope}/search', 'WithdrawController@search')->name('withdraw.search');
     Route::get('withdraw/date-search/{scope}', 'WithdrawController@dateSearch')->name('withdraw.dateSearch');

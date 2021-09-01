@@ -219,7 +219,7 @@
                     class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='admin.withdraw.gateways.create') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
                         <p>
-                      withdraw Method
+                      Withdraw Method
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
@@ -236,6 +236,51 @@
                             class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways.create') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Add Method</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item align-items-center  @if(Route::currentRouteName()=='admin.withdraw.log'||Route::currentRouteName()=='admin.withdraw.pending' ||Route::currentRouteName()=='admin.withdraw.approved' ||Route::currentRouteName()=='admin.withdraw.rejected') menu-is-opening menu-open @endif">
+                    <a href=""
+                       class="nav-link
+                       @if(Route::currentRouteName()=='admin.withdraw.log'||
+                        Route::currentRouteName()=='admin.withdraw.pending' ||
+                        Route::currentRouteName()=='admin.withdraw.approved' ||
+                        Route::currentRouteName()=='admin.withdraw.rejected') active blue-nav @endif">
+                        <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
+                        <p>
+                            Withdrawals
+                            <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display:  @if(Route::currentRouteName()=='admin.withdraw.log'||Route::currentRouteName()=='admin.withdraw.pending' ||Route::currentRouteName()=='admin.withdraw.approved' ||Route::currentRouteName()=='admin.withdraw.rejected') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.log')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.withdraw.log') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>All Logs</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.pending')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.withdraw.pending') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Pending</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.approved')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.withdraw.approved') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Approved</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.withdraw.rejected')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.withdraw.rejected') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Rejected</p>
                             </a>
                         </li>
                     </ul>
