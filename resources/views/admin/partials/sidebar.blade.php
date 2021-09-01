@@ -13,11 +13,6 @@
     p#generalsettings_text {
         padding-left: 5px;
 }
-
-    .angle-icon{
-   top: 4px !important;
-    right: -8px !important;
-    }
 </style>
 <aside class="main-sidebar sidebar-light-primary">
     <!-- Sidebar -->
