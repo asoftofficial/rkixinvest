@@ -120,10 +120,10 @@
                                             <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="icon-btn ml-1 "  data-tooltip="tooltip" title="@lang('Detail')">
                                                 <i class="fas fa-desktop"></i>
                                             </a>
-                                            <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="text-success ml-1 "  data-tooltip="tooltip" title="@lang('Approve')">
+                                            <a href="#" class="text-success ml-1 "  data-tooltip="tooltip" title="@lang('Approve')">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="text-danger ml-1 " data-tooltip="tooltip" title="@lang('Reject')">
+                                            <a href="#" class="text-danger ml-1 " data-tooltip="tooltip" title="@lang('Reject')">
                                                 <i class="fas fa-ban"></i>
                                             </a>
                                         </td>
