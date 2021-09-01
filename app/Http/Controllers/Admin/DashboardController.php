@@ -4,16 +4,31 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GeneralSettings;
+use App\Models\Investment;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Withdrawal;
 use Illuminate\Http\Client\Request;
 
 class DashboardController extends Controller
 {
-    public function index(){
-        $data['earning'] = Transaction::where('type',2)->sum('amount');
-        $data['settings'] = GeneralSettings::first();
-    	return view('admin.dashboard',$data);
+    public function index()
+    {
+        $deposit_amount = Transaction::where('type',1)->sum('amount');
+        $withdrawal_amount = Transaction::where('type',2)->sum('amount');
+        $earning =  $deposit_amount  - $withdrawal_amount ;
+        //withdrawals reporting
+        $withdrawals = Withdrawal::all()->count();
+        $completed_withd    = Withdrawal::where('status',1)->count();
+        $pending_withd    = Withdrawal::where('status',2)->count();
+        $rejected_withd    = Withdrawal::where('status',3)->count();
+        //users reporting
+        $total_users = User::all()->count();
+        $active_users = User::where('blocked',1)->count();
+        //investors reporting
+        $investors = Investment::where('user_id')->distinct()->get();
+        dd($investors);
+    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users'));
     }
     public function profile(){
     	return view('admin.profile');

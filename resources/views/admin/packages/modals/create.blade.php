@@ -1,4 +1,4 @@
-<div class="modal fade" id="addIssuesModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="addpackageModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-610" role="document">
         <div class="modal-content issue-padd">
             <div class="modal-header pb-0">

@@ -110,7 +110,7 @@ $(".delete").click(function (e) {
                         </a>
                         @else
                         <a href="#" class="btn btn-success blocked_user " data-id="{{$item->id}}">
-                            <p class="text-white block_button" style="font-size: 17px;height:1vh;">Unblock</p>
+                            <p class="text-white block_button" style="font-size: 17px;height:1vh;">Active</p>
                         </a>
                         @endif
                         <a

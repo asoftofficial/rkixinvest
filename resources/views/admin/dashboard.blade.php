@@ -42,11 +42,10 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2>PAGES VIEWS</h2>
-            <p>from Aug 2020</p>
+            <h2>Total Deposit Amount</h2>
         </div>
         <div class="dashboard-card-stat">
-            8,514
+           {{$deposit_amount}}
         </div>
     </div>
     <div class="dashboard-card new-orders">
@@ -54,10 +53,11 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2>NEW ORDERS</h2>
-            <p>9,30,2020</p>
+            <h2>Total Withdraw Amount</h2>
+            <p></p>
         </div>
         <div class="dashboard-card-stat">
+            {{$withdrawal_amount}}
         </div>
     </div>
     <div class="dashboard-card total-earnings bg-dark">
@@ -69,7 +69,7 @@ $(function () {
             <p class="text-white">all income</p>
         </div>
         <div class="dashboard-card-stat">
-            £ 123
+            {{$earning}}
         </div>
     </div>
 </div>
@@ -81,8 +81,8 @@ $(function () {
                 href="#"
                 class="dashboard-card-link"
                 data-toggle="modal"
-                data-target="#addBannersModal">
-                UPLOAD BANNERS
+                data-target="#addUserModal">
+                Create User
             </a>
         </div>
         <div
@@ -91,8 +91,8 @@ $(function () {
                 href="#"
                 class="dashboard-card-link"
                 data-toggle="modal"
-                data-target="#addPromotionsModal">
-                ADD PROMOTION
+                data-target="#addpackageModal">
+                Create Package
             </a>
         </div>
     </div>
@@ -148,9 +148,78 @@ $(function () {
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
+                            <h3>{{$withdrawals}}</h3>
+
+                            <p>Total Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$completed_withd}}</h3>
+
+                            <p>Completed withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{$pending_withd}}</h3>
+
+                            <p>Pending Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$rejected_withd}}</h3>
+
+                            <p>Rejected Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+     <div class="card">
+        <div class="card-header bg-dark">
+            Deposits
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
                             <h3>150</h3>
 
-                            <p>New Orders</p>
+                            <p>Total Deposit</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -165,7 +234,7 @@ $(function () {
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                            <p>Bounce Rate</p>
+                            <p>Complete Deposit</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -180,7 +249,7 @@ $(function () {
                         <div class="inner">
                             <h3>44</h3>
 
-                            <p>User Registrations</p>
+                            <p>Pending Deposit</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -195,10 +264,79 @@ $(function () {
                         <div class="inner">
                             <h3>65</h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Rejected Deposit</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+     <div class="card">
+        <div class="card-header bg-dark">
+            User & Investors Statistics
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{$total_users}}</h3>
+
+                            <p>Total Users</p>
+                        </div>
+                       <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{$active_users}}</h3>
+
+                            <p>Active Users</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+
+                            <p>Total Investors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>Active Investors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -305,11 +443,10 @@ $(function () {
                     </div>
                     <!-- /.container-fluid -->
 
-                    {{--  Add Issues Model  --}}
-                    {{-- @include('admin.issues.modals.create') --}}
-                    {{--  End Add Issues Model  --}}
-                    {{-- @include('admin.banners.modals.create') --}}
-                    {{-- @include('admin.promotions.modals.create') --}}
+                    {{-- create user model --}}
+                    @include('admin.users.modals.create')
+                    {{-- create package model --}}
+                    @include('admin.packages.modals.create')
                     @endsection
                 </div>
             </div>

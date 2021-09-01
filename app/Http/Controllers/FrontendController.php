@@ -20,7 +20,7 @@ class FrontendController extends Controller
         $testimonials = Testimonial::all();
         $slider = Slider::first();
         $withdrawals = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
-        // $deposit = Transaction::where('trx_type','deposit')->get();
+        // $deposit_amount = Transaction::where('trx_type','deposit')->get();
         $emptyMessage = "No withdraws found";
         return view('front.index',compact('sociallinks','aboutus','data','testimonials','slider','withdrawals','emptyMessage'));
     }
