@@ -909,3 +909,9 @@ table.table.custom-table td img {
     border-radius: 20px;
     box-shadow: 3px 3px 25px rgba(0,0,0,0.25);
 }
+.chart-date-area {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 28px;
+}
