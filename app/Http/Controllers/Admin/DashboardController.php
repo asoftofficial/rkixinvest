@@ -26,9 +26,9 @@ class DashboardController extends Controller
         $total_users = User::all()->count();
         $active_users = User::where('blocked',1)->count();
         //investors reporting
-        $investors = Investment::where('user_id')->distinct()->get();
-        dd($investors);
-    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users'));
+        $investors = Investment::select('user_id')->distinct()->get()->count();
+        $active_investors = Investment::select('user_id')->where('status',1)->distinct()->get()->count();
+    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors'));
     }
     public function profile(){
     	return view('admin.profile');
