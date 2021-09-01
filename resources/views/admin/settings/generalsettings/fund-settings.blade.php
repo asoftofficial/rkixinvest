@@ -12,6 +12,7 @@ Funds settings
     <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
     <script>
         $('#addfund').bootstrapToggle()
+        $('#removefund').bootstrapToggle()
     </script>
 @endpush
 

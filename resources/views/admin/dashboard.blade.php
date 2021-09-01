@@ -23,6 +23,96 @@ $(function () {
     $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
     $('select.ui-select').selectmenu();
 });
+    // Chart start
+    $(function () {
+        ajaxGetChartData()
+        $('.to').change(function(){
+            var to = $('.to').val()
+            var from = $('.from').val()
+            ajaxGetChartData(to,from)
+        });
+
+    })
+
+    function ajaxGetChartData(to=null,from=null){
+        $.ajax({
+            type:'GET',
+            url:"{{route('ajaxChart')}}",
+            'data': {
+                _token: "{{ csrf_token() }}",
+                to: to,
+                from: from
+            },
+            success:function(data) {
+                countChart(data)
+            }
+        });
+    }
+    function countChart(data){
+        var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+        }
+
+        var mode = 'index'
+        var intersect = true
+
+        var $visitorsChart = $('#investment-chart')
+        // eslint-disable-next-line no-unused-vars
+        var chartData = "{{$chartdata}}";
+        var visitorsChart = new Chart($visitorsChart, {
+            data: {
+                labels: data.days,
+                datasets: [{
+                    type: 'line',
+                    data: data.count_data,
+                    backgroundColor: 'transparent',
+                    borderColor: '#000',
+                    pointBorderColor: '#000000',
+                    pointBackgroundColor: '#000000',
+                    fill: false
+                    // pointHoverBackgroundColor: '#007bff',
+                    // pointHoverBorderColor    : '#007bff'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        // display: false,
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+                            suggestedMax: data.max
+                        }, ticksStyle)
+                    }],
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        })
+    }
 </script>
 @endpush
 @section('content')
@@ -99,39 +189,34 @@ $(function () {
     <div class="chart-section">
         <div class="card chart-card">
             <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Online Store Visitors</h3>
-                    <a href="javascript:void(0);">View Report</a>
+                <div class="chart-header">
+                    <h3 class="card-title">Dashboard</h3>
+
+                    <div class="chart-date-area">
+                        <div class="chart-date-input-area">
+                            <div class="d-flex chart-input">
+                                <label>From</label>
+                                <div class="drop2-icon">
+                                    <input autocomplete="off" type="text" class="form-control datepicker border-0 from"  name="from">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-date-input-area">
+                            <div class="d-flex chart-input">
+                                <label>To</label>
+                                <div class="drop2-icon">
+                                    <input autocomplete="off" type="text" class="form-control datepicker border-0 to"  name="to">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <p style="text-align:left;">Investments Summary</p>
             </div>
             <div class="card-body">
-                <div class="d-flex">
-                    <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">820</span>
-                        <span>Visitors Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                            <i class="fas fa-arrow-up"></i>
-                            12.5%
-                        </span>
-                        <span class="text-muted">Since last week</span>
-                    </p>
-                </div>
                 <!-- /.d-flex -->
-
                 <div class="position-relative mb-4">
-                    <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-                <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                        <i class="fas fa-square text-primary"></i>
-                        This Week
-                    </span>
-                    <span>
-                        <i class="fas fa-square text-gray"></i>
-                        Last Week
-                    </span>
+                    <canvas id="investment-chart" height="200"></canvas>
                 </div>
             </div>
         </div>

@@ -37,6 +37,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
 Route::get('placeholder-image/{size}', [\App\Http\Controllers\FrontendController::class,'placeholderImage'])->name('placeholder.image');
+Route::get('ajax-chart-data', ['App\Http\Controllers\ChartDataController','getData'])->name('ajaxChart');
 // Route::get('/register/{user?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 // User Routes
 $userNameSpace = 'App\Http\Controllers\Users';

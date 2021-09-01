@@ -66,11 +66,12 @@
 <script src="/frontend/dashboard/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="/frontend/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+{{--chartjs--}}
+<script src="/frontend/dashboard/plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE -->
 <script src="/frontend/dashboard//js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="/frontend/dashboard/js/pages/dashboard3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
   @if(Session::has('success'))
@@ -115,7 +116,7 @@
       "closeButton" : true,
       "progressBar" : true
     }
-    toastr.info("Some Errors Occured Please Check and Try Again");
+    toastr.info("Some Errors Occurred Please Check and Try Again");
 
   @endif
 </script>

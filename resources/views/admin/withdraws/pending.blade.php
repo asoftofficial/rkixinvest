@@ -84,7 +84,7 @@
                                         <td data-label="@lang('User')">
                                             <span class="font-weight-bold">{{ $withdraw->user->first_name.' '.$withdraw->user->last_name }}</span>
                                             <br>
-                                            <span class="small"> <a href="{{ route('admin.userprofile.index', $withdraw->user_id) }}"><span>@</span>{{ $withdraw->user->username }}</a> </span>
+                                            <span class="small"> <a href="{{ route('admin.userprofile.show', $withdraw->user_id) }}"><span>@</span>{{ $withdraw->user->username }}</a> </span>
                                         </td>
 
 

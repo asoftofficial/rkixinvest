@@ -8,12 +8,34 @@ use App\Models\Investment;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Withdrawal;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Client\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
+        $from = Carbon::now()->subDays(10);
+        // dd($from);
+        $period = CarbonPeriod::create($from, $now);
+        $chartdata = [];
+        $totalCount = 0;
+        foreach ($period as $p) {
+
+            $date = Carbon::parse($p)->format('Y-m-d 00:00:00');
+            $enddate = Carbon::parse($p)->format('Y-m-d 23:59:59');
+            $count = Investment::whereBetween('created_at',[$date,$enddate])->count();
+            if($count){
+                $totalCount++;
+            }
+            array_push($chartdata,$count);
+
+        }
+        $chartRange = json_encode($period->toArray());
+        // dd($data['chartRange'],json_decode($data['chartRange']));
+        $chartdata = json_encode($chartdata);
         $deposit_amount = round(Transaction::where('type',1)->sum('amount'),2);
         $withdrawal_amount = round(Transaction::where('type',2)->sum('amount'),2);
         $earning =  round($deposit_amount  - $withdrawal_amount,2);
@@ -30,7 +52,7 @@ class DashboardController extends Controller
         $active_investors = Investment::select('user_id')->where('status',1)->distinct()->get()->count();
         //investments
         $active_investments = Investment::where('status',1)->with(['rois'])->get();
-    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
+    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments','chartdata','chartRange'));
     }
     public function profile(){
     	return view('admin.profile');
