@@ -58,8 +58,8 @@ $(".delete").click(function (e) {
 
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
-    <h2>Packages List</h2>
-    <p>Latest Packages information</p>
+    <h2>Investments List</h2>
+    <p>Latest investments information</p>
 </div>
 </section>{{-- End Page Section Title Area    --}}
 <section class = "collections" > <div class="table-responsive">
@@ -90,9 +90,9 @@ $(".delete").click(function (e) {
                   <tr role="row">
                       <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">#Id</th>
                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">#Amount</th>
+                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th></tr>
                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">ROIs</th>
                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">ROIs date</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th></tr>
                   </thead>
                   <tbody>
                   <tr role="row" class="odd">
@@ -100,9 +100,13 @@ $(".delete").click(function (e) {
                             <tr role="row" class="odd">
                                 <td class="dtr-control sorting_1" tabindex="0">{{$item->id}}</td>
                                 <td>{{$item->amount}}</td>
+                                @if($item->status == 1)
+                                <td>Active</td>
+                                @else
+                                <td>Expired</td>
+                                @endif
                                 {{-- <td>{{$item->rois->amount}}</td> --}}
                                 {{-- <td>{{$item->rois->roi_date}}</td> --}}
-                                <td>{{$item->status}}</td>
                             </tr>
                       @endforeach
                 </tbody>

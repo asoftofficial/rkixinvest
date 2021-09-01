@@ -361,79 +361,29 @@ $(function () {
                 <table class="table custom-table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Customer ID
-                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                <th scope="col">First Name
-                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                    <th scope="col">Last Name
-                                        <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                        <th scope="col">Email
-                                            <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                            <th scope="col">Date
-                                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                <th scope="col">Plan
-                                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <th scope="col">#Id  </th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">ROIs </th>
+                            <th scope="col">Roi Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($active_investments as $item)
+                            <tr role="row" class="odd">
+                                <td class="dtr-control sorting_1" tabindex="0">{{$item->id}}</td>
+                                <td>{{$item->amount}}</td>
+                                @if($item->status == 1)
+                                <td>Active</td>
+                                @else
+                                <td>Expired</td>
+                                @endif
+                                {{-- <td>{{$item->rois->amount}}</td> --}}
+                                {{-- <td>{{$item->rois->roi_date}}</td> --}}
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                                     </div>
                                 </section>
                             </div>

@@ -14,9 +14,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $deposit_amount = Transaction::where('type',1)->sum('amount');
-        $withdrawal_amount = Transaction::where('type',2)->sum('amount');
-        $earning =  $deposit_amount  - $withdrawal_amount ;
+        $deposit_amount = round(Transaction::where('type',1)->sum('amount'),2);
+        $withdrawal_amount = round(Transaction::where('type',2)->sum('amount'),2);
+        $earning =  round($deposit_amount  - $withdrawal_amount,2);
         //withdrawals reporting
         $withdrawals = Withdrawal::all()->count();
         $completed_withd    = Withdrawal::where('status',1)->count();
@@ -28,7 +28,9 @@ class DashboardController extends Controller
         //investors reporting
         $investors = Investment::select('user_id')->distinct()->get()->count();
         $active_investors = Investment::select('user_id')->where('status',1)->distinct()->get()->count();
-    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors'));
+        //investments
+        $active_investments = Investment::where('status',1)->with(['rois'])->get();
+    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
     }
     public function profile(){
     	return view('admin.profile');
