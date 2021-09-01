@@ -89,6 +89,7 @@ Funds settings
 label#refreltext {
     position: absolute;
     top: 5px;
+    left: 16px;
     font-size: 17px;
 }
 
@@ -108,7 +109,7 @@ div#refrel_div {
 <div class="container-fluid">
 {{-- fund system settings --}}
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h4 class="border-bottom pb-2 mb-0">fund System Settings</h4>
+    <h4 class="border-bottom pb-2 mb-0">Fund System Settings</h4>
     <div class="d-flex text-muted pt-3">
         <form action="{{route('admin.post.fund.settings')}}" method="post">
             @csrf
@@ -121,7 +122,7 @@ div#refrel_div {
                                     <div class="fund-button">
                                         <div class="fund-label">
                                         </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">Add fund</label>
+                                        <label for="bluetooth" id="refreltext" class="input-label">Add Fund</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
                                         <div class="fund-toggle">
                                             <input type="checkbox" id="addfund" name="addfund"  @if($settings->add_fund == 'on') checked @endif>
@@ -146,7 +147,7 @@ div#refrel_div {
                                     <div class="fund-button">
                                         <div class="fund-label">
                                         </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">fund subtraction</label>
+                                        <label for="bluetooth" id="refreltext" class="input-label">Fund Subtraction</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
                                         <div class="fund-toggle">
                                             <input type="checkbox" id="removefund" name="removefund" @if($settings->remove_fund == 'on') checked @endif>
