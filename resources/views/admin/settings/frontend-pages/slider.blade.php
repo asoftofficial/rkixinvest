@@ -8,7 +8,7 @@ Slider
 @section('content')
 <div class="container-fluid">
     {{-- Frontend slider --}}
-    <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <div class="my-3 p-3 card-main rounded shadow-sm">
         <h4 class="border-bottom pb-2 mb-0">Slider</h4>
         <form action="{{route('admin.slider.update',$slider->id)}}" method="post" enctype="multipart/form-data">
             @csrf
