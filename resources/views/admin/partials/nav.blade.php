@@ -97,7 +97,12 @@
         <li class="nav-item">
             <p class="main-p">Welcome {{auth::user()->username}}</p>
             <a href="#" class="dashboard-profile-image">
-                <img src="{{auth::user()->image}}" alt="">
+                @if(empty(auth::user()->image))
+                    <img src="{{route('placeholder.image','200x80')}}" alt="" />
+                @else
+                    <img src="{{auth::user()->image}}" alt="">
+                @endif
+
             </a>
             <div class="dropdown main-drop profile-dropdown">
                 <img  src="{{asset('backend/img/icons/bottom-angle.png')}}" class="dropdown-toggle bg-white border-0" type="text" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

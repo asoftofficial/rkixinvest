@@ -330,7 +330,7 @@ General Settings
 
 {{-- referral system settings --}}
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h4 class="border-bottom pb-2 mb-0">referral System Settings</h4>
+    <h4 class="border-bottom pb-2 mb-0">Referral System Settings</h4>
     <div class="d-flex text-muted pt-3">
         <form action="{{route('admin.referral.settings')}}" method="get">
             @csrf
@@ -343,8 +343,8 @@ General Settings
                                     <div class="referral-button">
                                         <div class="referral-label">
                                         </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">referral
-                                            level</label>
+                                        <label for="bluetooth" id="refreltext" class="input-label">Referral
+                                            Level</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
                                         <div class="referral-toggle">
                                             @if($settings->refrel_system == 'on')
@@ -370,7 +370,7 @@ General Settings
 
                         <div class="col-md-6">
                             <div class="gap">
-                                <h4 class="input-label mt-2">referral level</h4>
+                                <h4 class="input-label mt-2">Referral level</h4>
                                 <div class="">
                                     <input type="text" class="form-control bg-light round-10 border-0"
                                         name="refrellevel_type"
@@ -410,7 +410,7 @@ General Settings
                                     <div class="main mt-3">
                                         <div class="reward-button">
 
-                                            <h4 class="input-label mt-2" id="reward-heading">reward system</h4>
+                                            <h4 class="input-label mt-2" id="reward-heading">Reward system</h4>
                                             <div class="reward-toggle">
 
                                                 <input type="checkbox" id="reward" name="reward_system" checked>
