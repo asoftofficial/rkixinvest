@@ -36,7 +36,7 @@ Route::get('resend/code',[DashboardController::class, 'resendCode'])->name('rese
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
-Route::get('placeholder-image/{size}', [HomeController::class,'placeholderImage'])->name('placeholder.image');
+Route::get('placeholder-image/{size}', [\App\Http\Controllers\FrontendController::class,'placeholderImage'])->name('placeholder.image');
 // Route::get('/register/{user?}',[App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 // User Routes
 $userNameSpace = 'App\Http\Controllers\Users';
