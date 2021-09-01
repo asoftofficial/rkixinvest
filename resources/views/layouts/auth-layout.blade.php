@@ -15,7 +15,12 @@
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">
-                <a href="/"><img src="{{$settings->logo}}" alt=""></a>
+                <a href="/">
+                    @if(empty($settings->logo))
+                        <img src="{{route('placeholder.image','200x80')}}" alt="logo" />
+                    @else
+                        <img src="{{$settings->logo}}" alt="logo">
+                    @endif</a>
             </div>
         </header>
         @yield('content')
