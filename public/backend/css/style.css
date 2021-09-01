@@ -175,22 +175,21 @@ table.table.custom-table td {
     padding: 0;
     padding-left: 35px;
     padding-bottom: 15px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     background: none;
 }
 .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
     background-color: #ffffff;
-    color: var(--pink);
+    color: var(--blue);
     box-shadow: none;
 }
 .nav-sidebar a.nav-link img {
     margin-right: 20px;
+    width: 25px;
 }
 a.nav-link.active img {
-    filter: invert(57%) sepia(65%) saturate(3105%) hue-rotate(
-        302deg
-    ) brightness(100%) contrast(89%);
+    filter: invert(42%) sepia(84%) saturate(1841%) hue-rotate(212deg) brightness(99%) contrast(90%);
 }
 .nav-sidebar>.nav-item {
     margin-bottom: 30px;
@@ -250,13 +249,13 @@ a.nav-link.active.orange-nav img {
     filter: invert(50%) sepia(48%) saturate(5779%) hue-rotate(1deg) brightness(100%) contrast(106%);
 }
 .nav-sidebar>.nav-item>.nav-link.active.pink-nav {
-    color: var(--pink);
+    color: var(--blue);
 }
 a.nav-link.active.pink-nav::after {
-    background: var(--pink);
+    background: var(--blue);
 }
 a.nav-link.active.pink-nav img {
-    filter: invert(31%) sepia(91%) saturate(2128%) hue-rotate(312deg) brightness(98%) contrast(86%);
+    filter: invert(42%) sepia(84%) saturate(1841%) hue-rotate(212deg) brightness(99%) contrast(90%);
 }
 .nav-sidebar>.nav-item>.nav-link.active.red-nav {
     color: var(--red);
@@ -318,6 +317,10 @@ ul.navbar-nav.ml-auto {
     width: 53px;
     border-radius: 50%;
     margin-right: 10px;
+}
+.angle-icon{
+    top: 4px !important;
+    right: 0 !important;
 }
 .content-header {
     padding-bottom: 0;
