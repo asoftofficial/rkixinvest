@@ -16,7 +16,7 @@
             <p class="main-p">Hello! {{Auth::user()->username}}</p>
             <a href="#" class="dashboard-profile-image">
                 @if(empty(auth::user()->image))
-                    <img src="{{route('placeholder.image','200x80')}}" alt="" />
+                    <img src="{{route('placeholder.image','200x200')}}" alt="" />
                 @else
                     <img src="{{auth::user()->image}}" alt="">
                 @endif

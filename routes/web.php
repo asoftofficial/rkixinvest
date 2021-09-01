@@ -139,4 +139,8 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('email-template/{id}/edit', 'EmailTemplateController@edit')->name('email.template.edit');
     Route::post('email-template/{id}/update', 'EmailTemplateController@update')->name('email.template.update');
     Route::post('email-template/send-test-mail', 'EmailTemplateController@sendTestMail')->name('email.template.test.mail');
+
+    //investments reporting route
+    Route::get('active/investments',[InvestmentController::class,'active_invest'])->name('active.investments');
+     Route::get('pending/investments',[InvestmentController::class,'pending_invest'])->name('pending.investments');
 });

@@ -129,11 +129,26 @@ class InvestmentController extends Controller
     }
 
     //show user investments
-
     function showUserInvestments()
     {
         $investments = Auth::user()->investments()->paginate(25);
         $emptyMessage = "No Investment found";
         return view('users.investments.index',compact('investments','emptyMessage'));
+    }
+
+
+    //show active investments
+    public function active_invest()
+    {
+        $active_investments = Investment::where('status',1)->with(['rois'])->get();
+        // dd($active_investments);
+        return view('admin.investments.active-investments',compact('active_investments'));
+    }
+
+    //show pending investments
+    public function pending_invest()
+    {
+        $pending_investments = Investment::where('status',2)->get()->paginate(10);
+        return view('admin.investments.pending-investments',compact('pending_investments'));
     }
 }

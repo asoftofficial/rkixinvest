@@ -65,7 +65,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a
                     href="{{route('admin.reward.index')}}"
                     class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">
@@ -74,7 +74,7 @@
                          Rewards
                         </p>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a
@@ -86,7 +86,32 @@
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') menu-is-opening menu-open @endif">
+                    <a href=""
+                    class="nav-link  @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
+                    <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
+                        <p>
+                        Investments
+                        <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.active.investments')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.active.investments') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Active Investments</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.pending.investments')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Pending Investments</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') menu-is-opening menu-open @endif">
                     <a href=""
                     class="nav-link  @if(Route::currentRouteName()=='admin.slider.index' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
