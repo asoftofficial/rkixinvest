@@ -25,14 +25,13 @@
                     <div class="login-header">
                         <div class="logo">
                             @if(empty($settings->logo))
-                                <img src="{{route('placeholder.image','200x80')}}"
-                                alt="" />
+                            <img src="{{route('placeholder.image','200x80')}}"
+                                alt="logo" />
                             @else
                                 <img
                                 src="{{$settings->logo}}"
-                                class=""
                                 alt="logo">
-                                 @endif
+                            @endif
                         </div>
                     </div>
                     <div class="center-container">

@@ -1,13 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light px-3 main-nav mt-3">
     <a class="navbar-brand" href="#">
         @if(empty($settings->logo))
-            <img src="{{route('placeholder.image','200x80')}}"
-                                alt="" />
+            <img src="{{route('placeholder.image','200x80')}}"  alt="" />
         @else
-            <img
-            src="{{$settings->logo}}"
-            class=""
-            alt="logo">
+            <img src="{{$settings->logo}}" class="" alt="logo">
         @endif
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
