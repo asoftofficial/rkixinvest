@@ -226,4 +226,10 @@ class UserController extends Controller {
         return view('admin.users.pages.active-users',compact('active_users'));
     }
 
+    //user kyc view
+    public function kyc()
+    {
+        return view('users.profile.pages.kyc');
+    }
+
 }

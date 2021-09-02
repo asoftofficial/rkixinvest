@@ -270,7 +270,7 @@
                 <li class="nav-item align-items-center  @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='admin.withdraw.gateways.create') menu-is-opening menu-open @endif">
                     <a href=""
                     class="nav-link @if(Route::currentRouteName()=='admin.withdraw.gateways'||Route::currentRouteName()=='admin.withdraw.gateways.create') active blue-nav @endif">
-                    <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
+                    <img src="{{asset('/backend/img/icons/withdrawals.png')}}" alt="">
                         <p>
                       Withdraw Method
                         <i class="fas fa-angle-left right angle-icon"></i>
@@ -300,7 +300,7 @@
                         Route::currentRouteName()=='admin.withdraw.pending' ||
                         Route::currentRouteName()=='admin.withdraw.approved' ||
                         Route::currentRouteName()=='admin.withdraw.rejected') active blue-nav @endif">
-                        <img src="{{asset('/backend/img/icons/deposit.png')}}" alt="">
+                        <img src="{{asset('/backend/img/icons/withdraw.png')}}" alt="">
                         <p>
                             Withdrawals
                             <i class="fas fa-angle-left right angle-icon"></i>

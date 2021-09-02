@@ -55,13 +55,23 @@
                                     Dashboard
                                 </p>
                             </a>
-                        </li>
+                    </li>
+                      <li class="nav-item">
+                        <a
+                            href="{{route('user.kyc')}}"
+                            class="nav-link @if(Route::currentRouteName()=='user.kyc') active pink-nav @endif">
+                            <img src="{{asset('/backend/img/icons/kyc.png')}}" alt="">
+                                <p>
+                                    KYC
+                                </p>
+                            </a>
+                    </li>
 
                         <li class="nav-item">
                             <a
                                 href="{{route('user.investment')}}"
                                 class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
-                                <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
+                                <img src="{{asset('/backend/img/icons/invest.png')}}" alt="">
                                     <p>
                                         Investments
                                     </p>
@@ -72,7 +82,7 @@
                         <a
                             href="{{route('admin.userprofile.index')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/referral_icon.png')}}" alt="">
                             <p>
                                 Referrals
                             </p>
@@ -114,7 +124,7 @@
                         <a
                             href="{{route('user.withdraw')}}"
                             class="nav-link @if(Route::currentRouteName()=='user.withdraw' || Route::currentRouteName()=='user.withdraw.preview') || Route::currentRouteName()=='user.withdraw.history') active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/withdrawals.png')}}" alt="">
                             <p>
                                 Withdraw
                             </p>
