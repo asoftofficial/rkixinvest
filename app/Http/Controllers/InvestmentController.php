@@ -141,14 +141,21 @@ class InvestmentController extends Controller
     public function active_invest()
     {
         $active_investments = Investment::where('status',1)->with(['rois'])->get();
-        // dd($active_investments);
         return view('admin.investments.active-investments',compact('active_investments'));
     }
 
     //show pending investments
     public function pending_invest()
     {
-        $pending_investments = Investment::where('status',2)->get()->paginate(10);
+        $pending_investments = Investment::where('status',0)->get();
         return view('admin.investments.pending-investments',compact('pending_investments'));
+    }
+
+    //delete investment
+    public function destroy($id)
+    {
+        $investment = Investment::find($id);
+        $investment->delete();
+        return back()->with('success','Investment deleted successfully');
     }
 }

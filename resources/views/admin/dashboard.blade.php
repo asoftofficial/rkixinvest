@@ -133,18 +133,19 @@ $(function () {
         </a>
         <div class="dashboard-card-header">
             <h2>Total Deposit Amount</h2>
+            <p class="text-dark">total deposits</p>
         </div>
         <div class="dashboard-card-stat">
            {{$deposit_amount}}
         </div>
     </div>
     <div class="dashboard-card new-orders">
-        <a href="#" class=" dashboard-card-dropdown">
+        <a href="" class=" dashboard-card-dropdown">
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
             <h2>Total Withdraw Amount</h2>
-            <p></p>
+            <p class="text-dark">total withdrawals</p>
         </div>
         <div class="dashboard-card-stat">
             {{$withdrawal_amount}}
@@ -239,7 +240,7 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-cash"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.withdraw.log')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -249,12 +250,12 @@ $(function () {
                         <div class="inner">
                             <h3>{{$completed_withd}}</h3>
 
-                            <p>Completed withdrawals</p>
+                            <p>Approved withdrawals</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.withdraw.approved')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -269,7 +270,7 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.withdraw.pending')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -284,7 +285,7 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.withdraw.rejected')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -377,13 +378,13 @@ $(function () {
                        <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.userprofile.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-success">
                         <div class="inner">
                             <h3>{{$active_users}}</h3>
 
@@ -392,13 +393,13 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.show.active.users')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-info">
                         <div class="inner">
                             <h3>{{$investors}}</h3>
 
@@ -407,7 +408,7 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.show.total.investors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -422,7 +423,7 @@ $(function () {
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('admin.show.active.investors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -434,8 +435,8 @@ $(function () {
         {{--    Page Section Title Area    --}}
         <section class="page-section-title-area">
             <div>
-                <h2>RECENT ORDERS</h2>
-                <p>Latest orders and information</p>
+                <h2>RECENT Investments</h2>
+                <p>Latest Investments information</p>
             </div>
             <div class="section-title-right"></div>
         </section>

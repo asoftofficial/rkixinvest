@@ -1,11 +1,13 @@
+
 <div class="carousel-inner carousel slide" id="mainSlider" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#mainSlider" data-slide-to="0" class="active"></li>
     </ol>
+
         <div class="carousel-item active main-slider"
             style="">
             <div class="slider-content d-flex">
-                <div class="slider-caption">
+                   <div class="slider-caption">
                     <p>{!!$slider->slider_content!!}</p>
                     <a class="banner-btn" href="{{$slider->link}}">{{$slider->button_text}}</a>
                 </div>

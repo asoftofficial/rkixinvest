@@ -53,18 +53,46 @@
                         </p>
                         </a>
                 </li>
-
-                <li class="nav-item">
-                    <a
-                    href="{{route('admin.userprofile.index')}}"
-                    class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.userprofile.index'||Route::currentRouteName()=='admin.show.active.users' ||Route::currentRouteName()=='admin.show.total.investors'||Route::currentRouteName()=='admin.show.active.investors') menu-is-opening menu-open @endif">
+                    <a href=""
+                    class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index'||Route::currentRouteName()=='admin.show.active.users' ||Route::currentRouteName()=='admin.show.total.investors'||Route::currentRouteName()=='admin.show.active.investors') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/user-icon.png')}}" alt="">
-                    <p>
+                        <p>
                         Users
-                    </p>
+                        <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.userprofile.index'||Route::currentRouteName()=='admin.show.active.users' ||Route::currentRouteName()=='admin.show.total.investors'||Route::currentRouteName()=='admin.show.active.investors') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.userprofile.index')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Total Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.show.active.users')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.show.active.users') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Active Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.show.total.investors')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.show.total.investors') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Total Investors</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.show.active.investors')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.show.active.investors') active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Active Investors</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
                 {{-- <li class="nav-item">
                     <a
                     href="{{route('admin.reward.index')}}"
@@ -89,7 +117,7 @@
                 <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') menu-is-opening menu-open @endif">
                     <a href=""
                     class="nav-link  @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
-                    <img src="{{asset('/backend/img/icons/emailicon.png')}}" alt="">
+                    <img src="{{asset('/backend/img/icons/invest.png')}}" alt="">
                         <p>
                         Investments
                         <i class="fas fa-angle-left right angle-icon"></i>

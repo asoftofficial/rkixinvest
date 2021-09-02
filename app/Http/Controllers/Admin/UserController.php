@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Mail\test;
 use App\Models\GeneralSettings;
+use App\Models\Investment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -93,11 +94,11 @@ class UserController extends Controller {
             $full_path = '/uploads/users/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
+             $users->image=$file_path;
         }
         $users->first_name=$request->fname;
         $users->last_name=$request->lname;
         $users->email=$request->email;
-        $users->image=$file_path;
         $users->update();
         return redirect()->back()->with('success', 'profile updated successfully!');
     }
@@ -136,13 +137,6 @@ class UserController extends Controller {
     public function sendmail(Request $request,$id)
     {
         $user = User::find($id);
-        // $data=[$request->subject,
-        // $request->body];
-        // $user=$request->hidden_email;
-        // Mail::send('admin.users.emails.test', compact('data'), function ($message) use ($user, $data) {
-        //         $message->to($user);
-        //     }
-        // );
         sendGeneralEmail($user->email,$request->subject,$request->body,$user->username);
         return back()->with('success', 'email has sent');
     }
@@ -189,7 +183,11 @@ class UserController extends Controller {
         if($current_balance <= 0){
         return back()->with('error','user balance is already 0.00');
         }else
-        $total_balance = $user->balance =$current_balance - $request->amount;
+        $total_balance = $user->balance = $current_balance - $request->amount;
+        if($total_balance <0){
+            $user->balance = $current_balance;
+            return back()->with('info','User balance is low');
+        }
         $user->update();
         $trx = trx($user->id,$request->amount,1,'Funds deducted by admin','debit');
          //send email to notify the user
@@ -200,12 +198,32 @@ class UserController extends Controller {
                 'trx' => $trx->id,
                 'total_balance'=> $total_balance,
             ]);
-        Session::flash("message", "Fund has deduct successfully");
-        return back();
+        return back()->with('success','Fund Deducted Successfully');
          }else{
             return back()->with('error','Subtraction settings is off.');
         }
 
+    }
+
+
+    //total investors
+    public function totalInvestors()
+    {
+        $total_investors = Investment::all();
+        return view('admin.users.pages.total-investors',compact('total_investors'));
+    }
+      //active investors
+    public function activeInvestors()
+    {
+         $active_investors = Investment::where('status',1)->get();
+        return view('admin.users.pages.active-investors',compact('active_investors'));
+    }
+
+    //find active users
+    public function activeUsers()
+    {
+        $active_users = User::where('blocked',1)->get();
+        return view('admin.users.pages.active-users',compact('active_users'));
     }
 
 }

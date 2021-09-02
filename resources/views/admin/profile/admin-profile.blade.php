@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 @section('page-title')
-user profile
+Admin Profile
 @endsection
 @push('style')
 {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
@@ -140,11 +140,11 @@ user profile
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        @if(empty($user->image))
+                        @if(empty(Auth::user()->image))
                             <img src="{{route('placeholder.image','360x360')}}"
                                 alt="" />
                         @else
-                            <img src="{{$user->image}}"
+                            <img src="{{Auth::user()->image}}"
                                 alt="" />
                         @endif
                     </div>
@@ -152,10 +152,10 @@ user profile
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h3>
-                            {{$user->first_name}} {{$user->last_name}}
+                            {{Auth::user()->first_name}} {{Auth::user()->last_name}}
                         </h3>
                         <h6>
-                            {{$user->username}}
+                            {{Auth::user()->username}}
                         </h6>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -197,7 +197,7 @@ user profile
                                     <label>User Id</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{$user->id}}</p>
+                                    <p>{{Auth::user()->id}}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -205,7 +205,7 @@ user profile
                                     <label>User name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{$user->username}}</p>
+                                    <p>{{Auth::user()->username}}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -213,7 +213,7 @@ user profile
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{$user->first_name}} {{$user->last_name}}</p>
+                                    <p>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -221,7 +221,7 @@ user profile
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{$user->email}}</p>
+                                    <p>{{Auth::user()->email}}</p>
                                 </div>
                             </div>
 
@@ -229,9 +229,10 @@ user profile
                     </div>
                 </div>
             </div>
-            @include('admin.users.modals.edit')
-            @include('admin.users.modals.funds')
-            @include('admin.users.modals.edit-password')
+           @include('admin.profile.modals.edit-profile')
+            @include('admin.profile.modals.edit-password')
+            {{-- @include('admin.users.modals.funds') --}}
+            {{-- @include('admin.users.modals.edit-password') --}}
 
 
         </div>

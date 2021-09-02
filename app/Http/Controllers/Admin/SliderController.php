@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class SliderController extends Controller
 {
     /**
@@ -15,8 +17,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider = Slider::first();
-        return view('admin.settings.frontend-pages.slider',compact('slider'));
+        $sliders = Slider::all();
+        return view('admin.Slider.index',compact('sliders'));
     }
 
     /**
@@ -24,9 +26,9 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+       return view('admin.slider.create');
     }
 
     /**
@@ -37,7 +39,19 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $slider = new Slider;
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = "slider_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+        $upload_path = public_path('uploads/slider/');
+        $full_path = '/uploads/slider/'.$fileName;
+        $request->file('image')->move($upload_path, $fileName);
+        $file_path  = $full_path;
+        $slider->image = $file_path;
+        $slider->button_text = $request->button_text;
+        $slider->link  = $request->link;
+        $slider->slider_content = $request->description;
+        $slider->save();
+        return redirect()->route('admin.slider.index')->with('success','Slider Created Successfully');
     }
 
     /**
@@ -59,7 +73,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slider = Slider::find($id);
+        return view('admin.Slider.edit',compact('slider'));
     }
 
     /**
@@ -94,8 +109,11 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove($id)
     {
-        //
+        dd("hello");
+        $slider = Slider::find($id);
+        $slider->delete();
+        return back()->with('success','Slider deleted successfully');
     }
 }
