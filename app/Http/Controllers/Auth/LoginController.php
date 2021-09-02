@@ -55,7 +55,7 @@ class LoginController extends Controller
          ]);
 
          $usernamefield = Filter_var($request->email,FILTER_VALIDATE_EMAIL) ? 'email': 'username';
-        if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])){
+        if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password, 'blocked'=> 1])){
             if(Auth::user()->type==1){
                 return redirect()->route('user.dashboard');
             }elseif(Auth::user()->type==2){

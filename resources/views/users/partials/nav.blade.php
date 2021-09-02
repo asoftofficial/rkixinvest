@@ -25,7 +25,6 @@
                 <img  src="{{asset('backend/img/icons/bottom-angle.png')}}" class="dropdown-toggle bg-white border-0" type="text" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{{route('user.show.profile')}}">Profile</a>
-                    <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">Logout</a>

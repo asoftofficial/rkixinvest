@@ -19,7 +19,12 @@
                                 <div class="payment-method-header" id="kyc-image">
                                     <div class="thumb">
                                         <div class="avatar-preview ">
-                                            <div class="profilePicPreview" style="background-image: url({{getImage('/',imagePath()['withdraw']['method']['size'])}})"></div>
+                                            @if (empty($kyc->kyc))
+                                                <div class="profilePicPreview" style="background-image: url({{getImage('/',imagePath()['withdraw']['method']['size'])}})"></div>
+                                            @else
+                                                <div class="profilePicPreview" style="background-image: url({{getImage('/',$kyc->kyc)}})"></div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
