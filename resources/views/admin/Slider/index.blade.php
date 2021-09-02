@@ -27,8 +27,8 @@ $(".delete").click(function (e) {
     ).then((willDelete) => {
         if (willDelete) {
             var slider_id = $(this).attr('data-id');
-            var url = "{{route('admin.slider.remove','id')}}";
-            url = url.replace('id', slider_id);
+            var url = "{{route('admin.slider.destroy','idd')}}";
+            url = url.replace('idd', slider_id);
             $("#delete-form").attr('action', url);
             $("#delete-form").submit();
         }
