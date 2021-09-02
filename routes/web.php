@@ -138,7 +138,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
     //slider route
     Route::resource('slider','SliderController');
-    Route::delete('slider/remove/{id}',[SliderController::class,'remove'])->name('slider.remove');
+  //  Route::delete('slider/remove/{id}',[SliderController::class,'remove'])->name('slider.remove');
     // Email Setting
     Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
     Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');

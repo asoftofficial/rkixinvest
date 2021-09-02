@@ -109,7 +109,7 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function remove($id)
+    public function destroy($id)
     {
         dd("hello");
         $slider = Slider::find($id);
