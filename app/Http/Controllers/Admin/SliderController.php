@@ -111,7 +111,6 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        dd("hello");
         $slider = Slider::find($id);
         $slider->delete();
         return back()->with('success','Slider deleted successfully');

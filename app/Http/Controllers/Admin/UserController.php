@@ -229,7 +229,28 @@ class UserController extends Controller {
     //user kyc view
     public function kyc()
     {
-        return view('users.profile.pages.kyc');
+        $kyc = User::find('kyc')->first();
+        dd($kyc);
+        return view('users.profile.pages.kyc','kyc');
+    }
+
+    public function storeKyc(Request $request)
+    {
+        $request->validate([
+            'kyc' =>'required'
+        ]);
+        $user_kyc = new User();
+         $extension = $request->file('kyc')->getClientOriginalExtension();
+         $fileName = "kyc_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+         $upload_path = public_path('uploads/kyc/');
+         $full_path = '/uploads/kyc/'.$fileName;
+         $request->file('kyc')->move($upload_path, $fileName);
+         $file_path  = $full_path;
+         $user_kyc->kyc=$file_path;
+         $user_kyc->update();
+         return back()->with('succes','file submitted');
+
+
     }
 
 }

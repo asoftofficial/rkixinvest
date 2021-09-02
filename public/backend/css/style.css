@@ -860,11 +860,6 @@ table.table.custom-table td img {
     display: flex;
     flex-wrap: wrap;
 }
-.payment-method-item .kyc-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .payment-method-item .payment-method-header .thumb {
     width: 220px;
     position: relative;
@@ -919,4 +914,10 @@ table.table.custom-table td img {
     justify-content: flex-end;
     width: 100%;
     margin-top: 28px;
+}
+
+#kyc-image{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
 }
