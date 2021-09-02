@@ -9,10 +9,13 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "qoraiche/laravel-mail-editor": "^3.4"
+        "mailjet/mailjet-apiv3-php": "^1.5",
+        "phpmailer/phpmailer": "6.2",
+        "sendgrid/sendgrid": "7.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -30,8 +33,7 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Chwaqas\\Laramail\\": "packages/chwaqas/laramail/src/"
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {

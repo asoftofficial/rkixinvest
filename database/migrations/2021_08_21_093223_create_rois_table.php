@@ -19,7 +19,7 @@ class CreateRoisTable extends Migration
             $table->integer('investment_id');
             $table->string('amount');
             $table->tinyInteger('status');
-            $table->timestamp('date');
+            $table->timestamp('roi_date');
             $table->timestamps();
         });
     }

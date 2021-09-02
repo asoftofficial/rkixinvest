@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Investment;
+use App\Models\Plan;
 use Hash;
+use Illuminate\Support\Facades\Session;
+
 class DashboardController extends Controller
 {
     public function index(){
@@ -32,7 +35,6 @@ class DashboardController extends Controller
             $user->dob          = date('Y-m-d', strtotime($request->dob));
             $msg = 'Account Information Updated Successfully!';
         }elseif($request->update_type == 2){
-
             $user->country_id = $request->country_id;
             $user->street1 = $request->street1;
             $user->street2 = $request->street2;
@@ -57,37 +59,39 @@ class DashboardController extends Controller
         $user = User::find(auth::user()->id);
         return view('users.profile.index',compact('user'));
     }
+
     public function update_profile(Request $request, $id)
     {
-        // dd($request->newpas);
-        //     $this->validate($request,[
-        //         'newpas' => 'required|confirmed',
-        //     ]);
-
-         $user_profile = User::findOrFail($id);
-        // if($request->hasFile('image')){
-        //     $extension = $request->file('image')->getClientOriginalExtension();
-        //     $fileName = "packages_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        //     $upload_path = public_path('uploads/packages/');
-        //     $full_path = '/uploads/packages/'.$fileName;
-        //     $check = $request->file('image')->move($upload_path, $fileName);
-        //     // $packages->file_path  = $full_path;
-        // }
-
+        $user_profile = User::findOrFail($id);
+        if($request->hasFile('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileName = "users_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/users/');
+            $full_path = '/uploads/users/'.$fileName;
+            $check = $request->file('image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $user_profile->image = $file_path;
+        }
         $user_profile->first_name   = $request->fname;
         $user_profile->last_name  = $request->lname;
         $user_profile->email      = $request->email;
         $user_profile->update();
         return redirect()->back()->with("success", "profile Updated Successfully!");
     }
+
     public function changePassword(Request $request, $id)
     {
+       $request->validate([
+        'oldpas' => 'required',
+        'newpas' => 'required',
+       ]);
        $user = User::find($id);
        $user->password = bcrypt($request->newpas);
        $user->update();
        return back()->with('success','password updated successfully');
     }
-     public function showVerificationForm()
+
+    public function showVerificationForm()
     {
       return view('auth.email-verify');
     }
@@ -97,7 +101,7 @@ class DashboardController extends Controller
         $this->validate($request,[
             'code' => 'required|min:6'
         ]);
-         $user  = User::where('email_verification_code',$request->code)->first();
+        $user  = User::where('email_verification_code',$request->code)->first();
        if(empty($user)){
            return redirect(route('register'))->with('errors','invalid url');
        }else{
@@ -105,20 +109,31 @@ class DashboardController extends Controller
             return redirect(route('register'))->with('errors','email already verified');
            }else{
             $user->update([
-                'email_verified_at' => \carbon\carbon::now(),
-                'email_verification_code' => NULL,
-                'email_verified' => 1
+            'email_verified_at' => \carbon\carbon::now(),
+            'email_verification_code' => NULL,
+            'email_verified' => 1
             ]);
             return redirect(route('login'))->with('err','Email successfully verified');
            }
        }
     }
-public function resendCode()
-{
-    $data = User::find(Auth::user()->id);
-    $code = $data->email_verification_code;
-   sendEmailVerificationCode($data,$code);
-   return back()->with('success', 'code send successfully');
-}
+
+    //resend verification code via email
+    public function resendCode()
+    {
+        $user = User::find(Auth::user()->id);
+        $code = $user->email_verification_code;
+        $userIpInfo = getIpInfo();
+        $userBrowser = osBrowser();
+        sendEmail($user, 'RESEND_CODE', [
+            'operating_system' => $userBrowser['os_platform'],
+            'browser' => $userBrowser['browser'],
+            'ip' => $userIpInfo['ip'],
+            'time' => Carbon::now(),
+            'code' => $code,
+        ]);
+        Session::flash("message", "Verification code has sent check.Please your email");
+        return back()->with('success', 'Code send successfully');
+    }
 
 }

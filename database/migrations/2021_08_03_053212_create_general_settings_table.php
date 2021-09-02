@@ -16,8 +16,16 @@ class CreateGeneralSettingsTable extends Migration
         Schema::create('general_settings', function (Blueprint $table) {
             $table->id();
             $table->string('web_title')->default('RkixInvest');
+            $table->string('fav_icon')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('email')->default('info@rkixinvest.com');
+            $table->string('phone')->default('0900-78-01');
+            $table->string('address')->default('joharTown,F block,Lahore');
+            $table->string('email_from')->default('admin@rkixinvest.com');
+            $table->text('email_template')->nullable();
+            $table->text('email_config')->nullable();
             $table->text('description')->nullable();
-            $table->enum('refrel_system',['on','off'])->default('off');
+            $table->enum('referral_system',['on','off'])->default('off');
             $table->integer('referral_levels')->default(1);
             $table->enum('reward_system',['on','off'])->default('on');
             $table->enum('email_verification',['on','off'])->default('off');

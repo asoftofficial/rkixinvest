@@ -84,7 +84,7 @@
                                                     type="text"
                                                     class="form-control bg-light round-10 border-0"
                                                     name="username"
-                                                    value="{{'username',$user->username}}"></div>
+                                                    value="{{old('username',$user->username)}}"></div>
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

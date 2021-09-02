@@ -42,7 +42,7 @@ $(".delete").click(function (e) {
     <button
         class="btn btn-info px-3 blue-bg round-10"
         data-toggle="modal"
-        data-target="#addIssuesModal">Create Package</button>
+        data-target="#addpackageModal">Create Package</button>
 </div>
 <div class="admin-search-right">
     <div class="admin-section-search-area input-group mb-3">

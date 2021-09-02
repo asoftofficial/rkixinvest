@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('users.layouts.default')
 
 @push('style')
 {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
@@ -115,11 +115,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            {{-- <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div> --}}
+                             @if(empty($user->image))
+                            <img src="{{route('placeholder.image','360x360')}}"
+                                alt="" />
+                        @else
+                            <img src="{{$user->image}}"
+                                alt="" />
+                        @endif
                         </div>
                     </div>
                     <div class="col-md-6">

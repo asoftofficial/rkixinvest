@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('image')->nullable();
             $table->double('balance')->default(0);
             $table->tinyInteger('gender')->comment("1 = male, 2 = Female, 3 = Non Binary, 4 = Perefer not to say")->nullable();
             $table->date('dob')->nullable();

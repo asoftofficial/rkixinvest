@@ -9,4 +9,5 @@ class GeneralSettings extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = ['email_config' => 'object','sms_config' => 'object'];
 }

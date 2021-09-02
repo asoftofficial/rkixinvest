@@ -18,7 +18,7 @@ General Settings
 
 
 
-    .referal-button {
+    .referral-button {
         display: flex;
         margin-top: 30px;
         padding: 8px 16px;
@@ -33,25 +33,25 @@ General Settings
         align-items: center;
     }
 
-    .referal-label {
+    .referral-label {
         width: 150px;
     }
 
-    .referal-label i {
+    .referral-label i {
         margin-right: 5px;
     }
 
-    .referal-toggle {
+    .referral-toggle {
         height: 40px;
     }
 
-    .referal-toggle input[type="checkbox"] {
+    .referral-toggle input[type="checkbox"] {
         position: absolute;
         opacity: 0;
         z-index: -2;
     }
 
-    .referal-toggle input[type="checkbox"]+label {
+    .referral-toggle input[type="checkbox"]+label {
         position: relative;
         /* top: 0px; */
         right: 7.2rem;
@@ -64,7 +64,7 @@ General Settings
         box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
     }
 
-    .referal-toggle input[type="checkbox"]+label::before {
+    .referral-toggle input[type="checkbox"]+label::before {
         position: absolute;
         content: 'OFF';
         font-size: 10px;
@@ -81,7 +81,7 @@ General Settings
         padding: 3px 7px;
     }
 
-    .referal-toggle input[type="checkbox"]:checked+label::before {
+    .referral-toggle input[type="checkbox"]:checked+label::before {
         left: 59%;
         content: 'ON';
         color: #fff;
@@ -276,7 +276,7 @@ General Settings
     {{-- website settings --}}
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h4 class="border-bottom pb-2 mb-0">Web Settings</h4>
-        <form action="{{route('admin.web.settings')}}" method="get">
+        <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="text" class="input-label mb-0">website Name:</label>
@@ -328,11 +328,11 @@ General Settings
         </form>
     </div>
 
-{{-- referal system settings --}}
+{{-- referral system settings --}}
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <h4 class="border-bottom pb-2 mb-0">Referal System Settings</h4>
+    <h4 class="border-bottom pb-2 mb-0">Referral System Settings</h4>
     <div class="d-flex text-muted pt-3">
-        <form action="{{route('admin.refrel.settings')}}" method="get">
+        <form action="{{route('admin.referral.settings')}}" method="get">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -340,13 +340,13 @@ General Settings
                         <div class="col-md-6">
                             <div class="gap">
                                 <div class="main mt-3 justify-content-start">
-                                    <div class="referal-button">
-                                        <div class="referal-label">
+                                    <div class="referral-button">
+                                        <div class="referral-label">
                                         </div>
-                                        <label for="bluetooth" id="refreltext" class="input-label">Referal
-                                            level</label>
+                                        <label for="bluetooth" id="refreltext" class="input-label">Referral
+                                            Level</label>
                                         <h4 class="input-label mt-2" id="refrel_level"></h4>
-                                        <div class="referal-toggle">
+                                        <div class="referral-toggle">
                                             @if($settings->refrel_system == 'on')
                                             <input type="checkbox" id="bluetooth" name="refrel_system" checked>
                                             <label for="bluetooth"></label>
@@ -370,7 +370,7 @@ General Settings
 
                         <div class="col-md-6">
                             <div class="gap">
-                                <h4 class="input-label mt-2">Referal level</h4>
+                                <h4 class="input-label mt-2">Referral level</h4>
                                 <div class="">
                                     <input type="text" class="form-control bg-light round-10 border-0"
                                         name="refrellevel_type"
@@ -410,7 +410,7 @@ General Settings
                                     <div class="main mt-3">
                                         <div class="reward-button">
 
-                                            <h4 class="input-label mt-2" id="reward-heading">reward system</h4>
+                                            <h4 class="input-label mt-2" id="reward-heading">Reward system</h4>
                                             <div class="reward-toggle">
 
                                                 <input type="checkbox" id="reward" name="reward_system" checked>

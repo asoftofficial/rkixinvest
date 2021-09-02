@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Investment;
 use App\Models\Package;
+use App\Models\Referralbonus;
 use App\Models\Roi;
 use App\Models\User;
 use Carbon\CarbonPeriod;
@@ -29,8 +30,13 @@ class InvestmentController extends Controller
              $investment->save();
 
              // Create Transaction
-             trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at);
+             trx(Auth::user()->id,$investment->amount,'2','Invested in '.$investment->package->title.' package with '.$investment->amount.'$ at '.$investment->created_at,'investment');
 
+            //send email to notify the user
+            sendEmail($user, 'INVESTMENT', [
+                'package' => $package->title,
+                'amount' => $request->amount,
+                ]);
             //Create ROIs record
             $now = Carbon::now();
             $enddate = Carbon::now();
@@ -48,7 +54,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$days;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }elseif($package->roi_type=="weekly"){
@@ -61,7 +67,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$weeks;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }elseif($package->roi_type=="monthly"){
@@ -74,7 +80,7 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount =$totalroi/$months;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }else{
@@ -87,14 +93,62 @@ class InvestmentController extends Controller
                     $roi->investment_id = $investment->id;
                     $roi->status = 1;
                     $roi->amount = $totalroi/$years;
-                    $roi->date = $date;
+                    $roi->roi_date = $date;
                     $roi->save();
                 }
             }
+            //give referral bonus
+            $totalLevels = Referralbonus::count();
+            $levels = Referralbonus::latest()->get();
+            $parentId = getparent($user->id);
+            foreach($levels as $level){
+                //check if got parent Id
+                if($parentId>0){
+                    //Check if parent available in users table
+                    $parent = User::find($parentId);
+                    if(!empty($parent)){
+                        //Update parent bonus
+                        $bonus = ($level->bonus / 100) * $investment->amount;
+                        $parent->balance += $bonus;
+                        $parent->update();
+                        // Create Transaction
+                        trx($parent->id,$bonus,'1','Referral level '.$level->id.' bonus from '.$parent->username.' at '.\Carbon\Carbon::now(),'ref_bonus');
+                    }
+                }else{
+                    break;
+                }
+                // get next parent
+                $parentId = getparent($parent->id);
+            }
+
             return back()->with('success','Your Investment placed successfully.');
         }else{
             return back()->with('error','Invalid amount for this package, minimum investment is '.$package->min_invest.' and maximum investment is '.$package->max_invest);
         }
 
+    }
+
+    //show user investments
+    function showUserInvestments()
+    {
+        $investments = Auth::user()->investments()->paginate(25);
+        $emptyMessage = "No Investment found";
+        return view('users.investments.index',compact('investments','emptyMessage'));
+    }
+
+
+    //show active investments
+    public function active_invest()
+    {
+        $active_investments = Investment::where('status',1)->with(['rois'])->get();
+        // dd($active_investments);
+        return view('admin.investments.active-investments',compact('active_investments'));
+    }
+
+    //show pending investments
+    public function pending_invest()
+    {
+        $pending_investments = Investment::where('status',2)->get()->paginate(10);
+        return view('admin.investments.pending-investments',compact('pending_investments'));
     }
 }

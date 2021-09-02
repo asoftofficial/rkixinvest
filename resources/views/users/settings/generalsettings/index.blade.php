@@ -18,7 +18,7 @@
 
 
 
-    .referal-button {
+    .referral-button {
         display: flex;
         margin-top: 30px;
         padding: 8px 16px;
@@ -33,25 +33,25 @@
         align-items: center;
     }
 
-    .referal-label {
+    .referral-label {
         width: 150px;
     }
 
-    .referal-label i {
+    .referral-label i {
         margin-right: 5px;
     }
 
-    .referal-toggle {
+    .referral-toggle {
         height: 40px;
     }
 
-    .referal-toggle input[type="checkbox"] {
+    .referral-toggle input[type="checkbox"] {
         position: absolute;
         opacity: 0;
         z-index: -2;
     }
 
-    .referal-toggle input[type="checkbox"]+label {
+    .referral-toggle input[type="checkbox"]+label {
         position: relative;
         /* top: 0px; */
         right: 9rem;
@@ -64,7 +64,7 @@
         box-shadow: inset -8px -8px 15px rgb(255 255 255 / 60%), inset 10px 10px 10px rgb(0 0 0 / 25%);
     }
 
-    .referal-toggle input[type="checkbox"]+label::before {
+    .referral-toggle input[type="checkbox"]+label::before {
         position: absolute;
         content: 'OFF';
         font-size: 10px;
@@ -80,7 +80,7 @@
         transition: .3s ease-in-out;
     }
 
-    .referal-toggle input[type="checkbox"]:checked+label::before {
+    .referral-toggle input[type="checkbox"]:checked+label::before {
         left: 50%;
         content: 'ON';
         color: #fff;
@@ -307,9 +307,9 @@ h4#reward-heading {
 
 
 
-                   {{-- referal system settings --}}
+                   {{-- referral system settings --}}
               <div class="my-3 p-3 bg-body rounded shadow-sm">
-                <h4 class="border-bottom pb-2 mb-0">Referal System Settings</h4>
+                <h4 class="border-bottom pb-2 mb-0">referral System Settings</h4>
                 <div class="d-flex text-muted pt-3">
                     <form action="{{route('admin.refrel.settings')}}" method="get">
                         @csrf
@@ -319,14 +319,14 @@ h4#reward-heading {
                                     <div class="col-md-6">
                                         <div class="gap">
                                             <div class="main mt-3 justify-content-start">
-                                              <div class="referal-button">
+                                              <div class="referral-button">
 
-                                                    <div class="referal-label">
+                                                    <div class="referral-label">
 
                                                     </div>
-                                                    <label for="bluetooth" id="refreltext" class="input-label">Referal level</label>
+                                                    <label for="bluetooth" id="refreltext" class="input-label">referral level</label>
                                                     <h4 class="input-label mt-2" id="refrel_level"></h4>
-                                                    <div class="referal-toggle">
+                                                    <div class="referral-toggle">
                                                         @if($settings->refrel_system == 'on')
                                                         <input type="checkbox" id="bluetooth" name="refrel_system" checked>
                                                         <label for="bluetooth"></label>
@@ -355,7 +355,7 @@ h4#reward-heading {
 
                                     <div class="col-md-6">
                                         <div class="gap">
-                                            <h4 class="input-label mt-2">Referal level</h4>
+                                            <h4 class="input-label mt-2">referral level</h4>
                                             <div class="">
                                                 <input type="text" class="form-control bg-light round-10 border-0" name="refrellevel_type" value="{{old('refrellevel_type',$settings->refrellevel_type)}}">
                                             </div>

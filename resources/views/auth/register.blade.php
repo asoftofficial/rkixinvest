@@ -166,7 +166,7 @@ $("#username").on({
         </div>
         <div class="row mt-3">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-primary btn-block btn-red text-uppercase">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block btn-blue text-uppercase">Sign Up</button>
             </div>
         </div>
     </form>

@@ -79,12 +79,31 @@
                             </div>
                         </div>
                     </div>
+                     <div class="row mb-2">
+                                <div class="col-6">
+                                    <h4 class="input-label mt-2">change image</h4>
+                                    <input type="file" name="image" class="form-control bg-light round-10 border-0">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="gap">
+                                        <h4 class="input-label mt-2">username</h4>
+                                        <div class="">
+                                            <input type="text" class="form-control bg-light round-10 border-0 mb-2"
+                                                name="username" value="{{old('username')}}"></div>
+                                        @error('username')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="gap">
-                                        <h4 class="input-label mt-2">Password</h4>
+                                        <h4 class="input-label">Password</h4>
                                         <div class="">
                                             <input type="password" class="form-control bg-light round-10 border-0 mb-4"
                                                 name="password"></div>
@@ -98,7 +117,7 @@
 
                                 <div class="col-md-6">
                                     <div class="gap">
-                                        <h4 class="input-label mt-2">Confirm Password</h4>
+                                        <h4 class="input-label">Confirm Password</h4>
                                         <div class="">
                                             <input type="password" class="form-control bg-light round-10 border-0 mb-4"
                                                 name="password_confirmation"></div>

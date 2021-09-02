@@ -77,7 +77,7 @@ $(".delete").click(function (e) {
                     </th>
                     <th scope="col">Amount
                     </th>
-                    <th scope="col">Referal
+                    <th scope="col">Referral
                     </th>
                     <th scope="col">Status
                     </th>
@@ -93,7 +93,7 @@ $(".delete").click(function (e) {
                     <td>{{$item->id}}</td>
                     <td>{{$item->title}}</td>
                     <td>{{$item->amount}}</td>
-                    <td>{{$item->refrel}}</td>
+                    <td>{{$item->referral}}</td>
                     <td>{{$item->status}}</td>
                     <td>{{$item->description}}</td>
 

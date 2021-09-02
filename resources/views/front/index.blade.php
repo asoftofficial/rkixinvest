@@ -10,16 +10,13 @@
                 <img class="shap triangle" src="{{ asset('frontend/assets/bg-shapes/triangle.png') }}" alt="">
                 <img class="shap dots" src="{{ asset('frontend/assets/bg-shapes/dots.png') }}" alt="">
                 <div class="about-image">
-                    <img src="{{ asset('frontend/assets/images/about.png') }}" alt="About RkixInvest">
+                    <img src="{{$aboutus->section_image}}" alt="About RkixInvest">
                 </div>
                 <div class="about-text">
-                    <h3>About Us</h3>
-                    <h2>Boost Your Business.</h2>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
-                        Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin
-                        words, consectetur,</p>
-                    <a href="#" class="btn blue-iconic-btn">More Details</a>
+                    <h3>{{$aboutus->section_title}}</h3>
+                    <h2>{{$aboutus->section_heading}}</h2>
+                    <p>{{$aboutus->section_description}}</p>
+                    <a href="{{$aboutus->link}}" class="btn blue-iconic-btn">{{$aboutus->button_text}}</a>
                 </div>
             </div>
         </div>
@@ -29,30 +26,28 @@
     <!-- How to Section Start-->
     <section class="steps-section bg-light">
         <div class="container text-center">
-            <h2>How to invest</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi illo, perspiciatis fugit blanditiis fuga
-                quas quo laboriosam alias sequi rem, id tempora, error rerum. Fugiat beatae sint repudiandae ab
-                blanditiis?</p>
+            <h2>{{$data->step_title}}</h2>
+            <p>{{$data->step_content}}</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">1</div>
                         <span class="step-icon"></span>
-                        <p>Deposit Amount</p>
+                        <p>{{$data->step1}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">2</div>
                         <span class="step-icon"></span>
-                        <p>Buy Package</p>
+                        <p>{{$data->step2}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">3</div>
                         <span class="step-icon"></span>
-                        <p>Earn Profit</p>
+                        <p>{{$data->step3}}</p>
                     </div>
                 </div>
             </div>
@@ -88,32 +83,6 @@
                                     <td>23000$</td>
                                     <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
                                 </tr>
-                                <tr>
-                                    <td>Anthony</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Calor Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>John Jarry</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/master-card-logo.png') }}" alt="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Jamie</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Clark</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
                             </table>
                         </div>
                     </div>
@@ -126,37 +95,17 @@
                                     <th>Amount</th>
                                     <th>Gateway</th>
                                 </tr>
-                                <tr>
-                                    <td>John Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Anthony</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Calor Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>John Jarry</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/master-card-logo.png') }}" alt="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Jamie</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/visa-logo.png') }}" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>Clark</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
+                                @forelse($withdrawals as $item)
+                                    <tr>
+                                        <td>{{$item->user->username}}</td>
+                                        <td>{{$item->amount}}$</td>
+                                        <td>{{$item->method->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="100%">{{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>
@@ -172,122 +121,24 @@
             <h3 class="text-blue opacity-1">Testimonials</h3>
             <h2 class="text-blue">What Client Say</h2>
             <div class="testimonials-carousal">
+                @foreach ($testimonials as $item)
                 <div class="testimonials-inner">
                     <div class="testimonial">
                         <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
+                            {{$item->content}}
                         </p>
                         <div class="testimonial-user">
                             <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
+                                <img src="{{$item->image}}" alt="">
                             </div>
                             <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
+                                <h4>{{$item->username}}</h2>
+                                    <h5>{{$item->designation}}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
-                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
-                            Latin words,
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{ asset('frontend/assets/images/lilly.png') }}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>Lilly Adams</h2>
-                                    <h5>Manager</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </div>       @endforeach
     </section>
     <!-- testimonials section end-->
 @endsection

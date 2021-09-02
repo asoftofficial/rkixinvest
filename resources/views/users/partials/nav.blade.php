@@ -15,7 +15,11 @@
         <li class="nav-item">
             <p class="main-p">Hello! {{Auth::user()->username}}</p>
             <a href="#" class="dashboard-profile-image">
-                <img src="{{asset('frontend/dashboard/img/avatar5.png')}}" alt="">
+                @if(empty(auth::user()->image))
+                    <img src="{{route('placeholder.image','200x200')}}" alt="" />
+                @else
+                    <img src="{{auth::user()->image}}" alt="">
+                @endif
             </a>
             <div class="dropdown main-drop profile-dropdown">
                 <img  src="{{asset('backend/img/icons/bottom-angle.png')}}" class="dropdown-toggle bg-white border-0" type="text" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,27 +27,14 @@
                     <a class="dropdown-item" href="{{route('user.show.profile')}}">Profile</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Logout</a>
-                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                 </div>
             </div>
-            <!-- <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                <i class="fas fa-expand-arrows-alt"></i>
-            </a> -->
         </li>
-        <!-- <li class="nav-item">
-        <a href="#"><i class="fas fa-user"></i></a> -->
-        <!-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-        </a> -->
-        <!-- </li> -->
-
-        <!-- <li class="nav-item">
-
-        </li> -->
     </ul>
 </nav>
 <!-- /.navbar -->

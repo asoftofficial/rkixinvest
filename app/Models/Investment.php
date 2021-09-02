@@ -14,7 +14,6 @@ class Investment extends Model
     {
         return $this->belongsTo(Package::class);
     }
-
     public function rois()
     {
         return $this->hasMany(Roi::class);

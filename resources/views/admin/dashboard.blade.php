@@ -23,6 +23,96 @@ $(function () {
     $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
     $('select.ui-select').selectmenu();
 });
+    // Chart start
+    $(function () {
+        ajaxGetChartData()
+        $('.to').change(function(){
+            var to = $('.to').val()
+            var from = $('.from').val()
+            ajaxGetChartData(to,from)
+        });
+
+    })
+
+    function ajaxGetChartData(to=null,from=null){
+        $.ajax({
+            type:'GET',
+            url:"{{route('ajaxChart')}}",
+            'data': {
+                _token: "{{ csrf_token() }}",
+                to: to,
+                from: from
+            },
+            success:function(data) {
+                countChart(data)
+            }
+        });
+    }
+    function countChart(data){
+        var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+        }
+
+        var mode = 'index'
+        var intersect = true
+
+        var $visitorsChart = $('#investment-chart')
+        // eslint-disable-next-line no-unused-vars
+        var chartData = "{{$chartdata}}";
+        var visitorsChart = new Chart($visitorsChart, {
+            data: {
+                labels: data.days,
+                datasets: [{
+                    type: 'line',
+                    data: data.count_data,
+                    backgroundColor: 'transparent',
+                    borderColor: '#000',
+                    pointBorderColor: '#000000',
+                    pointBackgroundColor: '#000000',
+                    fill: false
+                    // pointHoverBackgroundColor: '#007bff',
+                    // pointHoverBorderColor    : '#007bff'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        // display: false,
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+                            suggestedMax: data.max
+                        }, ticksStyle)
+                    }],
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        })
+    }
 </script>
 @endpush
 @section('content')
@@ -42,11 +132,10 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2>PAGES VIEWS</h2>
-            <p>from Aug 2020</p>
+            <h2>Total Deposit Amount</h2>
         </div>
         <div class="dashboard-card-stat">
-            8,514
+           {{$deposit_amount}}
         </div>
     </div>
     <div class="dashboard-card new-orders">
@@ -54,10 +143,11 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2>NEW ORDERS</h2>
-            <p>9,30,2020</p>
+            <h2>Total Withdraw Amount</h2>
+            <p></p>
         </div>
         <div class="dashboard-card-stat">
+            {{$withdrawal_amount}}
         </div>
     </div>
     <div class="dashboard-card total-earnings bg-dark">
@@ -69,7 +159,7 @@ $(function () {
             <p class="text-white">all income</p>
         </div>
         <div class="dashboard-card-stat">
-            £ 123
+            {{$earning}}
         </div>
     </div>
 </div>
@@ -81,8 +171,8 @@ $(function () {
                 href="#"
                 class="dashboard-card-link"
                 data-toggle="modal"
-                data-target="#addBannersModal">
-                UPLOAD BANNERS
+                data-target="#addUserModal">
+                Create User
             </a>
         </div>
         <div
@@ -91,52 +181,254 @@ $(function () {
                 href="#"
                 class="dashboard-card-link"
                 data-toggle="modal"
-                data-target="#addPromotionsModal">
-                ADD PROMOTION
+                data-target="#addpackageModal">
+                Create Package
             </a>
         </div>
     </div>
     <div class="chart-section">
         <div class="card chart-card">
             <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                    <h3 class="card-title">Online Store Visitors</h3>
-                    <a href="javascript:void(0);">View Report</a>
+                <div class="chart-header">
+                    <h3 class="card-title">Dashboard</h3>
+
+                    <div class="chart-date-area">
+                        <div class="chart-date-input-area">
+                            <div class="d-flex chart-input">
+                                <label>From</label>
+                                <div class="drop2-icon">
+                                    <input autocomplete="off" type="text" class="form-control datepicker border-0 from"  name="from">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-date-input-area">
+                            <div class="d-flex chart-input">
+                                <label>To</label>
+                                <div class="drop2-icon">
+                                    <input autocomplete="off" type="text" class="form-control datepicker border-0 to"  name="to">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <p style="text-align:left;">Investments Summary</p>
             </div>
             <div class="card-body">
-                <div class="d-flex">
-                    <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">820</span>
-                        <span>Visitors Over Time</span>
-                    </p>
-                    <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                            <i class="fas fa-arrow-up"></i>
-                            12.5%
-                        </span>
-                        <span class="text-muted">Since last week</span>
-                    </p>
-                </div>
                 <!-- /.d-flex -->
-
                 <div class="position-relative mb-4">
-                    <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-                <div class="d-flex flex-row justify-content-end">
-                    <span class="mr-2">
-                        <i class="fas fa-square text-primary"></i>
-                        This Week
-                    </span>
-                    <span>
-                        <i class="fas fa-square text-gray"></i>
-                        Last Week
-                    </span>
+                    <canvas id="investment-chart" height="200"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+    <div class="card">
+        <div class="card-header bg-dark">
+            Withdrawals
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{$withdrawals}}</h3>
+                            <p>Total Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-cash"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$completed_withd}}</h3>
+
+                            <p>Completed withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{$pending_withd}}</h3>
+
+                            <p>Pending Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$rejected_withd}}</h3>
+
+                            <p>Rejected Withdrawals</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+     <div class="card">
+        <div class="card-header bg-dark">
+            Deposits
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>150</h3>
+
+                            <p>Total Deposit</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                            <p>Complete Deposit</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>44</h3>
+
+                            <p>Pending Deposit</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>Rejected Deposit</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
+     <div class="card">
+        <div class="card-header bg-dark">
+            User & Investors Statistics
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{$total_users}}</h3>
+
+                            <p>Total Users</p>
+                        </div>
+                       <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{$active_users}}</h3>
+
+                            <p>Active Users</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{$investors}}</h3>
+
+                            <p>Total Investors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$active_investors}}</h3>
+
+                            <p>Active Investors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </div>
 <div class="row">
     <div class="col-md-12">
         {{--    Page Section Title Area    --}}
@@ -154,79 +446,29 @@ $(function () {
                 <table class="table custom-table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Customer ID
-                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                <th scope="col">First Name
-                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                    <th scope="col">Last Name
-                                        <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                        <th scope="col">Email
-                                            <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                            <th scope="col">Date
-                                                <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                <th scope="col">Plan
-                                                    <img src="{{asset('backend/img/icons/bottom-angle.png')}}" class="ml-1"></th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>155FGV</td>
-                                                    <td>Johan</td>
-                                                    <td>Doe</td>
-                                                    <td>example@gmail.com</td>
-                                                    <td>20/12/2021</td>
-                                                    <td class="text-uppercase">STANDARD</td>
-                                                    <td style="min-width: 256px; text-align: right">
-                                                        <a href="#" class="btn btn-dark lightblue-bg round-10 px-4 mr-2">See more</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <th scope="col">#Id  </th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">ROIs </th>
+                            <th scope="col">Roi Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($active_investments as $item)
+                            <tr role="row" class="odd">
+                                <td class="dtr-control sorting_1" tabindex="0">{{$item->id}}</td>
+                                <td>{{$item->amount}}</td>
+                                @if($item->status == 1)
+                                <td>Active</td>
+                                @else
+                                <td>Expired</td>
+                                @endif
+                                {{-- <td>{{$item->rois->amount}}</td> --}}
+                                {{-- <td>{{$item->rois->roi_date}}</td> --}}
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                                     </div>
                                 </section>
                             </div>
@@ -235,11 +477,10 @@ $(function () {
                     </div>
                     <!-- /.container-fluid -->
 
-                    {{--  Add Issues Model  --}}
-                    {{-- @include('admin.issues.modals.create') --}}
-                    {{--  End Add Issues Model  --}}
-                    {{-- @include('admin.banners.modals.create') --}}
-                    {{-- @include('admin.promotions.modals.create') --}}
+                    {{-- create user model --}}
+                    @include('admin.users.modals.create')
+                    {{-- create package model --}}
+                    @include('admin.packages.modals.create')
                     @endsection
                 </div>
             </div>
