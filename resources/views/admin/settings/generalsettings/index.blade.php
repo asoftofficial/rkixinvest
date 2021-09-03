@@ -10,6 +10,7 @@ General Settings
 @endpush
 @push('script')
     <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
+    <script src ="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
     <script>
         $('.switch-button').bootstrapToggle()
     </script>

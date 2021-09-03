@@ -56,17 +56,6 @@
                                 </p>
                             </a>
                     </li>
-                      <li class="nav-item">
-                        <a
-                            href="{{route('user.kyc')}}"
-                            class="nav-link @if(Route::currentRouteName()=='user.kyc') active pink-nav @endif">
-                            <img src="{{asset('/backend/img/icons/kyc.png')}}" alt="">
-                                <p>
-                                    KYC
-                                </p>
-                            </a>
-                    </li>
-
                         <li class="nav-item">
                             <a
                                 href="{{route('user.investment')}}"

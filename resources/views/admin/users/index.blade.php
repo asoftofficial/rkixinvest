@@ -8,21 +8,6 @@ User Management
 <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
-$(".blocked_user").click(function (e) {
-    swal(
-        {title: "Are you sure ?", text: "you want to apply this opreation", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willUpdate) => {
-        if (willUpdate) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.blocked.user', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#update-form").attr('action', url);
-            $("#update-form").submit();
-        }
-    });
-});
-
-
 $(".delete").click(function (e) {
     console.log("asdhsakdash")
     swal(
@@ -103,15 +88,6 @@ $(".delete").click(function (e) {
                             style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-                        @if($item->blocked == 0)
-                        <a href="#" class="btn btn-danger blocked_user" data-id="{{$item->id}}">
-                            <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
-                        </a>
-                        @else
-                        <a href="#" class="btn btn-success blocked_user " data-id="{{$item->id}}">
-                            <p class="text-white block_button" style="font-size: 17px;height:1vh;">Active</p>
-                        </a>
-                        @endif
                         <a
                             href="#"
                             class="user_email  btn btn-dark"
@@ -124,11 +100,7 @@ $(".delete").click(function (e) {
                         </a>
                     </td>
                 </tr>
-                <form action="" method="post" id="update-form">
-                    @csrf
-                    <input type="hidden" value="{{$item->id}}" name="user_id"></form>
                     @include('admin.users.modals.email')
-
                     @endforeach
 
             </tbody>
