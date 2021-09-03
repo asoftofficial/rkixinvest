@@ -47,7 +47,7 @@ General Settings
 
                 <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Footer text</label>
-                <input type="text" name="footer" value="{{old('footer',$settings->footergit)}}"
+                <input type="text" name="footer" value="{{old('footer',$settings->footer)}}"
                     class="form-control bg-light border-0 round-10 ">
                 @error('footer')
                 <span class="invalid-feedback" role="alert">
@@ -56,12 +56,13 @@ General Settings
                 @enderror
                 </div>
             </div>
-            <div class="row mb-3">
+
+                   <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="icon" class="input-label mb-0">Favicon icon</label>
-                <input type="file" name="favicon" value=""
+                    <label for="icon" class="input-label mb-0">Website Dark Logo:</label>
+                <input type="file" name="dlogo" value="{{old('dlogo',$settings->dlogo)}}"
                     class="form-control bg-light border-0 round-10 ">
-                @error('favicon')
+                @error('dlogo')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -69,10 +70,22 @@ General Settings
                 </div>
 
                 <div class="col-md-6">
-                    <label for="icon" class="input-label mb-0">Website logo</label>
-                <input type="file" name="logo" value=""
+                    <label for="icon" class="input-label mb-0">Website Light Logo</label>
+                <input type="file" name="llogo" value="{{old('llogo',$settings->llogo)}}"
                     class="form-control bg-light border-0 round-10 ">
-                @error('logo')
+                @error('llogo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="icon" class="input-label mb-0">Favicon icon</label>
+                <input type="file" name="favicon" value=""
+                    class="form-control bg-light border-0 round-10 ">
+                @error('favicon')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

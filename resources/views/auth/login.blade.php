@@ -24,12 +24,12 @@
             <div class="col-md-5 login-form">
                     <div class="login-header">
                         <div class="logo">
-                            @if(empty($settings->logo))
+                            @if(empty($settings->dlogo))
                             <img src="{{route('placeholder.image','200x80')}}"
                                 alt="logo" />
                             @else
                                 <img
-                                src="{{$settings->logo}}"
+                                src="{{$settings->dlogo}}"
                                 alt="logo">
                             @endif
                         </div>

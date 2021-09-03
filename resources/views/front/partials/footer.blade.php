@@ -1,10 +1,10 @@
 <footer class="main-footer">
         <div class="footer-top">
             <div class="footer-col">
-                @if(empty($settings->logo))
+                @if(empty($settings->llogo))
                     <img src="{{route('placeholder.image','200x80')}}"  alt="logo" />
                 @else
-                    <img src="{{$settings->logo}}" class="" alt="logo">
+                    <img src="{{$settings->llogo}}" class="" alt="logo">
                 @endif
                 <p>{{$settings->description}}</p>
             </div>

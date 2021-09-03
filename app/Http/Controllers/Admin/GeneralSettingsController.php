@@ -27,14 +27,23 @@ class GeneralSettingsController extends Controller
             $file_path  = $full_path;
             $settings->fav_icon   = $file_path;
         }
-        if($request->hasFile('logo')){
-            $extension = $request->file('logo')->getClientOriginalExtension();
+        if($request->hasFile('dlogo')){
+            $extension = $request->file('dlogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = public_path('uploads/web/');
             $full_path = '/uploads/web/'.$fileName;
-            $request->file('logo')->move($upload_path, $fileName);
+            $request->file('dlogo')->move($upload_path, $fileName);
             $file_path  = $full_path;
-            $settings->logo  = $file_path;
+            $settings->dlogo  = $file_path;
+        }
+        if($request->hasFile('llogo')){
+            $extension = $request->file('llogo')->getClientOriginalExtension();
+            $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/web/');
+            $full_path = '/uploads/web/'.$fileName;
+            $request->file('llogo')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $settings->llogo  = $file_path;
         }
         $settings->web_title   = $request->web_title;
         $settings->description = $request->description;
