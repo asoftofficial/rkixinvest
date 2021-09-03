@@ -11,9 +11,8 @@ Edit Slider
         <div class="card">
             <h5 class="card-header bg-dark">Slider</h5>
             <div class="card-body">
-                <form action="{{route('admin.slider.update',$slider->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.slider.edit')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
                     <div class="row mb-1 pt-3">
                         <div class="col-md-6">
                             <label class="input-label mb-0">Button text</label>

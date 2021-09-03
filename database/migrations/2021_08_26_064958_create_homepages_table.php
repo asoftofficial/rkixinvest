@@ -24,8 +24,11 @@ class CreateHomepagesTable extends Migration
             $table->string('step_title')->default('how to invest');
             $table->text('step_content')->nullable();
             $table->string('step1')->default('Deposit Amount');
+            $table->string('icon1')->nullable();
             $table->string('step2')->default('Buy package');
+            $table->string('icon2')->nullable();
             $table->string('step3')->default('Earn Profit');
+            $table->string('icon3')->nullable();
             $table->timestamps();
         });
     }

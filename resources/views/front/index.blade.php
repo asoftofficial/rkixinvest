@@ -42,21 +42,21 @@
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">1</div>
-                        <span class="step-icon"><img src="{{asset('frontend/assets/images/deposit.png')}}" alt=""></span>
+                        <span class="step-icon"><img src="{{$frontdata->icon1}}" alt=""></span>
                         <p>{{$frontdata->step1}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">2</div>
-                        <span class="step-icon"><img src="{{asset('frontend/assets/images/buy.png')}}" alt=""></span>
+                        <span class="step-icon"><img src="{{$frontdata->icon1}}" alt=""></span>
                         <p>{{$frontdata->step2}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">3</div>
-                        <span class="step-icon"><img src="{{asset('frontend/assets/images/earnings.png')}}" alt=""></span>
+                        <span class="step-icon"><img src="{{$frontdata->icon1}}" alt=""></span>
                         <p>{{$frontdata->step3}}</p>
                     </div>
                 </div>

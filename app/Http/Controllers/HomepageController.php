@@ -45,8 +45,35 @@ class HomepageController extends Controller
 
     public function updateHowto(Request $request)
     {
-
         $data = Homepage::first();
+         if($request->hasFile('icon1')){
+            $extension = $request->file('icon1')->getClientOriginalExtension();
+            $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/how-to/');
+            $full_path = '/uploads/how-to/'.$fileName;
+            $request->file('icon1')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $data->icon1 = $file_path;
+        }
+         if($request->hasFile('icon2')){
+            $extension = $request->file('icon2')->getClientOriginalExtension();
+            $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/how-to/');
+            $full_path = '/uploads/how-to/'.$fileName;
+            $request->file('icon2')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $data->icon2 = $file_path;
+        }
+         if($request->hasFile('icon3')){
+            $extension = $request->file('icon3')->getClientOriginalExtension();
+            $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/how-to/');
+            $full_path = '/uploads/how-to/'.$fileName;
+            $request->file('icon3')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $data->icon3 = $file_path;
+        }
+
         $data->section_title = $request->title;
         $data->step1 = $request->step1;
         $data->step2 = $request->step2;
