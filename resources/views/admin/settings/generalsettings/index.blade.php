@@ -10,6 +10,7 @@ General Settings
 @endpush
 @push('script')
     <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
+    <script src ="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
     <script>
         $('.switch-button').bootstrapToggle()
     </script>
@@ -18,11 +19,11 @@ General Settings
 <div class="container-fluid">
     {{-- website settings --}}
         <div class="card">
-        <div class="card-header bg-dark">Fund System Settings</div>
+        <div class="card-header bg-dark">Website Settings</div>
         <div class="card-body">
             <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="text" class="input-label mb-0">website Name:</label>
                 <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
                     class="form-control bg-light border-0 round-10 ">
@@ -31,13 +32,13 @@ General Settings
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-            </div>
+            </div> --}}
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label for="icon" class="input-label mb-0">Favicon icon</label>
-                <input type="file" name="favicon" value=""
+                    <label for="icon" class="input-label mb-0">Website Name:</label>
+                <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
                     class="form-control bg-light border-0 round-10 ">
-                @error('favicon')
+                @error('web_title')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -45,10 +46,46 @@ General Settings
                 </div>
 
                 <div class="col-md-6">
-                    <label for="icon" class="input-label mb-0">Website logo</label>
-                <input type="file" name="logo" value=""
+                    <label for="icon" class="input-label mb-0">Footer text</label>
+                <input type="text" name="footer" value="{{old('footer',$settings->footer)}}"
                     class="form-control bg-light border-0 round-10 ">
-                @error('logo')
+                @error('footer')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+            </div>
+
+                   <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Website Dark Logo:</label>
+                <input type="file" name="dlogo" value="{{old('dlogo',$settings->dlogo)}}"
+                    class="form-control bg-light border-0 round-10 ">
+                @error('dlogo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Website Light Logo</label>
+                <input type="file" name="llogo" value="{{old('llogo',$settings->llogo)}}"
+                    class="form-control bg-light border-0 round-10 ">
+                @error('llogo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="icon" class="input-label mb-0">Favicon icon</label>
+                <input type="file" name="favicon" value=""
+                    class="form-control bg-light border-0 round-10 ">
+                @error('favicon')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

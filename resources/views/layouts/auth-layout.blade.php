@@ -16,10 +16,10 @@
         <header class="auth-header">
             <div class="logo">
                 <a href="/">
-                    @if(empty($settings->logo))
+                    @if(empty($settings->dlogo))
                         <img src="{{route('placeholder.image','200x80')}}" alt="logo" />
                     @else
-                        <img src="{{$settings->logo}}" alt="logo">
+                        <img src="{{$settings->dlogo}}" alt="logo">
                     @endif</a>
             </div>
         </header>

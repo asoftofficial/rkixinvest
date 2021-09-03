@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\GeneralSettings;
 use App\Models\Investment;
+use App\Models\Slider;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Withdrawal;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -75,6 +76,30 @@ class DashboardController extends Controller
         return view('admin.profile.modals.edit-profile');
     }
 
+    public function slider()
+    {
+        $slider = Slider::first();
+        return view('admin.Slider.edit',compact('slider'));
+    }
+    //update slider
+    public function updateSlider(Request $request)
+    {
+            $slider = Slider::first();
+            if($request->hasFile('image')){
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileName = "slider_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+                $upload_path = public_path('uploads/slider/');
+                $full_path = '/uploads/slider/'.$fileName;
+                $request->file('image')->move($upload_path, $fileName);
+                $file_path  = $full_path;
+                $slider->image = $file_path;
+            }
+            $slider->button_text = $request->button_text;
+            $slider->link  = $request->link;
+            $slider->slider_content = $request->description;
+            $slider->update();
+            return back()->with('success','Slider Updated Successfully');
+    }
 
 
 }

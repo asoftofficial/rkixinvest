@@ -27,19 +27,29 @@ class GeneralSettingsController extends Controller
             $file_path  = $full_path;
             $settings->fav_icon   = $file_path;
         }
-        if($request->hasFile('logo')){
-            $extension = $request->file('logo')->getClientOriginalExtension();
+        if($request->hasFile('dlogo')){
+            $extension = $request->file('dlogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = public_path('uploads/web/');
             $full_path = '/uploads/web/'.$fileName;
-            $request->file('logo')->move($upload_path, $fileName);
+            $request->file('dlogo')->move($upload_path, $fileName);
             $file_path  = $full_path;
-            $settings->logo  = $file_path;
+            $settings->dlogo  = $file_path;
+        }
+        if($request->hasFile('llogo')){
+            $extension = $request->file('llogo')->getClientOriginalExtension();
+            $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/web/');
+            $full_path = '/uploads/web/'.$fileName;
+            $request->file('llogo')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $settings->llogo  = $file_path;
         }
         $settings->web_title   = $request->web_title;
         $settings->description = $request->description;
+        $settings->footer  = $request->footer;
         $settings->update();
-        return back()->with('success','settings chnaged successfully');
+        return back()->with('success','Settings Changed Successfully');
     }
 
     public function rewardUpdate(Request $request)
@@ -48,7 +58,7 @@ class GeneralSettingsController extends Controller
         $reward_status = $request->reward ? 'on' : 'off';
         $settings->reward_system = $reward_status;
         $settings->Update();
-        return back()->with('success','reward settings chnaged successfully');
+        return back()->with('success','Reward Settings Changed Successfully');
     }
 
     public function referralUpdate(Request $request)
@@ -75,7 +85,7 @@ class GeneralSettingsController extends Controller
         $settings->add_fund = $addFundStatus;
         $settings->remove_fund = $removeFundStatus;
         $settings->update();
-        return back()->with('success','funds settings updated successfully');
+        return back()->with('success','Funds Settings Updated Successfully');
     }
 
     //email verification settings by admin panel
@@ -93,21 +103,6 @@ class GeneralSettingsController extends Controller
         return back()->with('success','email settings updated successfully');
     }
 
-    //manage kyc settings by admin panel
-    public function showKycSettings()
-    {
-        return view('admin.settings.generalsettings.kyc-settings');
-    }
-
-    public function kycSettings(Request $request)
-    {
-        $settings = ModelsGeneralSettings::first();
-        $kycStatus = empty($request->kyc) ? "off" : $request->kyc;
-        $settings->kyc = $kycStatus;
-        $settings->Update();
-        return back()->with('success','KYC settings updated successfully');
-    }
-
     public function generalinfo()
     {
         $sociallinks = SocialLink::first();
@@ -121,7 +116,7 @@ class GeneralSettingsController extends Controller
         $settings->phone = $request->phone;
         $settings->address = $request->address;
         $settings->Update();
-        return back()->with('success','info updated successfully');
+        return back()->with('success','Info Updated Successfully');
     }
 
     public function sociallinks(Request $request)
@@ -132,6 +127,6 @@ class GeneralSettingsController extends Controller
         $sociallinks->pintrest = $request->pintrest;
         $sociallinks->linkedin = $request->linkedin;
         $sociallinks->Update();
-        return back()->with('success','social media links updated successfully');
+        return back()->with('success','Social Media Links Updated Successfully');
     }
 }

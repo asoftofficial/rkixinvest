@@ -1,12 +1,11 @@
 @extends('admin.layouts.default')
 @section('page-title')
-user profile
+User profile
 @endsection
 @push('style')
+<link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
 {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
 <style>
-
-
     .emp-profile {
         padding: 3%;
         margin-top: 3%;
@@ -125,9 +124,27 @@ user profile
 }
 </style>
 @endpush
+
 @push('script')
+    <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+<script>
+    $(".blocked_user").click(function (e) {
+    swal(
+        {title: "Are you sure ?", text: "you want to apply this opreation", icon: "warning", buttons: true, dangerMode: true}
+    ).then((willUpdate) => {
+        if (willUpdate) {
+            var user_id = $(this).attr('data-id');
+            var url = "{{route('admin.blocked.user', 'id')}}";
+            url = url.replace('id', user_id);
+            $("#update-form").attr('action', url);
+            $("#update-form").submit();
+        }
+    });
+});
+</script>
 @endpush
 
 @section('content')
@@ -171,14 +188,20 @@ user profile
                         data-toggle="modal" data-target="#UserProfileModal" />
                     <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
                         data-toggle="modal" data-target="#editPasswordModal" />
+                        <input type="button" class="profile-edit-btn mt-2 blocked_user" name="btnAddMore" data-id="{{$user->id}}"
+                        @if($user->blocked == 1)
+                        value="Active"
+                        @else
+                        value="Suspended"
+                        @endif/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
                      <h5 class="text-bold mt-3">User actions</h5>
-                     <a href="{{route('admin.show.fund')}}" data-toggle="modal"
-                            data-target="#userFundsModal">Add & Subtract balance</a><br/>
+                      <a  href="#" data-toggle="modal" data-target="#userEmailModal-{{$user->id}}">Send Mail</a><br/>
+                     <a href="{{route('admin.show.fund')}}" data-toggle="modal" data-target="#userFundsModal">Add & Subtract balance</a><br/>
                             <a href="">Bootsnipp Profile</a><br/>
                             <a href="">Bootply Profile</a>
                             <p>SKILLS</p>
@@ -232,9 +255,14 @@ user profile
             @include('admin.users.modals.edit')
             @include('admin.users.modals.funds')
             @include('admin.users.modals.edit-password')
-
+            @include('admin.users.pages.send-mail')
 
         </div>
     </div>
 </div>
+                        {{-- submiting a form through js for block unblock button --}}
+                        <form action="" method="post" id="update-form">
+                            @csrf
+                            <input type="hidden" value="{{$user->id}}" name="user_id">
+                         </form>
 @endsection

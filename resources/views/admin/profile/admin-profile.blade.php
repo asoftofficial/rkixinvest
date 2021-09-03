@@ -155,7 +155,7 @@ Admin Profile
                             {{Auth::user()->first_name}} {{Auth::user()->last_name}}
                         </h3>
                         <h6>
-                            {{Auth::user()->username}}
+                            {{'@'.Auth::user()->username}}
                         </h6>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -231,10 +231,6 @@ Admin Profile
             </div>
            @include('admin.profile.modals.edit-profile')
             @include('admin.profile.modals.edit-password')
-            {{-- @include('admin.users.modals.funds') --}}
-            {{-- @include('admin.users.modals.edit-password') --}}
-
-
         </div>
     </div>
 </div>

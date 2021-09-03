@@ -139,7 +139,7 @@ class UserController extends Controller {
     {
         $user = User::find($id);
         sendGeneralEmail($user->email,$request->subject,$request->body,$user->username);
-        return back()->with('success', 'email has sent');
+        return back()->with('success', 'Email Has Sent');
     }
 
     // user funds form

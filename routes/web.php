@@ -44,8 +44,6 @@ $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','checkInvestments'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
-        Route::get('kyc',[UserController::class,'kyc'])->name('kyc');
-        Route::post('store/kyc',[UserController::class,'storKyc'])->name('store.kyc');
         Route::get('/packages', [App\Http\Controllers\Users\PackagesController::class,'index'])->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
@@ -54,12 +52,15 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
+
         // Deposit
         Route::get('/deposit/history', 'DepositController@index')->name('deposit');
         Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
         Route::post('/deposit', 'DepositController@store')->name('deposit.money');
         Route::get('/deposit/preview', 'DepositController@preview')->name('deposit.preview');
         Route::get('/pay-now', 'DepositController@payNow')->name('pay-now');
+
+        Route::get('/deposit', 'DepositController@index')->name('deposit');
 
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');
@@ -104,12 +105,17 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('fund/settings',[GeneralSettingsController::class,'fundupdate'])->name('post.fund.settings');
     Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
     Route::post('update/email/settings',[GeneralSettingsController::class,'emailSettings'])->name('update.email.settings');
-    Route::get('show/kyc/settings',[GeneralSettingsController::class,'showKycSettings'])->name('show.kyc.settings');
-    Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
-    //Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-    //Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
+    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
     Route::resource('deposit-gateways', '\App\Http\Controllers\Admin\DepositMethodsController');
+    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
+    Route::get('slider',[AdminDashboardController::class,'slider'])->name('slider');
+    Route::post('slider/update',[AdminDashboardController::class,'updateSlider'])->name('slider.edit');
+
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
+
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');
@@ -143,9 +149,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('withdraw/approve', 'WithdrawController@approve')->name('withdraw.approve');
     Route::post('withdraw/reject', 'WithdrawController@reject')->name('withdraw.reject');
 
-    //slider route
-    Route::resource('slider','SliderController');
-  //  Route::delete('slider/remove/{id}',[SliderController::class,'remove'])->name('slider.remove');
+
+
+
     // Email Setting
     Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
     Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');

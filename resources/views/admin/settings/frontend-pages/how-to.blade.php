@@ -11,10 +11,10 @@ How To
     <div class="card">
         <div class="card-header bg-dark">How Its Work</div>
         <div class="card-body">
-            <form action="{{route('admin.how.to.update.settings')}}" method="post">
+            <form action="{{route('admin.how.to.update.settings')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-1 pt-3">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label class="input-label mb-0">Section Title</label>
                         <input type="text" name="title" value="{{$data->step_title}}"
                                class="form-control bg-light border-0 round-10 ">
@@ -24,41 +24,70 @@ How To
                 </span>
                         @enderror
                     </div>
+                </div>
+                <div class="row mb-1 pt-3">
                     <div class="col-md-6">
                         <label class="input-label mb-0">Step 1</label>
                         <input type="text" name="step1" value="{{$data->step1}}"
                                class="form-control bg-light border-0 round-10 ">
                         @error('step1')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="input-label mb-0">Step 1 Icon</label>
+                        <input type="file" name="icon1" class="form-control bg-light border-0 round-10 ">
+                        @error('icon1')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
-
-                <div class="row mb-1 pt-3">
+                 <div class="row mb-1 pt-3">
                     <div class="col-md-6">
                         <label class="input-label mb-0">Step 2</label>
                         <input type="text" name="step2" value="{{$data->step2}}"
                                class="form-control bg-light border-0 round-10 ">
                         @error('step2')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
+                    <div class="col-md-6">
+                        <label class="input-label mb-0">Step 2 Icon</label>
+                        <input type="file" name="icon2" class="form-control bg-light border-0 round-10 ">
+                        @error('icon2')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+ <div class="row mb-1 pt-3">
                     <div class="col-md-6">
                         <label class="input-label mb-0">Step 3</label>
                         <input type="text" name="step3" value="{{$data->step3}}"
                                class="form-control bg-light border-0 round-10 ">
                         @error('step3')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="input-label mb-0">Step 3 Icon</label>
+                        <input type="file" name="icon3" class="form-control bg-light border-0 round-10 ">
+                        @error('icon3')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                 </div>
-
                 <div class="row mb-1 pt-3">
                     <div class="col-md-12">
                         <label class="input-label">Section content</label>

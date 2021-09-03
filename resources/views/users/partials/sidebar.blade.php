@@ -25,12 +25,12 @@
         <div
             class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-items-center">
             <div class="image">
-                @if(empty($settings->logo))
+                @if(empty($settings->dlogo))
                             <img src="{{route('placeholder.image','200x80')}}"
                                 alt="" />
                 @else
                      <img
-                    src="{{$settings->logo}}"
+                    src="{{$settings->dlogo}}"
                     class=""
                     alt="logo">
                 @endif
@@ -56,17 +56,6 @@
                                 </p>
                             </a>
                     </li>
-                      <li class="nav-item">
-                        <a
-                            href="{{route('user.kyc')}}"
-                            class="nav-link @if(Route::currentRouteName()=='user.kyc') active pink-nav @endif">
-                            <img src="{{asset('/backend/img/icons/kyc.png')}}" alt="">
-                                <p>
-                                    KYC
-                                </p>
-                            </a>
-                    </li>
-
                         <li class="nav-item">
                             <a
                                 href="{{route('user.investment')}}"
