@@ -45,18 +45,20 @@ class GeneralSettingsController extends Controller
     public function rewardUpdate(Request $request)
     {
         $settings = ModelsGeneralSettings::first();
-        $settings->reward_system = $request->reward_system;
-        $settings->update();
+        $reward_status = $request->reward ? 'on' : 'off';
+        $settings->reward_system = $reward_status;
+        $settings->Update();
         return back()->with('success','reward settings chnaged successfully');
     }
 
     public function referralUpdate(Request $request)
     {
         $settings = ModelsGeneralSettings::first();
-        $settings->referral_system    = $request->referral_system;
-        $settings->referrallevel_type = $request->referrallevel_type;
+        $ref_status = $request->ref_system ? 'on' : 'off';
+        $settings->referral_system    = $ref_status;
+        $settings->referral_levels = $request->ref_level;
         $settings->update();
-        return back()->with('success','referral settings changed successfully');
+        return back()->with('success','Referral Settings Changed Successfully');
     }
 
     // user balance settings

@@ -19,33 +19,36 @@ Funds settings
 @section('content')
 <div class="container-fluid">
 {{-- fund system settings --}}
-<div class="card">
-    <div class="card-header bg-dark">Fund System Settings</div>
-    <div class="card-body">
-        <form action="{{route('admin.post.fund.settings')}}" method="post">
-            @csrf
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="addfund">Add Fund</label>
-                    <input type="checkbox" id="addfund" name="addfund"  @if($settings->add_fund == 'on') checked @endif data-toggle="toggle">
-                    @error('addfund')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+    <div class="card">
+        <div class="card-header bg-dark">Fund System Settings</div>
+        <div class="card-body">
+            <form action="{{route('admin.post.fund.settings')}}" method="post">
+                @csrf
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="addfund">Add Fund</label>
+                        <input type="checkbox" id="addfund" name="addfund"  @if($settings->add_fund == 'on') checked @endif data-toggle="toggle">
+                        @error('addfund')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="removefund">Remove Fund</label>
+                        <input type="checkbox" id="removefund" name="removefund" @if($settings->remove_fund == 'on') checked @endif data-toggle="toggle">
+                        @error('removefund')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="removefund">Remove Fund</label>
-                    <input type="checkbox" id="removefund" name="removefund" @if($settings->remove_fund == 'on') checked @endif data-toggle="toggle">
-                    @error('addfund')
-                    <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                    @enderror
+                <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn text-white btn-blue px-4 px-5 text-center">Update</button>
                 </div>
-            </div>
-            <button type="submit" class="btn text-white btn-blue px-4 px-5 text-center">Update</button>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
     <!-- /.container-fluid -->

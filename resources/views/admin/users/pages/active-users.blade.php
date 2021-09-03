@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 @section('page-title')
-User Management
+Active Users
 @endsection
 @push('style')
 <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
@@ -41,28 +41,18 @@ $(".delete").click(function (e) {
 @endpush
 @section('content')
 <div class = "container-fluid" > {{-- Section Search Area    --}}
-    <section class = "admin-search-area" >
+    <section class = "admin-search-area mb-3" >
         <div class="admin-search-left">
             <button
                 class="btn btn-info px-3 blue-bg round-10"
                 data-toggle="modal"
                 data-target="#addUserModal">Add a User</button>
         </div>
-        <div class="admin-search-right">
-            <div class="admin-section-search-area input-group mb-3">
-                <input type="text" class="">
-                    <div class="admin-section-search-btn-area">
-                        <button class="btn bg-transparent mr-2" type="button">
-                            <i class="fas fa-search mr-2"></i>
-                            Search here</button>
-                    </div>
-            </div>
-        </div>
     </section>{{-- End Section Search Area    --}}
 
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
-    <h2>Users List</h2>
+    <h2>Active Users List</h2>
     <p>Latest Users information</p>
 </div>
 </section>
@@ -87,7 +77,7 @@ $(".delete").click(function (e) {
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $item)
+                @foreach ($active_users as $item)
                 <tr>
                     <td>{{$item->id}}</td>
                      <td>{{$item->username}}</td>
@@ -102,22 +92,6 @@ $(".delete").click(function (e) {
                             class="mr-2 text-dark"
                             style="font-size: 20px">
                             <i class="fas fa-eye"></i>
-                        </a>
-                        @if($item->blocked == 0)
-                        <a href="#" class="btn btn-danger blocked_user" data-id="{{$item->id}}">
-                            <p class="text-white block_button" style="font-size: 17px;height:0.8vh; ">Blocked</p>
-                        </a>
-                        @else
-                        <a href="#" class="btn btn-success blocked_user " data-id="{{$item->id}}">
-                            <p class="text-white block_button" style="font-size: 17px;height:1vh;">Active</p>
-                        </a>
-                        @endif
-                        <a
-                            href="#"
-                            class="user_email  btn btn-dark"
-                            data-toggle="modal"
-                            data-target="#userEmailModal-{{$item->id}}">
-                            <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
                        <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>

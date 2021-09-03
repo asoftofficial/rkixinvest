@@ -915,3 +915,9 @@ table.table.custom-table td img {
     width: 100%;
     margin-top: 28px;
 }
+
+#kyc-image{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}

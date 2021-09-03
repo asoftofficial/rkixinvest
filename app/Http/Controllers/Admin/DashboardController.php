@@ -63,6 +63,18 @@ class DashboardController extends Controller
         return redirect()->back()->with("success", "profile Updated Successfully!");
     }
 
+    public function viewProfile()
+    {
+        return view('admin.profile.admin-profile');
+    }
+
+    public function editProfile($id)
+    {
+        $admin = User::find($id);
+        dd($admin);
+        return view('admin.profile.modals.edit-profile');
+    }
+
 
 
 }

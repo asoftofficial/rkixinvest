@@ -44,6 +44,8 @@ $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','checkInvestments'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
+        Route::get('kyc',[UserController::class,'kyc'])->name('kyc');
+        Route::post('store/kyc',[UserController::class,'storKyc'])->name('store.kyc');
         Route::get('/packages', [App\Http\Controllers\Users\PackagesController::class,'index'])->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
@@ -66,6 +68,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
 
 $adminNameSpace = 'App\Http\Controllers\Admin';
 Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('view/profile',[AdminDashboardController::class,'viewProfile'])->name('profile');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('packages','PackageController');
     //user routes
@@ -77,6 +80,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');
     Route::post('sub/funds',[UserController::class,'subFund'])->name('sub.fund');
     Route::get('referral/bonus',[ReferralbonusController::class,'refbonus'])->name('referral.bonus');
+    Route::get('active/users',[UserController::class,'activeUsers'])->name('show.active.users');
 
     //reward routes
     Route::get('reward',[rewardController::class,'index'])->name('reward.index');
@@ -87,7 +91,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('settings',[GeneralSettingsController::class,'index'])->name('settings.index');
     Route::post('reward/settings',[GeneralSettingsController::class,'rewardUpdate'])->name('reward.settings');
     Route::post('web/settings',[GeneralSettingsController::class,'Update'])->name('web.settings');
-    Route::get('referral/settings',[GeneralSettingsController::class,'referralUpdate'])->name('referral.settings');
+    Route::post('referral/settings',[GeneralSettingsController::class,'referralUpdate'])->name('referral.settings');
     Route::get('fund/settings',[GeneralSettingsController::class,'fundsSettings'])->name('fund.settings');
     Route::post('fund/settings',[GeneralSettingsController::class,'fundupdate'])->name('post.fund.settings');
     Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
@@ -96,6 +100,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
+
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');
@@ -131,6 +138,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
     //slider route
     Route::resource('slider','SliderController');
+  //  Route::delete('slider/remove/{id}',[SliderController::class,'remove'])->name('slider.remove');
     // Email Setting
     Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
     Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');
@@ -143,5 +151,8 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
     //investments reporting route
     Route::get('active/investments',[InvestmentController::class,'active_invest'])->name('active.investments');
-     Route::get('pending/investments',[InvestmentController::class,'pending_invest'])->name('pending.investments');
+    Route::get('pending/investments',[InvestmentController::class,'pending_invest'])->name('pending.investments');
+    Route::delete('investment/delete/{id}',[InvestmentController::class,'destroy'])->name('investment.destroy');
+    Route::get('total/investors',[UserController::class,'totalInvestors'])->name('show.total.investors');
+    Route::get('active/investors',[UserController::class,'activeInvestors'])->name('show.active.investors');
 });

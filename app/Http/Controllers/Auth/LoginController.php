@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -48,13 +49,13 @@ class LoginController extends Controller
 
      public function login(Request $request)
      {
-         $request->validate([
+        $request->validate([
              'email' => 'required',
              'password' => 'required'
          ]);
 
          $usernamefield = Filter_var($request->email,FILTER_VALIDATE_EMAIL) ? 'email': 'username';
-        if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password])){
+        if (Auth::attempt([$usernamefield => $request->email, 'password' => $request->password, 'blocked'=> 1])){
             if(Auth::user()->type==1){
                 return redirect()->route('user.dashboard');
             }elseif(Auth::user()->type==2){
@@ -63,7 +64,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
          }else{
-             return back()->with('error', 'credentails does not match');
+             return back()->with('error','Credentails Does not Match');
          }
      }
 
@@ -76,7 +77,4 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
-
-
-    //
 }
