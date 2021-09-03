@@ -155,7 +155,7 @@ user profile
                             {{$user->first_name}} {{$user->last_name}}
                         </h3>
                         <h6>
-                            {{$user->username}}
+                            {{'@'.$user->username}}
                         </h6>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

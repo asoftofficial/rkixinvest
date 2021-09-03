@@ -14,15 +14,14 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        $sociallinks = SocialLink::first();
-        $aboutus = Homepage::first();
-        $data = Homepage::first();
-        $testimonials = Testimonial::all();
-        $slider = Slider::first();
-        $withdrawals = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
+        $data['sociallinks'] = SocialLink::first();
+        $data['frontdata'] = Homepage::first();
+        $data['testimonials'] = Testimonial::all();
+        $data['sliders'] = Slider::paginate(1);
+        $data['withdrawals'] = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
         // $deposit_amount = Transaction::where('trx_type','deposit')->get();
-        $emptyMessage = "No withdraws found";
-        return view('front.index',compact('sociallinks','aboutus','data','testimonials','slider','withdrawals','emptyMessage'));
+        $data['emptyMessage'] = "No withdraws found";
+        return view('front.index',$data);
     }
 
     public function placeholderImage($size = null){
