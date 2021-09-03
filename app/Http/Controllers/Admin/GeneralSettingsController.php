@@ -94,21 +94,6 @@ class GeneralSettingsController extends Controller
         return back()->with('success','email settings updated successfully');
     }
 
-    //manage kyc settings by admin panel
-    public function showKycSettings()
-    {
-        return view('admin.settings.generalsettings.kyc-settings');
-    }
-
-    public function kycSettings(Request $request)
-    {
-        $settings = ModelsGeneralSettings::first();
-        $kycStatus = empty($request->kyc) ? "off" : $request->kyc;
-        $settings->kyc = $kycStatus;
-        $settings->Update();
-        return back()->with('success','KYC settings updated successfully');
-    }
-
     public function generalinfo()
     {
         $sociallinks = SocialLink::first();
