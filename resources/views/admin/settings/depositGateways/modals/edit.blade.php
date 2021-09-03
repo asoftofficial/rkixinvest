@@ -8,7 +8,7 @@
             <div class="modal-body pt-0">
                 <form action="{{route('admin.deposit.geteways.update', $pg)}}" enctype="multipart/form-data" method="post">
                     @csrf
-
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -17,7 +17,7 @@
                                         <h4 class="input-label mt-2">Name</h4>
                                         <div class="">
                                             <input type="text" class="form-control bg-light round-10 border-0"
-                                                name="name" value="{{old('fname')}}"></div>
+                                                name="name" value="{{old('name', $pg->name)}}"></div>
                                         @error('fname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,8 +50,8 @@
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Minimum Deposit Amount</h4>
                                         <div class="">
-                                            <input type="email" class="form-control bg-light round-10 border-0 mb-2"
-                                                name="min_ammount" value="{{old('email')}}"></div>
+                                            <input type="text" class="form-control bg-light round-10 border-0 mb-2"
+                                                name="min_ammount" value="{{old('min_ammount',$pg->min_ammount)}}"></div>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                                         <h4 class="input-label mt-2">Maximum Deposit Amount</h4>
                                         
                                         <input type="text" class="form-control bg-light round-10 border-0 mb-2"
-                                                name="max_ammount" value="{{old('email')}}">
+                                                name="max_ammount" value="{{old('max_ammount',$pg->max_ammount)}}">
                                         @error('role')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -85,7 +85,7 @@
                                         <h4 class="input-label mt-2">Charge</h4>
                                         <div class="">
                                             <input type="text" class="form-control bg-light round-10 border-0 mb-4"
-                                                name="charge"></div>
+                                                name="charge" value="{{ old('charge', $pg->charge) }}"></div>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -100,9 +100,9 @@
                                         <div class="">
                                             <select name="charge_type" required=""
                                             class="form-control bg-light round-10 border-0 mb-2">
-                                            <option value="" class="sel-v"></option>
-                                            <option value="1" class="sel-v">Fix Amount</option>
-                                            <option value="2" class="sel-v">Percentage</option>
+                                            <option value="" ></option>
+                                            <option value="1" {{ $pg->charge_type==1?"selected":'' }} >Fix Amount</option>
+                                            <option value="2" {{ $pg->charge_type==2?"selected":'' }} >Percentage</option>
 
                                         </select>
                                             </div>

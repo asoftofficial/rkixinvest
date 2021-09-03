@@ -52,8 +52,11 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
+        Route::get('/deposit', 'DepositController@index')->name('deposit');
+        
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');
+        
         Route::get('/withdraw/methods', 'WithdrawController@withdrawMethods')->name('withdraw.methods');
         Route::post('/withdraw', 'WithdrawController@store')->name('withdraw.money');
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
@@ -99,7 +102,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
 
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
     
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');

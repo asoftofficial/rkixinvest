@@ -141,7 +141,7 @@ div#refrel_div {
                 @foreach($paymentGateways as $pg)
                 <tr>
                     <td>{{$pg->name}}</td>
-                    <td>{{$pg->image}}</td>
+                    <td><img src="{{asset($pg->image)}}"></td>
                     <td>{{$pg->min_ammount}}</td>
                     <td>{{$pg->max_ammount}}</td>
                     <td>{{$pg->charge}}</td>
