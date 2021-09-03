@@ -3,6 +3,16 @@
     <!-- Slider start -->
     @include('front.partials.slider')
     <!-- Slider end -->
+
+    @push('style')
+        <style>
+            span.step-icon {
+            align-self: center;
+            position: relative;
+            top: 30px;
+            }
+        </style>
+    @endpush
     <!-- About Section Start-->
     <section class="about">
         <div class="container">
@@ -32,21 +42,21 @@
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">1</div>
-                        <span class="step-icon"></span>
+                        <span class="step-icon"><img src="{{asset('frontend/assets/images/deposit.png')}}" alt=""></span>
                         <p>{{$frontdata->step1}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">2</div>
-                        <span class="step-icon"></span>
+                        <span class="step-icon"><img src="{{asset('frontend/assets/images/buy.png')}}" alt=""></span>
                         <p>{{$frontdata->step2}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">3</div>
-                        <span class="step-icon"></span>
+                        <span class="step-icon"><img src="{{asset('frontend/assets/images/earnings.png')}}" alt=""></span>
                         <p>{{$frontdata->step3}}</p>
                     </div>
                 </div>
