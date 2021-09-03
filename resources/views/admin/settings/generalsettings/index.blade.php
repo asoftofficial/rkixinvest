@@ -18,11 +18,11 @@ General Settings
 <div class="container-fluid">
     {{-- website settings --}}
         <div class="card">
-        <div class="card-header bg-dark">Fund System Settings</div>
+        <div class="card-header bg-dark">Website Settings</div>
         <div class="card-body">
             <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="text" class="input-label mb-0">website Name:</label>
                 <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
                     class="form-control bg-light border-0 round-10 ">
@@ -31,6 +31,29 @@ General Settings
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+            </div> --}}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Website Name:</label>
+                <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
+                    class="form-control bg-light border-0 round-10 ">
+                @error('web_title')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Footer text</label>
+                <input type="text" name="footer" value=""
+                    class="form-control bg-light border-0 round-10 ">
+                @error('footer')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">

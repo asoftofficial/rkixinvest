@@ -1,9 +1,12 @@
 <footer class="main-footer">
         <div class="footer-top">
             <div class="footer-col">
-                <h2>LOGO HERE</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam iusto similique. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit.</p>
+                @if(empty($settings->logo))
+                    <img src="{{route('placeholder.image','200x80')}}"  alt="logo" />
+                @else
+                    <img src="{{$settings->logo}}" class="" alt="logo">
+                @endif
+                <p>{{$settings->description}}</p>
             </div>
             <div class="footer-col">
                 <h2>Quick Links</h2>
@@ -31,7 +34,7 @@
             </div>
         </div>
         <div class="footer-bottom text-center">
-            Copyright &copy; 2021 All Rights Reserved <a href="#">RkixInvest</a>
+             <a href="#">{{$settings->footer}}</a>
         </div>
     </footer>
     <!-- Bootstrap core JavaScript

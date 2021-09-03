@@ -38,8 +38,9 @@ class GeneralSettingsController extends Controller
         }
         $settings->web_title   = $request->web_title;
         $settings->description = $request->description;
+        $settings->footer  = $request->footer;
         $settings->update();
-        return back()->with('success','settings chnaged successfully');
+        return back()->with('success','Settings Changed Successfully');
     }
 
     public function rewardUpdate(Request $request)
@@ -48,7 +49,7 @@ class GeneralSettingsController extends Controller
         $reward_status = $request->reward ? 'on' : 'off';
         $settings->reward_system = $reward_status;
         $settings->Update();
-        return back()->with('success','reward settings chnaged successfully');
+        return back()->with('success','Reward Settings Changed Successfully');
     }
 
     public function referralUpdate(Request $request)
@@ -75,7 +76,7 @@ class GeneralSettingsController extends Controller
         $settings->add_fund = $addFundStatus;
         $settings->remove_fund = $removeFundStatus;
         $settings->update();
-        return back()->with('success','funds settings updated successfully');
+        return back()->with('success','Funds Settings Updated Successfully');
     }
 
     //email verification settings by admin panel
@@ -121,7 +122,7 @@ class GeneralSettingsController extends Controller
         $settings->phone = $request->phone;
         $settings->address = $request->address;
         $settings->Update();
-        return back()->with('success','info updated successfully');
+        return back()->with('success','Info Updated Successfully');
     }
 
     public function sociallinks(Request $request)
@@ -132,6 +133,6 @@ class GeneralSettingsController extends Controller
         $sociallinks->pintrest = $request->pintrest;
         $sociallinks->linkedin = $request->linkedin;
         $sociallinks->Update();
-        return back()->with('success','social media links updated successfully');
+        return back()->with('success','Social Media Links Updated Successfully');
     }
 }
