@@ -130,6 +130,16 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a
+                            href="{{route('user.deposit')}}"
+                            class="nav-link @if(Route::currentRouteName()=='user.deposit' ) active blue-nav @endif">
+                            <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                            <p>
+                                Deposit
+                            </p>
+                        </a>
+                    </li>
                                         </ul>
                                     </nav>
                                     <!-- /.sidebar-menu -->
