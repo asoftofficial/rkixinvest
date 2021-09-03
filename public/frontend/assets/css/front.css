@@ -148,7 +148,9 @@ header {
 .navbar-dark .navbar-toggler-icon {
     background-image: url('../images/menu.png');
 }
-
+.navbar-dark .navbar-brand img {
+    filter: invert(1);
+}
 @media(max-width:991px) {
     div#navbarNavDropdown {
         background: rgba(0, 0, 0, 0.7);
