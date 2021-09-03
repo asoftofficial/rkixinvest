@@ -47,7 +47,7 @@ General Settings
 
                 <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Footer text</label>
-                <input type="text" name="footer" value=""
+                <input type="text" name="footer" value="{{old('footer',$settings->footergit)}}"
                     class="form-control bg-light border-0 round-10 ">
                 @error('footer')
                 <span class="invalid-feedback" role="alert">
