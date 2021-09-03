@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\test;
 use App\Models\GeneralSettings;
 use App\Models\Investment;
+use App\Models\KYC;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -224,6 +225,31 @@ class UserController extends Controller {
     {
         $active_users = User::where('blocked',1)->get();
         return view('admin.users.pages.active-users',compact('active_users'));
+    }
+
+    //user kyc view
+    public function kyc()
+    {
+        return view('users.profile.pages.kyc');
+    }
+
+    public function storKyc(Request $request)
+    {
+        $this->validate($request,[
+            'kyc' =>'required'
+        ]);
+        $user_kyc = new KYC();
+         $extension = $request->file('kyc')->getClientOriginalExtension();
+         $fileName = "kyc_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+         $upload_path = public_path('uploads/kyc/');
+         $full_path = '/uploads/kyc/'.$fileName;
+         $request->file('kyc')->move($upload_path, $fileName);
+         $file_path  = $full_path;
+         $user_kyc->kyc=$file_path;
+         $user_kyc->update();
+         return back()->with('success','file submitted');
+
+
     }
 
 }

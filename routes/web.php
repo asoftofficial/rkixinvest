@@ -44,6 +44,8 @@ $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','checkInvestments'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::get('/my-account', 'DashboardController@account')->name('account');
+        Route::get('kyc',[UserController::class,'kyc'])->name('kyc');
+        Route::post('store/kyc',[UserController::class,'storKyc'])->name('store.kyc');
         Route::get('/packages', [App\Http\Controllers\Users\PackagesController::class,'index'])->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
@@ -101,9 +103,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
     Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-
     Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
     
+    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');

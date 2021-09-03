@@ -10,13 +10,13 @@
                 <img class="shap triangle" src="{{ asset('frontend/assets/bg-shapes/triangle.png') }}" alt="">
                 <img class="shap dots" src="{{ asset('frontend/assets/bg-shapes/dots.png') }}" alt="">
                 <div class="about-image">
-                    <img src="{{$aboutus->section_image}}" alt="About RkixInvest">
+                    <img src="{{$frontdata->section_image}}" alt="About RkixInvest">
                 </div>
                 <div class="about-text">
-                    <h3>{{$aboutus->section_title}}</h3>
-                    <h2>{{$aboutus->section_heading}}</h2>
-                    <p>{{$aboutus->section_description}}</p>
-                    <a href="{{$aboutus->link}}" class="btn blue-iconic-btn">{{$aboutus->button_text}}</a>
+                    <h3>{{$frontdata->section_title}}</h3>
+                    <h2>{{$frontdata->section_heading}}</h2>
+                    <p>{{$frontdata->section_description}}</p>
+                    <a href="{{$frontdata->link}}" class="btn blue-iconic-btn">{{$frontdata->button_text}}</a>
                 </div>
             </div>
         </div>
@@ -26,28 +26,28 @@
     <!-- How to Section Start-->
     <section class="steps-section bg-light">
         <div class="container text-center">
-            <h2>{{$data->step_title}}</h2>
-            <p>{{$data->step_content}}</p>
+            <h2>{{$frontdata->step_title}}</h2>
+            <p>{{$frontdata->step_content}}</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">1</div>
                         <span class="step-icon"></span>
-                        <p>{{$data->step1}}</p>
+                        <p>{{$frontdata->step1}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">2</div>
                         <span class="step-icon"></span>
-                        <p>{{$data->step2}}</p>
+                        <p>{{$frontdata->step2}}</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-inner">
                         <div class="step-num">3</div>
                         <span class="step-icon"></span>
-                        <p>{{$data->step3}}</p>
+                        <p>{{$frontdata->step3}}</p>
                     </div>
                 </div>
             </div>
