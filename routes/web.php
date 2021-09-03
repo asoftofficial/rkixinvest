@@ -54,11 +54,16 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
-        Route::get('/deposit', 'DepositController@index')->name('deposit');
-        
+        // Deposit
+        Route::get('/deposit/history', 'DepositController@index')->name('deposit');
+        Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
+        Route::post('/deposit', 'DepositController@store')->name('deposit.money');
+        Route::get('/deposit/preview', 'DepositController@preview')->name('deposit.preview');
+        Route::get('/pay-now', 'DepositController@payNow')->name('pay-now');
+
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');
-        
+
         Route::get('/withdraw/methods', 'WithdrawController@withdrawMethods')->name('withdraw.methods');
         Route::post('/withdraw', 'WithdrawController@store')->name('withdraw.money');
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
@@ -102,10 +107,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('show/kyc/settings',[GeneralSettingsController::class,'showKycSettings'])->name('show.kyc.settings');
     Route::post('update/kyc/settings',[GeneralSettingsController::class,'kycSettings'])->name('update.kyc.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
-    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
-    
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
+    //Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
+    //Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
+    Route::resource('deposit-gateways', '\App\Http\Controllers\Admin\DepositMethodsController');
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');
