@@ -25,7 +25,7 @@ class ChartDataController extends Controller
             array_push($days_array,Carbon::parse($date)->isoFormat('Do'));
             // dd($date);
 
-            $count = Investment::whereBetween('created_at',[$date,$enddate])->count();
+            $count = Investment::whereBetween('created_at',[$date,$enddate])->sum('amount');
             if($count){
                 $totalCount++;
             }

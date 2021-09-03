@@ -59,7 +59,7 @@ $(function () {
 
         var $visitorsChart = $('#investment-chart')
         // eslint-disable-next-line no-unused-vars
-        var chartData = "{{$chartdata}}";
+        var chartData ;
         var visitorsChart = new Chart($visitorsChart, {
             data: {
                 labels: data.days,
@@ -190,20 +190,20 @@ $(function () {
         <div class="card chart-card">
             <div class="card-header border-0">
                 <div class="chart-header">
-                    <h3 class="card-title">Dashboard</h3>
+                    <h3 class="card-title">Investments Summary</h3>
 
                     <div class="chart-date-area">
                         <div class="chart-date-input-area">
-                            <div class="d-flex chart-input">
-                                <label>From</label>
+                            <div class="d-flex align-items-center chart-input">
+                                <label class="m-0">From</label>
                                 <div class="drop2-icon">
                                     <input autocomplete="off" type="text" class="form-control datepicker border-0 from"  name="from">
                                 </div>
                             </div>
                         </div>
                         <div class="chart-date-input-area">
-                            <div class="d-flex chart-input">
-                                <label>To</label>
+                            <div class="d-flex align-items-center chart-input">
+                                <label class="m-0">To</label>
                                 <div class="drop2-icon">
                                     <input autocomplete="off" type="text" class="form-control datepicker border-0 to"  name="to">
                                 </div>
@@ -211,7 +211,6 @@ $(function () {
                         </div>
                     </div>
                 </div>
-                <p style="text-align:left;">Investments Summary</p>
             </div>
             <div class="card-body">
                 <!-- /.d-flex -->
