@@ -191,9 +191,17 @@ class DashboardController extends Controller
 
     }
 
+    //transfercode view
     public function transfercode()
     {
-        return view('users.profile.update-transfer-code');
+        return view('users.profile.update-trx-code');
+    }
+
+    //update transfer code
+    public function updateTransferCode(Request $request)
+    {
+        $trx_code = User::find(Auth::user()->id);
+        dd($trx_code);
     }
 
 }
