@@ -55,6 +55,15 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Receiver's Username<sup class="text-danger">*</sup></label>
+                            <input id="receiver" type="text" class="form-control" name="receiver" placeholder="Username" required>
+                            @error('receiver')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn text-white btn-blue">Transfer</button>
                         </div>
                     </form>

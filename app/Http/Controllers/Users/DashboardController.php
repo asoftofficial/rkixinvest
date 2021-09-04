@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\GeneralSettings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -138,7 +139,7 @@ class DashboardController extends Controller
 
     public function transfer(){
         if(!isOn('transfer_fund')){
-            return back()->with('error','This module is currently not available');
+            return redirect()->route('user.dashboard')->with('error','This module is currently not available');
         }
         $data['pageTitle'] = "Transfer Funds";
         return view('users.transfer.transfer',$data);
@@ -146,11 +147,13 @@ class DashboardController extends Controller
 
     public function transferPost(Request $request){
         if(!isOn('transfer_fund')){
-            return back()->with('error','This module is currently not available');
+            return redirect()->route('user.dashboard')->with('error','This module is currently not available');
         }
+        $settings = GeneralSettings::first();
         $request->validate([
             'amount' => 'required|integer|min:'.$settings->min_transfer.'|max:'.$settings->max_transfer,
-            'code' => 'required'
+            'code' => 'required',
+            'receiver' => 'required'
         ]);
         $user = auth()->user();
         if($request->code!==$user->trx_code){
@@ -159,6 +162,29 @@ class DashboardController extends Controller
         if($request->amount > $user->balance){
             return back()->with('error','Insufficient balance to transfer');
         }
+        if($request->receiver==$user->username){
+            return back()->with('error','You can not transfer amount to yourself');
+        }
+        $receiver = User::where('username',$request->receiver)->first();
+        if(!$receiver){
+            return back()->with('error','Receiver not found');
+        }
+        //calculate amount
+        $charges = $settings->transfer_charges / 100 * $request->amount ;
+        $amount = $request->amount - $charges;
+        // deduct amount
+        $user->balance -= $request->amount;
+        $user->update();
+        // add amount to receiver balance
+        $receiver->balance +=$amount;
+        $receiver->update();
+
+        //add sender's transaction
+        trx($user->id, $amount,2,'Transfer '.$request->amount.' USD'.' to '.$receiver->username.' at '.Carbon::now(),'transferred');
+        //add receiver's transaction
+        trx($receiver->id, $amount,1,'Received '.$amount.' USD'.' from '.$user->username.' at '.Carbon::now(),'received');
+
+        return back()->with('success','Fund Transferred to '.$receiver->username);
 
 
 

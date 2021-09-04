@@ -17,9 +17,9 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->double('amount');
-            $table->tinyInteger('type')->comment('1 = credit, 2= debet');
+            $table->tinyInteger('type')->comment('1 = credit, 2= debit');
             $table->string('description');
-            $table->enum('trx_type',['roi','ref_bonus','investment','deposit','debit'])->default('deposit');
+            $table->enum('trx_type',['roi','ref_bonus','investment','deposit','debit','credit','transferred','received'])->default('deposit');
             $table->timestamps();
         });
     }
