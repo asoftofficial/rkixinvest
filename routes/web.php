@@ -65,6 +65,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         //Tranfer
         Route::get('/transfer', 'DashboardController@transfer')->name('transfer');
         Route::post('/transfer', 'DashboardController@transferPost')->name('transfer.post');
+        Route::get('/transfer/code', 'DashboardController@transfercode')->name('transfer.code');
 
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');

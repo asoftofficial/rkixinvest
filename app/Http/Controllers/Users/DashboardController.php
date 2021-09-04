@@ -165,4 +165,9 @@ class DashboardController extends Controller
 
     }
 
+    public function transfercode()
+    {
+        return view('users.profile.update-transfer-code');
+    }
+
 }
