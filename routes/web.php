@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController as ControllersTestimonialController;
 use App\Http\Controllers\Users\DashboardController;
+use App\Models\GeneralSettings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -106,6 +107,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('referral/settings',[GeneralSettingsController::class,'referralUpdate'])->name('referral.settings');
     Route::get('fund/settings',[GeneralSettingsController::class,'fundsSettings'])->name('fund.settings');
     Route::post('fund/settings',[GeneralSettingsController::class,'fundupdate'])->name('post.fund.settings');
+    Route::post('fund/transfer',[GeneralSettingsController::class,'fundTransfer'])->name('fund.transfer');
     Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
     Route::post('update/email/settings',[GeneralSettingsController::class,'emailSettings'])->name('update.email.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');

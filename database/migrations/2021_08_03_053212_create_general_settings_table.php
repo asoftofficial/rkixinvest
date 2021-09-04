@@ -36,6 +36,10 @@ class CreateGeneralSettingsTable extends Migration
             $table->enum('remove_fund',['on','off'])->default('on');
             $table->enum('add_remove_funds_from_admin',['on','off'])->default('on');
             $table->enum('kyc',['on','off'])->default('on');
+            $table->enum('fund_transfer',['on','off'])->default('off');
+            $table->integer('min_transfer')->default(0);
+            $table->integer('max_transfer')->default('100');
+            $table->string('transfer_charges')->default('2');
             $table->timestamps();
         });
     }

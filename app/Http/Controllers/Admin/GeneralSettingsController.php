@@ -129,4 +129,16 @@ class GeneralSettingsController extends Controller
         $sociallinks->Update();
         return back()->with('success','Social Media Links Updated Successfully');
     }
+
+    //fund tranfers settings
+    public function fundTransfer(Request $request)
+    {
+      $settings = ModelsGeneralSettings::first();
+      $settings->min_transfer = $request->min_transfer;
+      $settings->max_transfer = $request->max_transfer;
+      $settings->transfer_charges = $request->charges;
+      $settings->fund_transfer = $request->fund_transfer ? 'on' :'off';
+      $settings->Update();
+      return back()->with('success','Fund Transfer Settings Updated');
+    }
 }
