@@ -46,7 +46,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/my-account', 'DashboardController@account')->name('account');
         Route::get('/packages', [App\Http\Controllers\Users\PackagesController::class,'index'])->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
-        Route::get('/user/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
+        Route::get('/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
         Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile'])->name('update.profile');
         Route::post('/change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
@@ -59,8 +59,11 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/deposit', 'DepositController@store')->name('deposit.money');
         Route::get('/deposit/preview', 'DepositController@preview')->name('deposit.preview');
         Route::get('/pay-now', 'DepositController@payNow')->name('pay-now');
-
         Route::get('/deposit', 'DepositController@index')->name('deposit');
+
+        //Tranfer
+        Route::get('/transfer', 'DashboardController@transfer')->name('transfer');
+        Route::post('/transfer', 'DashboardController@transferPost')->name('transfer.post');
 
         // Withdraw
         Route::get('/withdraw', 'WithdrawController@withdraw')->name('withdraw');

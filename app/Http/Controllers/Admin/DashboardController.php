@@ -101,5 +101,4 @@ class DashboardController extends Controller
             return back()->with('success','Slider Updated Successfully');
     }
 
-
 }

@@ -6,7 +6,7 @@
     Welcome back,
 @endsection
 @section('header-right')
-    <button class="btn btn-primary btn-blue header-right-btn">Button</button>
+    <a href="#" class="btn btn-primary btn-blue header-right-btn">Button</a>
 @endsection
 @push('style')
 

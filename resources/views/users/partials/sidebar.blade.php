@@ -129,6 +129,19 @@
                             </p>
                         </a>
                     </li>
+                    @if (isOn('transfer_fund'))
+                        <li class="nav-item">
+                            <a
+                                href="{{route('user.transfer')}}"
+                                class="nav-link @if(Route::currentRouteName()=='user.transfer' ) active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                                <p>
+                                    Transfer
+                                </p>
+                            </a>
+                        </li>
+                    @endif
+
                                         </ul>
                                     </nav>
                                     <!-- /.sidebar-menu -->

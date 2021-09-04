@@ -64,6 +64,7 @@ function trx($id,$amount,$type,$desc,$trxType="deposit")
         ]);
         return $trx;
 }
+
 function getdays($now=NULL,$enddate=NULL,$duration,$type){
     switch ($type) {
         case 'day':
@@ -84,6 +85,7 @@ function getdays($now=NULL,$enddate=NULL,$duration,$type){
     }
     return $enddate;
 }
+
 function get_percentage($total, $number)
 {
   if ( $total > 0 ) {
@@ -177,7 +179,6 @@ function getIpInfo()
     return $data;
 }
 
-//moveable
 function osBrowser(){
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $osPlatform = "Unknown OS Platform";
@@ -297,6 +298,7 @@ function shortCodeReplacer($shortCode, $replace_with, $template_string)
 {
     return str_replace($shortCode, $replace_with, $template_string);
 }
+
 function sendEmail($user, $type = null, $shortCodes = [])
 {
     $general = \App\Models\GeneralSettings::first();
@@ -358,7 +360,6 @@ function sendPhpMail($email, $name, $subject, $message,$general,$contact = false
     @mail($email, $subject, $message, $headers);
 }
 
-
 function sendSmtpMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
 {
     $mail = new PHPMailer(true);
@@ -396,7 +397,6 @@ function sendSmtpMail($config, $receiver_email, $receiver_name, $subject, $messa
     }
 }
 
-
 function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
 {
     $sendgridMail = new \SendGrid\Mail\Mail();
@@ -418,7 +418,6 @@ function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $m
         throw new Exception($e);
     }
 }
-
 
 function sendMailjetMail($config, $receiver_email, $receiver_name, $subject, $message,$general,$contact = false)
 {
@@ -489,6 +488,11 @@ function diffForHumans($date)
     $lang = session()->get('lang');
     Carbon::setlocale($lang);
     return Carbon::parse($date)->diffForHumans();
+}
+
+function isOn($module){
+    $set = \App\Models\GeneralSettings::first();
+    return $set->$module=="on" ? TRUE : FALSE;
 }
 
 ?>

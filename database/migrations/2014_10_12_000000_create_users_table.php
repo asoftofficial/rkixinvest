@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('post_code')->nullable();
             $table->tinyInteger('blocked')->nullable();
             $table->string('role')->nullable();
+            $table->string('trx_code',6)->default(000000);
             $table->rememberToken();
             $table->timestamps();
         });

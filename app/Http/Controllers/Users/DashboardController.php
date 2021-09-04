@@ -136,4 +136,19 @@ class DashboardController extends Controller
         return back()->with('success', 'Code send successfully');
     }
 
+    public function transfer(){
+        if(!isOn('transfer_fund')){
+            return back()->with('error','This module is currently not available');
+        }
+        $data['pageTitle'] = "Transfer Funds";
+        return view('users.transfer.transfer',$data);
+    }
+
+    public function transferPost(Request $request){
+        if(!isOn('transfer_fund')){
+            return back()->with('error','This module is currently not available');
+        }
+        dd($request);
+    }
+
 }

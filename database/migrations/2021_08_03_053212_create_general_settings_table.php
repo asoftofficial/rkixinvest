@@ -31,6 +31,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->integer('referral_levels')->default(1);
             $table->enum('reward_system',['on','off'])->default('on');
             $table->enum('email_verification',['on','off'])->default('off');
+            $table->enum('transfer_fund',['on','off'])->default('on');
             $table->enum('add_fund',['on','off'])->default('on');
             $table->enum('remove_fund',['on','off'])->default('on');
             $table->enum('add_remove_funds_from_admin',['on','off'])->default('on');
