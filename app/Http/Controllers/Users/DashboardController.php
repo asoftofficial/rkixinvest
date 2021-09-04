@@ -148,7 +148,21 @@ class DashboardController extends Controller
         if(!isOn('transfer_fund')){
             return back()->with('error','This module is currently not available');
         }
-        dd($request);
+        $request->validate([
+            'amount' => 'required|integer|min:'.$settings->min_transfer.'|max:'.$settings->max_transfer,
+            'code' => 'required'
+        ]);
+        $user = auth()->user();
+        if($request->code!==$user->trx_code){
+            return back()->with('error','Invalid transaction code');
+        }
+        if($request->amount > $user->balance){
+            return back()->with('error','Insufficient balance to transfer');
+        }
+
+
+
+
     }
 
 }

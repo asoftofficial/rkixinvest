@@ -39,10 +39,20 @@
                                 <input id="amount" type="text" class="form-control" name="amount" placeholder="Amount" required="" value="" onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
                                 <span class="input-group-text bg--base">USD</span>
                             </div>
+                            @error('amount')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Transaction Code<sup class="text-danger">*</sup></label>
                             <input id="code" type="password" class="form-control" name="code" placeholder="Code" required="" value="" onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
+                            @error('code')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn text-white btn-blue">Transfer</button>
