@@ -19,9 +19,9 @@ Update Trasnfer Code
                     @csrf
                     <div class="row justify-content-center">
                        <div class="col-8">
-                           <h4 class="input-label mt-2">old password</h4>
-                           <input type="password" class="form-control bg-light round-10 border-0" name="oldpas">
-                              @error('oldpas')
+                           <h4 class="input-label mt-2">old Code</h4>
+                           <input type="password" class="form-control bg-light round-10 border-0" name="oldtrx">
+                              @error('oldtrx')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>
@@ -31,12 +31,12 @@ Update Trasnfer Code
 
                     <div class="row justify-content-center">
                        <div class="col-8">
-                           <h4 class="input-label mt-2">New password</h4>
+                           <h4 class="input-label mt-2">New Code</h4>
                            <input
                            type="password"
                            class="form-control bg-light round-10 border-0"
-                            name="newpas">
-                              @error('newpas')
+                            name="newtrx">
+                              @error('newtrx')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>
@@ -46,12 +46,12 @@ Update Trasnfer Code
 
                     <div class="row justify-content-center mb-3">
                        <div class="col-8">
-                           <h4 class="input-label mt-2">Confirm password</h4>
+                           <h4 class="input-label mt-2">Confirm Code</h4>
                            <input
                            type="password"
                            class="form-control bg-light round-10 border-0"
-                            name="password_confirmation">
-                              @error('password_confirmation')
+                            name="confirm">
+                              @error('confirm')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>

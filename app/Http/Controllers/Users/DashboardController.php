@@ -200,8 +200,29 @@ class DashboardController extends Controller
     //update transfer code
     public function updateTransferCode(Request $request)
     {
-        $trx_code = User::find(Auth::user()->id);
-        dd($trx_code);
+        $request->validate([
+            'oldtrx' => 'required',
+            'newtrx' => 'required',
+            'confirm' =>'required',
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $trx_code = $user->trx_code;
+
+        if($trx_code !== $request->oldtrx){
+            return back()->with('error','Please Enter the Old Code');
+        }
+        if($trx_code == $request->newtrx){
+            return back()->with('error','Please Enter The New Code');
+        }
+        if($request->newtrx != $request->confirm){
+            return back()->with('error','Password Does Not Match');
+        }
+
+        $user->trx_code = $request->newtrx;
+        $user->update();
+        return back()->with('success','Transaction code Updated');
+
     }
 
 }
