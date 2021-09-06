@@ -129,7 +129,7 @@
                             </p>
                         </a>
                     </li>
-                    @if (isOn('transfer_fund'))
+                    @if (isOn('fund_transfer'))
                         <li class="nav-item">
                             <a
                                 href="{{route('user.transfer')}}"

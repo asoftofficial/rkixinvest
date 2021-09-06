@@ -84,13 +84,12 @@ class DashboardController extends Controller
 
     public function changePassword(Request $request, $id)
     {
-        dd("hello");
        $request->validate([
         'old_pass' => 'required',
         'new_pass' => 'required',
         'confirm'=>'required',
        ]);
-       dd($request);
+
        $user = User::find($id);
        $pass = $user->password;
        if($pass !== bcrypt($request->oldpas)){
@@ -168,7 +167,7 @@ class DashboardController extends Controller
     }
 
     public function transfer(){
-        if(!isOn('transfer_fund')){
+        if(!isOn('fund_transfer')){
             return redirect()->route('user.dashboard')->with('error','This module is currently not available');
         }
         $data['pageTitle'] = "Transfer Funds";
@@ -176,7 +175,7 @@ class DashboardController extends Controller
     }
 
     public function transferPost(Request $request){
-        if(!isOn('transfer_fund')){
+        if(!isOn('fund_transfer')){
             return redirect()->route('user.dashboard')->with('error','This module is currently not available');
         }
         $settings = GeneralSettings::first();
@@ -213,7 +212,20 @@ class DashboardController extends Controller
         trx($user->id, $amount,2,'Transfer '.$request->amount.' USD'.' to '.$receiver->username.' at '.Carbon::now(),'transferred');
         //add receiver's transaction
         trx($receiver->id, $amount,1,'Received '.$amount.' USD'.' from '.$user->username.' at '.Carbon::now(),'received');
-
+        //send mail to receiver
+            sendEmail($receiver, 'Fund_ADD', [
+                'charges' => $charges,
+                'amount' => $amount,
+                'total_amount' => $request->amount,
+                'total_balance'=> $receiver->balance,
+                'sender' => $user->username,
+            ]);
+        //Send mail to sender
+         sendEmail($user, 'Fund_SUB', [
+                'total_amount' => $request->amount,
+                'total_balance'=> $user->balance,
+                'receiver' => $receiver->username,
+            ]);
         return back()->with('success','Fund Transferred to '.$receiver->username);
 
     }
