@@ -105,24 +105,22 @@ class UserController extends Controller {
     }
     public function changePassword(Request $request,$id)
     {
-
         $request->validate([
             'old_pass' => 'required',
             'new_pass' => 'required',
             'confirm' => 'required'
         ]);
-
         $user = User::find($id);
         $pass = $user->password;
 
          if($pass !== bcrypt($request->old_pass)){
-            return back()->with('error','Please Enter Your Old Password');
+            return back()->with('error','Invalid Old Password');
         }
         if($pass == bcrypt($request->new_pass)){
-            return back()->with('error','Please Enter Your New Password');
+            return back()->with('error','You can not use your old password');
         }
-        if($request->newpass != $request->confirm){
-            return back()->with('error','Password Does Not Match');
+        if($request->newpass !== $request->confirm){
+            return back()->with('error','Password does not match');
         }
         $user->password = bcrypt($request->new_pass);
         $user->update();

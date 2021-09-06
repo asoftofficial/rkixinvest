@@ -67,7 +67,7 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-7 login-right" style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{asset('frontend/assets/images/auth-bg.png')}});">
+            <div class="col-md-7 login-right" style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{$settings->form_image}});">
                 <div class="center-container">
                     <div class="login-right-area">
                         <h2>Don't Have an Account Yet?</h2>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
     @stack('style')
 </head>
-<body style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{asset('frontend/assets/images/auth-bg.png')}});">
+<body style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{$settings->form_image}});">
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">

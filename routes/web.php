@@ -53,7 +53,6 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
-
         //Referrals
         Route::get('/referrals', 'DashboardController@referrals')->name('referrals');
 
