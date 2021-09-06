@@ -2,6 +2,13 @@
 @section('page-title')
 Active Users
 @endsection
+@section('header-right')
+        <div class="admin-search-left">
+            <button
+                class="btn btn-info px-3 blue-bg round-10"
+                data-toggle="modal"
+                data-target="#addUserModal">Add a User</button>
+@endsection
 @push('style')
 <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
 @push('script')
@@ -41,15 +48,6 @@ $(".delete").click(function (e) {
 @endpush
 @section('content')
 <div class = "container-fluid" > {{-- Section Search Area    --}}
-    <section class = "admin-search-area mb-3" >
-        <div class="admin-search-left">
-            <button
-                class="btn btn-info px-3 blue-bg round-10"
-                data-toggle="modal"
-                data-target="#addUserModal">Add a User</button>
-        </div>
-    </section>{{-- End Section Search Area    --}}
-
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
     <h2>Active Users List</h2>

@@ -99,6 +99,10 @@
     font-weight: 600;
     color: #0062cc;
 }
+.trx-code{
+    color: #6c757d !important;
+    background: whitesmoke;
+}
 
     </style>
 @endpush
@@ -133,31 +137,20 @@
                                         {{'@'.$user->username}}
                                     </h6>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                <li class="nav-item" style="border-bottom: 2px solid #007bff;color:#007bff;">
+                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" class="profile-heading">About</a>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
-                    <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
-                        data-toggle="modal" data-target="#editPasswordModal" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="{{route('user.transfer.code')}}">Transaction Code</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                            <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
-                            <a href="">PHP, .Net</a><br/>
+                           <h5 class="text-bold mt-3 text-center">User actions</h5>
+                            <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
+                            <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password" data-toggle="modal" data-target="#editPasswordModal" />
+                            <a href="{{route('user.transfer.code')}}" class="btn profile-edit-btn mt-2 trx-code"><h6 class="text-bold">Transaction Code</h6></a><br/>
                         </div>
                     </div>
                     <div class="col-md-8">

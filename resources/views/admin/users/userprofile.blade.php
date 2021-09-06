@@ -177,39 +177,25 @@ User profile
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active text-blue" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">About</a>
+                                <a class="nav-link text-blue" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true" style="border-bottom: 2px solid #0062cc;">About</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"
-                        data-toggle="modal" data-target="#UserProfileModal" />
-                    <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
-                        data-toggle="modal" data-target="#editPasswordModal" />
-                        <input type="button" class="profile-edit-btn mt-2 blocked_user" name="btnAddMore" data-id="{{$user->id}}"
-                        @if($user->blocked == 1)
-                        value="Active"
-                        @else
-                        value="Suspended"
-                        @endif/>
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
-                     <h5 class="text-bold mt-3">User actions</h5>
-                      <a  href="#" data-toggle="modal" data-target="#userEmailModal-{{$user->id}}">Send Mail</a><br/>
-                     <a href="{{route('admin.show.fund')}}" data-toggle="modal" data-target="#userFundsModal">Add & Subtract balance</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                            <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
-                            <a href="">PHP, .Net</a><br/>
+                        <h5 class="text-bold mt-3 text-center">User actions</h5>
+                        <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" data-toggle="modal" data-target="#UserProfileModal" />
+                        <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password" data-toggle="modal" data-target="#editPasswordModal" />
+                        <input type="button" class="profile-edit-btn mt-2 blocked_user" name="btnAddMore" data-id="{{$user->id}}" @if($user->blocked == 1) value="Active" @else value="Suspended" @endif/>
+                        <input type="button" class="profile-edit-btn mt-2" data-toggle="modal" data-target="#userEmailModal-{{$user->id}}" value="Send Mail"><br/>
+                        <input type="button" class="profile-edit-btn mt-2" data-toggle="modal" data-target="#userFundsModal" value="Add & Subtract balance"><br/>
                     </div>
                 </div>
                 <div class="col-md-8">
