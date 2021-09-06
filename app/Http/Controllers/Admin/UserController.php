@@ -112,13 +112,13 @@ class UserController extends Controller {
             'confirm' => 'required'
         ]);
         $user = auth()->user();
-         if(Hash::check($request->old_pass,$user->password)){
+         if(!Hash::check($request->old_pass,$user->password)){
             return back()->with('error','Invalid Old Password');
         }
         if(Hash::check($request->new_pass,$user->password)){
             return back()->with('error','You can not use your old password');
         }
-        if($request->newpass !== $request->confirm){
+        if($request->new_pass !== $request->confirm){
             return back()->with('error','Password does not match');
         }
         $user->password = bcrypt($request->new_pass);

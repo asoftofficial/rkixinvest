@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Investment;
 use App\Models\Plan;
 use Hash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -82,7 +83,7 @@ class DashboardController extends Controller
         return redirect()->back()->with("success", "profile Updated Successfully!");
     }
 
-    public function changePassword(Request $request, $id)
+    public function changePassword(Request $request)
     {
        $request->validate([
         'old_pass' => 'required',
@@ -90,19 +91,18 @@ class DashboardController extends Controller
         'confirm'=>'required',
        ]);
 
-       $user = User::find($id);
-       $pass = $user->password;
-       if($pass !== bcrypt($request->oldpas)){
-            return back()->with('error','Please Enter Your Old Password');
+        $user = auth()->user();
+         if(!FacadesHash::check($request->old_pass,$user->password)){
+            return back()->with('error','Invalid Old Password');
         }
-        if($pass == bcrypt($request->newpas)){
-            return back()->with('error','Please Enter Your New Password');
+        if(Hash::check($request->new_pass,$user->password)){
+            return back()->with('error','You can not use your old password');
         }
-        if($request->newpass != $request->confirm){
-            return back()->with('error','Password Does Not Match');
+        if($request->new_pass !== $request->confirm){
+            return back()->with('error','Password does not match');
         }
 
-       $user->password = bcrypt($request->newpas);
+       $user->password = bcrypt($request->new_pass);
        $user->update();
        return back()->with('success','password updated successfully');
     }

@@ -49,7 +49,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
         Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile5'])->name('update.profile');
-        Route::put('/change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
+        Route::post('/change/password',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
