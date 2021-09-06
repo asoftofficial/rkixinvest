@@ -12,18 +12,14 @@
             <div class="modal-body  pt-0">
 
                 <form
-                    action="{{route('admin.change.password',Auth::user()->id)}}"
+                    action="{{route('admin.change.password')}}"
                     enctype="multipart/form-data"
                     method="POST">
                     @csrf
-                    @method('put')
                     <div class="row justify-content-center">
                        <div class="col-8">
                            <h4 class="input-label mt-2">Old password</h4>
-                           <input
-                           type="password"
-                           class="form-control bg-light round-10 border-0"
-                            name="old_pass">
+                           <input type="password" class="form-control bg-light round-10 border-0" name="old_pass">
                               @error('old_pass')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

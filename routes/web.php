@@ -90,7 +90,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     //user routes
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
-    Route::put('change/password/{id}',[UserController::class,'changePassword'])->name('change.password');
+    Route::post('change/password',[UserController::class,'changePassword'])->name('change.password');
     Route::post('/user/email/{id}',[UserController::class,'sendmail'])->name('user.email');
     Route::get('user/funds',[UserController::class,'showFundsForm'])->name('show.fund');
     Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');

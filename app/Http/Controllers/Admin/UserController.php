@@ -7,6 +7,7 @@ use App\Models\Investment;
 use App\Models\KYC;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Support\Facades\Auth;
@@ -103,20 +104,18 @@ class UserController extends Controller {
         $users->update();
         return redirect()->back()->with('success', 'profile updated successfully!');
     }
-    public function changePassword(Request $request,$id)
+    public function changePassword(Request $request)
     {
         $request->validate([
             'old_pass' => 'required',
             'new_pass' => 'required',
             'confirm' => 'required'
         ]);
-        $user = User::find($id);
-        $pass = $user->password;
-
-         if($pass !== bcrypt($request->old_pass)){
+        $user = auth()->user();
+         if(Hash::check($request->old_pass,$user->password)){
             return back()->with('error','Invalid Old Password');
         }
-        if($pass == bcrypt($request->new_pass)){
+        if(Hash::check($request->new_pass,$user->password)){
             return back()->with('error','You can not use your old password');
         }
         if($request->newpass !== $request->confirm){
