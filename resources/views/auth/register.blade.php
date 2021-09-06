@@ -49,7 +49,7 @@ $("#username").on({
         <div class="row">
             <div class="col-md-6">
             <label for="fname" class="text-white">First Name</label>
-                <input id="fname" name="first_name"  value="{{ old('first_name') }}" type="text" class="form-control autocar-input @error('first_name') is-invalid @enderror"" placeholder="First name">
+                <input id="fname" name="first_name"  value="{{ old('first_name') }}" type="text" class="form-control autocar-input @error('first_name') is-invalid @enderror" placeholder="First name">
                 @error('first_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@ $("#username").on({
             </div>
             <div class="col-md-6">
                 <label for="lname" class="text-white">Last Name</label>
-                <input id="lname" name="last_name" value="{{ old('last_name') }}" type="text" class="form-control autocar-input @error('last_name') is-invalid @enderror"" placeholder="Last name">
+                <input id="lname" name="last_name" value="{{ old('last_name') }}" type="text" class="form-control autocar-input @error('last_name') is-invalid @enderror" placeholder="Last name">
                 @error('last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
