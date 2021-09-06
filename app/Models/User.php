@@ -57,5 +57,9 @@ class User extends Authenticatable
         return $this->hasMany(Deposit::class);
     }
 
+    public function rois(){
+        return $this->hasMany(Roi::class);
+    }
+
 
 }

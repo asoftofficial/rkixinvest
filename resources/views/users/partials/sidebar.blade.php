@@ -69,8 +69,8 @@
 
                     <li class="nav-item">
                         <a
-                            href="{{route('admin.userprofile.index')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
+                            href="{{route('user.referrals')}}"
+                            class="nav-link @if(Route::currentRouteName()=='user.referrals') active lightblue-nav @endif">
                             <img src="{{asset('/backend/img/icons/referral_icon.png')}}" alt="">
                             <p>
                                 Referrals

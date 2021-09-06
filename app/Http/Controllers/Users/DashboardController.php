@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\GeneralSettings;
+use App\Models\Referral;
+use App\Models\Referralbonus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -151,6 +153,21 @@ class DashboardController extends Controller
         return back()->with('success', 'Code send successfully');
     }
 
+    public function referrals(Request $request){
+
+
+        $data['levels'] = Referralbonus::all();
+        if(!empty($request->level)){
+            $data['referrals'] = auth()->user()->referrals()->where('level',$request->level)->paginate(25);
+            $data['pageTitle'] = "Level ".$request->level." Referrals";
+        }else{
+            $data['referrals'] = auth()->user()->referrals()->paginate(25);
+            $data['pageTitle'] = "All Referrals";
+        }
+        $data['emptyMessage'] = "No Referral found";
+        return view('users.referrals.index',$data);
+    }
+
     public function transfer(){
         if(!isOn('transfer_fund')){
             return redirect()->route('user.dashboard')->with('error','This module is currently not available');
@@ -199,9 +216,6 @@ class DashboardController extends Controller
         trx($receiver->id, $amount,1,'Received '.$amount.' USD'.' from '.$user->username.' at '.Carbon::now(),'received');
 
         return back()->with('success','Fund Transferred to '.$receiver->username);
-
-
-
 
     }
 

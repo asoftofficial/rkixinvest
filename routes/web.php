@@ -53,6 +53,13 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
+<<<<<<< HEAD
+=======
+
+        //Referrals
+        Route::get('/referrals', 'DashboardController@referrals')->name('referrals');
+
+>>>>>>> 437913bbf41239d08447a8de985961741e342ad3
         // Deposit
         Route::get('/deposit/history', 'DepositController@index')->name('deposit');
         Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
