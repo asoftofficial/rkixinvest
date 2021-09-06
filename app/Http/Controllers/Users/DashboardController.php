@@ -155,7 +155,6 @@ class DashboardController extends Controller
 
     public function referrals(Request $request){
 
-
         $data['levels'] = Referralbonus::all();
         if(!empty($request->level)){
             $data['referrals'] = auth()->user()->referrals()->where('level',$request->level)->paginate(25);
