@@ -19,7 +19,7 @@ class DashboardController extends Controller
     {
         $deposit_amount = round(Transaction::where('type',1)->sum('amount'),2);
         $withdrawal_amount = round(Transaction::where('type',2)->sum('amount'),2);
-        $earning =  round($deposit_amount  - $withdrawal_amount,2);
+        $earning =  round($withdrawal_amount - $deposit_amount,2);
         //withdrawals reporting
         $withdrawals = Withdrawal::all()->count();
         $completed_withd    = Withdrawal::where('status',1)->count();

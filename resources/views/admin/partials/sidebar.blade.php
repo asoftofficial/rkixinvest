@@ -114,7 +114,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.email.template.global'||Route::currentRouteName()=='admin.email.template.index' ||Route::currentRouteName()=='admin.email.template.setting') menu-is-opening menu-open @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') menu-is-opening menu-open @endif">
                     <a href=""
                     class="nav-link  @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/invest.png')}}" alt="">
@@ -140,19 +140,19 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.slider.edit' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') menu-is-opening menu-open @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.slider' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link  @if(Route::currentRouteName()=='admin.slider.edit' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
+                    class="nav-link  @if(Route::currentRouteName()=='admin.slider' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
                     <img src="{{asset('/backend/img/icons/sections-icon.png')}}" alt="">
                         <p>
                         manage section
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview text-bold oncollapse-sidebar open-sidebar" style="display:@if(Route::currentRouteName()=='admin.slider.edit' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') block @else none @endif">
+                    <ul class="nav nav-treeview text-bold oncollapse-sidebar open-sidebar" style="display:@if(Route::currentRouteName()=='admin.slider' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.slider')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.slider.edit') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='admin.slider') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Slider</p>
                             </a>
