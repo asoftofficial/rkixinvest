@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
     @stack('style')
 </head>
-<body>
-
+<body style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{asset('frontend/assets/images/auth-bg.png')}});">
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>Login | {{env('APP_NAME')}}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css') }}">
@@ -13,12 +12,6 @@
     </style>
 </head>
 <body>
-    {{-- <header class="auth-header">
-        <div class="logo">
-            <a href="/"><img src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
-        </div>
-    </header> --}}
-
     <div class="main">
         <div class="row">
             <div class="col-md-5 login-form">
@@ -74,7 +67,7 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-7 login-right">
+            <div class="col-md-7 login-right" style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{asset('frontend/assets/images/auth-bg.png')}});">
                 <div class="center-container">
                     <div class="login-right-area">
                         <h2>Don't Have an Account Yet?</h2>

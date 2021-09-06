@@ -27,7 +27,6 @@ section {
 .body,.login-right{
     font-family: 'Maven Pro', sans-serif;
     min-height: 100vh;
-    background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url('../images/auth-bg.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
