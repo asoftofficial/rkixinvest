@@ -178,7 +178,7 @@ User profile
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link text-blue" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true" style="border-bottom: 2px solid #0062cc;">About</a>
+                                    aria-controls="home" aria-selected="true" style="border-bottom: 2px solid #007bff !important;">About</a>
                             </li>
                         </ul>
                     </div>
