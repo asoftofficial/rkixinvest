@@ -344,7 +344,7 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
                       <tr>
                         <td align="center" style="vertical-align:top;font-size:0;">
                           <a href="#">
-                            <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="https://i.imgur.com/Z1qtvtV.png" alt="img">
+                            <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="https://i.imgur.com/6qttvkJ.png" alt="img">
                           </a>
                         </td>
                       </tr>
@@ -390,7 +390,7 @@ img[class="img1"] { width: 100% !important; height: auto !important; }
                       <!--preference-->
                       <tr>
                         <td class="preference-link" align="center" style="font-family: \'Open sans\', Arial, sans-serif; color:#95a5a6; font-size:14px;">
-                          © 2021 <a href="#">Website Name</a> . All Rights Reserved.
+                          © 2021 <a href="https://rkixtech.com">Rkixtech</a> . All Rights Reserved.
                         </td>
                       </tr>
                       <!--end preference-->
