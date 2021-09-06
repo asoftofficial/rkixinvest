@@ -176,6 +176,7 @@ Admin Profile
                         data-toggle="modal" data-target="#UserProfileModal" />
                     <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password"
                         data-toggle="modal" data-target="#editPasswordModal" />
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
