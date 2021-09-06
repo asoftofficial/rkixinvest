@@ -12,20 +12,18 @@
             <div class="modal-body  pt-0">
 
                 <form
-                    action="{{route('admin.change.password',$user->id)}}"
-                    enctype="multipart/form-data"
+                    action="{{route('user.update.password',$user->id)}}"
                     method="POST">
                     @csrf
-                    {{-- @csrf @method('put') --}}
-
+                    @method('put')
                     <div class="row justify-content-center">
                        <div class="col-8">
-                           <h4 class="input-label mt-2">old password</h4>
+                           <h4 class="input-label mt-2">Old password</h4>
                            <input
                            type="password"
                            class="form-control bg-light round-10 border-0"
-                            name="oldpas">
-                              @error('oldpas')
+                            name="old_pass">
+                              @error('old_pass')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>
@@ -39,8 +37,8 @@
                            <input
                            type="password"
                            class="form-control bg-light round-10 border-0"
-                            name="newpas">
-                              @error('newpas')
+                            name="new_pass">
+                              @error('new_pass')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>
@@ -54,8 +52,8 @@
                            <input
                            type="password"
                            class="form-control bg-light round-10 border-0"
-                            name="password_confirmation">
-                              @error('password_confirmation')
+                            name="confirm">
+                              @error('confirm')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                             </span>

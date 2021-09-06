@@ -45,6 +45,15 @@ class GeneralSettingsController extends Controller
             $file_path  = $full_path;
             $settings->llogo  = $file_path;
         }
+        if($request->hasFile('form_image')){
+            $extension = $request->file('form_image')->getClientOriginalExtension();
+            $fileName = "form_image_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
+            $upload_path = public_path('uploads/web/');
+            $full_path = '/uploads/web/'.$fileName;
+            $request->file('form_image')->move($upload_path, $fileName);
+            $file_path  = $full_path;
+            $settings->form_image  = $file_path;
+        }
         $settings->web_title   = $request->web_title;
         $settings->description = $request->description;
         $settings->footer  = $request->footer;

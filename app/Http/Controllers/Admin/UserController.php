@@ -105,14 +105,28 @@ class UserController extends Controller {
     }
     public function changePassword(Request $request,$id)
     {
+
         $request->validate([
-            'oldpas' => 'required',
-            'newpas' => 'required',
+            'old_pass' => 'required',
+            'new_pass' => 'required',
+            'confirm' => 'required'
         ]);
+
         $user = User::find($id);
-        $user->password = bcrypt($request->newpas);
+        $pass = $user->password;
+
+         if($pass !== bcrypt($request->old_pass)){
+            return back()->with('error','Please Enter Your Old Password');
+        }
+        if($pass == bcrypt($request->new_pass)){
+            return back()->with('error','Please Enter Your New Password');
+        }
+        if($request->newpass != $request->confirm){
+            return back()->with('error','Password Does Not Match');
+        }
+        $user->password = bcrypt($request->new_pass);
         $user->update();
-        return back()->with('success','password updated successfully');
+        return back()->with('success','Password Updated Successfully');
     }
     /**
      * Remove the specified resource from storage.

@@ -48,12 +48,11 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/packages', [App\Http\Controllers\Users\PackagesController::class,'index'])->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/profile', [DashboardController::class, 'user_profile'])->name('show.profile');
-        Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile'])->name('update.profile');
-        Route::post('/change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
+        Route::post('/update/profile/{id}', [DashboardController::class, 'update_profile5'])->name('update.profile');
+        Route::put('/change/password/{id}',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', [App\Http\Controllers\Users\TransactionController::class, 'index'])->name('transactions');
         Route::get('/roi/{id}',[RoiController::class,'index'])->name('rois');
-
         // Deposit
         Route::get('/deposit/history', 'DepositController@index')->name('deposit');
         Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
@@ -89,7 +88,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     //user routes
     Route::get('users','DashboardController@users')->name('users');
     Route::resource('/userprofile','UserController');
-    Route::post('change/password/{id}',[UserController::class,'changePassword'])->name('change.password');
+    Route::put('change/password/{id}',[UserController::class,'changePassword'])->name('change.password');
     Route::post('/user/email/{id}',[UserController::class,'sendmail'])->name('user.email');
     Route::get('user/funds',[UserController::class,'showFundsForm'])->name('show.fund');
     Route::post('add/funds',[UserController::class,'addFund'])->name('add.fund');

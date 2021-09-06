@@ -23,16 +23,6 @@ General Settings
         <div class="card-body">
             <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
-            {{-- <div class="form-group">
-                <label for="text" class="input-label mb-0">website Name:</label>
-                <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
-                    class="form-control bg-light border-0 round-10 ">
-                @error('web_title')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div> --}}
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Website Name:</label>
@@ -81,7 +71,7 @@ General Settings
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Favicon icon</label>
                 <input type="file" name="favicon" value=""
                     class="form-control bg-light border-0 round-10 ">
@@ -90,6 +80,16 @@ General Settings
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <label for="icon" class="input-label mb-0">Login & Register page Background</label>
+                     <input type="file" name="form_image" value="" class="form-control bg-light border-0 round-10 ">
+                    @error('form_image')
+                        <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                         </span>
+                     @enderror
                 </div>
             </div>
             <div class="form-group">

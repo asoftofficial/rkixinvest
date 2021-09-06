@@ -82,11 +82,25 @@ class DashboardController extends Controller
 
     public function changePassword(Request $request, $id)
     {
+        dd("hello");
        $request->validate([
-        'oldpas' => 'required',
-        'newpas' => 'required',
+        'old_pass' => 'required',
+        'new_pass' => 'required',
+        'confirm'=>'required',
        ]);
+       dd($request);
        $user = User::find($id);
+       $pass = $user->password;
+       if($pass !== bcrypt($request->oldpas)){
+            return back()->with('error','Please Enter Your Old Password');
+        }
+        if($pass == bcrypt($request->newpas)){
+            return back()->with('error','Please Enter Your New Password');
+        }
+        if($request->newpass != $request->confirm){
+            return back()->with('error','Password Does Not Match');
+        }
+
        $user->password = bcrypt($request->newpas);
        $user->update();
        return back()->with('success','password updated successfully');
