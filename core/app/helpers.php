@@ -102,8 +102,7 @@ function getImage($image,$size = null)
         return asset($image) . $clean;
     }
     if ($size) {
-        return route('placeholder
-        .image',$size);
+        return route('placeholder.image',$size);
     }
     return asset('assets/images/default.png');
 }
