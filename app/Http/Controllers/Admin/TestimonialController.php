@@ -21,14 +21,12 @@ class TestimonialController extends Controller
     }
     public function store(Request $request)
     {
-
         $request->validate([
             'username'    => 'required',
             'designation' => 'required',
             'description' => 'required',
             'image'     => 'required',
         ]);
-
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = "testimonial_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
         $upload_path = public_path('uploads/testimonial/');

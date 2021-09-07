@@ -124,7 +124,6 @@ class rewardController extends Controller
      */
     public function destroy($id)
     {
-
         $reward = Reward::findOrFail($id);
         $reward->delete();
         return redirect()->back()->with("success", "reward Deleted Successfully!");

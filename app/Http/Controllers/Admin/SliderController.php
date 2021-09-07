@@ -39,7 +39,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-         $slider = new Slider;
+        $slider = new Slider;
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = "slider_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
         $upload_path = public_path('uploads/slider/');
@@ -86,7 +86,7 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-           $slider = Slider::find($id);
+        $slider = Slider::find($id);
         if($request->hasFile('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "slider_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;

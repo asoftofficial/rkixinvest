@@ -101,7 +101,6 @@ class DashboardController extends Controller
         if($request->new_pass !== $request->confirm){
             return back()->with('error','Password does not match');
         }
-
        $user->password = bcrypt($request->new_pass);
        $user->update();
        return back()->with('success','password updated successfully');

@@ -37,17 +37,16 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-                'name' => ['required'],
-                'min_invest'  =>['required'],
-                'max_invest'  =>['required'],
-                // 'image'  =>['required'],
-                // 'description'  =>['required'],
-                'roi'  =>['required'],
-                'roi_type'  =>['required'],
-                'duration' => ['required','min:1','integer'],
-                'duration_type' => ['required']
+        'name' => ['required'],
+        'min_invest'  =>['required'],
+        'max_invest'  =>['required'],
+        // 'image'  =>['required'],
+        // 'description'  =>['required'],
+        'roi'  =>['required'],
+        'roi_type'  =>['required'],
+        'duration' => ['required','min:1','integer'],
+        'duration_type' => ['required']
         ]);
         if($request->duration_type=="day" && $request->roi_type=="weekly" || $request->roi_type=="monthly" || $request->roi_type=="yearly"){
             return back()->with('error','Invalid ROI Type.');

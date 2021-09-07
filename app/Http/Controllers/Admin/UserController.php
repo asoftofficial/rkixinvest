@@ -96,7 +96,7 @@ class UserController extends Controller {
             $full_path = '/uploads/users/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
-             $users->image=$file_path;
+            $users->image=$file_path;
         }
         $users->first_name=$request->fname;
         $users->last_name=$request->lname;
@@ -176,7 +176,7 @@ class UserController extends Controller {
                 'currency' => 'USD',
                 'trx' => $trx->id,
                 'total_balance'=> $total_balance,
-                ]);
+            ]);
         Session::flash("message", "Fund added successfully");
         return back();
         }else{
@@ -227,7 +227,7 @@ class UserController extends Controller {
       //active investors
     public function activeInvestors()
     {
-         $active_investors = Investment::where('status',1)->get();
+        $active_investors = Investment::where('status',1)->get();
         return view('admin.users.pages.active-investors',compact('active_investors'));
     }
 
@@ -236,31 +236,6 @@ class UserController extends Controller {
     {
         $active_users = User::where('blocked',1)->get();
         return view('admin.users.pages.active-users',compact('active_users'));
-    }
-
-    //user kyc view
-    public function kyc()
-    {
-        return view('users.profile.pages.kyc');
-    }
-
-    public function storKyc(Request $request)
-    {
-        $this->validate($request,[
-            'kyc' =>'required'
-        ]);
-        $user_kyc = new KYC();
-         $extension = $request->file('kyc')->getClientOriginalExtension();
-         $fileName = "kyc_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-         $upload_path = public_path('uploads/kyc/');
-         $full_path = '/uploads/kyc/'.$fileName;
-         $request->file('kyc')->move($upload_path, $fileName);
-         $file_path  = $full_path;
-         $user_kyc->kyc=$file_path;
-         $user_kyc->update();
-         return back()->with('success','file submitted');
-
-
     }
 
 }

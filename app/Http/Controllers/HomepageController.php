@@ -55,7 +55,7 @@ class HomepageController extends Controller
             $file_path  = $full_path;
             $data->icon1 = $file_path;
         }
-         if($request->hasFile('icon2')){
+        if($request->hasFile('icon2')){
             $extension = $request->file('icon2')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = public_path('uploads/how-to/');
@@ -64,7 +64,7 @@ class HomepageController extends Controller
             $file_path  = $full_path;
             $data->icon2 = $file_path;
         }
-         if($request->hasFile('icon3')){
+        if($request->hasFile('icon3')){
             $extension = $request->file('icon3')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = public_path('uploads/how-to/');
@@ -73,7 +73,6 @@ class HomepageController extends Controller
             $file_path  = $full_path;
             $data->icon3 = $file_path;
         }
-
         $data->section_title = $request->title;
         $data->step1 = $request->step1;
         $data->step2 = $request->step2;
