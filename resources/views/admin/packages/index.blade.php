@@ -58,6 +58,7 @@ $(".delete").click(function (e) {
                         <th scope="col">max-invest</th>
                         <th scope="col">Roi</th>
                         <th scope="col">Roi_type</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
