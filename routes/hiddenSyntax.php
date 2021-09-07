@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 
 
-Route::post('g101', 'Gateway\g101\ProcessController@ipn')->name('g101'); // paypal
+Route::post('g101', [App\Http\Controllers\Users\g101\ProcessController::class, 'ipn'])->name('g101'); // paypal
 Route::post('g102', 'Gateway\g102\ProcessController@ipn')->name('g102'); // Perfect Money
 Route::post('g104', 'Gateway\g104\ProcessController@ipn')->name('g104'); // Skrill
 

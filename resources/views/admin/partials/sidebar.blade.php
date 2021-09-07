@@ -259,9 +259,7 @@
 {{--                            </a>--}}
 {{--                        </li>--}}
                         <li class="nav-item">
-                            <a href="{{route('admin.deposit-gateways.index')}}"
-                            class="nav-link  @if(Route::currentRouteName()=='admin.deposit-gateways.index') active blue-nav @endif">
-                            <a href="{{route('admin.deposit.geteways')}}"
+                            <a href="{{ route('admin.deposit-gateways.index') }}"
                             class="nav-link  @if(Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Deposit Gateways</p>
@@ -340,7 +338,51 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item align-items-center  @if(Route::currentRouteName()=='admin.deposit.log'||Route::currentRouteName()=='admin.deposit.pending' ||Route::currentRouteName()=='admin.deposit.approved' ||Route::currentRouteName()=='admin.deposit.rejected') menu-is-opening menu-open @endif">
+                    <a href=""
+                       class="nav-link
+                       @if(Route::currentRouteName()=='admin.deposit.log'||
+                        Route::currentRouteName()=='admin.deposit.pending' ||
+                        Route::currentRouteName()=='admin.deposit.approved' ||
+                        Route::currentRouteName()=='admin.deposit.rejected') active blue-nav @endif">
+                        <img src="{{asset('/backend/img/icons/withdraw.png')}}" alt="">
+                        <p>
+                            Deposits
+                            <i class="fas fa-angle-left right angle-icon"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display:  @if(Route::currentRouteName()=='admin.deposit.log'||Route::currentRouteName()=='admin.deposit.pending' ||Route::currentRouteName()=='admin.deposit.approved' ||Route::currentRouteName()=='admin.deposit.rejected') block @else none @endif">
+                        <li class="nav-item">
+                            <a href="{{route('admin.deposit.log')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.deposit.log') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>All Logs</p>
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="{{route('admin.deposit.pending')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.deposit.pending') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Pending</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.deposit.approved')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.deposit.approved') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Approved</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.deposit.rejected')}}"
+                               class="nav-link @if(Route::currentRouteName()=='admin.deposit.rejected') active blue-nav @endif">
+                                <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
+                                <p>Rejected</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

@@ -56,14 +56,15 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         //Referrals
         Route::get('/referrals', 'DashboardController@referrals')->name('referrals');
 
-        // Deposit
+        // Deposit 
         Route::get('/deposit/history', 'DepositController@index')->name('deposit');
         Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
         Route::post('/deposit', 'DepositController@store')->name('deposit.money');
         Route::get('/deposit/preview', 'DepositController@preview')->name('deposit.preview');
         Route::get('/pay-now', 'DepositController@payNow')->name('pay-now');
         Route::get('/deposit', 'DepositController@index')->name('deposit');
-
+        Route::post('/deposit-manual','DepositController@manualDeposit')->name('deposit.manual');
+        
         //Tranfer
         Route::get('/transfer', 'DashboardController@transfer')->name('transfer');
         Route::post('/transfer', 'DashboardController@transferPost')->name('transfer.post');
@@ -114,16 +115,12 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
     Route::post('update/email/settings',[GeneralSettingsController::class,'emailSettings'])->name('update.email.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
-    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
+   
     Route::resource('deposit-gateways', '\App\Http\Controllers\Admin\DepositMethodsController');
-    Route::get('deposit/gateways',[DepositGateways::class,'index'])->name('deposit.geteways');
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'update'])->name('deposit.geteways.update');
     Route::get('slider',[AdminDashboardController::class,'slider'])->name('slider');
     Route::post('slider/update',[AdminDashboardController::class,'updateSlider'])->name('slider.edit');
 
-    Route::post('deposit/gateways/{id}/update',[DepositGateways::class,'edit'])->name('deposit.geteways.update');
-
+    
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');
@@ -157,6 +154,17 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('withdraw/approve', 'WithdrawController@approve')->name('withdraw.approve');
     Route::post('withdraw/reject', 'WithdrawController@reject')->name('withdraw.reject');
 
+    //Deposit Routes
+    Route::get('deposit/pending', 'DepositController@pending')->name('deposit.pending');
+    Route::get('deposit/approved', 'DepositController@approved')->name('deposit.approved');
+    Route::get('deposit/rejected', 'DepositController@rejected')->name('deposit.rejected');
+    Route::get('deposit/log', 'DepositController@log')->name('deposit.log');
+    Route::get('deposit/via/{method_id}/{type?}', 'DepositController@logViaMethod')->name('deposit.method');
+    Route::get('deposit/{scope}/search', 'DepositController@search')->name('deposit.search');
+    Route::get('deposit/date-search/{scope}', 'DepositController@dateSearch')->name('deposit.dateSearch');
+    Route::get('deposit/details/{id}', 'DepositController@details')->name('deposit.details');
+    Route::post('deposit/approve', 'DepositController@approve')->name('deposit.approve');
+    Route::post('deposit/reject', 'DepositController@reject')->name('deposit.reject');
 
 
 
