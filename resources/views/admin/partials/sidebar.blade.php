@@ -251,15 +251,9 @@
                                 <p>Referral Bonus</p>
                             </a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{route('admin.show.kyc.settings')}}"--}}
-{{--                            class="nav-link  @if(Route::currentRouteName()=='admin.show.kyc.settings') active blue-nav @endif">--}}
-{{--                            <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">--}}
-{{--                                <p>KYC Settings</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
                         <li class="nav-item">
-                            <a href="{{ route('admin.deposit-gateways.index') }}"
+
+                            <a href="{{route('admin.deposit-gateways.index')}}"
                             class="nav-link  @if(Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
                             <img src="{{asset('/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Deposit Gateways</p>
