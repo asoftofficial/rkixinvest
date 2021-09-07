@@ -9,10 +9,10 @@
     <a href="{{ route('admin.email.template.index') }}" class="btn btn-primary btn-blue header-right-btn">Button</a>
 @endsection
 @push('style')
-    <link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
 @endpush
 @push('script')
-    <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js')}}"></script>
 @endpush
 @section('content')
     <div class="container-fluid">

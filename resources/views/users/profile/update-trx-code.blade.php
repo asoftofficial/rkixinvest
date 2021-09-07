@@ -6,7 +6,7 @@ Transaction Code
 Update Trasnfer Code
 @endsection
 @push('style')
-    <link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
 @endpush
 
 @section('content')

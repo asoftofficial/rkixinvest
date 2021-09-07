@@ -3,8 +3,7 @@
 User profile
 @endsection
 @push('style')
-<link rel="stylesheet" href="{{asset('css/bootstrap-toggle.min.css')}}">
-{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
+<link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
 <style>
     .emp-profile {
         padding: 3%;
@@ -126,9 +125,7 @@ User profile
 @endpush
 
 @push('script')
-    <script src="{{asset('js/bootstrap-toggle.min.js')}}"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{asset('assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js')}}"></script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
     $(".blocked_user").click(function (e) {
