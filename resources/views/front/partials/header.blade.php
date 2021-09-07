@@ -9,8 +9,8 @@
     <link rel="icon" href="{{$settings->fav_icon}}">
     <title>RkixInvest</title>
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('backend/assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('frontend/dashboard/plugins/fontawesome-free/css/all.min.css') }}">
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     {{-- Carousal Style --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 
@@ -46,7 +46,7 @@
         }
 
     </style>
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/front.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/front.css') }}">
     @stack('style')
 
 </head>

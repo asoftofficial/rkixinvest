@@ -28,7 +28,7 @@ class FrontendController extends Controller
         $imgWidth = explode('x',$size)[0];
         $imgHeight = explode('x',$size)[1];
         $text = $imgWidth . '×' . $imgHeight;
-        $fontFile = realpath('font') . DIRECTORY_SEPARATOR . 'RobotoMono-Regular.ttf';
+        $fontFile = realpath('assets/font') . DIRECTORY_SEPARATOR . 'RobotoMono-Regular.ttf';
         $fontSize = round(($imgWidth - 50) / 8);
         if ($fontSize <= 9) {
             $fontSize = 9;

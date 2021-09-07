@@ -17,8 +17,8 @@
     <section class="about">
         <div class="container">
             <div class="about-container">
-                <img class="shap triangle" src="{{ asset('frontend/assets/bg-shapes/triangle.png') }}" alt="">
-                <img class="shap dots" src="{{ asset('frontend/assets/bg-shapes/dots.png') }}" alt="">
+                <img class="shap triangle" src="{{ asset('assets/frontend/bg-shapes/triangle.png') }}" alt="">
+                <img class="shap dots" src="{{ asset('assets/frontend/bg-shapes/dots.png') }}" alt="">
                 <div class="about-image">
                     <img src="{{$frontdata->section_image}}" alt="About RkixInvest">
                 </div>
@@ -91,7 +91,7 @@
                                 <tr>
                                     <td>John Smith</td>
                                     <td>23000$</td>
-                                    <td><img src="{{ asset('frontend/assets/images/paypal-logo.png') }}" alt=""></td>
+                                    <td><img src="{{ asset('assets/frontend/images/paypal-logo.png') }}" alt=""></td>
                                 </tr>
                             </table>
                         </div>

@@ -40,9 +40,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src={{ asset('frontend/dashboard/plugins/bootstrap/js/bootstrap.min.js') }}></script>
-    <script src={{ asset('frontend/dashboard/plugins/jquery/jquery.min.js') }}></script>
+    <script src="{{asset('assets/plugins/slim/slim.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+
     {{-- Carousal Script --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
