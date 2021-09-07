@@ -5,6 +5,9 @@ Dashboard
 @section('page-subtitle')
 Welcome back,
 @endsection
+@section('header-right')
+    <a href="{{ route('user.investment') }}" class="btn btn-primary btn-blue header-right-btn">@lang('back')</a>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-md-12">

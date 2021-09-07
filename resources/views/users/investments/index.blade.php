@@ -3,7 +3,7 @@
    Investments
 @endsection
 @section('header-right')
-    <a href="{{ route('user.packages') }}" class="btn btn-primary btn-blue header-right-btn">@lang('Withdraw')</a>
+    <a href="{{ route('user.packages') }}" class="btn btn-primary btn-blue header-right-btn">@lang('Invest Now')</a>
 @endsection
 @push('script')
 
