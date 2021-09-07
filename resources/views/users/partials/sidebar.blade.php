@@ -90,14 +90,10 @@
 {{--                                </li>--}}
 
                                 <li class="nav-item">
-                                    <a
-                                        href="{{route('user.packages')}}"
-                                        class="nav-link @if(Route::currentRouteName()=='user.packages' || Route::currentRouteName()=='user.package.show') active blue-nav @endif">
+                                    <a href="{{route('user.packages')}}" class="nav-link @if(Route::currentRouteName()=='user.packages' || Route::currentRouteName()=='user.package.show') active blue-nav @endif">
                                         <img src="{{asset('/backend/img/icons/package-icon.png')}}" alt="">
-                                            <p>
-                                                Packages
-                                            </p>
-                                        </a>
+                                            <p>Packages</p>
+                                    </a>
                                 </li>
                                 <li class="nav-item">
                                     <a
@@ -123,7 +119,7 @@
                         <a
                             href="{{route('user.deposit')}}"
                             class="nav-link @if(Route::currentRouteName()=='user.deposit' ) active blue-nav @endif">
-                            <img src="{{asset('/backend/img/icons/transaction-icon.png')}}" alt="">
+                            <img src="{{asset('/backend/img/icons/depositt.png')}}" alt="">
                             <p>
                                 Deposit
                             </p>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Users\g111;
 
-use App\Deposit;
+
 use App\Http\Controllers\Users\DepositController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use StripeJS\StripeJS;
 use Auth;
 use Session;
-
+use App\Models\Deposit;
 require_once('stripe-php/init.php');
 
 class ProcessController extends Controller
@@ -41,6 +41,7 @@ class ProcessController extends Controller
     public function ipn(Request $request)
     {
         $data = Deposit::with('method')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
+        //dd($data);
         if ($data->status == 1) {
             session()->flash('danger','Invalid Request.');
         }
@@ -57,15 +58,15 @@ class ProcessController extends Controller
         $charge = \StripeJS\Charge::create([
             'customer' => $customer->id,
             'description' => 'Payment with Stripe',
-            'amount' => $data->final_amo * 100,
-            'currency' => $data->method_currency,
+            'amount' => $data->final_amount * 100,
+            'currency' => $data->method->currency,
         ]);
 
 
         if ($charge['status'] == 'succeeded') {
             DepositController::userDataUpdate($data->trx);
-            session()->flash('success','Transaction was successful.');
+            
         }
-        return redirect()->route('payment');
+        return redirect()->route('user.deposit')->with('success', 'Your Account has deposited successfully');
     }
 }

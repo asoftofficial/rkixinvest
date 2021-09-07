@@ -28,7 +28,9 @@ class CreateDepositMethodsTable extends Migration
             $table->text('parameters')->nullable();
             $table->text('description')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->integer('method_code')->default(1001);
             $table->tinyInteger('deleteable')->default(1)->comment("1 = yes 0 = no");
+            $table->tinyInteger('method_type')->default(1)->comment("1=>offline, 2=>online"); 
             $table->timestamps();
         });
     }

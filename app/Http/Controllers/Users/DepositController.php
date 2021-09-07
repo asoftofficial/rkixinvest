@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DepositMethod;
 use App\Models\Deposit;
+use App\Models\GeneralSettings;
+use App\Models\Transaction;
 class DepositController extends Controller
 {
     public function index(){
@@ -38,7 +40,7 @@ class DepositController extends Controller
 
 
         $charge = $method->fixed_charge + ($request->amount * $method->percent_charge / 100);
-        $afterCharge = $request->amount + $charge;
+        $afterCharge = $request->amount;
         $finalAmount = $afterCharge * $method->rate;
 
         $deposit = new Deposit();
@@ -64,7 +66,8 @@ class DepositController extends Controller
     }
     public function payNow(){
         $deposit = Deposit::with('method')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
-        if($deposit->method->method_code){
+        $basic =  GeneralSettings::first();
+        if($deposit->method->method_code < 1000){
             $xx = 'g' . $deposit->method->method_code;
             $new =  __NAMESPACE__ . '\\' . $xx . '\\ProcessController';
 
@@ -80,7 +83,9 @@ class DepositController extends Controller
                 return redirect($data->redirect_url);
             }
             $page_title = 'Payment Confirm';
-            return view( $data->view, compact('data', 'page_title','deposit'));
+            return view( $data->view, compact('data', 'page_title','deposit', 'basic'));
+        }else{
+            return view('users.deposit.payment.manual', compact('data', 'basic'));
         }
 
     }
@@ -91,7 +96,7 @@ class DepositController extends Controller
         $user = auth()->user();
         $deposit->status = 1;
         $deposit->save();
-        $user->balance  +=  $withdraw->amount;
+        $user->balance  +=  $deposit->amount;
         $user->save();
 
 
@@ -116,5 +121,100 @@ class DepositController extends Controller
             'delay' => $deposit->method->delay
         ]);
         return redirect()->route('user.deposit')->with('success', 'Your Account has deposited successfully');
+    }
+    
+    public function manualDeposit(Request $request)
+    {
+        
+        $general = GeneralSettings::first();
+        $deposit = Deposit::with('method','user')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
+
+        $rules = [];
+        $inputField = [];
+        if ($deposit->method->user_data != null){
+            foreach (json_decode($deposit->method->user_data) as $key => $cus) {
+                $rules[$key] = [$cus->validation];
+                if ($cus->type == 'file') {
+                    array_push($rules[$key], 'image');
+                    array_push($rules[$key], 'jpg','jpeg','png');
+                    array_push($rules[$key], 'max:2048');
+                }
+                if ($cus->type == 'text') {
+                    array_push($rules[$key], 'max:191');
+                }
+                if ($cus->type == 'textarea') {
+                    array_push($rules[$key], 'max:300');
+                }
+                $inputField[] = $key;
+            }
+        }
+    
+       // $this->validate($request, $rules);
+       // dd('asfsad');
+        $user = auth()->user();
+
+
+        $directory = date("Y")."/".date("m")."/".date("d");
+        $path = imagePath()['verify']['withdraw']['path'].'/'.$directory;
+        $collection = collect($request);
+        $reqField = [];
+        if (json_decode($deposit->method->user_data) != null) {
+            foreach ($collection as $k => $v) {
+                foreach (json_decode($deposit->method->user_data) as $inKey => $inVal) {
+                    if ($k != $inKey) {
+                        continue;
+                    } else {
+                        if ($inVal->type == 'file') {
+                            if ($request->hasFile($inKey)) {
+                                try {
+                                    $reqField[$inKey] = [
+                                        'field_name' => $directory.'/'.uploadImage($request[$inKey], $path),
+                                        'type' => $inVal->type,
+                                    ];
+                                } catch (\Exception $exp) {
+                                    $notify[] = ['error', 'Could not upload your ' . $request[$inKey]];
+                                    return back()->withNotify($notify)->withInput();
+                                }
+                            }
+                        } else {
+                            $reqField[$inKey] = $v;
+                            $reqField[$inKey] = [
+                                'field_name' => $v,
+                                'type' => $inVal->type,
+                            ];
+                        }
+                    }
+                }
+            }
+            $deposit['information'] = $reqField;
+        } else {
+            $deposit['information'] = null;
+        }
+
+
+        $deposit->status = 2;
+        $deposit->save();
+
+
+        $transaction = new Transaction();
+        $transaction->user_id = $deposit->user_id;
+        $transaction->amount = $deposit->amount;
+        $transaction->type = 2;
+        $transaction->description = showAmount($deposit->final_amount) . ' ' . $deposit->currency . ' Deposit Via ' . $deposit->method->name;
+        $transaction->save();
+
+        sendEmail($user, 'WITHDRAW_REQUEST', [
+            'method_name' => $deposit->method->name,
+            'method_currency' =>    $deposit->currency,
+            'method_amount' => showAmount($deposit->final_amount),
+            'amount' => showAmount($deposit->amount),
+            'charge' => showAmount($deposit->charge),
+            'currency' => $general->cur_text,
+            'rate' => showAmount($deposit->rate),
+            'trx' => $deposit->trx,
+            'post_balance' => showAmount($user->balance),
+            'delay' => $deposit->method->delay
+        ]);
+        return redirect()->route('user.deposit')->with('success', 'Deposit request sent successfully');
     }
 }

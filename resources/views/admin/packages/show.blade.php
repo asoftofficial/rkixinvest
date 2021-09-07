@@ -1,43 +1,44 @@
 @extends('admin.layouts.default')
-@push('style') < style >.content - wrapper {
-    background : #fff;
+@push('style')
+<style>
+.content-wrapper{
+    background:#fff;
 }
-    .content {
-        margin : 0;
-        padding : 0 !important;
-        padding - bottom : 35 px !important;
-    }
-    .issue - title - section {
-        background : #f4f6f9;
-        padding : 20 px 5 px 0 55 px;
-    }
-    .issue - page - title {
-        position : relative;
-        top : 7 px;
-        font - weight : bold;
-    }
-    .pdf_viewer,
-    .pdf_container {
-        display : flex;
-        justify - content : center;
-        align - items : center;
-        flex - wrap : wrap;
-        position : relative;
-    }
-    .pdf_viewer {
-        flex - direction : column;
-        align - items : center;
-        position : relative;
-        overflow : scroll;
-    }
+.content{
+    margin:0;
+    padding:0 !important;
+    padding-bottom :35px !important;
+}
+.issue - title - section {
+    background : #f4f6f9;
+    padding : 20 px 5 px 0 55 px;
+}
+.issue - page - title {
+    position : relative;
+    top : 7 px;
+    font - weight : bold;
+}
+.pdf_viewer,.pdf_container {
+    display : flex;
+    justify - content : center;
+    align - items : center;
+    flex - wrap : wrap;
+    position : relative;
+}
+.pdf_viewer {
+    flex - direction : column;
+    align - items : center;
+    position : relative;
+    overflow : scroll;
+}
 
-    canvas#pdf_renderer {
-        margin - top : 30 px;
-    }
+canvas#pdf_renderer {
+    margin - top : 30 px;
+}
 
-    #navigation_controls {
-        margin - top : 10 px;
-    }
+#navigation_controls {
+    margin - top : 10 px;
+}
 
     #navigation_controls button {
         background: var(--blue);
@@ -106,8 +107,8 @@
     </style>
 @endpush
 
-@section('content'){{-- Page Section Title Area    --}} 
-<div class = "issue-title-section" > 
+@section('content'){{-- Page Section Title Area    --}}
+<div class = "issue-title-section" >
     <h2 class="issue-page-title">Issues</h2> < /div>
 {{-- End Page Section Title Area    --}}
 <div class="container-fluid">

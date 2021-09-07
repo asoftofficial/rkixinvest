@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Gateway\g101;
+namespace App\Http\Controllers\Users\g101;
 
 use App\Deposit;
-use App\GeneralSettings;
 use App\Http\Controllers\Gateway\PaymentController;
 use App\Http\Controllers\Controller;
-
+use App\Models\GeneralSettings;
 class ProcessController extends Controller
 {
 
@@ -16,23 +15,23 @@ class ProcessController extends Controller
     public static function process($deposit)
     {
         $basic =  GeneralSettings::first();
-        $paypalAcc = json_decode($deposit->gateway_currency()->parameter);
+        $paypalAcc = json_decode($deposit->method->parameters);
 
         $val['cmd'] = '_xclick';
         $val['business'] = trim($paypalAcc->paypal_email);
-        $val['cbt'] = $basic->sitename;
-        $val['currency_code'] = "$deposit->method_currency";
+        $val['cbt'] = $basic->web_title;
+        $val['currency_code'] = "$deposit->currency";
         $val['quantity'] = 1;
-        $val['item_name'] = "Payment To $basic->sitename Account";
+        $val['item_name'] = "Payment To $basic->web_title Account";
         $val['custom'] = "$deposit->trx";
-        $val['amount'] = round($deposit->final_amo,2);
-        $val['return'] = route('payment');
-        $val['cancel_return'] = route('payment');
+        $val['amount'] = round($deposit->final_amount,2);
+        $val['return'] = route('user.deposit');
+        $val['cancel_return'] = route('user.deposit');
         $val['notify_url'] = route('g101');
         $send['val'] = $val;
-        $send['view'] = 'payment.redirect';
+        $send['view'] = 'users.deposit.payment.redirect';
         $send['method'] = 'post';
-        $send['url'] = 'https://secure.paypal.com/cgi-bin/webscr';
+        $send['url'] = 'https://www.paypal.com/cgi-bin/webscr';
         return json_encode($send);
     }
     public function ipn()
@@ -73,13 +72,13 @@ class ProcessController extends Controller
             //GRAB DATA FROM DATABASE!!
             $data = Deposit::where('trx', $track)->orderBy('id', 'DESC')->first();
 
-            $paypalAcc = json_decode($data->gateway_currency()->parameter, true);
+            $paypalAcc = json_decode($data->method->parameter, true);
 
-            $amount = round($data->final_amo,2);
+            $amount = round($data->final_amount,2);
 
-            if ($receiver_email == $paypalAcc['paypal_email'] && $mc_currency == $data->method_currency && $mc_gross == $amount && $data->status == '0') {
+            if ($receiver_email == $paypalAcc['paypal_email'] && $mc_currency == $data->method->currency && $mc_gross == $amount && $data->status == '0') {
                 //Update User Data
-                PaymentController::userDataUpdate($data->trx);
+                DepositController::userDataUpdate($data->trx);
             }
         }
     }
