@@ -12,7 +12,22 @@
 
 @endpush
 @push('script')
-
+<script>
+    $(".delete").click(function (e) {
+    console.log("asdhsakdash")
+    swal(
+        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+    ).then((willDelete) => {
+        if (willDelete) {
+            var method_id = $(this).attr('data-id');
+            var url = "{{route('user.destroy.method', 'id')}}";
+            url = url.replace('id', method_id);
+            $("#delete-form").attr('action', url);
+            $("#delete-form").submit();
+        }
+    });
+});
+</script>
 @endpush
 @section('content')
     <div class="container-fluid">
@@ -66,14 +81,14 @@
                                             <a href="{{ route('admin.withdraw.gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
                                             @if($method->status == 1)
-                                                <a href="javascript:void(0)" class="btn btn-danger deactivateBtn  ml-1" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-eye-slash"></i>
+                                                <a href="javascript:void(0)" class="btn btn-danger deactivateBtn delete ml-1 mt-1" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             @else
-                                                <a href="javascript:void(0)" class="btn btn-success activateBtn  ml-1"
+                                                <a href="" class="btn btn-success delete activateBtn  ml-1"
                                                    data-toggle="tooltip" data-original-title="@lang('Enable')"
                                                    data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-eye"></i>
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             @endif
                                         </td>
@@ -144,4 +159,7 @@
         </div>
     </div>
     <!-- /.container-fluid -->
+    {{-- delete withdraw method form --}}
+    <form action = "" method = "post" id = "delete-form" > @csrf
+    @method('delete') </form>
 @endsection

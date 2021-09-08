@@ -78,6 +78,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
         Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');
         Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
+        Route::delete('withdraw/delete/{id}',[WithdrawController::class,'destroy'])->name('destroy.method');
         //investment routes
         Route::get('/investment',[InvestmentController::class,'showUserInvestments'])->name('investment');
     });
