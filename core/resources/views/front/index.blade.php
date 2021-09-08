@@ -10,7 +10,16 @@
             align-self: center;
             position: relative;
             top: 30px;
+        }
+
+       @media screen and (max-width: 768px) {
+          span.step-icon {
+            top: 10px;
             }
+            .step-inner p {
+            font-size: 20px;
+            }
+        }
         </style>
     @endpush
     <!-- About Section Start-->

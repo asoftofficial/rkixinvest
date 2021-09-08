@@ -25,11 +25,11 @@ class TestimonialController extends Controller
             'username'    => 'required',
             'designation' => 'required',
             'description' => 'required',
-            'image'     => 'required',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = "testimonial_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        $upload_path = public_path('uploads/testimonial/');
+        $upload_path = 'uploads/testimonial/';
         $full_path = '/uploads/testimonial/'.$fileName;
         $request->file('image')->move($upload_path, $fileName);
         $file_path  = $full_path;
@@ -54,9 +54,12 @@ class TestimonialController extends Controller
     {
         $testimonials = Testimonial::find($id);
          if($request->hasFile('image')){
+             $request->validate([
+                 'image' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "testimonial_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/testimonial/');
+            $upload_path = 'uploads/testimonial/';
             $full_path = '/uploads/testimonial/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;

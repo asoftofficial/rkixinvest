@@ -18,9 +18,12 @@ class HomepageController extends Controller
     public function updateAbout(Request $request){
         $aboutus = Homepage::first();
           if($request->hasFile('image')){
+            $request->validate([
+                 'image' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/aboutus/');
+            $upload_path = 'uploads/aboutus/';
             $full_path = '/uploads/aboutus/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
@@ -47,27 +50,36 @@ class HomepageController extends Controller
     {
         $data = Homepage::first();
          if($request->hasFile('icon1')){
+             $request->validate([
+                 'icon1' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('icon1')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/how-to/');
+            $upload_path = 'uploads/how-to/';
             $full_path = '/uploads/how-to/'.$fileName;
             $request->file('icon1')->move($upload_path, $fileName);
             $file_path  = $full_path;
             $data->icon1 = $file_path;
         }
         if($request->hasFile('icon2')){
+            $request->validate([
+                 'icon2' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('icon2')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/how-to/');
+            $upload_path = 'uploads/how-to/';
             $full_path = '/uploads/how-to/'.$fileName;
             $request->file('icon2')->move($upload_path, $fileName);
             $file_path  = $full_path;
             $data->icon2 = $file_path;
         }
         if($request->hasFile('icon3')){
+            $request->validate([
+                 'icon3' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('icon3')->getClientOriginalExtension();
             $fileName = "aboutus_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/how-to/');
+            $upload_path = 'uploads/how-to/';
             $full_path = '/uploads/how-to/'.$fileName;
             $request->file('icon3')->move($upload_path, $fileName);
             $file_path  = $full_path;

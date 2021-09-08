@@ -19,6 +19,9 @@ class GeneralSettingsController extends Controller
     {
         $settings = ModelsGeneralSettings::first();
          if($request->hasFile('favicon')){
+            $request->validate([
+            'favicon' => 'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
             $extension = $request->file('favicon')->getClientOriginalExtension();
             $fileName = "favicon_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = 'uploads/web/';
@@ -28,6 +31,9 @@ class GeneralSettingsController extends Controller
             $settings->fav_icon   = $file_path;
         }
         if($request->hasFile('dlogo')){
+             $request->validate([
+            'dlogo' => 'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
             $extension = $request->file('dlogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = 'uploads/web/';
@@ -37,6 +43,9 @@ class GeneralSettingsController extends Controller
             $settings->dlogo  = $file_path;
         }
         if($request->hasFile('llogo')){
+            $request->validate([
+            'llogo' => 'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
             $extension = $request->file('llogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = 'uploads/web/';
@@ -46,6 +55,9 @@ class GeneralSettingsController extends Controller
             $settings->llogo  = $file_path;
         }
         if($request->hasFile('form_image')){
+            $request->validate([
+            'form_image' => 'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
             $extension = $request->file('form_image')->getClientOriginalExtension();
             $fileName = "form_image_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
             $upload_path = 'uploads/web/';
@@ -72,6 +84,9 @@ class GeneralSettingsController extends Controller
 
     public function referralUpdate(Request $request)
     {
+        $request->validate([
+            'ref_level' => 'integer'
+        ]);
         $settings = ModelsGeneralSettings::first();
         $ref_status = $request->ref_system ? 'on' : 'off';
         $settings->referral_system    = $ref_status;
@@ -119,7 +134,9 @@ class GeneralSettingsController extends Controller
     }
 
     public function generalinfoUpdate(Request $request)
-    {
+    {   $request->validate([
+            'phone' => 'integer'
+        ]);
         $settings = ModelsGeneralSettings::first();
         $settings->email = $request->email;
         $settings->phone = $request->phone;
@@ -142,6 +159,11 @@ class GeneralSettingsController extends Controller
     //fund tranfers settings
     public function fundTransfer(Request $request)
     {
+        $request->validate([
+            'min_transfer'  => 'integer',
+            'max_transfer'  => 'integer',
+            'charges'   => 'numeric|between:0,99.99',
+        ]);
       $settings = ModelsGeneralSettings::first();
       $settings->min_transfer = $request->min_transfer;
       $settings->max_transfer = $request->max_transfer;

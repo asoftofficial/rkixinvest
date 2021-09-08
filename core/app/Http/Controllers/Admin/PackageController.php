@@ -39,13 +39,11 @@ class PackageController extends Controller
     {
         $request->validate([
         'name' => ['required'],
-        'min_invest'  =>['required'],
-        'max_invest'  =>['required'],
-        // 'image'  =>['required'],
-        // 'description'  =>['required'],
+        'min_invest'  =>['required','integer'],
+        'max_invest'  =>['required','integer'],
         'roi'  =>['required'],
         'roi_type'  =>['required'],
-        'duration' => ['required','min:1','integer'],
+        'duration' => ['required','integer'],
         'duration_type' => ['required']
         ]);
         if($request->duration_type=="day" && $request->roi_type=="weekly" || $request->roi_type=="monthly" || $request->roi_type=="yearly"){
@@ -102,6 +100,12 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+
+        'min_invest'  =>['integer'],
+        'max_invest'  =>['integer'],
+        'duration' => ['integer'],
+        ]);
         $package = Package::findOrFail($id);
         $package->title         = $request->name;
         $package->min_invest    = $request->min_invest;

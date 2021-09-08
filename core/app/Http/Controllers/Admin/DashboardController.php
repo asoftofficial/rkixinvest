@@ -48,9 +48,12 @@ class DashboardController extends Controller
     {
         $user_profile = User::findOrFail($id);
         if($request->hasFile('image')){
+            $request->validate([
+            'image' => 'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "users_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/users/');
+            $upload_path = 'uploads/users/';
             $full_path = '/uploads/users/'.$fileName;
             $check = $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
@@ -86,9 +89,12 @@ class DashboardController extends Controller
     {
         $slider = Slider::first();
         if($request->hasFile('image')){
+            $request->validate([
+                'image' => 'image'
+            ]);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "slider_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/slider/');
+            $upload_path = 'uploads/slider/';
             $full_path = '/uploads/slider/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;

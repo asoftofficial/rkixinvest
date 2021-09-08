@@ -43,11 +43,13 @@ class rewardController extends Controller
             'status' => ['required'],
             // 'referral' => ['required'],
             'description' => ['required'],
+            'image' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
 
         ]);
         $extension = $request->file('image')->getClientOriginalExtension();
         $fileName = "reward_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-        $upload_path = public_path('uploads/reward/');
+        $upload_path = 'uploads/reward/';
         $full_path = '/uploads/reward/'.$fileName;
         $request->file('image')->move($upload_path, $fileName);
         $file_path  = $full_path;
@@ -98,9 +100,12 @@ class rewardController extends Controller
     {
         $reward = Reward::findOrFail($id);
         if($request->hasFile('image')){
+            $request->validate([
+                 'image' =>'image|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+             ]);
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "reward_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/reward/');
+            $upload_path = 'uploads/reward/';
             $full_path = '/uploads/reward/'.$fileName;
             $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
