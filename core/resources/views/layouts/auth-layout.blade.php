@@ -19,11 +19,11 @@
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">
-                <a href="/">
+
                     @if(empty($settings->dlogo))
                         <img src="{{route('placeholder.image','200x80')}}" alt="logo" />
                     @else
-                        <img src="{{$settings->dlogo}}" alt="logo">
+                        <a href="{{route('welcome')}}"><img src="{{$settings->dlogo}}" alt="logo">
                     @endif</a>
             </div>
         </header>

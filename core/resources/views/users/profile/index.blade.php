@@ -99,10 +99,7 @@
     font-weight: 600;
     color: #0062cc;
 }
-.trx-code{
-    color: #6c757d !important;
-    background: whitesmoke;
-}
+
 
     </style>
 @endpush
@@ -150,7 +147,7 @@
                            <h5 class="text-bold mt-3 text-center">User actions</h5>
                             <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
                             <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password" data-toggle="modal" data-target="#editPasswordModal" />
-                            <a href="{{route('user.transfer.code')}}" class="btn profile-edit-btn mt-2 trx-code"><h6 class="text-bold">Transaction Code</h6></a><br/>
+                            <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Transaction Code" data-toggle="modal" data-target="#trxUpdatedModal" />
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -243,6 +240,7 @@
                 </div>
 @include('users.profile.modals.edit-profile')
 @include('users.profile.modals.edit-password')
+@include('users.profile.modals.trx-code-update')
 
 
         </div>

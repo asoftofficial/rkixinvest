@@ -29,10 +29,10 @@
                             <img src="{{route('placeholder.image','200x80')}}"
                                 alt="" />
                 @else
-                     <img
+                     <a href="{{route('user.dashboard')}}"><img
                     src="{{$settings->dlogo}}"
                     class=""
-                    alt="logo">
+                    alt="logo"></a>
                 @endif
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <li class="nav-item">
                             <a
                                 href="{{route('user.investment')}}"
-                                class="nav-link @if(Route::currentRouteName()=='admin.userprofile.index' || Route::currentRouteName()=='admin.userprofile.show') active lightblue-nav @endif">
+                                class="nav-link @if(Route::currentRouteName()=='user.investment') active lightblue-nav @endif">
                                 <img src="{{asset('assets/backend/img/icons/invest.png')}}" alt="">
                                     <p>
                                         Investments
@@ -77,20 +77,8 @@
                             </p>
                         </a>
                     </li>
-
-{{--                            <li class="nav-item">--}}
-{{--                                <a--}}
-{{--                                    href="{{route('admin.reward.index')}}"--}}
-{{--                                    class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">--}}
-{{--                                    <img src="{{asset('assets/backend/img/icons/reward-icon.png')}}" alt="">--}}
-{{--                                        <p>--}}
-{{--                                            Rewards--}}
-{{--                                        </p>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-
                                 <li class="nav-item">
-                                    <a href="{{route('user.packages')}}" class="nav-link @if(Route::currentRouteName()=='user.packages' || Route::currentRouteName()=='user.package.show') active blue-nav @endif">
+                                    <a href="{{route('user.packages')}}" class="nav-link @if(Route::currentRouteName()=='user.packages') active blue-nav @endif">
                                         <img src="{{asset('assets/backend/img/icons/package-icon.png')}}" alt="">
                                             <p>Packages</p>
                                     </a>
@@ -98,7 +86,7 @@
                                 <li class="nav-item">
                                     <a
                                         href="{{route('user.transactions')}}"
-                                        class="nav-link">
+                                        class="nav-link @if(Route::currentRouteName()=='user.transactions') active blue-nav @endif">
                                         <img src="{{asset('assets/backend/img/icons/transaction-icon.png')}}" alt="">
                                             <p>
                                                 Transactions
@@ -108,7 +96,7 @@
                     <li class="nav-item">
                         <a
                             href="{{route('user.withdraw')}}"
-                            class="nav-link @if(Route::currentRouteName()=='user.withdraw' || Route::currentRouteName()=='user.withdraw.preview') || Route::currentRouteName()=='user.withdraw.history') active blue-nav @endif">
+                            class="nav-link @if(Route::currentRouteName()=='user.withdraw') active blue-nav @endif">
                             <img src="{{asset('assets/backend/img/icons/withdrawals.png')}}" alt="">
                             <p>
                                 Withdraw
@@ -138,9 +126,9 @@
                         </li>
                     @endif
 
-                                        </ul>
-                                    </nav>
-                                    <!-- /.sidebar-menu -->
-                                </div>
-                                <!-- /.sidebar -->
-                            </aside>
+                </ul>
+        </nav>
+
+    </div>
+
+</aside>
