@@ -124,7 +124,7 @@ a.text-red:hover{
 }
 .register-form .form-check-label{
     font-size: 12px;
-    color: var(--white) !important;
+    color: var(--blue) !important;
 }
 .forgot a{
     color: var(--blue) !important;
@@ -132,14 +132,17 @@ a.text-red:hover{
     font-size: 12px;
 }
 .form-footer {
-    padding: 30px 0;
+    padding: 20px 0px 10px 0;
     text-align: center;
-    color: var(--white);
+    color: var(--blue);
+    font-weight: bolder;
 }
 .form-footer a {
     color: var(--white);
     text-transform: uppercase;
     text-decoration: underline;
+    color: var(--blue);
+    font-weight: bolder;
 }
 /* Login Page */
 .main {
@@ -167,11 +170,12 @@ a.text-red:hover{
 }
 .login-right-area,.login-form-area {
     margin: auto;
-    max-width: 310px;
+    max-width: 380px !important;
+ 
 }
 .login-title-area {
     font-family: 'Maven Pro', sans-serif;
-    padding: 20px 0;
+    padding: 20px 0 5px 0;
     text-align: center;
 }
 .login-title-area h2{
@@ -183,9 +187,9 @@ a.text-red:hover{
     line-height: 15px;
 }
 .login-form-footer{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 10px !important;
 }
 
 .login-right-area{
