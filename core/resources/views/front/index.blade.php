@@ -140,24 +140,64 @@
             <h3 class="text-blue opacity-1">Testimonials</h3>
             <h2 class="text-blue">What Client Say</h2>
             <div class="testimonials-carousal">
-                @foreach ($testimonials as $item)
+
                 <div class="testimonials-inner">
+{{--                    @foreach ($testimonials as $item)--}}
                     <div class="testimonial">
                         <p>
-                            {{$item->content}}
+{{--                            {{$item->content}}--}}
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aperiam consectetur corporis culpa debitis error eum excepturi facilis harum labore laboriosam minima minus officia quae quas sint, velit voluptatibus.
                         </p>
                         <div class="testimonial-user">
                             <div class="testimonial-user-img">
-                                <img src="{{$item->image}}" alt="">
+{{--                                <img src="{{$item->image}}" alt="">--}}
                             </div>
                             <div class="testimonial-user-info">
-                                <h4>{{$item->username}}</h2>
-                                    <h5>{{$item->designation}}</h3>
+                                <h4>admin</h4>
+                                <h5>Developer</h5>
+{{--                                <h4>{{$item->username}}</h4>--}}
+{{--                                    <h5>{{$item->designation}}</h5>--}}
                             </div>
                         </div>
                     </div>
+                    <div class="testimonial">
+                        <p>
+                            {{--                            {{$item->content}}--}}
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aperiam consectetur corporis culpa debitis error eum excepturi facilis harum labore laboriosam minima minus officia quae quas sint, velit voluptatibus.
+                        </p>
+                        <div class="testimonial-user">
+                            <div class="testimonial-user-img">
+                                {{--                                <img src="{{$item->image}}" alt="">--}}
+                            </div>
+                            <div class="testimonial-user-info">
+                                <h4>admin</h4>
+                                <h5>Developer</h5>
+                                {{--                                <h4>{{$item->username}}</h4>--}}
+                                {{--                                    <h5>{{$item->designation}}</h5>--}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <p>
+                            {{--                            {{$item->content}}--}}
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aperiam consectetur corporis culpa debitis error eum excepturi facilis harum labore laboriosam minima minus officia quae quas sint, velit voluptatibus.
+                        </p>
+                        <div class="testimonial-user">
+                            <div class="testimonial-user-img">
+                                {{--                                <img src="{{$item->image}}" alt="">--}}
+                            </div>
+                            <div class="testimonial-user-info">
+                                <h4>admin</h4>
+                                <h5>Developer</h5>
+                                {{--                                <h4>{{$item->username}}</h4>--}}
+                                {{--                                    <h5>{{$item->designation}}</h5>--}}
+                            </div>
+                        </div>
+                    </div>
+{{--                    @endforeach--}}
                 </div>
-            </div>       @endforeach
+            </div>
+        </div>
     </section>
     <!-- testimonials section end-->
 @endsection
