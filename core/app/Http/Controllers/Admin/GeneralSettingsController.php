@@ -170,6 +170,6 @@ class GeneralSettingsController extends Controller
       $settings->transfer_charges = $request->charges;
       $settings->fund_transfer = $request->fund_transfer ? 'on' :'off';
       $settings->Update();
-      return back()->with('success','Fund Transfer Settings Updated');
+      return back()->with('success','Fund transfer settings updated');
     }
 }
