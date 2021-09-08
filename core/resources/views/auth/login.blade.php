@@ -59,20 +59,20 @@
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                           </div>
                                           @if (Route::has('password.request'))
-                                              <span><a href="{{ route('password.request') }}" class="btn-blue">Forgot password?</a></span>
+                                              <span><a href="{{ route('password.request') }}" class="text-blue">Forgot password?</a></span>
                                           @endif
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block .btn-blue">LOG IN</button>
+                                    <button type="submit" class="btn btn-blue btn-block .btn-blue">LOG IN</button>
                             </form>
                         </div>
                     </div>
             </div>
-            <div class="col-md-7 login-right" style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{$settings->form_image}});">
+            <div class="col-md-7 login-right" style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{'/'.$settings->form_image}});">
                 <div class="center-container">
                     <div class="login-right-area">
                         <h2>Don't Have an Account Yet?</h2>
                         <p>Register in a few easy steps</p>
-                        <a href="{{ route('register') }}" class="btn btn-primary btn-block .btn-blue">SIGN UP</a>
+                        <a href="{{ route('register') }}" class="btn btn-blue btn-block .btn-blue">SIGN UP</a>
                     </div>
                 </div>
             </div>

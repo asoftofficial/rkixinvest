@@ -21,7 +21,7 @@ class GeneralSettingsController extends Controller
          if($request->hasFile('favicon')){
             $extension = $request->file('favicon')->getClientOriginalExtension();
             $fileName = "favicon_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/web/');
+            $upload_path = 'uploads/web/';
             $full_path = '/uploads/web/'.$fileName;
             $request->file('favicon')->move($upload_path, $fileName);
             $file_path  = $full_path;
@@ -30,7 +30,7 @@ class GeneralSettingsController extends Controller
         if($request->hasFile('dlogo')){
             $extension = $request->file('dlogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/web/');
+            $upload_path = 'uploads/web/';
             $full_path = '/uploads/web/'.$fileName;
             $request->file('dlogo')->move($upload_path, $fileName);
             $file_path  = $full_path;
@@ -39,7 +39,7 @@ class GeneralSettingsController extends Controller
         if($request->hasFile('llogo')){
             $extension = $request->file('llogo')->getClientOriginalExtension();
             $fileName = "logo_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/web/');
+            $upload_path = 'uploads/web/';
             $full_path = '/uploads/web/'.$fileName;
             $request->file('llogo')->move($upload_path, $fileName);
             $file_path  = $full_path;
@@ -48,8 +48,8 @@ class GeneralSettingsController extends Controller
         if($request->hasFile('form_image')){
             $extension = $request->file('form_image')->getClientOriginalExtension();
             $fileName = "form_image_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/web/');
-            $full_path = '/uploads/web/'.$fileName;
+            $upload_path = 'uploads/web/';
+            $full_path = 'uploads/web/'.$fileName;
             $request->file('form_image')->move($upload_path, $fileName);
             $file_path  = $full_path;
             $settings->form_image  = $file_path;

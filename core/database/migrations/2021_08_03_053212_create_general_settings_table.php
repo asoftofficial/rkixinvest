@@ -19,7 +19,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->string('fav_icon')->nullable();
             $table->string('dlogo')->nullable();
             $table->string('llogo')->nullable();
-            $table->string('footer')->default('Rkixinvest');
+            $table->text('footer')->default('Rkixinvest');
             $table->string('email')->default('info@rkixinvest.com');
             $table->string('phone')->default('0900-78-01');
             $table->string('address')->default('joharTown,F block,Lahore');
@@ -34,6 +34,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->enum('transfer_fund',['on','off'])->default('on');
             $table->enum('add_fund',['on','off'])->default('on');
             $table->enum('remove_fund',['on','off'])->default('on');
+            $table->string('form_image')->nullable();
 //            $table->enum('add_remove_funds_from_admin',['on','off'])->default('on');
             $table->enum('kyc',['on','off'])->default('on');
             $table->enum('fund_transfer',['on','off'])->default('off');

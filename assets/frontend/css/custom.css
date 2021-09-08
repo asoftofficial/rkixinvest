@@ -11,6 +11,9 @@
 html,body{
     min-height: 100%;
 }
+*:focus {
+    outline: none;
+}
 header.auth-header{
     background-color: var(--white);
     padding: 39px 24px 24px 24px;
@@ -32,11 +35,16 @@ section {
     background-size: cover;
 }
 .autocar-input{
-    padding: 22px;
+    padding: 10px;
     color: var(--grey);
     border: none;
     background-color: var(--input-bg);
     border-radius: 7px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.autocar-input:focus {
+    outline: none !important;
 }
 select.autocar-input *{
     color: var(--grey);
@@ -52,8 +60,20 @@ select.autocar-input *{
     background-color: var(--darkred);
     color:var(--white);
 }
+.btn-blue{
+    background-color: var(--blue);
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+}
+.btn-blue:hover{
+    color:var(--white);
+}
 .text-red{
     color: var(--red);
+}
+.text-blue{
+    color: var(--blue);
 }
 .text-lightgray{
     color: var(--light-gray);
@@ -63,6 +83,7 @@ a.text-red:hover{
 }
 .center-container{
     margin: 0;
+    padding: 20px;
     width: 100%;
 }
 .section-title-area {
@@ -129,13 +150,20 @@ a.text-red:hover{
 .login-form {
     background: var(--white);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .login-header {
     padding: 39px 20px;
+    position: absolute;
+    top: 0;
 }
 .login-right {
     display: flex;
     align-items: center;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }
 .login-right-area,.login-form-area {
     margin: auto;
@@ -157,6 +185,7 @@ a.text-red:hover{
 .login-form-footer{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .login-right-area{

@@ -9,8 +9,13 @@
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/custom.css') }}">
     @stack('style')
+    <style>
+        body{
+            background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{asset($settings->form_image)}}) !important;
+        }
+    </style>
 </head>
-<body style="background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url({{$settings->form_image}});">
+<body>
     <div id="app" class="body">
         <header class="auth-header">
             <div class="logo">
