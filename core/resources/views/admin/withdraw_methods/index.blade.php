@@ -13,6 +13,7 @@
 @endpush
 @push('script')
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script>
     $(".delete").click(function (e) {
     console.log("asdhsakdash")
@@ -21,8 +22,9 @@
     ).then((willDelete) => {
         if (willDelete) {
             var method_id = $(this).attr('data-id');
-            var url = "{{route('user.destroy.method', 'id')}}";
+            var url = "{{route('admin.destroy.method','id')}}";
             url = url.replace('id', method_id);
+            // console.log(url)
             $("#delete-form").attr('action', url);
             $("#delete-form").submit();
         }
@@ -59,7 +61,13 @@
                                         <td>{{__($method->name)}}</td>
                                         <td data-label="@lang('Method')">
                                             <div class="user">
-                                                <div class="thumb"><img src="{{route('placeholder.image','250x250')}}" alt="@lang('image')" width="100" height="100"></div>
+                                                <div class="thumb">
+                                                    @if (empty($method->image))
+                                                        <img src="{{route('placeholder.image','100x100')}}" alt="@lang('image')" width="100" height="100">
+                                                    @else
+                                                        <img src="{{$method->image}}" alt="@lang('image')" width="100" height="100">
+                                                    @endif
+                                                </div>
                                             </div>
                                         </td>
 
@@ -81,7 +89,7 @@
                                         <td data-label="@lang('Action')">
                                             <a href="{{ route('admin.withdraw.gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
-                                            <a href="#" class="delete btn btn-danger" data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white'></i></a>
+                                            <a href="#" class="delete btn btn-danger mt-1 ml-1" data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white'></i></a>
 
                                         </td>
                                     </tr>
@@ -152,6 +160,8 @@
     </div>
     <!-- /.container-fluid -->
     {{-- delete withdraw method form --}}
-    <form action = "" method = "post" id = "delete-form" > @csrf
-    @method('delete') </form>
+    <form action="" method="post" id="delete-form" >
+        @csrf
+        @method('delete')
+    </form>
 @endsection
