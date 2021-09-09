@@ -48,7 +48,7 @@ $(".delete").click(function (e) {
                     </th>
                     <th scope="col">Email Address
                     </th>
-                    <th scope="col">Amount
+                    <th scope="col">Investments
                     </th>
                     <th scope="col">Actions</th>
                 </tr>
