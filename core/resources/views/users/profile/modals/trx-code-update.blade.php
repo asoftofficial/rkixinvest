@@ -1,21 +1,17 @@
-@extends('users.layouts.default')
-@section('page-title')
-Transaction Code
-@endsection
-@section('page-subtitle')
-Update Trasnfer Code
-@endsection
-@push('style')
-    <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
-@endpush
+<div
+    class="modal fade"
+    id="trxUpdatedModal"
+    tabindex="-1"
+    role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-610" role="document">
+        <div class="modal-content issue-padd">
+            <div class="modal-header pb-0">
+                <h5 class="modal-title text-center" id="exampleModalLabel mt-0">Change Password</h5>
+            </div>
+            <div class="modal-body  pt-0">
 
-@section('content')
-<div class="container-fluid">
-
-<div class="card">
-    <div class="card-header bg-dark">Update Transaction Code</div>
-        <div class="card-body">
-            <form action="{{route('user.transfer.code.update')}}" method="POST">
+                <form action="{{route('user.transfer.code.update')}}" method="POST">
                     @csrf
                     <div class="row justify-content-center">
                        <div class="col-8">
@@ -66,8 +62,7 @@ Update Trasnfer Code
                                     <button type="submit" class="btn btn-dark px-4 round-10 px-5">Update</button>
                                 </div>
                             </form>
-        </div>
-    </div>
-</div>
-    <!-- /.container-fluid -->
-@endsection
+                        </div>
+                    </div>
+                </div>
+            </div>

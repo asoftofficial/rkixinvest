@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\FrontendController::class, 'home']);
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'home'])->name('welcome');
 Route::get('show/verification/form',[App\Http\Controllers\Users\DashboardController::class,'showVerificationForm'])->name('verification_form');
 Route::post('/verify/code',[App\Http\Controllers\Users\DashboardController::class,'checkVerificationForm'])->name('verificationForm.post');
 Route::get('resend/code',[DashboardController::class, 'resendCode'])->name('resend.code');
@@ -56,7 +56,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         //Referrals
         Route::get('/referrals', 'DashboardController@referrals')->name('referrals');
 
-        // Deposit 
+        // Deposit
         Route::get('/deposit/history', 'DepositController@index')->name('deposit');
         Route::get('/deposit/methods', 'DepositController@depositMethods')->name('deposit.methods');
         Route::post('/deposit', 'DepositController@store')->name('deposit.money');
@@ -64,7 +64,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/pay-now', 'DepositController@payNow')->name('pay-now');
         Route::get('/deposit', 'DepositController@index')->name('deposit');
         Route::post('/deposit-manual','DepositController@manualDeposit')->name('deposit.manual');
-        
+
         //Tranfer
         Route::get('/transfer', 'DashboardController@transfer')->name('transfer');
         Route::post('/transfer', 'DashboardController@transferPost')->name('transfer.post');
@@ -78,6 +78,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
         Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');
         Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
+        Route::delete('withdraw/delete/{id}',[WithdrawController::class,'destroy'])->name('destroy.method');
         //investment routes
         Route::get('/investment',[InvestmentController::class,'showUserInvestments'])->name('investment');
     });
@@ -115,12 +116,12 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('show/email/settings',[GeneralSettingsController::class,'showEmailSettings'])->name('show.email.settings');
     Route::post('update/email/settings',[GeneralSettingsController::class,'emailSettings'])->name('update.email.settings');
     Route::post('user/blocked/{id}',[UserController::class,'blocked'])->name('blocked.user');
-   
+
     Route::resource('deposit-gateways', '\App\Http\Controllers\Admin\DepositMethodsController');
     Route::get('slider',[AdminDashboardController::class,'slider'])->name('slider');
     Route::post('slider/update',[AdminDashboardController::class,'updateSlider'])->name('slider.edit');
 
-    
+
     Route::get('withdraw/gateways/create',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'create'])->name('withdraw.gateways.create');
     Route::post('withdraw/gateways/store',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'store'])->name('withdraw.gateways.store');
     Route::put('withdraw/gateway/update/{gateway}',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'update'])->name('withdraw.gateway.update');

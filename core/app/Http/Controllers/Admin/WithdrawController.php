@@ -229,4 +229,10 @@ class WithdrawController extends Controller
         ]);
         return redirect()->route('admin.withdraw.pending')->with('success', 'Withdrawal has been rejected.');
     }
+    public function destroy($id)
+    {
+        $method = Withdrawal::find($id);
+        $method->delete();
+        return back()->with('success','Method has deleted successfully');
+    }
 }

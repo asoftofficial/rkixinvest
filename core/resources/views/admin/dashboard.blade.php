@@ -375,7 +375,7 @@ $(function () {
                             <p>Total Users</p>
                         </div>
                        <div class="icon">
-                            <i class="ion ion-person"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                         <a href="{{route('admin.userprofile.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -405,7 +405,7 @@ $(function () {
                             <p>Total Investors</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                         <a href="{{route('admin.show.total.investors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
