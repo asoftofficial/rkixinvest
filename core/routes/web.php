@@ -79,7 +79,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/withdraw/preview', 'WithdrawController@preview')->name('withdraw.preview');
         Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');
         Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
-        Route::delete('withdraw/delete/{id}',[WithdrawController::class,'destroy'])->name('destroy.method');
+
         //investment routes
         Route::get('/investment',[InvestmentController::class,'showUserInvestments'])->name('investment');
     });
@@ -130,6 +130,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('withdraw/gateway/activate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'activate'])->name('withdraw.method.activate');
     Route::post('withdraw/gateway/deactivate',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'deactivate'])->name('withdraw.method.deactivate');
     Route::get('withdraw/gateways',[\App\Http\Controllers\Admin\WithdrawMethodController::class,'index'])->name('withdraw.gateways');
+    Route::delete('withdraw/delete/{id}','WithdrawController@destroy')->name('destroy.method');
     Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals.post');
     Route::get('general/information',[GeneralSettingsController::class,'generalinfo'])->name('general.info');
     Route::post('general/information/update',[GeneralSettingsController::class,'generalinfoUpdate'])->name('general.info.update');
@@ -155,6 +156,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('withdraw/details/{id}', 'WithdrawController@details')->name('withdraw.details');
     Route::post('withdraw/approve', 'WithdrawController@approve')->name('withdraw.approve');
     Route::post('withdraw/reject', 'WithdrawController@reject')->name('withdraw.reject');
+
 
     //Deposit Routes
     Route::get('deposit/pending', 'DepositController@pending')->name('deposit.pending');

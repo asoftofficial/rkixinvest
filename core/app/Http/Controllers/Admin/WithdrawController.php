@@ -156,7 +156,7 @@ class WithdrawController extends Controller
 
 
 
-        $methodImage =  getImage(imagePath()['withdraw']['method']['path'].'/'. $withdrawal->method->image,'800x800');
+        $methodImage =  getImage(imagePath()['withdraw']['method']['path'].'/'. $withdrawal->method->image,'100x100');
 
         return view('admin.withdraw.detail', compact('pageTitle', 'withdrawal','details','methodImage'));
     }
@@ -229,6 +229,7 @@ class WithdrawController extends Controller
         ]);
         return redirect()->route('admin.withdraw.pending')->with('success', 'Withdrawal has been rejected.');
     }
+
     public function destroy($id)
     {
         $method = Withdrawal::find($id);
