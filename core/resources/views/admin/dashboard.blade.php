@@ -450,7 +450,7 @@ $(function () {
                             <th scope="col">Amount</th>
                             <th scope="col">Status</th>
                             <th scope="col">ROIs </th>
-                            <th scope="col">Roi Date</th>
+                            <th scope="col">Remaining ROIs </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -463,8 +463,8 @@ $(function () {
                                 @else
                                 <td>Expired</td>
                                 @endif
-                                {{-- <td>{{$item->rois->amount}}</td> --}}
-                                {{-- <td>{{$item->rois->roi_date}}</td> --}}
+                                 <td>{{$item->rois->count()}} | {{$item->rois->sum('amount')}} USD</td>
+                                <td>{{$item->rois->where('status',1)->count()}} | {{$item->rois->where('status',1)->sum('amount')}} USD</td>
                             </tr>
                         @endforeach
                     </tbody>
