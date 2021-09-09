@@ -21,10 +21,10 @@
             <div class="logo">
 
                     @if(empty($settings->dlogo))
-                        <a href="{{route('welcome')}}"><img src="{{route('placeholder.image','200x80')}}" alt="logo"/></a>
+                        <img src="{{route('placeholder.image','200x80')}}" alt="logo" />
                     @else
-                        <a href="{{route('welcome')}}"><img src="{{$settings->dlogo}}" alt="logo"></a>
-                    @endif
+                        <a href="{{route('welcome')}}"><img src="{{$settings->dlogo}}" alt="logo">
+                    @endif</a>
             </div>
         </header>
         @yield('content')
