@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\Users\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +35,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/profile', 'DashboardController@user_profile')->name('show.profile');
         Route::post('/update/profile/{id}', 'DashboardController@update_profile5')->name('update.profile');
         Route::post('/change/password','DashboardController@changePassword')->name('update.password');
-        Route::post('/invest','InvestmentController@invest')->name('invest.post');
+        Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', 'TransactionController@index')->name('transactions');
         Route::get('/roi/{id}','RoiController::@index')->name('rois');
         //Referrals
@@ -63,7 +65,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
 
         //investment routes
-        Route::get('/investment','InvestmentController@showUserInvestments')->name('investment');
+        Route::get('/investment',[InvestmentController::class,'showUserInvestments'])->name('investment');
     });
 
 
@@ -165,9 +167,9 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('email-template/send-test-mail', 'EmailTemplateController@sendTestMail')->name('email.template.test.mail');
 
     //investments reporting route
-    Route::get('active/investments','InvestmentController@active_invest')->name('active.investments');
-    Route::get('pending/investments','InvestmentController@pending_invest')->name('pending.investments');
-    Route::delete('investment/delete/{id}','InvestmentController@destroy')->name('investment.destroy');
+    Route::get('active/investments',[InvestmentController::class,'active_invest'])->name('active.investments');
+    Route::get('pending/investments',[InvestmentController::class,'pending_invest'])->name('pending.investments');
+    Route::delete('investment/delete/{id}',[InvestmentController::class,'destroy'])->name('investment.destroy');
     Route::get('total/investors','UserController@totalInvestors')->name('show.total.investors');
     Route::get('active/investors','UserController@activeInvestors')->name('show.active.investors');
 });
