@@ -26,8 +26,8 @@
             class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center align-items-center">
             <div class="image">
                 @if(empty($settings->dlogo))
-                            <img src="{{route('placeholder.image','200x80')}}"
-                                alt="" />
+                    <a href="{{route('user.dashboard')}}"><img src="{{route('placeholder.image','200x80')}}"
+                                alt="" /></a>
                 @else
                      <a href="{{route('user.dashboard')}}"><img
                     src="{{$settings->dlogo}}"
