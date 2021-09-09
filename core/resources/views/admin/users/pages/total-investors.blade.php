@@ -55,6 +55,11 @@ $(".delete").click(function (e) {
             </thead>
             <tbody>
                 @foreach($users as $user)
+                    @if($user->investments->count()==0)
+                        @php
+                        continue;
+                        @endphp
+                    @endif
                     <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->username}}</td>

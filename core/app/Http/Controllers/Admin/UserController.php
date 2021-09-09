@@ -231,7 +231,7 @@ class UserController extends Controller {
       //active investors
     public function activeInvestors()
     {
-        $active_investors = Investment::where('status',1)->get();
+        $active_investors = User::all();
         return view('admin.users.pages.active-investors',compact('active_investors'));
     }
 

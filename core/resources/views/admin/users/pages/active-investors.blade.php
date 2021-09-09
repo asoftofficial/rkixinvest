@@ -21,18 +21,20 @@ Active Investors
                 <tr>
                     <th scope="col">#id
                     </th>
-                    <th scope="col">Investments
-                    </th>
-                    <th scope="col">Status
+                    <th scope="col">Active Investments
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($active_investors as $item)
+                @foreach($active_investors as $user)
+                        @php
+                        if($user->investments->where('status',1)->count()){
+                            continue;
+                        }
+                        @endphp
                 <tr>
-                    <td>{{$item->id}}</td>
-                    <td>{{$item->count()}} | {{$item->sum('amount').' '.'USD'}}</td>
-                    <td>Active</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->investments()->where('status',1)->count()}} | {{$user->investments->where('status',1)->sum('amount').' '.'USD'}}</td>
                 </tr>
                 @endforeach
             </tbody>
