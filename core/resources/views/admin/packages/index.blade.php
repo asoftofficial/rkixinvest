@@ -71,7 +71,7 @@ $(".delete").click(function (e) {
                             <td>{{$item->roi}}</td>
                             <td>{{$item->roi_type}}</td>
                             <td style="min-width: 256px; text-align: right">
-                                <a href="#" class="mr-2"><i class='fas fa-eye' style='font-size:20px;color:var(--gray)'></i></a>
+                                {{-- <a href="#" class="mr-2"><i class='fas fa-eye' style='font-size:20px;color:var(--gray)'></i></a> --}}
                                 <a href="#" class="btn btn-info blue-bg round-10 px-5 mr-2" data-target="#editpackagesModal-{{$item->id}}" data-toggle="modal">Edit</a>
                                 <a href="#" class="delete" data-id="{{$item->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:var(--blue)'></i></a>
                             </td>
