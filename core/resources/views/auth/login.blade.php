@@ -1,4 +1,3 @@
-
 @extends('layouts.auth-layout')
 @section('page-title')
     Log In
