@@ -12,6 +12,7 @@ use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\rewardController;
 use App\Http\Controllers\RoiController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController as ControllersTestimonialController;
 use App\Http\Controllers\Users\DashboardController;

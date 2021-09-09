@@ -12,6 +12,7 @@
 
 @endpush
 @push('script')
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
     $(".delete").click(function (e) {
     console.log("asdhsakdash")
@@ -58,7 +59,7 @@
                                         <td>{{__($method->name)}}</td>
                                         <td data-label="@lang('Method')">
                                             <div class="user">
-                                                <div class="thumb"><img src="{{ getImage(imagePath()['withdraw']['method']['path'].'/'. $method->image,imagePath()['withdraw']['method']['size'])}}" alt="@lang('image')" width="200"></div>
+                                                <div class="thumb"><img src="{{route('placeholder.image','250x250')}}" alt="@lang('image')" width="100" height="100"></div>
                                             </div>
                                         </td>
 
@@ -80,17 +81,8 @@
                                         <td data-label="@lang('Action')">
                                             <a href="{{ route('admin.withdraw.gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
-                                            @if($method->status == 1)
-                                                <a href="javascript:void(0)" class="btn btn-danger deactivateBtn delete ml-1 mt-1" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            @else
-                                                <a href="" class="btn btn-success delete activateBtn  ml-1"
-                                                   data-toggle="tooltip" data-original-title="@lang('Enable')"
-                                                   data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            @endif
+                                            <a href="#" class="delete btn btn-danger" data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white'></i></a>
+
                                         </td>
                                     </tr>
                                 @empty
