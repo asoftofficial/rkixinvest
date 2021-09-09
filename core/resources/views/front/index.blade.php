@@ -20,6 +20,11 @@
             font-size: 20px;
             }
         }
+            @media(max-width: 810px){
+                .main-nav {
+                    position: unset !important;
+                }
+            }
             .testimonials-carousal {
                 display: flex;
                 flex-wrap: wrap;
