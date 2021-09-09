@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 @section('page-title')
-Active Investments
+Active Investors
 @endsection
 @push('style') <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
 @section('content')
@@ -21,7 +21,7 @@ Active Investments
                 <tr>
                     <th scope="col">#id
                     </th>
-                    <th scope="col">Amount
+                    <th scope="col">Investments
                     </th>
                     <th scope="col">Status
                     </th>
@@ -31,7 +31,7 @@ Active Investments
                 @foreach($active_investors as $item)
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->amount}}</td>
+                    <td>{{$item->count()}} | {{$item->sum('amount').' '.'USD'}}</td>
                     <td>Active</td>
                 </tr>
                 @endforeach

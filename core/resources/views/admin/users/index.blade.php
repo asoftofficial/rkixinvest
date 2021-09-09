@@ -54,7 +54,6 @@ $(".delete").click(function (e) {
                     </th>
                     <th scope="col">Email Address
                     </th>
-                    <th scope="col">Role</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -66,7 +65,6 @@ $(".delete").click(function (e) {
                     <td>{{$item->first_name}}</td>
                     <td>{{$item->last_name}}</td>
                     <td>{{$item->email}}</td>
-                    <td>{{$item->role}}</td>
 
                     <td style="min-width: 256px">
                         <a

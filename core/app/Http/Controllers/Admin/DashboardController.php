@@ -75,7 +75,6 @@ class DashboardController extends Controller
     public function editProfile($id)
     {
         $admin = User::find($id);
-        dd($admin);
         return view('admin.profile.modals.edit-profile');
     }
 

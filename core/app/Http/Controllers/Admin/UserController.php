@@ -225,8 +225,8 @@ class UserController extends Controller {
     //total investors
     public function totalInvestors()
     {
-        $total_investors = Investment::all();
-        return view('admin.users.pages.total-investors',compact('total_investors'));
+        $users = User::all();
+        return view('admin.users.pages.total-investors',compact('users'));
     }
       //active investors
     public function activeInvestors()
