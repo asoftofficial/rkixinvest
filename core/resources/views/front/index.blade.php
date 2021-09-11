@@ -7,19 +7,19 @@
     @push('style')
         <style>
             span.step-icon {
-            align-self: center;
-            position: relative;
-            top: 30px;
-        }
+                align-self: center;
+                position: relative;
+                top: 30px;
+            }
 
-       @media screen and (max-width: 768px) {
-          span.step-icon {
-            top: 10px;
+            @media screen and (max-width: 768px) {
+                span.step-icon {
+                    top: 10px;
+                }
+                .step-inner p {
+                    font-size: 20px;
+                }
             }
-            .step-inner p {
-            font-size: 20px;
-            }
-        }
             @media(max-width: 810px){
                 .main-nav {
                     position: unset !important;
@@ -91,14 +91,14 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-deposit-tab" data-toggle="tab" href="#nav-deposit"
-                            role="tab" aria-controls="nav-deposit" aria-selected="true">Deposits</a>
+                           role="tab" aria-controls="nav-deposit" aria-selected="true">Deposits</a>
                         <a class="nav-item nav-link" id="nav-withdrawal-tab" data-toggle="tab" href="#nav-withdrawal"
-                            role="tab" aria-controls="nav-withdrawal" aria-selected="false">Withdrawals</a>
+                           role="tab" aria-controls="nav-withdrawal" aria-selected="false">Withdrawals</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-deposit" role="tabpanel"
-                        aria-labelledby="nav-deposit-tab">
+                         aria-labelledby="nav-deposit-tab">
                         <h2>Latest Deposits</h2>
                         <div class="table table-responsive bg-light round-20">
                             <table class="table table-responsive">
@@ -151,22 +151,22 @@
             <h2 class="text-blue">What Client Say</h2>
             <div class="testimonials-carousal">
                 @foreach ($testimonials as $item)
-                <div class="testimonials-inner">
-                    <div class="testimonial">
-                        <p>
-                            {{$item->content}}
-                        </p>
-                        <div class="testimonial-user">
-                            <div class="testimonial-user-img">
-                                <img src="{{$item->image}}" alt="">
-                            </div>
-                            <div class="testimonial-user-info">
-                                <h4>{{$item->username}}</h4>
+                    <div class="testimonials-inner">
+                        <div class="testimonial">
+                            <p>
+                                {{$item->content}}
+                            </p>
+                            <div class="testimonial-user">
+                                <div class="testimonial-user-img">
+                                    <img src="{{$item->image}}" alt="">
+                                </div>
+                                <div class="testimonial-user-info">
+                                    <h4>{{$item->username}}</h4>
                                     <h5>{{$item->designation}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

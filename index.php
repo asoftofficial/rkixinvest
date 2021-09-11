@@ -4,7 +4,12 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
+$path = __DIR__ . '/core/.env';
+if(!file_exists($path))
+{
+    return require_once __DIR__.'/lib/index.php';
 
+}
 /*
 |--------------------------------------------------------------------------
 | Check If Application Is Under Maintenance
