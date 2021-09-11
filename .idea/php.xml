@@ -18,14 +18,12 @@
       <path value="$PROJECT_DIR$/core/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/core/vendor/theseer/tokenizer" />
-      <path value="$PROJECT_DIR$/core/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/core/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/core/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/core/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/core/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/core/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/core/vendor/composer" />
-      <path value="$PROJECT_DIR$/core/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/core/vendor/sendgrid/php-http-client" />
       <path value="$PROJECT_DIR$/core/vendor/sendgrid/sendgrid" />
       <path value="$PROJECT_DIR$/core/vendor/fideloper/proxy" />
@@ -112,7 +110,6 @@
       <path value="$PROJECT_DIR$/core/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/core/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/core/vendor/symfony/event-dispatcher" />

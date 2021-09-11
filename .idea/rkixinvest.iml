@@ -24,14 +24,12 @@
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/theseer/tokenizer" />
-      <excludeFolder url="file://$MODULE_DIR$/core/vendor/barryvdh/laravel-debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/fakerphp/faker" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/core/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/sendgrid/php-http-client" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/sendgrid/sendgrid" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/fideloper/proxy" />
@@ -118,7 +116,6 @@
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/css-selector" />
-      <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/deprecation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/error-handler" />
       <excludeFolder url="file://$MODULE_DIR$/core/vendor/symfony/event-dispatcher" />
