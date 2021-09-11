@@ -64,11 +64,11 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2 class="text-white">TOTAL ROI</h2>
-            <p class="text-white">All ROI</p>
+            <h2 class="text-white">TOTAL ROIs</h2>
+            <p class="text-white">All ROIs</p>
         </div>
         <div class="dashboard-card-stat">
-            USD {{auth()->user()->rois()->sum('amount')}}
+             {{round(auth()->user()->rois()->count(),2)}}
         </div>
     </div>
 </div>

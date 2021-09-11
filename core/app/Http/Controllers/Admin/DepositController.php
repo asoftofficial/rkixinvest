@@ -169,7 +169,7 @@ class DepositController extends Controller
         $deposit->feedback = $request->details;
         $deposit->save();
         $user = User::find($deposit->user_id);
-        $user->balance += $deposit->ammount;
+        $user->balance += $deposit->amount;
         $user->update();
         $general = GeneralSettings::first();
         sendEmail($deposit->user, 'DEPOSIT_APPROVE', [
@@ -190,7 +190,7 @@ class DepositController extends Controller
 
     public function reject(Request $request)
     {
-        
+
         $general = GeneralSettings::first();
         $request->validate(['id' => 'required|integer']);
         $deposit = Deposit::where('id',$request->id)->where('status',2)->firstOrFail();

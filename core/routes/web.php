@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\RoiController as ControllersRoiController;
 use App\Http\Controllers\Users\DashboardController;
+use App\Http\Controllers\Users\RoiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +36,11 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::get('/packages', 'PackagesController@index')->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/profile', 'DashboardController@user_profile')->name('show.profile');
-        Route::post('/update/profile/{id}', 'DashboardController@update_profile5')->name('update.profile');
+        Route::post('/update/profile/{id}', 'DashboardController@update_profile')->name('update.profile');
         Route::post('/change/password','DashboardController@changePassword')->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', 'TransactionController@index')->name('transactions');
-        Route::get('/roi/{id}','RoiController::@index')->name('rois');
+        Route::get('/roi/{id}',[ControllersRoiController::class,'index'])->name('rois');
         //Referrals
         Route::get('/referrals', 'DashboardController@referrals')->name('referrals');
 

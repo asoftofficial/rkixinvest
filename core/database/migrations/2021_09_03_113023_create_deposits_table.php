@@ -14,6 +14,7 @@ class CreateDepositsTable extends Migration
     public function up()
     {
         Schema::create('deposits', function (Blueprint $table) {
+            $table->unsignedBigInteger('id');
             $table->foreignId('method_id');
             $table->foreignId('user_id');
             $table->decimal('amount',28,8)->default(0.00000000);
