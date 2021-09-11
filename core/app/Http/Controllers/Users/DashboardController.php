@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Session;
 class DashboardController extends Controller
 {
     public function index(){
-        $data['investments'] = Investment::latest()->paginate(10);
+        $data['investments'] = Auth::user()->investments;
         return view('users.dashboard',$data);
     }
     public function account(){
@@ -70,7 +70,7 @@ class DashboardController extends Controller
         if($request->hasFile('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
             $fileName = "users_".rand(11111,99999).'_'.time().'_'.substr($request->name,0, 6).'.'.$extension;
-            $upload_path = public_path('uploads/users/');
+            $upload_path = 'uploads/users/';
             $full_path = '/uploads/users/'.$fileName;
             $check = $request->file('image')->move($upload_path, $fileName);
             $file_path  = $full_path;
