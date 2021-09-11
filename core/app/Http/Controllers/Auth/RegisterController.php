@@ -67,16 +67,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'username'=> ['required','unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'country' => ['required'],
-            'pcode' => ['required','integer'],
-            'password' => ['required', 'string', 'min:6'],
-            'terms' => ['required'],
-        ]);
+        // Validator::make($data, [
+        //     'first_name' => ['required', 'string', 'max:255'],
+        //     'last_name' => ['required', 'string', 'max:255'],
+        //     'username'=> ['required','unique:users'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'country' => ['required'],
+        //     'pcode' => ['required','integer'],
+        //     'password' => ['required', 'string', 'min:6'],
+        //     'terms' => ['required'],
+        // ]);
     }
 
     /**
@@ -87,6 +87,16 @@ class RegisterController extends Controller
      */
     protected function register(Request $request)
     {
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'username'=> ['required','unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'country' => ['required'],
+            'pcode' => ['required','integer'],
+            'password' => ['required', 'string', 'min:6'],
+            'terms' => ['required'],
+        ]);
         $set = GeneralSettings::first();
         $getsponser = User::where('username',$request->referral)->first();
         $sponserId = empty($getsponser) ? "1" : $getsponser->id;

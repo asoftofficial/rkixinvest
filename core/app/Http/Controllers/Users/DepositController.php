@@ -105,7 +105,7 @@ class DepositController extends Controller
         $transaction->user_id = $deposit->user_id;
         $transaction->amount = $deposit->amount;
         $transaction->type = 1;
-        $transaction->description = showAmount($deposit->final_amount) . ' ' . $deposit->currency . ' Withdraw Via ' . $deposit->method->name;
+        $transaction->description = showAmount($deposit->final_amount) . ' ' . $deposit->currency . ' Deposit Via ' . $deposit->method->name;
         $transaction->save();
 
         sendEmail($user, 'SUCCESSFULLY ADDED DEPOSIT', [
