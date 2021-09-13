@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <title>Software Install Wizard By Rkixtech</title>
     <style>
         /*custom font*/
@@ -649,6 +651,7 @@
                                         echo '<div class="alert-danger alert">Admin Email Update Failed!</div>';
                                     }
                                     echo '<div class="install-success">Installation Completed... <strong> Now Delete lib Folder From Script.</strong>  <a href="/">Visit Website</a></div>';
+                                    echo"<script>window.location.href=window.location.origin</script>";
                                 }
                             }
                         }else{
@@ -858,8 +861,15 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<?php
+$path = __DIR__ . '../core/.env';
+if(file_exists($path))
+{
+    echo"<script>$('#msform').hide();window.location.href=window.location.origin</script>";
+
+}
+?>
+
 <script>
     $(document).ready(function ($) {
         "use strict";
