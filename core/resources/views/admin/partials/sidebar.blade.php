@@ -142,7 +142,7 @@
                     class="nav-link  @if(Route::currentRouteName()=='admin.slider' ||Route::currentRouteName()=='admin.aboutus.settings' ||Route::currentRouteName()=='admin.how.to.settings' ||Route::currentRouteName()=='admin.testimonial.index') active blue-nav @endif">
                     <img src="{{asset('assets/backend/img/icons/sections-icon.png')}}" alt="">
                         <p>
-                        manage section
+                        Manage Section
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>

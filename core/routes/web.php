@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\RoiController as ControllersRoiController;
 use App\Http\Controllers\Users\DashboardController;
@@ -106,8 +107,8 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('user/blocked/{id}','UserController@blocked')->name('blocked.user');
 
     Route::resource('deposit-gateways', '\App\Http\Controllers\Admin\DepositMethodsController');
-    Route::get('slider','AdminDashboardController@slider')->name('slider');
-    Route::post('slider/update','AdminDashboardController@updateSlider')->name('slider.edit');
+    Route::get('slider',[AdminDashboardController::class,'slider'])->name('slider');
+    Route::post('slider/update',[AdminDashboardController::class,'updateSlider'])->name('slider.edit');
 
 
     Route::get('withdraw/gateways/create','WithdrawMethodController@create')->name('withdraw.gateways.create');
