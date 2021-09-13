@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\Homepage;
 use App\Models\Slider;
 use App\Models\SocialLink;
@@ -19,7 +20,7 @@ class FrontendController extends Controller
         $data['testimonials'] = Testimonial::all();
         $data['sliders'] = Slider::paginate(1);
         $data['withdrawals'] = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
-        // $deposit_amount = Transaction::where('trx_type','deposit')->get();
+        $data['deposits'] = Deposit::all();
         $data['emptyMessage'] = "No withdraws found";
         return view('front.index',$data);
     }

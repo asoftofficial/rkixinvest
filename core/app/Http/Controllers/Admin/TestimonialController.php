@@ -40,7 +40,7 @@ class TestimonialController extends Controller
             'designation'=>$request->designation,
             'image' =>  $file_path,
         ]);
-        return back()->with('success','you have created testimonial successfully');
+        return back()->with('success','You have created testimonial successfully');
         // $testimonials = new Testimonial;
         // dd($testimonials);
         // $testimonials->username = $request->username;
@@ -69,13 +69,13 @@ class TestimonialController extends Controller
         $testimonials->designation = $request->designation;
         $testimonials->content = $request->description;
         $testimonials->update();
-        return back()->with('success','testimonial updated successfully');
+        return back()->with('success','Testimonial updated successfully');
     }
 
     public function destroy($id)
     {
         $testimonial = Testimonial::find($id);
         $testimonial->delete();
-        return back()->with('success','testimonial deleted');
+        return back()->with('success','Testimonial Deleted');
     }
 }

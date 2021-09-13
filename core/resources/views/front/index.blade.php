@@ -107,11 +107,17 @@
                                     <th>Amount</th>
                                     <th>Gateway</th>
                                 </tr>
-                                <tr>
-                                    <td>John Smith</td>
-                                    <td>23000$</td>
-                                    <td><img src="{{ asset('assets/frontend/images/paypal-logo.png') }}" alt=""></td>
-                                </tr>
+                                @forelse($deposits as $deposit)
+                                    <tr>
+                                        <td>{{$deposit->user->username}}</td>
+                                        <td>{{$deposit->amount}}$</td>
+                                        <td>{{$deposit->method->name}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="100%">{{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>

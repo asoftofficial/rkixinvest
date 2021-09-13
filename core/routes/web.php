@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\RoiController as ControllersRoiController;
 use App\Http\Controllers\Users\DashboardController;
@@ -123,10 +124,10 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('general/information','GeneralSettingsController@generalinfo')->name('general.info');
     Route::post('general/information/update','GeneralSettingsController@generalinfoUpdate')->name('general.info.update');
     Route::post('social/links/update','GeneralSettingsController@sociallinks')->name('social.links.update');
-    Route::get('frontend/aboutus','HomepageController@about')->name('aboutus.settings');
-    Route::post('frontend/aboutus/update','HomepageController@updateAbout')->name('aboutus.update.settings');
-    Route::get('frontend/steps','HomepageController@steps')->name('how.to.settings');
-    Route::post('frontend/how/to/update','HomepageController@updateHowto')->name('how.to.update.settings');
+    Route::get('frontend/aboutus',[HomepageController::class,'about'])->name('aboutus.settings');
+    Route::post('frontend/aboutus/update',[HomepageController::class,'updateAbout'])->name('aboutus.update.settings');
+    Route::get('frontend/steps',[HomepageController::class,'steps'])->name('how.to.settings');
+    Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
     Route::get('frontend/testimonial','TestimonialController@index')->name('testimonial.index');
     Route::post('frontend/testimonial/store','TestimonialController@store')->name('testimonial.store');
     Route::get('frontend/testimonial/show/{id}','TestimonialController@show')->name('testimonial.show');
