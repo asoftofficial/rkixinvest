@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Software Install Wizard By Xgenious</title>
+    <title>Software Install Wizard By Rkixtech</title>
     <style>
         /*custom font*/
         @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap');
@@ -13,7 +13,7 @@
         :root {
             --heading-color: #333;
             --paragraph-color: #777;
-            --main-color-one: #73cb01;
+            --main-color-one: #018bcb;
             --secondary-color: #30373f;
             --body-font: 'Nunito', sans-serif;;
         }
