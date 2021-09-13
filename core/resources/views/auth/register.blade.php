@@ -13,6 +13,9 @@
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     top: 10px;
 }
+.label-required{
+    font-size: 20px;
+}
 </style>
 @endpush
 @push('script')
@@ -50,7 +53,7 @@ $("#username").on({
         </div>
         <div class="row">
             <div class="col-md-6">
-            <label for="fname" class="text-dark">First Name</label>
+            <label for="fname" class="text-dark">First Name<span class="label-required  text-danger">*</span></label>
                 <input id="fname" name="first_name"  value="{{ old('first_name') }}" type="text" class="form-control autocar-input @error('first_name') is-invalid @enderror" placeholder="First name">
                 @error('first_name')
                     <span class="invalid-feedback" role="alert">
@@ -59,7 +62,7 @@ $("#username").on({
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="lname" class="text-dark">Last Name</label>
+                <label for="lname" class="text-dark">Last Name<span class="label-required  text-danger">*</span></label>
                 <input id="lname" name="last_name" value="{{ old('last_name') }}" type="text" class="form-control autocar-input @error('last_name') is-invalid @enderror" placeholder="Last name">
                 @error('last_name')
                     <span class="invalid-feedback" role="alert">
@@ -70,7 +73,7 @@ $("#username").on({
         </div>
         <div class="row">
             <div class="col-md-6">
-                <label for="username" class="text-dark">User Name</label>
+                <label for="username" class="text-dark">Username<span class="label-required  text-danger">*</span></label>
                 <input id="username" name="username" value="{{ old('username') }}" type="text" class="form-control autocar-input @error('username') is-invalid @enderror" placeholder="Username">
                 @error('username')
                     <span class="invalid-feedback" role="alert">
@@ -79,7 +82,7 @@ $("#username").on({
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="email" class="text-dark">Email</label>
+                <label for="email" class="text-dark">Email<span class="label-required  text-danger">*</span></label>
                 <input id="email" name="email" type="text" class="form-control autocar-input  @error('email') is-invalid @enderror" placeholder="Email"  value="{{ old('email') }}">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -109,7 +112,7 @@ $("#username").on({
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="email" class="text-dark">Referral</label>
+                <label for="email" class="text-dark">Referral<span class="label-required  text-danger">*</span></label>
                 <input id="text" name="referral" type="text" class="form-control autocar-input  @error('referral') is-invalid @enderror" placeholder="Referral"  value="{{ old('referral',$sponser->username) }}">
                 @error('referral')
                     <span class="invalid-feedback" role="alert">
@@ -121,15 +124,15 @@ $("#username").on({
         <div class="row">
             <div class="col-md-9">
                 <label for="Address" class="text-dark">Address</label>
-                <input id="Address" name="address" type="text" class="form-control autocar-input mb-1 @error('Address') is-invalid @enderror" placeholder="Address">
-                @error('Address')
+                <input id="Address" name="address" type="text" class="form-control autocar-input mb-1 @error('address') is-invalid @enderror" placeholder="address">
+                @error('address')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
             <div class="col-md-3">
-                <label for="pcode" class="text-dark">Post code</label>
+                <label for="pcode" class="text-dark">Post code<span class="label-required  text-danger">*</span></label>
                 <input id="pcode" name="pcode" type="text" class="form-control autocar-input mb-1 @error('pcode') is-invalid @enderror" placeholder="Post code">
                 @error('pcode')
                     <span class="invalid-feedback" role="alert">
@@ -140,7 +143,7 @@ $("#username").on({
         </div>
         <div class="row">
             <div class="col-md-12 mb-1">
-                <label for="password" class="text-dark">Password</label>
+                <label for="password" class="text-dark">Password<span class="label-required  text-danger">*</span></label>
                 <input id="password" name="password" type="password" class="form-control autocar-input mb-1 @error('email') is-invalid @enderror" placeholder="Password">
                 @error('password')
                     <span class="invalid-feedback" role="alert">

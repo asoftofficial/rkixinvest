@@ -43,12 +43,20 @@ $('#investModal').on('show.bs.modal', function(e) {
            </div>
            <div class="features">
                <li>
-                   <span class="list-name">Return on Invest {{ $pack->roi }}$</span>
+                   <span class="list-name">Return on Invest</span>
                    <span class="icon check"><i class="fas fa-check-circle"></i></span>
                </li>
                <li>
+                   <span class="list-name">Package Duration </span>
+                   <span class="icon check">{{$pack->duration}} {{$pack->duration_type}}@if($pack->duration > 1)s @endif</span>
+               </li>
+               <li>
                    <span class="list-name">{{ $pack->roi_type }} ROI</span>
+<<<<<<< HEAD
+                   <span class="icon check text-bold">{{showAmount($pack->roi/$pack->duration,2)}}</span>
+=======
                    <span class="icon check text-bold">{{$pack->roi.'%' }}</span>
+>>>>>>> 07466f500dc5fec6b4281c9332b512f8ec9d7b65
                </li>
                <button class="btn btn-info blue-bg round-10 invest"  data-toggle="modal" data-target="#investModal" data-id="{{ $pack->id }}">Invest Now</button>
            </div>

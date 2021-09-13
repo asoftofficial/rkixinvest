@@ -65,7 +65,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($deposits as $withdraw)
+                                @forelse($deposits as $deposit)
                                     @php
                                         $details = ($deposit->withdraw_information != null) ? json_encode($deposit->withdraw_information) : null;
                                     @endphp
