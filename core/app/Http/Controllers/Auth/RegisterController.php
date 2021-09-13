@@ -94,6 +94,11 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'country' => ['required'],
             'pcode' => ['required','integer'],
+<<<<<<< HEAD
+            'address' => ['required'],
+            'referral' => ['required'],
+=======
+>>>>>>> 07466f500dc5fec6b4281c9332b512f8ec9d7b65
             'password' => ['required', 'string', 'min:6'],
             'terms' => ['required'],
         ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use App\Models\GeneralSettings;
 use App\Models\Investment;
 use App\Models\Slider;
@@ -33,7 +34,12 @@ class DashboardController extends Controller
         $active_investors = Investment::select('user_id')->where('status',1)->distinct()->get()->count();
         //investments
         $active_investments = Investment::where('status',1)->with(['rois'])->get();
-    	return view('admin.dashboard',compact('deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
+        //getting total deposits records
+        $total_deposits = Deposit::all()->count();
+        $completed_deposits = Deposit::where('status',1)->count();
+        $pending_deposits = Deposit::where('status',2)->count();
+        $canceled_deposits = Deposit::where('status',3)->count();
+    	return view('admin.dashboard',compact('canceled_deposits','pending_deposits','completed_deposits','total_deposits','deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
     }
     public function profile(){
     	return view('admin.profile');
