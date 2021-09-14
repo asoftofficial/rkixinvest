@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\ReferralbonusController;
 use App\Http\Controllers\RoiController as ControllersRoiController;
 use App\Http\Controllers\Users\DashboardController;
 use App\Http\Controllers\Users\RoiController;
@@ -87,7 +88,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('user/funds','UserController@showFundsForm')->name('show.fund');
     Route::post('add/funds','UserController@addFund')->name('add.fund');
     Route::post('sub/funds','UserController@subFund')->name('sub.fund');
-    Route::get('referral/bonus','ReferralbonusController@refbonus')->name('referral.bonus');
+    Route::get('referral/bonus',[ReferralbonusController::class,'refbonus'])->name('referral.bonus');
     Route::get('active/users','UserController@activeUsers')->name('show.active.users');
 
     //reward routes
@@ -120,7 +121,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('withdraw/gateway/deactivate','WithdrawMethodController@deactivate')->name('withdraw.method.deactivate');
     Route::get('withdraw/gateways','WithdrawMethodController@index')->name('withdraw.gateways');
     Route::delete('withdraw/delete/{id}','WithdrawController@destroy')->name('destroy.method');
-    Route::post('referrals','ReferralbonusController@update')->name('referrals.post');
+    Route::post('referrals',[ReferralbonusController::class,'update'])->name('referrals.post');
     Route::get('general/information','GeneralSettingsController@generalinfo')->name('general.info');
     Route::post('general/information/update','GeneralSettingsController@generalinfoUpdate')->name('general.info.update');
     Route::post('social/links/update','GeneralSettingsController@sociallinks')->name('social.links.update');
