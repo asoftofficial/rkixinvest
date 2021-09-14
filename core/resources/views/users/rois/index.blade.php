@@ -35,7 +35,7 @@ Welcome back,
                                                 @foreach ($investment->rois as $roi)
                                                     <tr>
                                                         <td>{{$roi->investment_id}}</td>
-                                                        <td>{{$roi->amount}}</td>
+                                                        <td>{{showAmount($roi->amount,2)}}</td>
                                                         <td>{{$roi = $roi->status==1 ? 'Pending' : 'Received'}}</td>
                                                         {{-- <td>{{dd($roi->date)}}</td> --}}
                                                     </tr>

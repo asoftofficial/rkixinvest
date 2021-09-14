@@ -15,7 +15,6 @@
                     action="{{route('user.update.password',$user->id)}}"
                     method="POST">
                     @csrf
-                    @method('put')
                     <div class="row justify-content-center">
                        <div class="col-8">
                            <h4 class="input-label mt-2">Old password</h4>

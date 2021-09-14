@@ -40,7 +40,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/profile', 'DashboardController@user_profile')->name('show.profile');
         Route::post('/update/profile/{id}', 'DashboardController@update_profile')->name('update.profile');
-        Route::post('/change/password','DashboardController@changePassword')->name('update.password');
+        Route::post('/change/password',[DashboardController::class,'changePassword'])->name('update.password');
         Route::post('/invest',[InvestmentController::class,'invest'])->name('invest.post');
         Route::get('/transactions', 'TransactionController@index')->name('transactions');
         Route::get('/roi/{id}',[ControllersRoiController::class,'index'])->name('rois');
