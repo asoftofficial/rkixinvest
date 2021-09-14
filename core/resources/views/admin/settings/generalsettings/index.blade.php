@@ -157,33 +157,33 @@ General Settings
     </div>
 
 {{-- Reward settings --}}
-<div class="card">
-    <div class="card-header bg-dark">Reward System Settings</div>
-    <div class="card-body">
-         <form action="{{route('admin.reward.settings')}}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="gap">
-                            <h4 class="input-label mt-2">Reward System</h4>
-                            <div class="">
-                                <input type="checkbox" class="form-control bg-light round-10 border-0 switch-button"
-                                     name="reward"
-                                    @if($settings->reward_system == 'on') checked @endif>
+    {{-- <div class="card">
+        <div class="card-header bg-dark">Reward System Settings</div>
+        <div class="card-body">
+            <form action="{{route('admin.reward.settings')}}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="gap">
+                                <h4 class="input-label mt-2">Reward System</h4>
+                                <div class="">
+                                    <input type="checkbox" class="form-control bg-light round-10 border-0 switch-button"
+                                        name="reward"
+                                        @if($settings->reward_system == 'on') checked @endif>
+                                </div>
+                                @error('reward')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-                            @error('reward')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
                         </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center text-center" id="reward_div">
-                    <button type="submit" class="btn btn-primary btn-blue px-4 px-5 text-center">Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
+                    <div class="d-flex justify-content-center text-center" id="reward_div">
+                        <button type="submit" class="btn btn-primary btn-blue px-4 px-5 text-center">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div> --}}
 </div>    <!-- /.container-fluid -->
 @endsection
