@@ -34,8 +34,8 @@ Route::get('ajax-chart-data', [App\Http\Controllers\ChartDataController::class,'
 // User Routes
 $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','checkInvestments'])->prefix('user')->name('user.')->group(function () {
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-        Route::get('/my-account', 'DashboardController@account')->name('account');
+        Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+        Route::get('/my-account', [DashboardController::class,'account'])->name('account');
         Route::get('/packages', 'PackagesController@index')->name('packages');
         Route::post('update-account', 'DashboardController@updateAccount')->name('update-account');
         Route::get('/profile', 'DashboardController@user_profile')->name('show.profile');
@@ -77,7 +77,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
 
 $adminNameSpace = 'App\Http\Controllers\Admin';
 Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('view/profile','AdminDashboardController@viewProfile')->name('profile');
+    Route::get('view/profile',[AdminDashboardController::class,'viewProfile'])->name('profile');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('packages','PackageController');
     //user routes

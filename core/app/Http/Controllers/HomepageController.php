@@ -91,7 +91,7 @@ class HomepageController extends Controller
         $data->step3 = $request->step3;
         $data->step_content = $request->description;
         $data->update();
-        return back()->with('success','how to section updated successfyully');
+        return back()->with('success','how to section updated successfully');
     }
 
 
