@@ -156,11 +156,11 @@ $(function () {
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dashboard-card-header">
-            <h2 class="text-white">TOTAL EARNINGS</h2>
-            <p class="text-white">all income</p>
+            <h2 class="text-white">Pending Withdrawals</h2>
+            <p class="text-white">all pending withdrawals</p>
         </div>
         <div class="dashboard-card-stat">
-            {{$earning}}
+            {{$pending_withd}}
         </div>
     </div>
 </div>
