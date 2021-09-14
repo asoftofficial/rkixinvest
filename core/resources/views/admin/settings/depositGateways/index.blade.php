@@ -99,7 +99,7 @@ div#refrel_div {
 @section('content')
 <div class = "container-fluid" > {{-- Section Search Area    --}}
     <section class = "admin-search-area" > <div class="admin-search-left">
-    
+
 </div>
 <div class="admin-search-right">
     <div class="admin-section-search-area input-group mb-3">
@@ -145,8 +145,8 @@ div#refrel_div {
                     <td>{{$pg->min_ammount}}</td>
                     <td>{{$pg->max_ammount}}</td>
                     <td>{{$pg->charge}}</td>
-                   
-                    <td> 
+
+                    <td>
                         <div class="fund-button">
                             <div class="fund-label">
                             </div>
@@ -158,12 +158,12 @@ div#refrel_div {
                         </div>
                     </td>
                     <td style="min-width: 256px; text-align: right">
-                        
+
                         <a href="#"
                             class="btn btn-info blue-bg round-10 px-5 mr-2"
                             data-target="#editGateWayModal-{{$pg->id}}"
                             data-toggle="modal">Edit</a>
-                        
+
                     </td>
                 </tr>
                 @include('admin.settings.depositGateways.modals.edit')

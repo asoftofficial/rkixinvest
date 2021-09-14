@@ -210,16 +210,16 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways') menu-is-opening menu-open @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways' ||Route::currentRouteName()=='admin.deposit-gateways.index') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
+                    class="nav-link @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways' ||Route::currentRouteName()=='admin.deposit-gateways.index') active blue-nav @endif">
                     <img src="{{asset('assets/backend/img/icons/settings.png')}}" alt="">
                         <p>
                         Settings
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways') block @else none @endif">
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.settings.index' || Route::currentRouteName()=='admin.general.info' ||Route::currentRouteName()=='admin.fund.settings' ||Route::currentRouteName()=='admin.referral.bonus' ||Route::currentRouteName()=='admin.deposit.geteways' ||Route::currentRouteName()=='admin.deposit-gateways.index') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.settings.index')}}"
                             class="nav-link  @if(Route::currentRouteName()=='admin.settings.index') active blue-nav @endif">
@@ -251,7 +251,7 @@
                         <li class="nav-item">
 
                             <a href="{{route('admin.deposit-gateways.index')}}"
-                            class="nav-link  @if(Route::currentRouteName()=='admin.deposit.geteways') active blue-nav @endif">
+                            class="nav-link  @if(Route::currentRouteName()=='admin.deposit-gateways.index') active blue-nav @endif">
                             <img src="{{asset('assets/backend/img/icons/child-link.png')}}" alt="">
                                 <p>Deposit Gateways</p>
                             </a>

@@ -61,10 +61,15 @@
                                             @endif
                                         </td>
                                         <td data-label="@lang('Action')">
+                                            {{-- Edit Button --}}
                                             <a href="{{ route('admin.deposit-gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
+                                             {{-- Delete Button   --}}
+                                            <a href="{{ route('admin.deposit-gateways.edit', $method->id)}}"
+                                               class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Delete')"><i class="fas fa-trash"></i></a>
+
                                             @if($method->status == 1)
-                                                <a href="javascript:void(0)" class="btn btn-danger deactivateBtn  ml-1" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
+                                                <a href="javascript:void(0)" class="btn btn-danger mt-1 ml-4 deactivateBtn  ml-0" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
                                                     <i class="fas fa-eye-slash"></i>
                                                 </a>
                                             @else
@@ -75,6 +80,7 @@
                                                 </a>
                                             @endif
                                         </td>
+
                                     </tr>
                                 @empty
                                     <tr>

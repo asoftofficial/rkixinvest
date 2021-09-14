@@ -37,6 +37,11 @@ class InvestmentController extends Controller
                 'package' => $package->title,
                 'amount' => $request->amount,
                 ]);
+            //deduct invested amount from user account
+            $balance = $user->balance - $request->amount;
+            $user->balance = $balance;
+            $user->update();
+
             //Create ROIs record
             $now = Carbon::now();
             $enddate = Carbon::now();
