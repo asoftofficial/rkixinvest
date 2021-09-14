@@ -140,7 +140,7 @@ class RegisterController extends Controller
                 'code' => $user->email_verification_code,
                ]);
                 Session::flash("message", "Your account has created successfully! check your email to verify your account");
-                return redirect()->route('verification_form')->with('success','Please check your email yo verify');
+                return redirect()->route('verification_form')->with('success','Please check your email to verify');
             }
 
     }
