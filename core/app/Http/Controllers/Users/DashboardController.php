@@ -92,7 +92,7 @@ class DashboardController extends Controller
        ]);
 
         $user = auth()->user();
-         if(!FacadesHash::check($request->old_pass,$user->password)){
+         if(!Hash::check($request->old_pass,$user->password)){
             return back()->with('error','Invalid Old Password');
         }
         if(Hash::check($request->new_pass,$user->password)){
@@ -117,6 +117,10 @@ class DashboardController extends Controller
             'code' => 'required|min:6'
         ]);
         $user  = User::where('email_verification_code',$request->code)->first();
+        $code   = $user->email_verification_code;
+        if($request->code !== $code){
+            return back()->with('error','Invalid verification code');
+        }
        if(empty($user)){
            return redirect(route('register'))->with('errors','invalid url');
        }else{

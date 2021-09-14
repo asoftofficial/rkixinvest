@@ -134,8 +134,9 @@ class GeneralSettingsController extends Controller
     }
 
     public function generalinfoUpdate(Request $request)
-    {   $request->validate([
-            'phone' => 'integer'
+    {
+        $request->validate([
+            'phone' => 'string'
         ]);
         $settings = ModelsGeneralSettings::first();
         $settings->email = $request->email;

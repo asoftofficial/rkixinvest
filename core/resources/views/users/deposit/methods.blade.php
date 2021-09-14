@@ -83,7 +83,7 @@
         <div class="modal-dialog modal-610" role="document">
             <div class="modal-content issue-padd">
                 <div class="modal-header pb-0">
-                    <h5 class="modal-title" id="exampleModalLabel mt-0">Withdraw Amount</h5>
+                    <h5 class="modal-title" id="exampleModalLabel mt-0">Deposit Amount</h5>
                 </div>
                 <form action="{{route('user.deposit.money')}}"
                       enctype="multipart/form-data"
