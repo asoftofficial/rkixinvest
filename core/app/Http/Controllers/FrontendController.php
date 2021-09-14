@@ -21,7 +21,7 @@ class FrontendController extends Controller
         $data['sliders'] = Slider::paginate(1);
         $data['withdrawals'] = Withdrawal::with(['user','method'])->orderBy('id','desc')->paginate(10);
         $data['deposits'] = Deposit::all();
-        $data['emptyMessage'] = "No withdraws found";
+        $data['emptyMessage'] = "No data found";
         return view('front.index',$data);
     }
 
