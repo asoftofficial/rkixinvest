@@ -112,7 +112,7 @@ class RegisterController extends Controller
             $user->address = $request->address;
             $user->type = 1;
             $user->password = Hash::make($request->password);
-            $code = $user->email_verification_code = mt_rand(000000,999999);
+            $code = $user->email_verification_code = random_int(000000,999999);
             // $code = $user->email_verification_code = openssl_random_pseudo_bytes(6);
             $user->save();
 

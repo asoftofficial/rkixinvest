@@ -117,6 +117,9 @@ class DashboardController extends Controller
             'code' => 'required|min:6'
         ]);
         $user  = User::where('email_verification_code',$request->code)->first();
+        if($request->code !== $user){
+            return back()->with('error','Invalid verification code');
+        }
        if(empty($user)){
            return redirect(route('register'))->with('errors','invalid url');
        }else{
