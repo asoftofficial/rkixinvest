@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -29,6 +30,8 @@ class ForgotPasswordController extends Controller
      */
     public function submitForgetPasswordForm(Request $request)
     {
+        $user = User::where('email',$request->email)->first();
+
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
@@ -40,8 +43,21 @@ class ForgotPasswordController extends Controller
             'token' => $token,
             'created_at' => Carbon::now()
         ]);
+
         // Email reset link
         $link = route('reset.password.get',$token);
+        $userIpInfo = getIpInfo();
+        $userBrowser = osBrowser();
+        $time = Carbon::now();
+            sendEmail($user, 'PASS_RESET_CODE', [
+            'operating_system' => $userBrowser['os_platform'],
+            'browser' => $userBrowser['browser'],
+            'ip' => $userIpInfo['ip'],
+            'time' => $time,
+            'code' => $link,
+            'first_name' => $user->first_nasme,
+            'username' => $user->username,
+        ]);
 
         return back()->with('success', 'We have e-mailed your password reset link!');
     }

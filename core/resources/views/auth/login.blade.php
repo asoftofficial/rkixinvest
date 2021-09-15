@@ -38,7 +38,7 @@
                                 <label class="form-check-label" for="exampleCheck1">Remember me</label>
                             </div>
                             @if (Route::has('password.request'))
-                                <span><a href="{{ route('password.request') }}" class="text-blue">Forgot password?</a></span>
+                                <span><a href="{{ route('forget.password.get') }}" class="text-blue">Forgot password?</a></span>
                             @endif
                         </div>
                         <button type="submit" class="btn btn-blue btn-block .btn-blue">LOG IN</button>
