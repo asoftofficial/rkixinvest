@@ -12,7 +12,7 @@
                         <h2>Reset your password</h2>
                         <p>Reset your account password so you can continue using our customer experience.</p>
                     </div>
-                       <form method="POST" action="{{ route('password.update') }}" >
+                       <form method="POST" action="{{ route('reset.password.post') }}" >
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <div class="form-group">

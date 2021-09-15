@@ -31,7 +31,6 @@ class ForgotPasswordController extends Controller
     public function submitForgetPasswordForm(Request $request)
     {
         $user = User::where('email',$request->email)->first();
-
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
