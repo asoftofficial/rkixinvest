@@ -106,9 +106,6 @@
                                             <br>
                                             <strong>{{ showAmount($deposit->final_amount) }} {{ __($deposit->currency) }}</strong>
                                         </td>
-
-
-
                                         <td data-label="@lang('Status')">
                                             @if($deposit->status == 2)
                                                 <span class="text-small badge font-weight-normal badge--warning">@lang('Pending')</span>
@@ -126,6 +123,7 @@
                                                 <a href="#" class="text-success ml-1 approve" data-id="{{$deposit->id}}" data-tooltip="tooltip" title="@lang('Approve')" data-toggle="modal" data-target="#approveModal">
                                                     <i class="fas fa-check"></i>
                                                 </a>
+                                            @else
                                                 <a href="#" class="text-danger ml-1 reject" data-id="{{$deposit->id}}" data-tooltip="tooltip" title="@lang('Reject')" data-toggle="modal" data-target="#rejectModal">
                                                     <i class="fas fa-ban"></i>
                                                 </a>

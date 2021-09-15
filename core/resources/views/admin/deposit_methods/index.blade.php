@@ -12,7 +12,23 @@
 
 @endpush
 @push('script')
-
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+ <script>
+$(".delete").click(function (e) {
+    console.log("asdhsakdash")
+    swal(
+        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+    ).then((willDelete) => {
+        if (willDelete) {
+            var method_id = $(this).attr('data-id');
+            var url = "{{route('admin.deposit-gateways.destroy', 'id')}}";
+            url = url.replace('id', method_id);
+            $("#delete-form").attr('action', url);
+            $("#delete-form").submit();
+        }
+    });
+});
+</script>
 @endpush
 @section('content')
     <div class="container-fluid">
@@ -65,8 +81,7 @@
                                             <a href="{{ route('admin.deposit-gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
                                              {{-- Delete Button   --}}
-                                            <a href="{{ route('admin.deposit-gateways.edit', $method->id)}}"
-                                               class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Delete')"><i class="fas fa-trash"></i></a>
+                                             <a href="#" class="delete btn btn-primary" data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i></a>
 
                                             @if($method->status == 1)
                                                 <a href="javascript:void(0)" class="btn btn-danger mt-1 ml-4 deactivateBtn  ml-0" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
@@ -148,4 +163,7 @@
         </div>
     </div>
     <!-- /.container-fluid -->
+    <form action = "" method = "post" id = "delete-form" >
+    @csrf
+@method('delete') </form>
 @endsection

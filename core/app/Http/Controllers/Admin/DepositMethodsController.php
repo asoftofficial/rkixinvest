@@ -173,4 +173,10 @@ class DepositMethodsController extends Controller
         $notify[] = ['success', $method->name . ' has been deactivated.'];
         return redirect()->route('admin.withdraw.method.index')->withNotify($notify);
     }
+     public function destroy($id)
+    {
+        $method = DepositMethod::find($id);
+        $method->delete();
+        return back()->with('info','Method successfully deleted');
+    }
 }
