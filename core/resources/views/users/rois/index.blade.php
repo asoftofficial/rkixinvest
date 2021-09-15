@@ -25,19 +25,28 @@ Welcome back,
                                     <table class="table custom-table">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th scope="col">Investment ID</th>
+                                                <th scope="col">ROIs</th>
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Status</th>
                                                 {{-- <th scope="col">Date</th> --}}
                                             </tr>
                                         </thead>
                                             <tbody>
-                                                @foreach ($investment->rois as $roi)
+                                                @foreach ($investment->rois as $key => $roi)
                                                     <tr>
-                                                        <td>{{$roi->investment_id}}</td>
+                                                        <td>
+                                                        {{++$key}}
+                                                        </td>
                                                         <td>{{showAmount($roi->amount,2)}}</td>
-                                                        <td>{{$roi = $roi->status==1 ? 'Pending' : 'Received'}}</td>
-                                                        {{-- <td>{{dd($roi->date)}}</td> --}}
+                                                        {{-- <td>{{$roi = $roi->status==1 ? 'Pending' : 'Received'}}</td> --}}
+                                                        <td>
+                                                        @if($roi->status==1)
+                                                            <button class="btn btn-info">Pending !</button>
+                                                        @else
+                                                            <button class="btn btn-success">Received</button>
+                                                        @endif
+                                                        </td>
+
                                                     </tr>
                                                 @endforeach
                                             </tbody>
