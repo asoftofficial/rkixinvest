@@ -31,6 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
 Route::get('placeholder-image/{size}', [\App\Http\Controllers\FrontendController::class,'placeholderImage'])->name('placeholder.image');
 Route::get('ajax-chart-data', [App\Http\Controllers\ChartDataController::class,'getData'])->name('ajaxChart');
+Route::post('user/update/password/{id}',[DashboardController::class,'userPassword'])->name('update.user.password');
 // User Routes
 $userNameSpace = 'App\Http\Controllers\Users';
 Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','checkInvestments'])->prefix('user')->name('user.')->group(function () {

@@ -124,7 +124,7 @@ class GeneralSettingsController extends Controller
         $emailStatus = empty($request->email) ? "off" : $request->email;
         $settings->email_verification = $emailStatus;
         $settings->Update();
-        return back()->with('success','email settings updated successfully');
+        return back()->with('success','Email settings updated successfully');
     }
 
     public function generalinfo()
