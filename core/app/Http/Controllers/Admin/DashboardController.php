@@ -18,13 +18,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $deposit_amount = round(Transaction::where('type',1)->sum('amount'),2);
-        $withdrawal_amount = round(Transaction::where('type',2)->sum('amount'),2);
-        $earning =  round($withdrawal_amount - $deposit_amount,2);
+        $deposit_amount = showAmount(Transaction::where('type',1)->sum('amount'),2);
+        $withdrawal_amount = showAmount(Transaction::where('type',2)->sum('amount'),2);
+        $earning =  showAmount($withdrawal_amount - $deposit_amount,2);
         //withdrawals reporting
         $withdrawals = Withdrawal::all()->count();
         $completed_withd    = Withdrawal::where('status',1)->count();
         $pending_withd    = Withdrawal::where('status',2)->count();
+        $pending_amount    = Withdrawal::where('status',2)->sum('amount');
         $rejected_withd    = Withdrawal::where('status',3)->count();
         //users reporting
         $total_users = User::all()->count();
@@ -39,7 +40,7 @@ class DashboardController extends Controller
         $completed_deposits = Deposit::where('status',1)->count();
         $pending_deposits = Deposit::where('status',2)->count();
         $canceled_deposits = Deposit::where('status',3)->count();
-    	return view('admin.dashboard',compact('canceled_deposits','pending_deposits','completed_deposits','total_deposits','deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
+    	return view('admin.dashboard',compact('pending_amount','canceled_deposits','pending_deposits','completed_deposits','total_deposits','deposit_amount','withdrawal_amount','earning','withdrawals','completed_withd','pending_withd','rejected_withd','active_users','total_users','investors','active_investors','active_investments'));
     }
     public function profile(){
     	return view('admin.profile');

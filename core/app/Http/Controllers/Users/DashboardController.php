@@ -92,7 +92,7 @@ class DashboardController extends Controller
        ]);
 
         $user = auth()->user();
-         if(!Hash::check($request->old_pass,$user->password)){
+         if(dd(Hash::check($request->old_pass,$user->password))){
             return back()->with('error','Invalid Old Password');
         }
         if(Hash::check($request->new_pass,$user->password)){
@@ -105,7 +105,30 @@ class DashboardController extends Controller
        $user->update();
        return back()->with('success','password updated successfully');
     }
+    public function userPassword(Request $request,$id)
+    {
 
+       $request->validate([
+        'old_pass' => 'required',
+        'new_pass' => 'required',
+        'confirm'=>'required',
+       ]);
+
+        $user = User::find($id);
+
+         if(dd(Hash::check($request->old_pass,$user->password))){
+            return back()->with('error','Invalid Old Password');
+        }
+        if(Hash::check($request->new_pass,$user->password)){
+            return back()->with('error','You can not use your old password');
+        }
+        if($request->new_pass !== $request->confirm){
+            return back()->with('error','Password does not match');
+        }
+       $user->password = bcrypt($request->new_pass);
+       $user->update();
+       return back()->with('success','password updated successfully');
+    }
     public function showVerificationForm()
     {
       return view('auth.email-verify');

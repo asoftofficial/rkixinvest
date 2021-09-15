@@ -44,7 +44,7 @@ $(function () {
             <p>Total Balance</p>
         </div>
         <div class="dashboard-card-stat">
-            USD {{round(Auth::user()->balance,2)}}
+            USD {{showAmount(Auth::user()->balance,2)}}
         </div>
     </div>
     <div class="dashboard-card new-orders">
@@ -68,7 +68,7 @@ $(function () {
             <p class="text-white">All ROIs</p>
         </div>
         <div class="dashboard-card-stat">
-             {{round(auth()->user()->rois()->count(),2)}}
+             {{showAmount(auth()->user()->rois()->count(),2)}}
         </div>
     </div>
 </div>

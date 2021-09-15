@@ -24,7 +24,7 @@ General Settings
             <form action="{{route('admin.web.settings')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="icon" class="input-label mb-0">Website Name:</label>
                 <input type="text" name="web_title" value="{{old('name',$settings->web_title)}}"
                     class="form-control bg-light border-0 round-10 ">
@@ -35,7 +35,7 @@ General Settings
                 @enderror
                 </div>
 
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Footer text</label>
                 <input type="text" name="footer" value="{{old('footer',$settings->footer)}}"
                     class="form-control bg-light border-0 round-10 ">
@@ -44,7 +44,7 @@ General Settings
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                </div>
+                </div> --}}
             </div>
 
                    <div class="row mb-3">
@@ -97,6 +97,16 @@ General Settings
                 <textarea rows="6" class="form-control bg-light border-0 round-10" name="description"
                     id="description"> {{old('description',$settings->description)}}</textarea>
                 @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="text" class="input-label">Footer Description</label>
+                <textarea rows="6" class="form-control bg-light border-0 round-10" name="footer"
+                    id="description"> {{old('description',$settings->footer)}}</textarea>
+                @error('footer')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -157,21 +167,21 @@ General Settings
     </div>
 
 {{-- Reward settings --}}
-    {{-- <div class="card">
-        <div class="card-header bg-dark">Reward System Settings</div>
+    <div class="card">
+        <div class="card-header bg-dark">Email Verification Setting</div>
         <div class="card-body">
-            <form action="{{route('admin.reward.settings')}}" method="post">
+            <form action="{{route('admin.update.email.settings')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="gap">
-                                <h4 class="input-label mt-2">Reward System</h4>
+                                <h4 class="input-label mt-2">Email Settings</h4>
                                 <div class="">
                                     <input type="checkbox" class="form-control bg-light round-10 border-0 switch-button"
-                                        name="reward"
-                                        @if($settings->reward_system == 'on') checked @endif>
+                                        name="email"
+                                        @if($settings->email_verification == 'on') checked @endif>
                                 </div>
-                                @error('reward')
+                                @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -184,6 +194,6 @@ General Settings
                     </div>
                 </form>
             </div>
-        </div> --}}
+        </div>
 </div>    <!-- /.container-fluid -->
 @endsection
