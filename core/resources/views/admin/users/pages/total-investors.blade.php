@@ -6,20 +6,20 @@ Total Investors
 @push('script')
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
  <script>
-$(".delete").click(function (e) {
-    console.log("asdhsakdash")
-    swal(
-        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willDelete) => {
-        if (willDelete) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.userprofile.destroy', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#delete-form").attr('action', url);
-            $("#delete-form").submit();
-        }
-    });
-});
+// $(".delete").click(function (e) {
+//     console.log("asdhsakdash")
+//     swal(
+//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+//     ).then((willDelete) => {
+//         if (willDelete) {
+//             var user_id = $(this).attr('data-id');
+//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
+//             url = url.replace('id', user_id);
+//             $("#delete-form").attr('action', url);
+//             $("#delete-form").submit();
+//         }
+//     });
+// });
 </script>
 @endpush
 @section('content')
@@ -82,9 +82,9 @@ $(".delete").click(function (e) {
                             data-target="#userEmailModal-{{$user->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                       <a href="#" class="delete btn btn-dark" data-id="{{$user->id}}">
+                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$user->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a>
+                        </a> --}}
                     </td>
                     </tr>
                     @include('admin.users.modals.eamil-to-investor')
@@ -93,7 +93,7 @@ $(".delete").click(function (e) {
         </table>
     </div>
 </section>
-<form action = "" method = "post" id = "delete-form" >
+{{-- <form action = "" method = "post" id = "delete-form" >
     @csrf
-@method('delete') </form>
+@method('delete') </form> --}}
 @endsection

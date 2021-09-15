@@ -30,20 +30,20 @@ $(".blocked_user").click(function (e) {
 });
 
 
-$(".delete").click(function (e) {
-    console.log("asdhsakdash")
-    swal(
-        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willDelete) => {
-        if (willDelete) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.userprofile.destroy', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#delete-form").attr('action', url);
-            $("#delete-form").submit();
-        }
-    });
-});
+// $(".delete").click(function (e) {
+//     console.log("asdhsakdash")
+//     swal(
+//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+//     ).then((willDelete) => {
+//         if (willDelete) {
+//             var user_id = $(this).attr('data-id');
+//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
+//             url = url.replace('id', user_id);
+//             $("#delete-form").attr('action', url);
+//             $("#delete-form").submit();
+//         }
+//     });
+// });
 </script>
 @endpush
 @section('content')
@@ -91,9 +91,9 @@ $(".delete").click(function (e) {
                             style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-                       <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
+                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a>
+                        </a> --}}
                     </td>
                 </tr>
                 <form action="" method="post" id="update-form">
@@ -113,9 +113,9 @@ $(".delete").click(function (e) {
 
 {{-- Add User Model  --}}
 @include("admin.users.modals.create")
-<form action = "" method = "post" id = "delete-form" >
+{{-- <form action = "" method = "post" id = "delete-form" >
     @csrf
-@method('delete') </form>
+@method('delete') </form> --}}
 
 
 @endsection

@@ -87,7 +87,7 @@ Create referral
             if(refLevels<=100){
                 $('.ref-bonuses').html("");
                 for(var i=1; i<=refLevels; i++){
-                    $('.ref-bonuses').append("<div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
+                    $('.ref-bonuses').append("<div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' placeholder='%' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
                 }
                 $('.saveReferrals').slideDown();
             }else{

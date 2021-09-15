@@ -107,7 +107,6 @@ class DashboardController extends Controller
     }
     public function userPassword(Request $request,$id)
     {
-
        $request->validate([
         'old_pass' => 'required',
         'new_pass' => 'required',

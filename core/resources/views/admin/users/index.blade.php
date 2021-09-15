@@ -14,20 +14,20 @@ User Management
 <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
-$(".delete").click(function (e) {
-    console.log("asdhsakdash")
-    swal(
-        {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-    ).then((willDelete) => {
-        if (willDelete) {
-            var user_id = $(this).attr('data-id');
-            var url = "{{route('admin.userprofile.destroy', 'id')}}";
-            url = url.replace('id', user_id);
-            $("#delete-form").attr('action', url);
-            $("#delete-form").submit();
-        }
-    });
-});
+// $(".delete").click(function (e) {
+//     console.log("asdhsakdash")
+//     swal(
+//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
+//     ).then((willDelete) => {
+//         if (willDelete) {
+//             var user_id = $(this).attr('data-id');
+//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
+//             url = url.replace('id', user_id);
+//             $("#delete-form").attr('action', url);
+//             $("#delete-form").submit();
+//         }
+//     });
+// });
 </script>
 @endpush
 @section('content')
@@ -65,24 +65,16 @@ $(".delete").click(function (e) {
                     <td>{{$item->first_name}}</td>
                     <td>{{$item->last_name}}</td>
                     <td>{{$item->email}}</td>
-
                     <td style="min-width: 256px">
-                        <a
-                            href="{{route('admin.userprofile.show',$item->id)}}"
-                            class="mr-2 text-dark"
-                            style="font-size: 20px">
+                        <a href="{{route('admin.userprofile.show',$item->id)}}" class="mr-2 text-dark" style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a
-                            href="#"
-                            class="user_email  btn btn-dark"
-                            data-toggle="modal"
-                            data-target="#userEmailModal-{{$item->id}}">
+                        <a href="#" class="user_email  btn btn-dark" data-toggle="modal" data-target="#userEmailModal-{{$item->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                       <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
+                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
                             <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a>
+                        </a> --}}
                     </td>
                 </tr>
                     @include('admin.users.modals.email')
@@ -98,9 +90,9 @@ $(".delete").click(function (e) {
 
 {{-- Add User Model  --}}
 @include("admin.users.modals.create")
-<form action = "" method = "post" id = "delete-form" >
+{{-- <form action = "" method = "post" id = "delete-form" >
     @csrf
-@method('delete') </form>
+@method('delete') </form> --}}
 
 
 @endsection
