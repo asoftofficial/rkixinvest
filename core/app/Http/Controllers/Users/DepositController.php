@@ -11,7 +11,7 @@ use App\Models\Transaction;
 class DepositController extends Controller
 {
     public function index(){
-        $data['pageTitle'] = "Withdrawals";
+        $data['pageTitle'] = "Deposits";
         $data['deposits'] = auth()->user()->deposits()->where('status', '!=', 0)->paginate(25);
         $data['emptyMessage'] = "No Data Found!";
         return view('users.deposit.index',$data);
@@ -108,7 +108,7 @@ class DepositController extends Controller
         $transaction->description = showAmount($deposit->final_amount) . ' ' . $deposit->currency . ' Deposit Via ' . $deposit->method->name;
         $transaction->save();
 
-        sendEmail($user, 'SUCCESSFULLY ADDED DEPOSIT', [
+        sendEmail($user, 'USER_DEPOSIT', [
             'method_name' => $deposit->method->name,
             'method_currency' => $deposit->currency,
             'method_amount' => showAmount($deposit->final_amount),
@@ -120,12 +120,12 @@ class DepositController extends Controller
             'post_balance' => showAmount($user->balance),
             'delay' => $deposit->method->delay
         ]);
-        return redirect()->route('user.deposit')->with('success', 'Your Account has deposited successfully');
+        return redirect()->route('user.deposit')->with('success', 'Your Account has been deposited successfully');
     }
-    
+
     public function manualDeposit(Request $request)
     {
-        
+
         $general = GeneralSettings::first();
         $deposit = Deposit::with('method','user')->where('trx', session()->get('wtrx'))->where('status', 0)->orderBy('id','desc')->firstOrFail();
 
@@ -148,7 +148,7 @@ class DepositController extends Controller
                 $inputField[] = $key;
             }
         }
-    
+
        // $this->validate($request, $rules);
        // dd('asfsad');
         $user = auth()->user();
@@ -203,7 +203,7 @@ class DepositController extends Controller
         $transaction->description = showAmount($deposit->final_amount) . ' ' . $deposit->currency . ' Deposit Via ' . $deposit->method->name;
         $transaction->save();
 
-        sendEmail($user, 'WITHDRAW_REQUEST', [
+        sendEmail($user, 'DEPOSIT_REQUEST', [
             'method_name' => $deposit->method->name,
             'method_currency' =>    $deposit->currency,
             'method_amount' => showAmount($deposit->final_amount),

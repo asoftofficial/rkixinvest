@@ -63,7 +63,7 @@ class WithdrawController extends Controller
             $withdrawals = Withdrawal::where('status', '!=', 0)->with(['user','method'])->where('method_id',$method->id)->orderBy('id','desc')->paginate(25);
         }
         $emptyMessage = 'No withdrawal found';
-        return view('admin.withdraw.withdrawals', compact('pageTitle', 'withdrawals', 'emptyMessage','method'));
+        return view('admin.withdraws.withdraws-via-method', compact('pageTitle', 'withdrawals', 'emptyMessage','method'));
     }
 
 

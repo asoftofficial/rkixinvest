@@ -63,7 +63,7 @@ class DepositController extends Controller
             $deposits = Deposit::where('status', '!=', 0)->with(['user','method'])->where('method_id',$method->id)->orderBy('id','desc')->paginate(25);
         }
         $emptyMessage = 'No deposit found';
-        return view('admin.deposit.deposits', compact('pageTitle', 'deposits', 'emptyMessage','method'));
+        return view('admin.deposits.log-via-method', compact('pageTitle', 'deposits', 'emptyMessage','method'));
     }
 
 
@@ -72,7 +72,7 @@ class DepositController extends Controller
         $search = $request->search;
         $emptyMessage = 'No search result found.';
 
-        $withdrawals = Withdrawal::with(['user', 'method'])->where('status','!=',0)->where(function ($q) use ($search) {
+        $deposits = Deposit::with(['user', 'method'])->where('status','!=',0)->where(function ($q) use ($search) {
             $q->where('trx', 'like',"%$search%")
                 ->orWhereHas('user', function ($user) use ($search) {
                     $user->where('username', 'like',"%$search%");
@@ -150,14 +150,10 @@ class DepositController extends Controller
     public function details($id)
     {
         $general = GeneralSettings::first();
-        $withdrawal = Withdrawal::where('id',$id)->where('status', '!=', 0)->with(['user','method'])->firstOrFail();
-        $pageTitle = $withdrawal->user->username.' Withdraw Requested ' . showAmount($withdrawal->amount) . ' '.$general->cur_text;
+        $withdrawal = Deposit::where('id',$id)->where('status', '!=', 0)->with(['user','method'])->firstOrFail();
+        $pageTitle = $withdrawal->user->username.' Deposit Requested ' . showAmount($withdrawal->amount) . ' '.$general->cur_text;
         $details = $withdrawal->withdraw_information ? json_encode($withdrawal->withdraw_information) : null;
-
-
-
         $methodImage =  getImage(imagePath()['withdraw']['method']['path'].'/'. $withdrawal->method->image,'800x800');
-
         return view('admin.withdraw.detail', compact('pageTitle', 'withdrawal','details','methodImage'));
     }
 
@@ -169,7 +165,7 @@ class DepositController extends Controller
         $deposit->feedback = $request->details;
         $deposit->save();
         $user = User::find($deposit->user_id);
-        $user->balance += $deposit->amount;
+        $post_balance = $user->balance += $deposit->amount;
         $user->update();
         $general = GeneralSettings::first();
         sendEmail($deposit->user, 'DEPOSIT_APPROVE', [
@@ -181,10 +177,11 @@ class DepositController extends Controller
             'currency' => $general->cur_text,
             'rate' => showAmount($deposit->rate),
             'trx' => $deposit->trx,
+            'post_balance' => $post_balance,
             'admin_details' => $request->details
         ]);
 
-        return redirect()->route('admin.deposit.pending')->with('success', 'Withdrawal marked as approved.');
+        return redirect()->route('admin.deposit.pending')->with('success', 'Deposit marked as approved.');
     }
 
 
@@ -200,8 +197,6 @@ class DepositController extends Controller
         $deposit->save();
 
         $user = User::find($deposit->user_id);
-
-
 
         sendEmail($user, 'DEPOSIT_REJECT', [
             'method_name' => $deposit->method->name,
