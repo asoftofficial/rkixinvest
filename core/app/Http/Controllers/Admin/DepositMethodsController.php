@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DepositMethod;
@@ -173,7 +172,8 @@ class DepositMethodsController extends Controller
         $notify[] = ['success', $method->name . ' has been deactivated.'];
         return redirect()->route('admin.withdraw.method.index')->withNotify($notify);
     }
-     public function destroy($id)
+
+    public function destroy($id)
     {
         $method = DepositMethod::find($id);
         $method->delete();

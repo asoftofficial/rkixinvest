@@ -78,6 +78,7 @@ Route::namespace($userNameSpace)->middleware(['auth','IsUser','verification','ch
         Route::post('/withdraw/preview', 'WithdrawController@withdrawSubmit')->name('withdraw.submit');
         Route::get('/withdraw/history', 'WithdrawController@withdrawLog')->name('withdraw.history');
 
+
         //investment routes
         Route::get('/investment',[InvestmentController::class,'showUserInvestments'])->name('investment');
     });
@@ -161,6 +162,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('deposit/approved', 'DepositController@approved')->name('deposit.approved');
     Route::get('deposit/rejected', 'DepositController@rejected')->name('deposit.rejected');
     Route::get('deposit/log', 'DepositController@log')->name('deposit.log');
+
     Route::get('deposit/via/{method_id}/{type?}', 'DepositController@logViaMethod')->name('deposit.method');
     Route::get('deposit/{scope}/search', 'DepositController@search')->name('deposit.search');
     Route::get('deposit/date-search/{scope}', 'DepositController@dateSearch')->name('deposit.dateSearch');
