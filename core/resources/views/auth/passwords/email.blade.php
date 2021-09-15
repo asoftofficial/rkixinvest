@@ -15,7 +15,7 @@
                                 <h2>Rest Your Passowrd</h2>
                                 <p>Rest your account so you can continue using our customer experience.</p>
                             </div>
-                         <form method="POST" action="{{ route('password.email') }}">
+                         <form method="POST" action="{{ route('forget.password.post') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>

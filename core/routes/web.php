@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\ReferralbonusController;
@@ -26,6 +27,12 @@ Route::get('/', [App\Http\Controllers\FrontendController::class, 'home'])->name(
 Route::get('show/verification/form',[App\Http\Controllers\Users\DashboardController::class ,'showVerificationForm'])->name('verification_form');
 Route::post('/verify/code',[App\Http\Controllers\Users\DashboardController::class ,'checkVerificationForm'])->name('verificationForm.post');
 Route::get('resend/code',[DashboardController::class, 'resendCode'])->name('resend.code');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
 Route::get('/verify_email/{email_verification_code}',[App\Http\Controllers\Auth\RegisterController::class,'email_verification'])->name('email.verification');
