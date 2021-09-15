@@ -92,7 +92,7 @@ class DashboardController extends Controller
        ]);
 
         $user = auth()->user();
-         if(dd(Hash::check($request->old_pass,$user->password))){
+         if(Hash::check($request->old_pass,$user->password)){
             return back()->with('error','Invalid Old Password');
         }
         if(Hash::check($request->new_pass,$user->password)){
@@ -115,8 +115,7 @@ class DashboardController extends Controller
        ]);
 
         $user = User::find($id);
-
-         if(dd(Hash::check($request->old_pass,$user->password))){
+         if(!Hash::check($request->old_pass,$user->password)){
             return back()->with('error','Invalid Old Password');
         }
         if(Hash::check($request->new_pass,$user->password)){
