@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GeneralSettings;
-use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Deposit;
 use App\Models\DepositMethod;
+use App\Models\Withdrawal;
+use App\Models\WithdrawalMethod;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -212,6 +213,7 @@ class DepositController extends Controller
         ]);
         return redirect()->route('admin.deposit.pending')->with('success', 'Deposit has been rejected.');
     }
+
     public function changeStatus($id)
     {
         $method = DepositMethod::find($id);
