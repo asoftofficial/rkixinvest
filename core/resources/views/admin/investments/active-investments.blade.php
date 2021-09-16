@@ -4,7 +4,7 @@ Active Investments
 @endsection
 @section('content')
 @section('header-right')
-    <a href="{{route('admin.expired.investments')}}" class="btn btn-primary btn-blue header-right-btn">Pending Investments</a>
+    <a href="{{route('admin.expired.investments')}}" class="btn btn-primary btn-blue header-right-btn">Expired Investments</a>
 @endsection
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" >

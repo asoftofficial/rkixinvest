@@ -115,8 +115,8 @@ $(function () {
 @section('content')
 <div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
   <div class="dashboard-card new-orders">
-        <a href="" class=" dashboard-card-dropdown">
-            <i class="fas fa-ellipsis-h"></i>
+        <a href="{{route('admin.active.investments')}}" class=" dashboard-card-dropdown">
+            <i class="fas fa-eye"></i>
         </a>
         <div class="dashboard-card-header">
             <h2>Total Active Investments</h2>
