@@ -18,7 +18,7 @@ User Profile
         <div class="card-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-4 p-1">
+                    <div class="col-md-4 p-1">
                         <div class="profile-img">
                             @if(empty($user->image))
                                 <img src="{{route('placeholder.image','360x360')}}" alt="" />
@@ -26,16 +26,14 @@ User Profile
                                 <img src="{{$user->image}}" alt="" />
                             @endif
                         </div>
-                        <div class="col-md-4 profile-actions" id="profile-actions">
                           <div class="profile-work">
                            <h5 class="text-bold mt-3 text-center">User actions</h5>
-                            <input type="button" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
-                            <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Edit password" data-toggle="modal" data-target="#editPasswordModal" />
-                            <input type="button" class="profile-edit-btn mt-2" name="btnAddMore" value="Transaction Code" data-toggle="modal" data-target="#trxUpdatedModal" />
-                        </div>
+                            <input type="button" class="btn btn-secondary btn-block" name="btnAddMore" value="Edit Profile"  data-toggle="modal" data-target="#UpdateProfileModal"/>
+                            <input type="button" class="btn btn-secondary btn-block" name="btnAddMore" value="Edit password" data-toggle="modal" data-target="#editPasswordModal" />
+                            <input type="button" class="btn btn-secondary btn-block" name="btnAddMore" value="Transaction Code" data-toggle="modal" data-target="#trxUpdatedModal" />
                         </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-md-8 col-sm-6">
                             <div class="profile-head ml-4">
                                 <h3>{{$user->first_name}} {{$user->last_name}}</h3>
                                 <h6>{{'@'.$user->username}}</h6>

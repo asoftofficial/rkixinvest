@@ -31,8 +31,10 @@ $(".blocked_user").click(function (e) {
     {{-- Section Search Area    --}}
     {{-- Page Section Title Area    --}}
     <section class = "page-section-title-area" >
-        <h2>Active Users List</h2>
-        <p>Latest Users information</p>
+        <div>
+            <h2>Active Users List</h2>
+            <p>Latest Users information</p>
+        </div>
     </section>
     {{-- End Page Section Title Area    --}}
     <section class = "collections" >
