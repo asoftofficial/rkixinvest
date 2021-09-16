@@ -141,7 +141,6 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::post('frontend/how/to/update',[HomepageController::class,'updateHowto'])->name('how.to.update.settings');
     Route::get('frontend/testimonial','TestimonialController@index')->name('testimonial.index');
     Route::post('frontend/testimonial/store','TestimonialController@store')->name('testimonial.store');
-    Route::get('frontend/testimonial/show/{id}','TestimonialController@show')->name('testimonial.show');
     Route::get('frontend/testimonial/edit/{id}','TestimonialController@edit')->name('testimonial.edit');
     Route::post('frontend/testimonial/update/{id}','TestimonialController@update')->name('testimonial.update');
     Route::delete('frontend/testimonial/delete/{id}','TestimonialController@destroy')->name('testimonial.delete');

@@ -16,8 +16,7 @@ class TestimonialController extends Controller
 
     public function show($id)
     {
-        $testimonial = Testimonial::find($id);
-        return view('admin.settings.frontend-pages.modals.testimonial.show',compact('testimonial'));
+
     }
     public function store(Request $request)
     {
