@@ -1007,7 +1007,7 @@ span.step-icon {
 
 .profile-work {
     width: 100%;
-    padding: 14%;
+    padding: 20% 14% 4% 14%;
     margin-top: -15%;
 }
 
@@ -1043,7 +1043,18 @@ div#user_action {
     background-color: whitesmoke;
     padding: 5px 5px 5px 10px;
 }
+.profile-header.text-center.mt-3 {
+    display: none;
+}
 
-@media(min-width:768px){
-
+@media screen and (max-width: 767px) {
+ .user-actions {
+    display: none;
+}
+.user-profile-info{
+    display: none;
+}
+.profile-header.text-center.mt-3 {
+    display: block;
+}
 }
