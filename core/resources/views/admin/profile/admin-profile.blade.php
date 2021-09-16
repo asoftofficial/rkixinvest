@@ -22,8 +22,13 @@ Admin Profile
                             @endif
                         </div>
                             <div class="profile-work">
-                            <h5 class="text-bold mt-3 text-center">User actions</h5>
-
+                                <div class="user-actions">
+                                <h5 class="text-bold mt-3 text-center">User actions</h5>
+                                </div>
+                            <div class="profile-header text-center mt-3">
+                                <h3>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h3>
+                                <h6>{{'@'.Auth::user()->username}}</h6>
+                            </div>
                             <input type="button" class="btn btn-secondary btn-block" name="btnAddMore" value="Edit Profile"
                                 data-toggle="modal" data-target="#UserProfileModal" />
                             <input type="button" class="btn btn-secondary btn-block" name="btnAddMore" value="Edit password"
@@ -32,8 +37,10 @@ Admin Profile
                     </div>
                     <div class="col-md-8">
                             <div class="profile-head ml-4">
-                                <h3>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h3>
+                                <div class="user-profile-info">
+                                    <h3>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h3>
                                 <h6>{{'@'.Auth::user()->username}}</h6>
+                                </div>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link text-blue" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-bottom: 2px solid #007bff">About</a>
