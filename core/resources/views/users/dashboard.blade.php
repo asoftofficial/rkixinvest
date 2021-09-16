@@ -6,45 +6,38 @@ Dashboard
 Welcome back,
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+{{--<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > --}}
+@endpush
 @push('script')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
+<script src="{{asset('/assets/dashboard/js/clipboard.min.js')}}"></script>
 <script>
-$('.custom-file-input').change(function (e) {
-    var filename = $(this)
-        .val()
-        .split('\\')
-        .pop();
-    var lastIndex = filename.lastIndexOf("\\");
-    var nextSibling = e.target.nextElementSibling
-    nextSibling.innerText = filename
-});
-$(function () {
-    $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
-    $('select.ui-select').selectmenu();
+let clipboard = new ClipboardJS('.copyreflink');
+clipboard.on('success', function(e) {
+    toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success('Your referral link is '+e.action);
+    e.clearSelection();
 });
 </script>
 @endpush
 @section('header-right')
-    <form action="" method="">
-        @csrf
         <div class="row mt-3">
             <div class="col-12">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Url</span>
-                    </div>
-                    <input type="text" name="refferal_link" class="form-control" placeholder="Referral link" value="{{old('refferal_link')}}"/>
-                    @error('refferal_link')
+                    <input type="text" name="referral_link" class="form-control referral_link" value="{{route('register')}}?sponser={{auth()->user()->username}}" placeholder="Referral link" value="{{old('referral_link')}}"/>
+                    @error('referral_link')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <input type="submit" value="Referral" class="btn ml-3 bg-blue">
+                    <input type="submit" value="Copy Referral Link" class="btn ml-3 bg-blue copyreflink" data-clipboard-target=".referral_link">
                 </div>
             </div>
         </div>
-    </form>
 @endsection
 @section('content')
 <div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
