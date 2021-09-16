@@ -170,6 +170,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
     Route::get('deposit/details/{id}', 'DepositController@details')->name('deposit.details');
     Route::post('deposit/approve', 'DepositController@approve')->name('deposit.approve');
     Route::post('deposit/reject', 'DepositController@reject')->name('deposit.reject');
+    Route::get('getways/status/{id}','DepositController@changeStatus')->name('change.status');
 
 
 

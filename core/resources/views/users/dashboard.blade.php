@@ -25,6 +25,27 @@ $(function () {
 });
 </script>
 @endpush
+@section('header-right')
+    <form action="" method="">
+        @csrf
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Url</span>
+                    </div>
+                    <input type="text" name="refferal_link" class="form-control" placeholder="Referral link" value="{{old('refferal_link')}}"/>
+                    @error('refferal_link')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <input type="submit" value="Referral" class="btn ml-3 bg-blue">
+                </div>
+            </div>
+        </div>
+    </form>
+@endsection
 @section('content')
 <div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
     <div

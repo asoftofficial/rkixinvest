@@ -14,8 +14,8 @@ Welcome back,
         {{--    Page Section Title Area    --}}
         <section class="page-section-title-area">
             <div>
-                <h2>RECENT INVESTMENTS</h2>
-                <p>Latest investments details</p>
+                <h2>RECENT ROIS</h2>
+                <p>Latest rois details</p>
             </div>
             <div class="section-title-right"></div>
         </section>
@@ -38,7 +38,6 @@ Welcome back,
                                                         {{++$key}}
                                                         </td>
                                                         <td>{{showAmount($roi->amount,2)}}</td>
-                                                        {{-- <td>{{$roi = $roi->status==1 ? 'Pending' : 'Received'}}</td> --}}
                                                         <td>
                                                         @if($roi->status==1)
                                                             <button class="btn btn-info">Pending !</button>

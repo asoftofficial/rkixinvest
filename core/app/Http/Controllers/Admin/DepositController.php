@@ -212,4 +212,13 @@ class DepositController extends Controller
         ]);
         return redirect()->route('admin.deposit.pending')->with('success', 'Deposit has been rejected.');
     }
+    public function changeStatus($id)
+    {
+        $method = DepositMethod::find($id);
+        $status=$method->status==1 ? 0: 1;
+        $method->status=$status;
+        $method->update();
+        return back()->with('success', 'Status updated');
+    }
+
 }

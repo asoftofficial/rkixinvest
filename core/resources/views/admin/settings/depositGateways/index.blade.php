@@ -175,9 +175,4 @@ div#refrel_div {
 
 </div>
 <!-- /.container-fluid -->
-
-{{-- Add package Model  --}}
-
-{{-- End Add package Model  --}}
-
 @endsection

@@ -70,33 +70,19 @@ $(".delete").click(function (e) {
                                             class="font-weight-bold">{{ $method->min_limit + 0 }}
                                             - {{ $method->max_limit + 0 }} {{__($settings->cur_text) }}</td>
                                         <td data-label="@lang('Status')">
-                                            @if($method->status == 1)
-                                                <span class="text--small badge font-weight-normal badge--success">@lang('Active')</span>
-                                            @else
-                                                <span class="text--small badge font-weight-normal badge--warning">@lang('Disabled')</span>
-                                            @endif
+                                           <a href="{{route('admin.change.status',$method->id)}}" class="btn @if($method->status == 1)btn-success @else btn-info @endif">@if($method->status == 1)Enabled @else Disabled @endif</a>
                                         </td>
                                         <td data-label="@lang('Action')">
                                             {{-- Edit Button --}}
                                             <a href="{{ route('admin.deposit-gateways.edit', $method->id)}}"
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
                                              {{-- Delete Button   --}}
-                                             <a href="#" class="delete btn btn-primary" data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i></a>
+                                             <a href="#" class="delete btn btn-primary mt-1 ml-1"  data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i></a>
 
-                                            @if($method->status == 1)
-                                                <a href="javascript:void(0)" class="btn btn-danger mt-1 ml-4 deactivateBtn  ml-0" data-toggle="tooltip" data-original-title="@lang('Disable')" data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-eye-slash"></i>
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0)" class="btn btn-success activateBtn  ml-1"
-                                                   data-toggle="tooltip" data-original-title="@lang('Enable')"
-                                                   data-id="{{ $method->id }}" data-name="{{ __($method->name) }}">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                            @endif
                                         </td>
 
                                     </tr>
+
                                 @empty
                                     <tr>
                                         <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
