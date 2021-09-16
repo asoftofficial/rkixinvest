@@ -40,13 +40,6 @@ class TestimonialController extends Controller
             'image' =>  $file_path,
         ]);
         return back()->with('success','You have created testimonial successfully');
-        // $testimonials = new Testimonial;
-        // dd($testimonials);
-        // $testimonials->username = $request->username;
-        // $testimonials->designation =$request->designation;
-        // $testimonials->content = $request->description;
-        // $testimonials->create();
-        // return back()->with('success','you have created testimonial successfully');
     }
 
     public function update(Request $request, $id)

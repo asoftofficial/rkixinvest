@@ -1058,3 +1058,8 @@ div#user_action {
     display: block;
 }
 }
+@media (max-width: 824px) {
+    .content-header h1{
+        font-size: 38px;
+    }
+}
