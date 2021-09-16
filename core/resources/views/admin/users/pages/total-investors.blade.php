@@ -2,25 +2,9 @@
 @section('page-title')
 Total Investors
 @endsection
-@push('style') <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@push('style')
+@endpush
 @push('script')
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
- <script>
-// $(".delete").click(function (e) {
-//     console.log("asdhsakdash")
-//     swal(
-//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-//     ).then((willDelete) => {
-//         if (willDelete) {
-//             var user_id = $(this).attr('data-id');
-//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
-//             url = url.replace('id', user_id);
-//             $("#delete-form").attr('action', url);
-//             $("#delete-form").submit();
-//         }
-//     });
-// });
-</script>
 @endpush
 @section('content')
 @section('header-right')
@@ -82,9 +66,6 @@ Total Investors
                             data-target="#userEmailModal-{{$user->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$user->id}}">
-                            <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a> --}}
                     </td>
                     </tr>
                     @include('admin.users.modals.eamil-to-investor')
@@ -93,7 +74,4 @@ Total Investors
         </table>
     </div>
 </section>
-{{-- <form action = "" method = "post" id = "delete-form" >
-    @csrf
-@method('delete') </form> --}}
 @endsection

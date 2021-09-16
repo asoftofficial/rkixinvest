@@ -9,34 +9,16 @@ User Management
                 data-target="#addUserModal">Add a User</button>
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@endpush
 @push('script')
-<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
-<script>
-// $(".delete").click(function (e) {
-//     console.log("asdhsakdash")
-//     swal(
-//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-//     ).then((willDelete) => {
-//         if (willDelete) {
-//             var user_id = $(this).attr('data-id');
-//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
-//             url = url.replace('id', user_id);
-//             $("#delete-form").attr('action', url);
-//             $("#delete-form").submit();
-//         }
-//     });
-// });
-</script>
 @endpush
 @section('content')
-<div class = "container-fluid" > {{-- Section Search Area    --}}
+<div class = "container-fluid" >
+    {{-- Section Search Area    --}}
 {{-- Page Section Title Area    --}}
-<section class = "page-section-title-area" > <div>
+<section class = "page-section-title-area">
     <h2>Users List</h2>
     <p>Latest Users information</p>
-</div>
 </section>
 {{-- End Page Section Title Area    --}}
 <section class = "collections" >
@@ -72,9 +54,6 @@ User Management
                         <a href="#" class="user_email  btn btn-dark" data-toggle="modal" data-target="#userEmailModal-{{$item->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$item->id}}">
-                            <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a> --}}
                     </td>
                 </tr>
                     @include('admin.users.modals.email')
@@ -84,15 +63,8 @@ User Management
         </table>
     </div>
 </section>
-
 </div>
 <!-- /.container-fluid -->
-
 {{-- Add User Model  --}}
 @include("admin.users.modals.create")
-{{-- <form action = "" method = "post" id = "delete-form" >
-    @csrf
-@method('delete') </form> --}}
-
-
 @endsection

@@ -50,7 +50,6 @@
                             </div>
                         </div>
                     </div>`;
-
                 $('.addedField').append(html);
             });
 

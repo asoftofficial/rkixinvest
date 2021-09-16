@@ -6,9 +6,7 @@ Packages
     <button
         class="btn btn-info px-3 blue-bg round-10" data-toggle="modal" data-target="#addpackageModal">Create Package</button>
 @endsection
-@push('style') <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
-@push('script') <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+@push('script')
 <script >
 $('.custom-file-input').change(function (e) {
     var filename = $(this)

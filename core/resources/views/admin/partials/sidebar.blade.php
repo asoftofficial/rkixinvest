@@ -3,13 +3,11 @@
         list-style: none;
         padding: 5px;
         margin-top: -35px;
-
     }
 
     ul#settings-list > li {
         background: white;
     }
-
     p#generalsettings_text {
         padding-left: 5px;
 }
@@ -90,17 +88,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="nav-item">
-                    <a
-                    href="{{route('admin.reward.index')}}"
-                    class="nav-link @if(Route::currentRouteName()=='admin.reward.index' || Route::currentRouteName()=='admin.reward.show') active lightblue-nav @endif">
-                    <img src="{{asset('assets/backend/img/icons/reward-icon.png')}}" alt="">
-                        <p>
-                         Rewards
-                        </p>
-                    </a>
-                </li> --}}
-
                 <li class="nav-item">
                     <a
                     href="{{route('admin.packages.index')}}"
@@ -111,16 +98,16 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') menu-is-opening menu-open @endif">
+                <li class="nav-item align-items-center @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.expired.investments') menu-is-opening menu-open @endif">
                     <a href=""
-                    class="nav-link  @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
+                    class="nav-link  @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.expired.investments') active blue-nav @endif">
                     <img src="{{asset('assets/backend/img/icons/invest.png')}}" alt="">
                         <p>
                         Investments
                         <i class="fas fa-angle-left right angle-icon"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.pending.investments') block @else none @endif">
+                    <ul class="nav nav-treeview oncollapse-sidebar open-sidebar text-bold" style="display: @if(Route::currentRouteName()=='admin.active.investments'||Route::currentRouteName()=='admin.expired.investments') block @else none @endif">
                         <li class="nav-item">
                             <a href="{{route('admin.active.investments')}}"
                             class="nav-link @if(Route::currentRouteName()=='admin.active.investments') active blue-nav @endif">
@@ -129,10 +116,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.pending.investments')}}"
-                            class="nav-link @if(Route::currentRouteName()=='admin.pending.investments') active blue-nav @endif">
+                            <a href="{{route('admin.expired.investments')}}"
+                            class="nav-link @if(Route::currentRouteName()=='admin.expired.investments') active blue-nav @endif">
                             <img src="{{asset('assets/backend/img/icons/child-link.png')}}" alt="">
-                                <p>Pending Investments</p>
+                                <p>Expired Investments</p>
                             </a>
                         </li>
                     </ul>

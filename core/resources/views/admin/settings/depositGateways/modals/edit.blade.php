@@ -8,7 +8,7 @@
             <div class="modal-body pt-0">
                 <form action="{{route('admin.deposit.geteways.update', $pg)}}" enctype="multipart/form-data" method="post">
                     @csrf
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -63,7 +63,7 @@
                                 <div class="col-md-6">
                                     <div class="gap">
                                         <h4 class="input-label mt-2">Maximum Deposit Amount</h4>
-                                        
+
                                         <input type="text" class="form-control bg-light round-10 border-0 mb-2"
                                                 name="max_ammount" value="{{old('max_ammount',$pg->max_ammount)}}">
                                         @error('role')
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -117,12 +117,11 @@
                         </div>
                     </div>
                     <div class="row">
-
                         @foreach(json_decode($pg->parameters) as $key => $value)
                             <div class="col-md-6">
                                 <div class="gap">
                                     <h4 class="input-label mt-2"> {{strtoupper(str_replace('_',' ',$key))}}</h4>
-                                    
+
                                     <input type="text" class="form-control bg-light round-10 border-0 mb-2"
                                     name="{{$key}}" required value="{{$value}}">
                                 </div>

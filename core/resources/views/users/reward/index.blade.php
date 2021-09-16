@@ -3,10 +3,10 @@
 Reward
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" >
+
 @endpush
-@push('script') <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js" > </script>
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+@push('script')
+<script src = "{{asset('assets/plugins/sweet-alert/js/swal.min.js')}}" > </script>
 <script > $(
     '.custom-file-input'
 ).change(function (e) {
@@ -18,12 +18,8 @@ Reward
     var nextSibling = e.target.nextElementSibling
     nextSibling.innerText = filename
 });
-$(function () {
-    $('.datepicker').datepicker({dateFormat: 'yy-m-d'})
-});
 
 $(".delete").click(function (e) {
-    console.log("asdhsakdash")
     swal(
         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
     ).then((willDelete) => {

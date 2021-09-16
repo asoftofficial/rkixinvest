@@ -12,10 +12,8 @@
 
 @endpush
 @push('script')
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
  <script>
 $(".delete").click(function (e) {
-    console.log("asdhsakdash")
     swal(
         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
     ).then((willDelete) => {
@@ -33,14 +31,12 @@ $(".delete").click(function (e) {
 @section('content')
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-lg-12">
                 <div class="card b-radius--10 ">
                     <div class="card-body p-0">
 
                         <div class="table-responsive--sm table-responsive">
                             <table class="table table--light style--two">
-
                                 <thead>
                                 <tr>
                                     <th>@lang('Name')</th>
@@ -78,11 +74,8 @@ $(".delete").click(function (e) {
                                                class="btn btn-primary ml-1" data-toggle="tooltip" data-original-title="@lang('Edit')"><i class="fas fa-pen"></i></a>
                                              {{-- Delete Button   --}}
                                              <a href="#" class="delete btn btn-primary mt-1 ml-1"  data-id="{{$method->id}}"><i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i></a>
-
                                         </td>
-
                                     </tr>
-
                                 @empty
                                     <tr>
                                         <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
@@ -97,56 +90,6 @@ $(".delete").click(function (e) {
             </div>
         </div>
 
-
-        {{-- ACTIVATE METHOD MODAL --}}
-        <div id="activateModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">@lang('Withdrawal Method Activation Confirmation')</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="{{ route('admin.withdraw.method.activate') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="id">
-                        <div class="modal-body">
-                            <p>@lang('Are you sure to activate') <span class="font-weight-bold method-name"></span> @lang('method')?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close')</button>
-                            <button type="submit" class="btn btn--primary">@lang('Activate')</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        {{-- DEACTIVATE METHOD MODAL --}}
-        <div id="deactivateModal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">@lang('Withdrawal Method Disable Confirmation')</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="{{ route('admin.withdraw.method.deactivate') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="id">
-                        <div class="modal-body">
-                            <p>@lang('Are you sure to disable') <span class="font-weight-bold method-name"></span> @lang('method')?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close')</button>
-                            <button type="submit" class="btn btn--danger">@lang('Disable')</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- /.container-fluid -->
     <form action = "" method = "post" id = "delete-form" >

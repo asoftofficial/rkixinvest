@@ -1,21 +1,13 @@
-<div
-    class="modal fade"
-    id="UserProfileModal"
-    tabindex="-1"
-    role="dialog"
-    aria-hidden="true">
+<div class="modal fade" id="UserProfileModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-610" role="document">
         <div class="modal-content issue-padd">
             <div class="modal-header pb-0">
                 <h5 class="modal-title" id="exampleModalLabel mt-0">Update profile</h5>
             </div>
             <div class="modal-body  pt-0">
-
-                <form
-                    action="{{route('admin.userprofile.update',Auth::user()->id)}}"
-                    enctype="multipart/form-data"
-                    method="post">
-                    @csrf @method('put')
+                <form action="{{route('admin.userprofile.update',Auth::user()->id)}}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
@@ -102,11 +94,8 @@
                                 </div>
                             </div>
                         <div class="d-flex justify-content-center mt-1 mb-4">
-                                    <button
-                                        type="button"
-                                        class="btn btn-outline-dark px-4 mr-1 round-10 px-5"
-                                        data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-dark px-4 round-10 px-5">Update</button>
+                            <button type="button" class="btn btn-outline-dark px-4 mr-1 round-10 px-5" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-dark px-4 round-10 px-5">Update</button>
                         </div>
                 </form>
             </div>

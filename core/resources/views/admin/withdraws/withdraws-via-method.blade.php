@@ -85,14 +85,11 @@
                                         <td data-label="@lang('Initiated')">
                                             {{ showDateTime($withdrawal->created_at) }} <br>  {{ diffForHumans($withdrawal->created_at) }}
                                         </td>
-
                                         <td data-label="@lang('User')">
                                             <span class="font-weight-bold">{{ $withdrawal->user->first_name.' '.$withdrawal->user->last_name }}</span>
                                             <br>
                                             <span class="small"> <a href="{{ route('admin.userprofile.show', $withdrawal->user_id) }}"><span>@</span>{{ $withdrawal->user->username }}</a> </span>
                                         </td>
-
-
                                         <td data-label="@lang('Amount')">
                                             USD{{ showAmount($withdrawal->amount ) }} - <span class="text-danger" data-toggle="tooltip" data-original-title="@lang('charge')">{{ showAmount($withdrawal->charge)}} </span>
                                             <br>
@@ -101,15 +98,11 @@
                                             </strong>
 
                                         </td>
-
                                         <td data-label="@lang('Conversion')">
                                             1 USD =  {{ showAmount($withdrawal->rate) }} {{ __($withdrawal->currency) }}
                                             <br>
                                             <strong>{{ showAmount($withdrawal->final_amount) }} {{ __($withdrawal->currency) }}</strong>
                                         </td>
-
-
-
                                         <td data-label="@lang('Status')">
                                             @if($withdrawal->status == 2)
                                                 <span class="text-small badge font-weight-normal badge--warning">@lang('Pending')</span>

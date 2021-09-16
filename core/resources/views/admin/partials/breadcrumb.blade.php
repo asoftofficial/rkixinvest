@@ -8,10 +8,6 @@
                 <h3 class="sub">@yield('page-subtitle')</h3>
             </div><!-- /.col -->
             <div class="col-sm-6 d-flex justify-content-end align-items-center">
-                {{--<ol class="breadcrumb float-sm-right">--}}
-                {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
-                {{--<li class="breadcrumb-item active">Dashboard v3</li>--}}
-                {{--</ol>--}}
                 @yield('header-right')
             </div><!-- /.col -->
         </div><!-- /.row -->

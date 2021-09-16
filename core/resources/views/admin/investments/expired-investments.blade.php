@@ -9,8 +9,8 @@ Pending Investments
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" >
     <div>
-        <h2>Pending Investments List</h2>
-        <p>Latest pending investments information</p>
+        <h2>Expired Investments List</h2>
+        <p>Expired investments information</p>
     </div>
 </section>{{-- End Page Section Title Area    --}}
 <section class = "collections" >
@@ -24,11 +24,11 @@ Pending Investments
                 </tr>
             </thead>
             <tbody>
-                @foreach($pending_investments as $item)
+                @foreach($expired_investments as $item)
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->amount}}</td>
-                        <td>Pending</td>
+                        <td>Expired</td>
                     </tr>
                 @endforeach
             </tbody>

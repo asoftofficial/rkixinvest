@@ -5,7 +5,6 @@ Create referral
 @push('style')
     <style>
         div#refdiv {
-            border-bottom: 2px solid rgba(0,0,0,0.3);
             height: auto;
             padding-bottom: 20px;
             display: flex;
@@ -22,7 +21,7 @@ Create referral
             justify-content: space-between;
         }
         .reflabel{
-            align-self: center;
+            width: 15%;
         }
     </style>
 @endpush
@@ -49,19 +48,35 @@ Create referral
     {{-- referral level bonus --}}
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-bold mt-3 mb-3">Referral level bonus</h1>
-            <form action="{{route('admin.referrals.post')}}" method="POST">
-                @csrf
-                <div class="ref-bonuses">
-                    @if(!empty($referrals))
-                        @foreach($referrals as $ref)
-                            <div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level {{$ref->id}} bonus</h4> <input type='text' class='form-control bg-white round-10 border-0 bonusinput' value="{{$ref->bonus}}" name='bonuses[]'></div></div></div></div>
-                        @endforeach
-                            <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3">Save</button>
-                    @endif
+            <div class="card">
+                <div class="card-header bg-dark">Referral level bonus</div>
+                <div class="card-body">
+                    <form action="{{route('admin.referrals.post')}}" method="POST">
+                        @csrf
+                        <div class="ref-bonuses">
+                            @if(!empty($referrals))
+                                @foreach($referrals as $ref)
+                                    <div class='row justify-content-center'>
+                                        <div class='col-md-12'>
+                                                <div class='refbonus-div mb-3'>
+                                                    <h4 class='input-label reflabel'>Level {{$ref->id}} bonus</h4>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control only-decimal bg-light round-10 border-0" placeholder="Referral Bonus" value="{{$ref->bonus}}" name='bonuses[]'>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="basic-addon2">%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3">Save</button>
+                            @endif
+                        </div>
+                        <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3" style="display: none">Save</button>
+                    </form>
                 </div>
-                <button class="btn btn-primary btn-blue saveReferrals px-5 mt-3" style="display: none">Save</button>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -82,18 +97,26 @@ Create referral
             }
 
         });
+
         $('.createLevels').click(function(){
             let refLevels = $('#refLevels').val();
             if(refLevels<=100){
                 $('.ref-bonuses').html("");
                 for(var i=1; i<=refLevels; i++){
-                    $('.ref-bonuses').append("<div class='row justify-content-center'><div class='col-md-12'><div class='gap mt-3'><div class='refbonus-div'><h4 class='input-label reflabel'>Level "+i+" bonus</h4> <input type='text' placeholder='%' class='form-control bg-white round-10 border-0 bonusinput' name='bonuses[]'></div></div></div></div>")
+                    $('.ref-bonuses').append("<div class='row justify-content-center'><div class='col-md-12'><div class='refbonus-div mb-3'><h4 class='input-label reflabel'>Level "+i+" bonus</h4><div class='input-group'><input type='text' class='form-control only-decimal bg-light round-10 border-0' placeholder='Referral Bonus' name='bonuses[]'><div class='input-group-append'><span class='input-group-text' id='basic-addon2'>%</span></div></div></div></div></div>")
                 }
                 $('.saveReferrals').slideDown();
             }else{
                 alert('too large value')
             }
 
+        });
+        $(".only-decimal").on("keyup",function (event) {
+            //this.value = this.value.replace(/[^0-9\.]/g,'');
+            $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
         });
     </script>
 @endpush

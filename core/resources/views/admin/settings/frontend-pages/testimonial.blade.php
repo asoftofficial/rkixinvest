@@ -3,15 +3,11 @@
 Testimonial
 @endsection
 @section('header-right')
-    <button
-        class="btn btn-info px-3 blue-bg round-10"
-        data-toggle="modal"
-        data-target="#addTestimonialrdModal">Add Testimonial</button>
+    <button class="btn btn-info px-3 blue-bg round-10" data-toggle="modal" data-target="#addTestimonialrdModal">Add Testimonial</button>
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@endpush
 @push('script')
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script >
 $('.custom-file-input').change(function (e) {
     var filename = $(this)

@@ -186,7 +186,7 @@ Route::namespace($adminNameSpace)->middleware(['auth', 'IsAdmin'])->prefix('admi
 
     //investments reporting route
     Route::get('active/investments',[InvestmentController::class,'active_invest'])->name('active.investments');
-    Route::get('pending/investments',[InvestmentController::class,'pending_invest'])->name('pending.investments');
+    Route::get('expired/investments',[InvestmentController::class,'expired_invest'])->name('expired.investments');
     Route::delete('investment/delete/{id}',[InvestmentController::class,'destroy'])->name('investment.destroy');
     Route::get('total/investors','UserController@totalInvestors')->name('show.total.investors');
     Route::get('active/investors','UserController@activeInvestors')->name('show.active.investors');

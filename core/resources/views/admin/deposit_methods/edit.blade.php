@@ -15,7 +15,6 @@
     <script>
         (function ($) {
             "use strict";
-
             $('input[name=currency]').on('input', function () {
                 $('.currency_symbol').text($(this).val());
             });
@@ -53,21 +52,16 @@
                         </div>
                     </div>
                 </div>`;
-
                 $('.addedField').append(html);
             });
-
 
             $(document).on('click', '.removeBtn', function () {
                 $(this).closest('.user-data').remove();
             });
-
             @if(old('currency'))
             $('input[name=currency]').trigger('input');
             @endif
         })(jQuery);
-
-
     </script>
 @endpush
 @section('content')
@@ -248,12 +242,9 @@
                                         @if($method->parameters)
                                         <div class="col-lg-12 mt-3">
                                             <div class="card border-dark">
-
                                                 <h5 class="card-header bg-dark">@lang('Parameters')
 
                                                 </h5>
-
-
                                                 <div class="card-body">
                                                     <div class="row">
 

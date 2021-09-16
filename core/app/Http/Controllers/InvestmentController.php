@@ -150,10 +150,10 @@ class InvestmentController extends Controller
     }
 
     //show pending investments
-    public function pending_invest()
+    public function expired_invest()
     {
-        $pending_investments = Investment::where('status',0)->get();
-        return view('admin.investments.pending-investments',compact('pending_investments'));
+        $expired_investments = Investment::where('status',0)->get();
+        return view('admin.investments.expired-investments',compact('expired_investments'));
     }
 
     //delete investment

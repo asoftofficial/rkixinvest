@@ -6,10 +6,8 @@ Dashboard
 Welcome back,
 @endsection
 @push('style')
-{{--<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > --}}
 @endpush
 @push('script')
-{{--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
 <script src="{{asset('/assets/dashboard/js/clipboard.min.js')}}"></script>
 <script>
 let clipboard = new ClipboardJS('.copyreflink');
@@ -145,12 +143,6 @@ clipboard.on('success', function(e) {
                         <!-- /.row -->
                     </div>
                     <!-- /.container-fluid -->
-
-                    {{--  Add Issues Model  --}}
-                    {{-- @include('admin.issues.modals.create') --}}
-                    {{--  End Add Issues Model  --}}
-                    {{-- @include('admin.banners.modals.create') --}}
-                    {{-- @include('admin.promotions.modals.create') --}}
                     @endsection
                 </div>
             </div>

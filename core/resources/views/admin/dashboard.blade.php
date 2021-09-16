@@ -6,9 +6,8 @@ Dashboard
 Welcome back,
 @endsection
 @push('style')
-<link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@endpush
 @push('script')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $('.custom-file-input').change(function (e) {
     var filename = $(this)
@@ -31,7 +30,6 @@ $(function () {
             var from = $('.from').val()
             ajaxGetChartData(to,from)
         });
-
     })
 
     function ajaxGetChartData(to=null,from=null){
@@ -53,10 +51,8 @@ $(function () {
             fontColor: '#495057',
             fontStyle: 'bold'
         }
-
         var mode = 'index'
         var intersect = true
-
         var $visitorsChart = $('#investment-chart')
         // eslint-disable-next-line no-unused-vars
         var chartData ;
@@ -475,7 +471,6 @@ $(function () {
                         <!-- /.row -->
                     </div>
                     <!-- /.container-fluid -->
-
                     {{-- create user model --}}
                     @include('admin.users.modals.create')
                     {{-- create package model --}}

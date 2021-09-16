@@ -80,31 +80,23 @@
                                         <td data-label="@lang('Initiated')">
                                             {{ showDateTime($withdraw->created_at) }} <br>  {{ diffForHumans($withdraw->created_at) }}
                                         </td>
-
                                         <td data-label="@lang('User')">
                                             <span class="font-weight-bold">{{ $withdraw->user->first_name.' '.$withdraw->user->last_name }}</span>
                                             <br>
                                             <span class="small"> <a href="{{ route('admin.userprofile.show', $withdraw->user_id) }}"><span>@</span>{{ $withdraw->user->username }}</a> </span>
                                         </td>
-
-
                                         <td data-label="@lang('Amount')">
                                             USD{{ showAmount($withdraw->amount ) }} - <span class="text-danger" data-toggle="tooltip" data-original-title="@lang('charge')">{{ showAmount($withdraw->charge)}} </span>
                                             <br>
                                             <strong data-toggle="tooltip" data-original-title="@lang('Amount after charge')">
                                                 {{ showAmount($withdraw->amount-$withdraw->charge) }} USD
                                             </strong>
-
                                         </td>
-
                                         <td data-label="@lang('Conversion')">
                                             1 USD =  {{ showAmount($withdraw->rate) }} {{ __($withdraw->currency) }}
                                             <br>
                                             <strong>{{ showAmount($withdraw->final_amount) }} {{ __($withdraw->currency) }}</strong>
                                         </td>
-
-
-
                                         <td data-label="@lang('Status')">
                                             @if($withdraw->status == 2)
                                                 <span class="text-small badge font-weight-normal badge--warning">@lang('Pending')</span>
@@ -117,9 +109,6 @@
                                             @endif
                                         </td>
                                         <td data-label="@lang('Action')">
-                                            {{--                                            <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="icon-btn ml-1 "  data-tooltip="tooltip" title="@lang('Detail')">--}}
-                                            {{--                                                <i class="fas fa-desktop"></i>--}}
-                                            {{--                                            </a>--}}
                                             @if($withdraw->status==2)
                                                 <a href="#" class="text-success ml-1 approve" data-id="{{$withdraw->id}}" data-tooltip="tooltip" title="@lang('Approve')" data-toggle="modal" data-target="#approveModal">
                                                     <i class="fas fa-check"></i>

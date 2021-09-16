@@ -1,84 +1,11 @@
-{{-- @extends('admin.layouts.default')
-@section('page-title')
-Active Investors
-@endsection
-@push('style') <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
-@section('content')
-@section('header-right')
-    <a href="{{route('admin.show.total.investors')}}" class="btn btn-primary btn-blue header-right-btn">Total investors</a>
-@endsection
-{{-- Page Section Title Area    --}}
-{{-- <section class = "page-section-title-area" >
-    <div>
-        <h2>Active Investments List</h2>
-        <p>Latest active investments information</p>
-    </div>
-</section>{{-- End Page Section Title Area    --}}
-{{-- <section class = "collections" >
-    <div class="table-responsive">
-        <table class="table custom-table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#id
-                    </th>
-                    <th scope="col">Active Investments
-                    </th>
-                </tr>
-            </thead>
-            <tbody> --}}
-                {{-- @foreach($active_investors as $user)
-                        @php
-                        if($user->investments->where('status',1)->count()){
-                            continue;
-                        }
-                        @endphp
-                <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->investments()->where('status',1)->count()}} | {{$user->investments->where('status',1)->sum('amount').' '.'USD'}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        {{-- </table> --}}
-    {{-- </div> --}}
-{{-- </section> --}}
-{{-- @endsection  --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @extends('admin.layouts.default')
 @section('page-title')
 Active Investors
 @endsection
-@push('style') <link rel = "stylesheet" href = "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" > @endpush
+@push('style')
+@endpush
 @push('script')
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
- <script>
-// $(".delete").click(function (e) {
-//     console.log("asdhsakdash")
-//     swal(
-//         {title: "Are you sure ?", text: "Once Deleted it can not be reverted", icon: "warning", buttons: true, dangerMode: true}
-//     ).then((willDelete) => {
-//         if (willDelete) {
-//             var user_id = $(this).attr('data-id');
-//             var url = "{{route('admin.userprofile.destroy', 'id')}}";
-//             url = url.replace('id', user_id);
-//             $("#delete-form").attr('action', url);
-//             $("#delete-form").submit();
-//         }
-//     });
-// });
-</script>
+
 @endpush
 @section('content')
 @section('header-right')
@@ -126,22 +53,12 @@ Active Investors
                     <td>{{$user->email}}</td>
                     <td>{{$user->investments()->where('status',1)->count()}} | {{$user->investments->where('status',1)->sum('amount').' '.'USD'}}</td>
                     <td style="min-width: 256px">
-                        <a
-                            href="{{route('admin.userprofile.show',$user->id)}}"
-                            class="mr-2 text-dark"
-                            style="font-size: 20px">
+                        <a href="{{route('admin.userprofile.show',$user->id)}}" class="mr-2 text-dark" style="font-size: 20px">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a
-                            href="#"
-                            class="user_email  btn btn-dark"
-                            data-toggle="modal"
-                            data-target="#userEmailModal-{{$user->id}}">
+                        <a href="#" class="user_email  btn btn-dark" data-toggle="modal" data-target="#userEmailModal-{{$user->id}}">
                             <i class="fas fa-envelope text-white" size="3"></i>
                         </a>
-                       {{-- <a href="#" class="delete btn btn-dark" data-id="{{$user->id}}">
-                            <i class='fas fa-trash-alt' style='font-size:20px;color:white;'></i>
-                        </a> --}}
                     </td>
                     </tr>
                     @include('admin.users.modals.eamil-to-investor')
@@ -150,7 +67,4 @@ Active Investors
         </table>
     </div>
 </section>
-{{-- <form action = "" method = "post" id = "delete-form" >
-    @csrf
-@method('delete') </form> --}}
 @endsection

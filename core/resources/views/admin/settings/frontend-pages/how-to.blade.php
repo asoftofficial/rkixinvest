@@ -67,7 +67,7 @@ How To
                         @enderror
                     </div>
                 </div>
- <div class="row mb-1 pt-3">
+                <div class="row mb-1 pt-3">
                     <div class="col-md-6">
                         <label class="input-label mb-0">Step 3</label>
                         <input type="text" name="step3" value="{{$data->step3}}"

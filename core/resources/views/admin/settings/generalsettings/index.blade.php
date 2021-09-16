@@ -10,7 +10,6 @@ General Settings
 @endpush
 @push('script')
     <script src="{{asset('assets/plugins/bootstrap-toggle/js/bootstrap-toggle.min.js')}}"></script>
-    <script src ="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
     <script>
         $('.switch-button').bootstrapToggle()
     </script>
@@ -34,20 +33,8 @@ General Settings
                 </span>
                 @enderror
                 </div>
-
-                {{-- <div class="col-md-6">
-                    <label for="icon" class="input-label mb-0">Footer text</label>
-                <input type="text" name="footer" value="{{old('footer',$settings->footer)}}"
-                    class="form-control bg-light border-0 round-10 ">
-                @error('footer')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div> --}}
             </div>
-
-                   <div class="row mb-3">
+            <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="icon" class="input-label mb-0">Website Dark Logo:</label>
                 <input type="file" name="dlogo" value="{{old('dlogo',$settings->dlogo)}}"

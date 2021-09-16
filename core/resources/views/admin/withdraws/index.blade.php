@@ -121,9 +121,6 @@
                                             @endif
                                         </td>
                                         <td data-label="@lang('Action')">
-{{--                                            <a href="{{ route('admin.withdraw.details', $withdraw->id) }}" class="icon-btn ml-1 "  data-tooltip="tooltip" title="@lang('Detail')">--}}
-{{--                                                <i class="fas fa-desktop"></i>--}}
-{{--                                            </a>--}}
                                             @if($withdraw->status==2)
                                                 <a href="#" class="text-success ml-1 approve" data-id="{{$withdraw->id}}" data-tooltip="tooltip" title="@lang('Approve')" data-toggle="modal" data-target="#approveModal">
                                                     <i class="fas fa-check"></i>
