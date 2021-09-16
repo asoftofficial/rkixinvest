@@ -169,7 +169,7 @@ class GeneralSettingsController extends Controller
       $settings->min_transfer = $request->min_transfer;
       $settings->max_transfer = $request->max_transfer;
       $settings->transfer_charges = $request->charges;
-      $settings->fund_transfer = $request->fund_transfer ? 'on' :'off';
+      $settings->fund_transfer = $request->fund_transfer == 'on' ? 'on' :'off';
       $settings->Update();
       return back()->with('success','Fund transfer settings updated');
     }
