@@ -149,6 +149,7 @@ table.table.custom-table td {
 .model-section-heading{
     font-size:18px;
 }
+
 .upload-sec{
     border-radius:10px;
     color:#ABA9A9;
@@ -314,10 +315,12 @@ ul.navbar-nav.ml-auto {
     display: contents;
 }
 .dashboard-profile-image img {
-    width: 53px;
-    border-radius: 50%;
-    margin-right: 10px;
+      max-width:60px !important;
+    max-height: 60px !important;
+    border-radius: 50% !important;
+    margin-right: 6px !important;
 }
+
 .angle-icon{
     top: 4px !important;
     right: 0 !important;
@@ -934,8 +937,8 @@ span.step-icon {
 }
 
 .profile-img img {
-    width: 70%;
-    height: 100%;
+    max-height:200px;
+    max-width:200px;
 }
 
 .profile-img .file {
@@ -1006,6 +1009,12 @@ span.step-icon {
     margin-top: -15%;
 }
 
+@media (min-width: 768px)
+{
+    .profile-actions {
+    max-width: 100%;
+    }
+}
 .profile-work p {
     font-size: 12px;
     color: #818182;

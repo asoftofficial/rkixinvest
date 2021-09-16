@@ -14,14 +14,14 @@
                 @if(empty(auth::user()->image))
                     <img src="{{route('placeholder.image','200x200')}}" alt="" />
                 @else
-                    <img src="{{auth::user()->image}}" alt="">
+                    <img src="{{auth::user()->image}}" alt="" style="max-height:50px;max-width:50px;border-radius:50%;">
                 @endif
 
             </a>
             <div class="dropdown main-drop profile-dropdown">
                 <img  src="{{asset('assets/backend/img/icons/bottom-angle.png')}}" class="dropdown-toggle bg-white border-0" type="text" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{route('admin.profile')}}">profile</a>
+                    <a class="dropdown-item" href="{{route('admin.profile')}}">Profile</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

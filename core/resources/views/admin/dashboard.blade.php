@@ -114,13 +114,17 @@ $(function () {
 
 @section('content')
 <div class = "container-fluid" > <div class="dashboard-first-line d-flex justify-content-between flex-wrap">
-    <div
-        class="dashboard-card upload-issues d-flex align-items-center justify-content-center">
-        <a
-            href="{{route('admin.fund.settings')}}"
-            class="dashboard-card-link">
-            Fund Settings
+  <div class="dashboard-card new-orders">
+        <a href="" class=" dashboard-card-dropdown">
+            <i class="fas fa-ellipsis-h"></i>
         </a>
+        <div class="dashboard-card-header">
+            <h2>Total Active Investments</h2>
+            <p class="text-dark">total active investments</p>
+        </div>
+        <div class="dashboard-card-stat">
+            {{$active_investments->count()}}
+        </div>
     </div>
     <div class="dashboard-card page-views">
         <a href="#" class=" dashboard-card-dropdown">

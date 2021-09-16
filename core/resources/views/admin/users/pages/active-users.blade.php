@@ -50,7 +50,6 @@ $(".blocked_user").click(function (e) {
                     </th>
                     <th scope="col">Email Address
                     </th>
-                    <th scope="col">Role</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -62,7 +61,6 @@ $(".blocked_user").click(function (e) {
                             <td>{{$item->first_name}}</td>
                             <td>{{$item->last_name}}</td>
                             <td>{{$item->email}}</td>
-                            <td>{{$item->role}}</td>
                             <td style="min-width: 256px">
                                 <a href="{{route('admin.userprofile.show',$item->id)}}" class="mr-2 text-dark" style="font-size: 20px">
                                     <i class="fas fa-eye"></i>
