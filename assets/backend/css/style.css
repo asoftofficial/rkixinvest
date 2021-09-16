@@ -315,7 +315,8 @@ ul.navbar-nav.ml-auto {
     display: contents;
 }
 .dashboard-profile-image img {
-      max-width:60px !important;
+    width: 60px;
+    max-width:60px !important;
     max-height: 60px !important;
     border-radius: 50% !important;
     margin-right: 6px !important;
