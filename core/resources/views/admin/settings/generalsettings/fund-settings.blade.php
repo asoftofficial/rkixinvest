@@ -15,6 +15,7 @@
         $('#removefund').bootstrapToggle()
         $('#switch').bootstrapToggle()
 
+
     </script>
 @endpush
 

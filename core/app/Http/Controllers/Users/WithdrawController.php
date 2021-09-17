@@ -152,11 +152,8 @@ class WithdrawController extends Controller
         $transaction = new Transaction();
         $transaction->user_id = $withdraw->user_id;
         $transaction->amount = $withdraw->amount;
-//        $transaction->post_balance = $user->balance;
-//        $transaction->charge = $withdraw->charge;
         $transaction->type = 2;
         $transaction->description = showAmount($withdraw->final_amount) . ' ' . $withdraw->currency . ' Withdraw Via ' . $withdraw->method->name;
-//        $transaction->trx =  $withdraw->trx;
         $transaction->save();
 
         sendEmail($user, 'WITHDRAW_REQUEST', [

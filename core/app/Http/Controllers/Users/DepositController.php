@@ -37,8 +37,6 @@ class DepositController extends Controller
             return back()->with('error', 'Your requested amount is larger than maximum amount.');
         }
 
-
-
         $charge = $method->fixed_charge + ($request->amount * $method->percent_charge / 100);
         $afterCharge = $request->amount;
         $finalAmount = $afterCharge * $method->rate;
