@@ -46,15 +46,12 @@
             <div
                 class="dashboard-card upload-issues d-flex align-items-center justify-content-center">
                 <a
-                    href="#"
+                    href="{{route('user.deposit')}}"
                     class="dashboard-card-link">
                     Add Funds
                 </a>
             </div>
             <div class="dashboard-card page-views">
-                {{-- <a href="#" class=" dashboard-card-dropdown">
-                    <i class="fas fa-ellipsis-h"></i>
-                </a> --}}
                 <div class="dashboard-card-header">
                     <h2>BALANCE</h2>
                     <p>Total Balance</p>
