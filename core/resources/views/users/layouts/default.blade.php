@@ -22,6 +22,9 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content">
+            @if (request()->route()->getName() !== "admin.issues.show" )
+                @include('admin.partials.breadcrumb')
+            @endif
         <!-- Main content -->
             @yield('content')
         </div>
