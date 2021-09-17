@@ -19,7 +19,7 @@ Transactions
         <table class="table custom-table table-responsive-md">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">#id
+                    <th scope="col">#No.
                     </th>
                     <th scope="col">type
                     </th>
@@ -27,14 +27,12 @@ Transactions
                     </th>
                     <th scope="col">description
                     </th>
-
-                    {{-- <th scope="col"></th> --}}
                 </tr>
             </thead>
             <tbody>
-                @foreach($transactions as $item)
+                @foreach($transactions as $key => $item)
                 <tr class="bg-light">
-                    <td>{{$item->id}}</td>
+                    <td>{{++$key}}</td>
                     <td class="{{$item->type==1 ? 'text-success' : 'text-danger'}}">{{$item->type==1 ? 'Credit' : 'Debit'}}</td>
                     <td>{{$item->amount}}</td>
                     <td>{{$item->description}}</td>

@@ -111,7 +111,7 @@
                                 @forelse($deposits as $deposit)
                                     <tr>
                                         <td>{{$deposit->user->username}}</td>
-                                        <td>{{$deposit->amount}}$</td>
+                                        <td>{{showAmount($deposit->amount,2)}}$</td>
                                         <td>{{$deposit->method->name}}</td>
                                     </tr>
                                 @empty
@@ -134,7 +134,7 @@
                                 @forelse($withdrawals as $item)
                                     <tr>
                                         <td>{{$item->user->username}}</td>
-                                        <td>{{$item->amount}}$</td>
+                                        <td>{{showAmount($item->amount,2)}}$</td>
                                         <td>{{$item->method->name}}</td>
                                     </tr>
                                 @empty

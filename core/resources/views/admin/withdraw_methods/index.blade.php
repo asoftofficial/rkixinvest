@@ -63,7 +63,7 @@
                                                     @if (empty($method->image))
                                                         <img src="{{route('placeholder.image','100x100')}}" alt="@lang('image')" width="100" height="100">
                                                     @else
-                                                        <img src="{{$method->image}}" alt="@lang('image')" width="100" height="100">
+                                                        <img src="/assets/images/withdraw/method/{{$method->image}}" alt="@lang('image')" width="100" height="100">
                                                     @endif
                                                 </div>
                                             </div>

@@ -7,32 +7,9 @@
             <div class="modal-body  pt-0">
                   <form action="{{route('admin.testimonial.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            {{-- <div class="row mb-1 pt-3">
-                <div class="col-md-6">
-                    <label class="input-label mb-0">Section title</label>
-                <input type="text" name="title" value=""
-                    class="form-control bg-light border-0 round-10 ">
-                @error('title')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-                <div class="col-md-6">
-                    <label class="input-label mb-0">Section heading</label>
-                <input type="text" name="heading" value=""
-                    class="form-control bg-light border-0 round-10 ">
-                @error('step1')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-            </div> --}}
-
              <div class="row mb-1 pt-3">
                 <div class="col-md-6">
-                    <label class="input-label mb-0">username</label>
+                    <label class="input-label mb-0">Username</label>
                 <input type="text" name="username" value=""
                     class="form-control bg-light border-0 round-10 ">
                 @error('username')

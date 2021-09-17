@@ -15,6 +15,7 @@ Funds settings
         $('#removefund').bootstrapToggle()
         $('#switch').bootstrapToggle()
 
+
     </script>
 @endpush
 

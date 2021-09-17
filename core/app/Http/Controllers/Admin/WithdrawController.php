@@ -162,7 +162,7 @@ class WithdrawController extends Controller
     }
 
     public function approve(Request $request)
-    {
+    {dd("hello");
         $request->validate(['id' => 'required|integer']);
         $withdraw = Withdrawal::where('id',$request->id)->where('status',2)->with('user')->firstOrFail();
         $withdraw->status = 1;
