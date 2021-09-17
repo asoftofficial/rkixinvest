@@ -13,7 +13,7 @@
 @endpush
 @push('script')
     <script>
-        $('#amount').keyup(function (){
+        $('#amount').keyup(function () {
             let amount = $(this).val()
             let charge = 2
             let charges = ((charge / 100) * amount).toFixed(2);
@@ -32,11 +32,14 @@
                     <form action="{{route('user.transfer.post')}}" method="POST">
                         @csrf
                         <p class="text-base text-danger">Transfer Charges: <span class="text-bold">2.00 %</span></p>
-                        <p class="text-blue">Total Charges will be: <span class="text-bold charges">0.00</span> USD, receiver will get <span class="text-bold receivable">0.00</span> USD</p>
+                        <p class="text-blue">Total Charges will be: <span class="text-bold charges">0.00</span> USD,
+                            receiver will get <span class="text-bold receivable">0.00</span> USD</p>
                         <div class="form-group">
                             <label>Enter Amount<sup class="text-danger">*</sup></label>
                             <div class="input-group">
-                                <input id="amount" type="text" class="form-control" name="amount" placeholder="Amount" required="" value="" onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
+                                <input id="amount" type="text" class="form-control" name="amount" placeholder="Amount"
+                                       required="" value=""
+                                       onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
                                 <span class="input-group-text bg--base">USD</span>
                             </div>
                             @error('amount')
@@ -47,7 +50,8 @@
                         </div>
                         <div class="form-group">
                             <label>Transaction Code<sup class="text-danger">*</sup></label>
-                            <input id="code" type="password" class="form-control" name="code" placeholder="Code" required="" value="" onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
+                            <input id="code" type="password" class="form-control" name="code" placeholder="Code"
+                                   required="" value="" onkeyup="this.value = this.value.replace (/^\.|[^\d\.]/g, '')">
                             @error('code')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -56,7 +60,8 @@
                         </div>
                         <div class="form-group">
                             <label>Receiver's Username<sup class="text-danger">*</sup></label>
-                            <input id="receiver" type="text" class="form-control" name="receiver" placeholder="Username" required>
+                            <input id="receiver" type="text" class="form-control" name="receiver" placeholder="Username"
+                                   required>
                             @error('receiver')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

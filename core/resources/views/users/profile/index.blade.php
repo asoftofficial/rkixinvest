@@ -14,6 +14,7 @@ User Profile
 
 @section('content')
 <section>
+    <div class="container-fluid">
     <div class="card">
         <div class="card-body">
             <div class="container-fluid">
@@ -94,7 +95,6 @@ User Profile
                 </div>
             </div>
         </div>
-    </div>
 </section>
         @include('users.profile.modals.edit-profile')
         @include('users.profile.modals.edit-password')

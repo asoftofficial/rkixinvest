@@ -1,19 +1,19 @@
 @extends('admin.layouts.default')
 @section('page-title')
-Settings
+    Settings
 @endsection
 @section('page-subtitle')
-About us
+    About us
 @endsection
 @section('content')
-<div class="container-fluid">
-    {{-- About Us Page --}}
-    <div class="card">
-        <div class="card-header bg-dark">
-            About Us
-        </div>
-        <div class="card-body">
-            <form action="{{route('admin.aboutus.update.settings')}}" method="post" enctype="multipart/form-data">
+    <div class="container-fluid">
+        {{-- About Us Page --}}
+        <div class="card">
+            <div class="card-header bg-dark">
+                About Us
+            </div>
+            <div class="card-body">
+                <form action="{{route('admin.aboutus.update.settings')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-1 pt-3">
                         <div class="col-md-6">
@@ -77,7 +77,8 @@ About us
                     <div class="row mb-1 pt-3">
                         <div class="col-md-12">
                             <label class="input-label">Section Content</label>
-                            <textarea rows="6" name="description" class="form-control bg-light border-0 round-10">{{old('description',$aboutus->section_description)}}</textarea>
+                            <textarea rows="6" name="description"
+                                      class="form-control bg-light border-0 round-10">{{old('description',$aboutus->section_description)}}</textarea>
                             @error('description')
                             <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -90,8 +91,8 @@ About us
                         <button type="submit" class="btn text-white btn-blue px-4 px-5 mt-3">Update</button>
                     </div>
                 </form>
+            </div>
         </div>
-    </div>
 
-</div>  <!-- /.container-fluid -->
+    </div>  <!-- /.container-fluid -->
 @endsection

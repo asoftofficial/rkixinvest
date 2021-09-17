@@ -113,11 +113,9 @@
                                 data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-blue px-4 px-5">Confirm</button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
 @endsection

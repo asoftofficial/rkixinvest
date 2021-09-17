@@ -22,9 +22,6 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div class="content">
-            @if (request()->route()->getName() !== "admin.issues.show" )
-                @include('users.partials.breadcrumb')
-            @endif
         <!-- Main content -->
             @yield('content')
         </div>
@@ -43,7 +40,6 @@
 <!-- AdminLTE -->
 <script src="{{asset('assets/dashboard//js/adminlte.js')}}"></script>
 <!-- OPTIONAL SCRIPTS -->
-<script src="{{asset('assets/plugins/chart.js/Chart.min.js')}}"></script>
 <script src="{{asset('assets/plugins/toastr/js/toastr.min.js')}}"></script>
 <script>
   @if(Session::has('success'))

@@ -5,7 +5,7 @@ Packages
 @push('style')
 @endpush
 @push('script')
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+<script src="{{asset('assets/plugins/sweet-alert/js/swal.min.js')}}"> </script>
 <script>
 $('#investModal').on('show.bs.modal', function(e) {
         var button = $(e.relatedTarget);
@@ -16,7 +16,6 @@ $('#investModal').on('show.bs.modal', function(e) {
 @endpush
 @section('content')
 <div class = "container-fluid">
-
 {{-- Page Section Title Area    --}}
 <section class = "page-section-title-area" > <div>
     <h2>Packages List</h2>
@@ -62,7 +61,6 @@ $('#investModal').on('show.bs.modal', function(e) {
    </div>
 </div>
 <!-- /.container-fluid -->
-
 {{-- Add package Model  --}}
 @include('users.packages.modals.invest')
 {{-- End Add package Model  --}}
