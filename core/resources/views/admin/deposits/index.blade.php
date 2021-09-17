@@ -123,7 +123,6 @@
                                                 <a href="#" class="text-success ml-1 approve" data-id="{{$deposit->id}}" data-tooltip="tooltip" title="@lang('Approve')" data-toggle="modal" data-target="#approveModal">
                                                     <i class="fas fa-check"></i>
                                                 </a>
-                                            @else
                                                 <a href="#" class="text-danger ml-1 reject" data-id="{{$deposit->id}}" data-tooltip="tooltip" title="@lang('Reject')" data-toggle="modal" data-target="#rejectModal">
                                                     <i class="fas fa-ban"></i>
                                                 </a>

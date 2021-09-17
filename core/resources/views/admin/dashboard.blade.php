@@ -462,7 +462,7 @@ $(function () {
                                 @else
                                 <td>Expired</td>
                                 @endif
-                                 <td>{{$item->rois->count()}} | {{$item->rois->sum('amount')}} USD</td>
+                                 <td>{{$item->rois->count()}} | {{showAmount($item->rois->sum('amount'),2)}} USD</td>
                                 <td>{{$item->rois->where('status',0)->count()}} | {{showAmount($item->rois->where('status',0)->sum('amount'),2)}} USD</td>
                             </tr>
                         @endforeach

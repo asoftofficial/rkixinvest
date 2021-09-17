@@ -92,15 +92,9 @@ $("#username").on({
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
                 <label for="Country" class="text-dark">Country</label>
-                <select
-                name="country"
-                required
-                id="countries"
-                class="form-control bg-light round-10 border-0 mb-2 "
-                style="height:10vh !important;">
-
+                <select name="country" required id="countries" class="form-control bg-light round-10 border-0 " style="height:10vh !important;">
                 @foreach ($countries as $item)
                 <option value="{{$item->name}}">{{$item->name}}</option>
                 @endforeach
