@@ -49,7 +49,7 @@
                                     <span class="font-weight-bold pull-right">{{showAmount($deposit->amount)  }} USD</span>
                                 </div>
                                 <div class="withdraw-details text-danger">
-                                    <span class="font-weight-bold">@lang('Withdrawal Charge') :</span>
+                                    <span class="font-weight-bold">@lang('Deposit Charges') :</span>
                                     <span class="font-weight-bold pull-right">{{showAmount($deposit->charge) }} USD</span>
                                 </div>
                                 <div class="withdraw-details text-info">
@@ -61,7 +61,7 @@
                                     <span class="font-weight-bold pull-right">  {{showAmount($deposit->rate)  }} {{__($deposit->currency)}}</span>
                                 </div>
                                 <div class="withdraw-details text-success">
-                                    <span class="font-weight-bold text--base">@lang('You Will Get') :</span>
+                                    <span class="font-weight-bold text--base">@lang('You will charge') :</span>
                                     <span class="font-weight-bold pull-right text--base">{{showAmount($deposit->final_amount) }} {{__($deposit->currency)}}</span>
                                 </div>
                                 <div class="form-group mt-5">

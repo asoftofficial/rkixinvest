@@ -38,7 +38,7 @@ class DepositController extends Controller
         }
 
         $charge = $method->fixed_charge + ($request->amount * $method->percent_charge / 100);
-        $afterCharge = $request->amount;
+        $afterCharge = $request->amount + $charge;
         $finalAmount = $afterCharge * $method->rate;
 
         $deposit = new Deposit();
