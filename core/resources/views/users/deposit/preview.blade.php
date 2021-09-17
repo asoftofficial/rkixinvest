@@ -18,29 +18,18 @@
 @endpush
 @push('script')
     <script>
-
         (function($){
-
             "use strict";
-
             $('.withdraw-thumbnail').hide();
-
             $('.clickBtn').on('click', function() {
-
                 var classNmae = $('.fileinput').attr('class');
-
                 if(classNmae != 'fileinput fileinput-exists'){
                     $('.withdraw-thumbnail').hide();
                 }else{
-
                     $('.fileinput-preview img').css({"width":"100%", "height":"300px", "object-fit":"contain"});
-
                     $('.withdraw-thumbnail').show();
-
                 }
-
             });
-
         })(jQuery);
 
     </script>
@@ -52,7 +41,6 @@
                 <div class="card main-card">
                     <h5 class="text-center mt-3">@lang('Current Balance') :
                         <strong>{{ showAmount(auth()->user()->balance)}}  USD</strong></h5>
-
                     <div class="card-body mt-4">
                         <div class="row">
                             <div class="col-md-4">
@@ -142,7 +130,6 @@
                                         </div>
                                     </form>
                                     @endif
-
                             </div>
                         </div>
                     </div>
@@ -151,5 +138,4 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-
 @endsection

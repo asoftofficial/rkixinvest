@@ -17,22 +17,22 @@
 
 @endpush
 @push('script')
-<script>
-    $('#levels').change(function (){
-        let url = "{{route('user.referrals')}}"+'?level='+$(this).val()
-        window.location.href = url
-    })
-</script>
+    <script>
+        $('#levels').change(function () {
+            let url = "{{route('user.referrals')}}" + '?level=' + $(this).val()
+            window.location.href = url
+        })
+    </script>
 @endpush
 @section('content')
     <div class="container-fluid">
-        <section class = "page-section-title-area">
+        <section class="page-section-title-area">
             <div>
                 <h2>{{$pageTitle}}</h2>
                 <p>Referrals information</p>
             </div>
         </section>{{-- End Page Section Title Area    --}}
-        <section class = "referrals" >
+        <section class="referrals">
             <div class="table-responsive">
                 <table class="table custom-table table-responsive-md">
                     <thead class="thead-light">

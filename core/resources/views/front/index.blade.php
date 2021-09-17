@@ -26,11 +26,6 @@
                     position: unset !important;
                 }
             }
-            .testimonials-carousal {
-                /*display: flex;*/
-                /*flex-wrap: wrap;*/
-                /*justify-content: center;*/
-            }
         </style>
     @endpush
     <!-- About Section Start-->
